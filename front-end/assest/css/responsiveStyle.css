@@ -11,7 +11,7 @@
         font-size: 1.7rem;
     }
 }
-@media all  and (min-width : 767px) and (max-width : 991px) {
+@media all  and (min-width : 768px) and (max-width : 991px) {
     .shoeShopTxt1 {
         font-size: 5.3rem;
     }
@@ -24,6 +24,35 @@
         font-size: 1.3rem;
     }
 }
+
+@media all  and (min-width : 575px) and (max-width : 767px) {
+    .shoeShopTxt1 {
+        font-size: 6.4rem;
+    }
+
+    .shoeShopTxt2{
+        font-size: 4.5rem;
+    }
+
+    .shoeShopTxt3{
+        font-size: 1.2rem;
+    }
+}
+
+@media all  and (min-width : 517px) and (max-width : 574px) {
+    .shoeShopTxt1 {
+        font-size: 6.8rem;
+    }
+
+    .shoeShopTxt2{
+        font-size: 4.5rem;
+    }
+
+    .shoeShopTxt3{
+        font-size: 1.2rem;
+    }
+}
+
 @media all  and (min-width : 399px) and (max-width : 516px) {
     .shoeShopTxt1 {
         font-size: 6rem;

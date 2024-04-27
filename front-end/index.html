@@ -12,40 +12,23 @@
     <link rel="stylesheet" href="assest/boostrap/css/bootstrap.css">
     <title>Shoe-Shop-Management-System</title>
     <link rel="stylesheet" href="assest/css/responsiveStyle.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
 </head>
-<body>
+<body class="home w-100 h-100">
 <header>
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand ms-4 fs-3 shoes" href="#">
                 Shoes.
             </a>
-            <a class="navbar-brand me-5 login" href="#">
+            <a class="navbar-brand me-5 login" id="loginBtn" href="#">
                 Login
             </a>
         </div>
     </nav>
 </header>
 <main>
-    <!--    <section id="home">-->
-    <!--        <div class="container-fluid">-->
-    <!--            <div class="container-fluid">-->
-    <!--                <div class="row">-->
-    <!--                    <div class="col-xl-6 shoeShopTxt d-inline-block">-->
-    <!--                        <div class="shoeShopTxt d-inline-block">-->
-    <!--                            <h1 class="me-3">Shoe</h1>-->
-    <!--                            <h2>Shop.</h2>-->
-    <!--                            <p>Your Unlimited Online Shoe <br> Destination!</p>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                    <div class="col-xl-6 d-flex justify-content-center justify-content-md-end shoeImgDiv">-->
-    <!--                        <img src="images/shoes.png" class="img-fluid shoeImg" alt="Image Not Found">-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </section>-->
     <section id="cover" class="container">
         <div class="row g-2 justify-content-around">
             <div class="col-md-6 d-flex justify-content-center align-items-center order-sm-2">
@@ -61,8 +44,57 @@
                 </div>
             </div>
         </div>
+
+        <div class="form-container">
+            <i class="uil uil-times from_close"></i>
+            <div class="form login-form">
+                <form action="#">
+                    <h2>Login</h2>
+                    <div class="mainBtnDiv d-flex justify-content-between">
+                        <button class="btn" id="adminBtn">Admin</button>
+                        <button class="btn" id="cashierBtn">Cashier</button>
+                    </div>
+
+                    <!--------------admin---------------->
+                    <div class="input_box adminInputBox">
+                        <input type="email" placeholder="Enter Your Email" >
+                        <i class="uil uil-envelope-alt email"></i>
+                    </div>
+
+                    <div class="input_box adminInputBox">
+                        <input type="password" placeholder="Enter Your Password" >
+                        <i class="uil uil-lock password"></i>
+                        <i class="uil uil-eye-slash pw_hide"></i>
+                    </div>
+
+                    <!--------------cashier---------------->
+                    <div class="input_box  cashierInputBox">
+                        <input type="email" placeholder="Enter Your Email" >
+                        <i class="uil uil-envelope-alt email"></i>
+                    </div>
+
+                    <div class="input_box  cashierInputBox">
+                        <input type="password" placeholder="Enter Your Password" >
+                        <i class="uil uil-lock password"></i>
+                        <i class="uil uil-eye-slash pw_hide"></i>
+                    </div>
+
+                    <!--                    <div class="option_field">-->
+                    <!--                        <span class="checkBox">-->
+                    <!--                            <input type="checkbox">-->
+                    <!--                            <label for="check">Reme</label>-->
+                    <!--                        </span>-->
+                    <!--                    </div>-->
+                    <button class="button" id="loginNow">
+                        Login Now
+                    </button>
+                </form>
+            </div>
+        </div>
     </section>
 </main>
+<script src="assest/js/code.jquery.com_jquery-3.7.1.min.js"></script>
+<script src="assest/js/scrypt.js"></script>
 <script src="assest/boostrap/js/bootstrap.js"></script>
 </body>
 </html>
