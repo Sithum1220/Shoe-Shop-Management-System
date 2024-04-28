@@ -13,7 +13,7 @@
 </head>
 <body>
 <header>
-    <div class="navBarPrimeryDiv container-fluid p-0 position-fixed">
+    <div class="navBarPrimeryDiv container-fluid p-0 position-fixed z-2">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <h2 class="shoes ms-5" href="#">Shoes.</h2>
@@ -174,43 +174,10 @@
         <div class="downMainDiv d-grid">
             <div class="row mostSaleItem">
                 <h1>Most Sale Item</h1>
-                <div class="col">
+                <div class="col shadow-lg">
                     <img src="../Admin Dashboard/assets/css/shoe01.png" alt="">
-<!--                    <table class="table table-borderless">-->
-<!--                        <thead>-->
-<!--                        <tr>-->
-<!--                            <th scope="col">Id</th>-->
-<!--                            <th scope="col">Name</th>-->
-<!--                            <th scope="col">Size</th>-->
-<!--                        </tr>-->
-<!--                        </thead>-->
-<!--                        <tbody>-->
-<!--                        <tr>-->
-<!--                            <td>C001</td>-->
-<!--                            <td>Fomal Shoe</td>-->
-<!--                            <td>10</td>-->
-<!--                        </tr>-->
-<!--                        </tbody>-->
-<!--                    </table>-->
-
-                    <!--                    <table class="table table-responsive mt-4">-->
-                    <!--                        <thead>-->
-                    <!--                        <tr>-->
-                    <!--                            <th scope="col">Sold</th>-->
-                    <!--                            <th scope="col">Qty</th>-->
-                    <!--                            <th scope="col">Price</th>-->
-                    <!--                        </tr>-->
-                    <!--                        </thead>-->
-                    <!--                        <tbody>-->
-                    <!--                        <tr>-->
-                    <!--                            <td>234</td>-->
-                    <!--                            <td>50</td>-->
-                    <!--                            <td>1500</td>-->
-                    <!--                        </tr>-->
-                    <!--                        </tbody>-->
-                    <!--                    </table>-->
                 </div>
-                <div class="col">
+                <div class="col shadow-lg">
                     <div class="qty">
                         <div class="qtyStatus">
                             <div class="qtyInfo">
@@ -221,7 +188,6 @@
                                 <svg>
                                     <circle cx="78" cy="78" r="76"></circle>
                                 </svg>
-<!--                                <img src="../Admin Dashboard/assets/images/Frame05.svg" alt="">-->
                                 <div class="qtyPercentage">
                                     <p class="fs-2">+81%</p>
                                 </div>
@@ -229,7 +195,48 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
+            <div class="recent-order">
+                <div class="row mostSaleItem">
+                    <h1 class="mt-4">Recent Orders</h1>
+                    <div class="col shadow-lg">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Order Id</th>
+                                <th scope="col">Item Code</th>
+                                <th scope="col">Customer Id</th>
+                                <th scope="col">Customer Name</th>
+                                <th scope="col">Total Price</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>O002</td>
+                                <td>I002</td>
+                                <td>C002</td>
+                                <td>Sithum Perera</td>
+                                <td>2500</td>
+                            </tr>
+                            <tr>
+                                <td>O002</td>
+                                <td>I002</td>
+                                <td>C002</td>
+                                <td>Imesh Perera</td>
+                                <td>3500</td>
+                            </tr>
+                            <tr>
+                                <td>O003</td>
+                                <td>I003</td>
+                                <td>C003</td>
+                                <td>Sithum Imesh</td>
+                                <td>5500</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

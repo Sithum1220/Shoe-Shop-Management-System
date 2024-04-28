@@ -272,7 +272,7 @@ main .analyse .progresss .percentage {
     gap: 1rem;
 }
 .mostSaleItem .col{
-    width: 50%;
+    /*width: 50%;*/
     background-color: var(--color-white);
     padding: var(--card-padding);
     border-radius: var(--card-border-radius);
@@ -283,7 +283,7 @@ main .analyse .progresss .percentage {
 
 .mostSaleItem h1 {
     font-weight: 550;
-    font-size: 20px;
+    font-size: 25px;
     margin-top: 5px;
 }
 
@@ -296,59 +296,6 @@ main .analyse .progresss .percentage {
     margin-right: 20px;
 }
 
-/*---------------------------------*/
-
-/*main .mostSaleItem > div:hover {*/
-/*    box-shadow: none;*/
-/*}*/
-
-/*main .mostSaleItem > div .status {*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    justify-content: space-between;*/
-/*}*/
-
-/*main .mostSaleItem h3 {*/
-/*    margin-left: 0.6rem;*/
-/*    font-size: 1rem;*/
-/*}*/
-
-/*main .mostSaleItem .progresss {*/
-/*    position: relative;*/
-/*    width: 92px;*/
-/*    height: 92px;*/
-/*    border-radius: 50%;*/
-/*}*/
-
-/*main .mostSaleItem svg {*/
-/*    width: 7rem;*/
-/*    height: 7rem;*/
-/*}*/
-
-/*main .mostSaleItem svg circle {*/
-/*    fill: none;*/
-/*    stroke-width: 10;*/
-/*    stroke-linecap: round;*/
-/*    transform: translate(5px, 5px);*/
-/*}*/
-
-/*main .mostSaleItem .qty svg circle {*/
-/*    stroke: var(--color-success);*/
-/*    stroke-dashoffset: -30;*/
-/*    stroke-dasharray: 200;*/
-/*}*/
-
-/*main .mostSaleItem .progresss .percentage {*/
-/*    position: absolute;*/
-/*    top: -3px;*/
-/*    left: -1px;*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*    height: 100%;*/
-/*    width: 100%;*/
-/*}*/
-
 .qty .qtyStatus{
     display: flex;
     align-items: center;
@@ -357,9 +304,9 @@ main .analyse .progresss .percentage {
 
 .qty h3 {
     margin-top: 40px;
-
     margin-left: 0.6rem;
-    font-size: 1rem;
+    font-size: 1.5rem;
+    opacity: 70%;
 }
 
 .qty .qtyProgresses {
@@ -399,4 +346,5 @@ main .analyse .progresss .percentage {
 
 .qty h1{
     font-size: 75px;
+    opacity: 80%;
 }
