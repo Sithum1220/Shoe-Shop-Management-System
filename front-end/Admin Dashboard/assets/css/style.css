@@ -72,7 +72,7 @@ body {
     width: 220px;
     height: 80%;
     position: fixed;
-    top: 5rem;
+    top: 6rem;
     transition: all 0.3s ease;
 }
 
@@ -136,7 +136,7 @@ main {
 
 .mainSection {
     margin-left: 16rem;
-    margin-top: 5rem;
+    margin-top: 6rem;
 }
 
 .data {
@@ -148,7 +148,6 @@ main {
     width: 100%;
     display: flex;
     gap: 1rem;
-
 }
 
 /*.data div div {*/
@@ -160,7 +159,6 @@ main {
 /*    padding: 2rem 1rem 2rem 1rem;*/
 /*    !*padding: 10px;*!*/
 /*    !*flex-wrap: wrap;*!*/
-
 
 
 /*.data img {*/
@@ -195,7 +193,6 @@ main .analyse > div {
     background-color: var(--color-white);
     padding: var(--card-padding);
     border-radius: var(--card-border-radius);
-    margin-top: 1rem;
     box-shadow: var(--box-shadow);
     cursor: pointer;
     transition: all 0.3s ease;
@@ -264,3 +261,142 @@ main .analyse .progresss .percentage {
     width: 100%;
 }
 
+.downMainDiv {
+    margin-top: 2rem;
+    padding-left: 4rem;
+    padding-right: 3rem;
+}
+.mostSaleItem{
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+}
+.mostSaleItem .col{
+    width: 50%;
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mostSaleItem h1 {
+    font-weight: 550;
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.mostSaleItem img {
+    width: 15rem;
+}
+
+.mostSaleItem p {
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+/*---------------------------------*/
+
+/*main .mostSaleItem > div:hover {*/
+/*    box-shadow: none;*/
+/*}*/
+
+/*main .mostSaleItem > div .status {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: space-between;*/
+/*}*/
+
+/*main .mostSaleItem h3 {*/
+/*    margin-left: 0.6rem;*/
+/*    font-size: 1rem;*/
+/*}*/
+
+/*main .mostSaleItem .progresss {*/
+/*    position: relative;*/
+/*    width: 92px;*/
+/*    height: 92px;*/
+/*    border-radius: 50%;*/
+/*}*/
+
+/*main .mostSaleItem svg {*/
+/*    width: 7rem;*/
+/*    height: 7rem;*/
+/*}*/
+
+/*main .mostSaleItem svg circle {*/
+/*    fill: none;*/
+/*    stroke-width: 10;*/
+/*    stroke-linecap: round;*/
+/*    transform: translate(5px, 5px);*/
+/*}*/
+
+/*main .mostSaleItem .qty svg circle {*/
+/*    stroke: var(--color-success);*/
+/*    stroke-dashoffset: -30;*/
+/*    stroke-dasharray: 200;*/
+/*}*/
+
+/*main .mostSaleItem .progresss .percentage {*/
+/*    position: absolute;*/
+/*    top: -3px;*/
+/*    left: -1px;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    height: 100%;*/
+/*    width: 100%;*/
+/*}*/
+
+.qty .qtyStatus{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.qty h3 {
+    margin-top: 40px;
+
+    margin-left: 0.6rem;
+    font-size: 1rem;
+}
+
+.qty .qtyProgresses {
+    position: relative;
+    top: 1rem;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    /*background-color: #0a58ca;*/
+}
+.qty svg {
+    width: 12rem;
+    height: 12rem;
+    /*background-color: black;*/
+}
+.qty svg circle {
+    fill: none;
+    stroke-width: 10;
+    stroke-linecap: round;
+    transform: translate(25px, 25px);
+}
+.qty svg circle {
+    stroke: var(--color-success);
+    stroke-dashoffset: -70;
+    stroke-dasharray: 350;
+}
+.qtyProgresses .qtyPercentage {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.qty h1{
+    font-size: 75px;
+}
