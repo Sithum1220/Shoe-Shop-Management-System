@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+:root{
+    --color-primary: #6C9BCF;
+    --color-danger: #FF0060;
+    --color-success: #1B9C85;
+    --color-warning: #F7D060;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+body{
+    background-color: #F8F9FA;
+    font-family: 'Poppins', sans-serif;
+    /*font-size: 20px;*/
+}
+.shoes{
+    font-family: "Noto Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+            "wdth" 100;
+}
+
+.profile .profile-photo{
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.navBarPrimeryDiv .profile{
+    display: flex;
+    gap: 1.5rem;
+    text-align: right;
+}
+.profile .info p{
+    font-weight: 400;
+}
+.profile .info small{
+    font-weight: 600;
+}
+
+.sideBar{
+    border-radius: 15px;
+    width: 190px;
+    height: 80%;
+    position: fixed;
+    top: 5rem;
+    transition: all 0.3s ease;
+}
+
+.sideBar a{
+    display: flex;
+    align-items: center;
+    color: var(--color-info-dark);
+    height: 4rem;
+    gap: 1rem;
+    position: relative;
+    margin-left: 2rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.sideBar a span{
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+.sideBar a:last-child{
+    position: absolute;
+    top: 90%;
+}
+
+.sideBar a.active{
+    width: 100%;
+    color: var(--color-primary);
+    background-color: var(--color-light);
+    margin-left: 0;
+}
+
+.sideBar a.active::before{
+    content: '';
+    width: 6px;
+    height: 18px;
+    background-color: var(--color-primary);
+}
+
+.sideBar a.active span{
+    color: var(--color-primary);
+    margin-left: calc(1rem - 3px);
+}
+
+.sideBar a:hover{
+    color: var(--color-primary);
+}
+
+.sideBar a:hover span{
+    margin-left: 0.6rem;
+}
+.sideBar h3{
+    padding-top: 10.5px;
+}

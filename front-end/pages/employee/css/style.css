@@ -1,0 +1,56 @@
+main .tableDiv{
+    margin-top: 1.3rem;
+}
+
+main .tableDiv h2{
+    margin-bottom: 0.8rem;
+}
+
+main .tableDiv table{
+    background-color: var(--color-white);
+    width: 100%;
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--card-border-radius);
+    transition: all 0.3s ease;
+}
+
+main .tableDiv table:hover{
+    box-shadow: none;
+}
+
+main .tableDiv a{
+    text-align: center;
+    display: block;
+    margin: 1rem auto;
+    color: var(--color-primary);
+}
+
+@media screen and (max-width: 1200px) {
+    main .tableDiv {
+        width: 30%;
+        position: absolute;
+        left: 28%;
+        transform: translateX(-50%);
+        margin: 2rem 0 0 0.8rem;
+    }
+
+    main .tableDiv table{
+        width: 55vw;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    main .tableDiv{
+        position: relative;
+        margin: 3rem 0 0 0;
+        width: 100%;
+    }
+
+    main .tableDiv table{
+        width: 100%;
+        margin: 0;
+    }
+}

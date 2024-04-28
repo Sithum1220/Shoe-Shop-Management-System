@@ -18,3 +18,24 @@ const Orders = [
         status: 'Active'
     },
 ]
+
+const employee = [
+    {
+        employeeId: 'E001',
+        employeeName: 'Sithum',
+        address: 'Hikkaduwa',
+        phoneNumber: '0777625462'
+    },
+    {
+        employeeId: 'E002',
+        employeeName: 'Imesh',
+        address: 'Galle',
+        phoneNumber: '0777625232'
+    },
+    {
+        employeeId: 'E003',
+        employeeName: 'Perera',
+        address: 'Matara',
+        phoneNumber: '0777625976'
+    },
+]

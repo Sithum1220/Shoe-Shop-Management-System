@@ -112,7 +112,7 @@ b{
     color: var(--color-warning);
 }
 
-.container{
+.mainDiv{
     display: grid;
     width: 96%;
     margin: 0 auto;
@@ -124,29 +124,29 @@ aside{
     height: 100vh;
 }
 
-aside .toggle{
+aside .toggleDiv{
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 1.4rem;
 }
 
-aside .toggle .logo{
+aside .toggleDiv .logoDiv{
     display: flex;
     gap: 0.5rem;
 }
 
-aside .toggle .logo img{
+aside .toggleDiv .logoDiv img{
     width: 2rem;
     height: 2rem;
 }
 
-aside .toggle .close{
+aside .toggleDiv .close{
     padding-right: 1rem;
     display: none;
 }
 
-aside .sidebar{
+aside .sidebarDiv{
     display: flex;
     flex-direction: column;
     background-color: var(--color-white);
@@ -158,11 +158,11 @@ aside .sidebar{
     transition: all 0.3s ease;
 }
 
-aside .sidebar:hover{
+aside .sidebarDiv:hover{
     box-shadow: none;
 }
 
-aside .sidebar a{
+aside .sidebarDiv a{
     display: flex;
     align-items: center;
     color: var(--color-info-dark);
@@ -173,45 +173,45 @@ aside .sidebar a{
     transition: all 0.3s ease;
 }
 
-aside .sidebar a span{
+aside .sidebarDiv a span{
     font-size: 1.6rem;
     transition: all 0.3s ease;
 }
 
-aside .sidebar a:last-child{
+aside .sidebarDiv a:last-child{
     position: absolute;
     bottom: 2rem;
     width: 100%;
 }
 
-aside .sidebar a.active{
+aside .sidebarDiv a.active{
     width: 100%;
     color: var(--color-primary);
     background-color: var(--color-light);
     margin-left: 0;
 }
 
-aside .sidebar a.active::before{
+aside .sidebarDiv a.active::before{
     content: '';
     width: 6px;
     height: 18px;
     background-color: var(--color-primary);
 }
 
-aside .sidebar a.active span{
+aside .sidebarDiv a.active span{
     color: var(--color-primary);
     margin-left: calc(1rem - 3px);
 }
 
-aside .sidebar a:hover{
+aside .sidebarDiv a:hover{
     color: var(--color-primary);
 }
 
-aside .sidebar a:hover span{
+aside .sidebarDiv a:hover span{
     margin-left: 0.6rem;
 }
 
-aside .sidebar .message-count{
+aside .sidebarDiv .message-count{
     background-color: var(--color-danger);
     padding: 2px 6px;
     color: var(--color-white);
@@ -535,24 +535,24 @@ main .recent-orders a{
 }
 
 @media screen and (max-width: 1200px) {
-    .container{
+    .mainDiv{
         width: 95%;
         grid-template-columns: 7rem auto 23rem;
     }
 
-    aside .logo h2{
+    aside .logoDiv h2{
         display: none;
     }
 
-    aside .sidebar h3{
+    aside .sidebarDiv h3{
         display: none;
     }
 
-    aside .sidebar a{
+    aside .sidebarDiv a{
         width: 5.6rem;
     }
 
-    aside .sidebar a:last-child{
+    aside .sidebarDiv a:last-child{
         position: relative;
         margin-top: 1.8rem;
     }
@@ -591,7 +591,7 @@ main .recent-orders a{
 }
 
 @media screen and (max-width: 768px) {
-    .container{
+    .mainDiv{
         width: 100%;
         grid-template-columns: 1fr;
         padding: 0 var(--padding-1);
@@ -615,29 +615,29 @@ main .recent-orders a{
        } 
     }
 
-    aside .logo{
+    aside .logoDiv{
         margin-left: 1rem;
     }
 
-    aside .logo h2{
+    aside .logoDiv sidebarDiv h2{
         display: inline;
     }
 
-    aside .sidebar h3{
+    aside .sidebarDiv h3{
         display: inline;
     }
 
-    aside .sidebar a{
+    aside .sidebarDiv a{
         width: 100%;
         height: 3.4rem;
     }
 
-    aside .sidebar a:last-child{
+    aside .sidebarDiv a:last-child{
         position: absolute;
         bottom: 5rem;
     }
 
-    aside .toggle .close{
+    aside .toggleDiv .close{
         display: inline-block;
         cursor: pointer;
     }
@@ -703,5 +703,4 @@ main .recent-orders a{
     .right-section .nav button span{
         font-size: 2rem;
     }
-
 }
