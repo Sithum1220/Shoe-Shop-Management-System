@@ -7,10 +7,23 @@ const addEmployee = $('#addEmployee'),
     updateEmployee = $('#updateEmployee'),
     deleteEmployee = $('#deleteEmployee'),
     showDetails = $('#showDetails'),
+    formTitle = $('#formTitle'),
+    cancelBtn = $('#cancelBtn'),
+    txtFieldBox = $('#txtFieldBox'),
+    deletePopupBox = $('#deletePopupBox'),
+    addBtn = $('#addBtn'),
     userCredentials = $('#userCredentials'),
+    formIcon = $('#formIcon'),
     form_close = $('.from_close'),
     employeeRole = $('#employeeRole'),
     home = $('.home');
+
+const tableHeader = document.querySelector('.table-header');
+const table = document.querySelector('#mytable');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+const rowsPerPage = 10; // Change as needed
+let currentPage = 0;
 
 dashboardBtn.click(function () {
     // $('#dashboard').css("display", "block");
@@ -77,13 +90,66 @@ userBtn.click(function () {
 
 })
 
+addEmployee.click(function () {
+    home.addClass('show')
+    addBtn.text("Save")
+    addBtn.css('display', 'block');
+    cancelBtn.css('width', '48%');
+    deletePopupBox.css('display', 'none');
+    txtFieldBox.css('display', 'block');
+    formIcon.attr('src','../Pages/assets/images/Frame07.png')
+    formTitle.text('Add Employee')
+    enableTxtField()
+})
+updateEmployee.click(function () {
+    formTitle.text('Update Employee')
+    home.addClass('show')
+    addBtn.css('display', 'block');
+    addBtn.text("Update")
+    cancelBtn.css('width', '48%');
+    deletePopupBox.css('display', 'none');
+    txtFieldBox.css('display', 'block');
+    formIcon.attr('src','../Pages/assets/images/edit-btn.png')
+    enableTxtField()
+})
+deleteEmployee.click(function () {
+    formTitle.text('Delete Employee')
+    addBtn.text("Delete")
+    addBtn.css('display', 'block');
+    cancelBtn.css('width', '48%');
+    txtFieldBox.css('display', 'none');
+    deletePopupBox.css('display', 'block');
+    formIcon.attr('src','../Pages/assets/images/deleteIcon.png')
+    home.addClass('show')
+})
+showDetails.click(function () {
+    formTitle.text('Employee Details')
+    addBtn.css('display', 'none');
+    cancelBtn.css('width', '100%');
+    formIcon.attr('src','../Pages/assets/images/detailsIcon.png')
+    disableTxtField();
+    deletePopupBox.css('display', 'none');
+    txtFieldBox.css('display', 'block');
+    home.addClass('show')
 
-const tableHeader = document.querySelector('.table-header');
-const table = document.querySelector('#mytable');
-const prevBtn = document.querySelector('.prev-btn');
-const nextBtn = document.querySelector('.next-btn');
-const rowsPerPage = 10; // Change as needed
-let currentPage = 0;
+})
+form_close.click(function () {
+    home.removeClass('show');
+
+})
+cancelBtn.click(function () {
+    home.removeClass('show');
+
+})
+employeeRole.change(function () {
+    console.log($(this).val());
+    if ($(this).val() === 'Admin' || $(this).val() === 'User') {
+        userCredentials.removeClass('d-none');
+    } else {
+        userCredentials.addClass('d-none');
+    }
+})
+
 
 function showPage(pageNumber) {
     const start = pageNumber * rowsPerPage;
@@ -139,58 +205,12 @@ window.addEventListener('scroll', function () {
     if (tableRect.bottom < paginationRect.height) {
         paginationContainer.style.bottom = `${tableRect.bottom - paginationRect.height}px`;
     } else {
-        paginationContainer.style.bottom = '20px'; // Adjust as needed
+        paginationContainer.style.bottom = '20px';
     }
 });
 
-// Show the first page initially
 showPage(currentPage);
 updateButtons();
-
-addEmployee.click(function () {
-    $('#mainlable').text('Add Employee Details')
-    home.addClass('show')
-    $('#saveBtn').text("Save")
-enableTxtField()
-})
-updateEmployee.click(function () {
-    $('#mainlable').text('Update Employee Details')
-    home.addClass('show')
-    $('#saveBtn').text("Update")
-enableTxtField()
-})
-deleteEmployee.click(function () {
-    $('#mainlable').text('Delete Employee Details')
-    $('#saveBtn').text("Delete")
-
-    home.addClass('show')
-})
-showDetails.click(function () {
-    $('#mainlable').text('All Employee Details')
-    disableTxtField();
-    $('#saveBtn').text("Close")
-    $('#saveBtn').click(function () {
-        home.removeClass('show');
-    })
-
-    home.addClass('show')
-
-})
-form_close.click(function () {
-    home.removeClass('show');
-})
-
-var value = employeeRole.val();
-
-
-employeeRole.change(function () {
-    console.log($(this).val());
-    if ($(this).val() == 'Admin' || $(this).val() == 'User') {
-        $('#userCredentials').removeClass('d-none');
-    } else {
-        $('#userCredentials').addClass('d-none');
-    }
-})
 
 function disableTxtField() {
     $("#employeeCode").prop('disabled', true);

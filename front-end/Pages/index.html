@@ -344,11 +344,10 @@
         <div class="form-container">
             <div class="form login-form">
                 <form action="#">
-
                     <div class="pt-4 pb-4 ps-5 pe-5 d-flex justify-content-between">
                         <div>
-                            <img src="../Pages/assets/images/Frame07.png" width="75" alt="">
-                            <h2 class="d-inline-block ms-3">Add Employee</h2>
+                            <img id="formIcon" src="../Pages/assets/images/Frame07.png" width="75" alt="">
+                            <h2 id="formTitle" class="d-inline-block ms-3">Add Employee</h2>
                         </div>
                         <div>
                             <img class="from_close" src="../Pages/assets/images/close-btn.png" width="75" alt="">
@@ -356,7 +355,10 @@
                     </div>
                     <div class="lineDiv"></div>
 
-                    <div class="ps-5 pe-5">
+                    <div class="m-5" id="deletePopupBox">
+                       <h1 class="fs-4">Are You Sure ?</h1>
+                    </div>
+                    <div class="ps-5 pe-5" id="txtFieldBox">
                         <div class="row">
                             <div class="col">
                                 <div class="input_box adminInputBox">
@@ -365,7 +367,7 @@
                             </div>
                             <div class="col p-0">
                                 <div class="input_box adminInputBox">
-                                    <select class="form-select" aria-label="Default select example" id="employeeGender">
+                                    <select class="form-select opacity-75" aria-label="Default select example" id="employeeGender">
                                         <option selected>Select Gender</option>
                                         <option value="1">Male</option>
                                         <option value="2">Female</option>
@@ -462,8 +464,8 @@
                             </div>
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <select class="form-select" aria-label="Default select example" id="employeeRole">
-                                        <option selected>Access Role</option>
+                                    <select class="form-select opacity-75" aria-label="Default select example" id="employeeRole">
+                                        <option  selected>Access Role</option>
                                         <option value="Admin">Admin</option>
                                         <option value="User">User</option>
                                         <option value="Salesman">Salesman</option>
@@ -487,9 +489,9 @@
                         </div>
 
                     </div>
-                    <div class="d-flex justify-content-between m-3 ps-5 pe-5">
-                        <button class="cancelBtn">Cancel</button>
-                        <button class="addBtn">Add</button>
+                    <div class="d-flex justify-content-between ps-5 pe-5 mb-3">
+                        <button class="cancelBtn" id="cancelBtn">Cancel</button>
+                        <button class="addBtn" id="addBtn">Add</button>
                     </div>
                 </form>
             </div>

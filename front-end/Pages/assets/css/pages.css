@@ -154,6 +154,7 @@
     text-align: center;
     border: #c5c5c5 solid 1px;
     border-radius: 15px;
+    font-size: 15px;
 }
 
 .input_box input:focus {
