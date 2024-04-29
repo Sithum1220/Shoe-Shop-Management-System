@@ -14,6 +14,7 @@ const addEmployee = $('#addEmployee'),
     addBtn = $('#addBtn'),
     userCredentials = $('#userCredentials'),
     formIcon = $('#formIcon'),
+    form_container = $('#form-container'),
     form_close = $('.from_close'),
     employeeRole = $('#employeeRole'),
     home = $('.home');
@@ -99,6 +100,7 @@ addEmployee.click(function () {
     txtFieldBox.css('display', 'block');
     formIcon.attr('src','../Pages/assets/images/Frame07.png')
     formTitle.text('Add Employee')
+    form_container.css('max-width','800px')
     enableTxtField()
 })
 updateEmployee.click(function () {
@@ -110,6 +112,7 @@ updateEmployee.click(function () {
     deletePopupBox.css('display', 'none');
     txtFieldBox.css('display', 'block');
     formIcon.attr('src','../Pages/assets/images/edit-btn.png')
+    form_container.css('max-width','800px')
     enableTxtField()
 })
 deleteEmployee.click(function () {
@@ -120,6 +123,8 @@ deleteEmployee.click(function () {
     txtFieldBox.css('display', 'none');
     deletePopupBox.css('display', 'block');
     formIcon.attr('src','../Pages/assets/images/deleteIcon.png')
+    form_container.css('max-width','600px')
+    form_container.css('max-transition','none')
     home.addClass('show')
 })
 showDetails.click(function () {
@@ -127,18 +132,20 @@ showDetails.click(function () {
     addBtn.css('display', 'none');
     cancelBtn.css('width', '100%');
     formIcon.attr('src','../Pages/assets/images/detailsIcon.png')
-    disableTxtField();
     deletePopupBox.css('display', 'none');
     txtFieldBox.css('display', 'block');
+    form_container.css('max-width','800px')
     home.addClass('show')
-
+    disableTxtField();
 })
 form_close.click(function () {
     home.removeClass('show');
+    form_container.css('max-width','800px')
 
 })
 cancelBtn.click(function () {
     home.removeClass('show');
+    form_container.css('max-width','800px')
 
 })
 employeeRole.change(function () {

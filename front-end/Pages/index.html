@@ -15,7 +15,7 @@
 
 
 </head>
-<body class="home ">
+<body class="home bg-body-tertiary">
 <header>
     <div class="navBarPrimeryDiv container-fluid p-0 position-fixed z-2">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -264,6 +264,14 @@
     <section id="employee" class="mainSection">
         <div class="tblDiv row">
             <h1>Employee Details</h1>
+            <div class="search p-0 row">
+                <div class="col-9 p-0 d-flex align-items-center justify-content-end">
+                    <div class="d-flex align-items-center">
+                        <img class="ms-2 mb-1 opacity-75" src="../Pages/assets/images/search-normal.png" width="25" height="25" alt="">
+                        <input class="shadow-lg text-center ps" type="text" placeholder="Search by Id or Name">
+                    </div>
+                </div>
+            </div>
             <div class="col-9 tableCol shadow-lg">
                 <div class="table-container">
                     <table class="table" id="mytable">
@@ -341,7 +349,7 @@
         </div>
 
         <!-------------------------------add/Update/details Employee------------------------------------------->
-        <div class="form-container">
+        <div class="form-container" id="form-container">
             <div class="form login-form">
                 <form action="#">
                     <div class="pt-4 pb-4 ps-5 pe-5 d-flex justify-content-between">
