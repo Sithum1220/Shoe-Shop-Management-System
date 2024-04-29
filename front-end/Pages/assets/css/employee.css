@@ -23,13 +23,14 @@
 
 .table-container {
     overflow-y: auto;
-    max-height: 30rem;
+    max-height: 32rem;
     position: relative;
 }
 
 .pagination-container {
-    text-align: center;
+    text-align: right;
     z-index: 999;
+
 }
 
 .prev-btn,
