@@ -68,17 +68,29 @@
 }
 
 
-.manageBtn {
+.btnCol button {
     background-color: var(--color-white);
-    padding: 10px;
+    padding: 10px 15px 10px 10px;
     border-radius: 15px;
     cursor: pointer;
     transition: all 0.3s ease;
-    width: 60%;
+    /*width: 60%;*/
+    max-width: 13rem;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
-
-
-.manageBtn button{
-    font-weight: bold;
+.btnCol button h1{
+    font-weight: 500;
+    font-size: 14px;
+    opacity: 70%;
 }
+.btnCol button:first-child{
+    padding-right: 12%;
+}
+.btnCol button i{
+    font-size: 20px;
+    opacity: 30%;
 
+}
