@@ -7,7 +7,9 @@ const addEmployee = $('#addEmployee'),
     updateEmployee = $('#updateEmployee'),
     deleteEmployee = $('#deleteEmployee'),
     showDetails = $('#showDetails'),
+    userCredentials = $('#userCredentials'),
     form_close = $('.from_close'),
+    employeeRole = $('#employeeRole'),
     home = $('.home');
 
 dashboardBtn.click(function () {
@@ -129,7 +131,7 @@ nextBtn.addEventListener('click', () => {
     }
 });
 
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
     const tableRect = table.getBoundingClientRect();
     const paginationContainer = document.querySelector('.pagination-container');
     const paginationRect = paginationContainer.getBoundingClientRect();
@@ -149,13 +151,13 @@ addEmployee.click(function () {
     $('#mainlable').text('Add Employee Details')
     home.addClass('show')
     $('#saveBtn').text("Save")
-
+enableTxtField()
 })
 updateEmployee.click(function () {
     $('#mainlable').text('Update Employee Details')
     home.addClass('show')
     $('#saveBtn').text("Update")
-
+enableTxtField()
 })
 deleteEmployee.click(function () {
     $('#mainlable').text('Delete Employee Details')
@@ -165,21 +167,7 @@ deleteEmployee.click(function () {
 })
 showDetails.click(function () {
     $('#mainlable').text('All Employee Details')
-    $("#employeeCode").prop('disabled', true);
-    $("#employeeName").prop('disabled', true);
-    $("#employeeGender").prop('disabled', true);
-    $("#employeeStatus").prop('disabled', true);
-    $("#employeeDesignation").prop('disabled', true);
-    $("#employeeDOB").prop('disabled', true);
-    $("#employeeDOJ").prop('disabled', true);
-    $("#employeeBranch").prop('disabled', true);
-    $("#employeeBuilding").prop('disabled', true);
-    $("#employeeCity").prop('disabled', true);
-    $("#employeeState").prop('disabled', true);
-    $("#employeePostalCode").prop('disabled', true);
-    $("#employeeContactNumber").prop('disabled', true);
-    $("#employeeGuardian").prop('disabled', true);
-    $("#employeeGuardianContact").prop('disabled', true);
+    disableTxtField();
     $('#saveBtn').text("Close")
     $('#saveBtn').click(function () {
         home.removeClass('show');
@@ -191,5 +179,59 @@ showDetails.click(function () {
 form_close.click(function () {
     home.removeClass('show');
 })
+
+var value = employeeRole.val();
+
+
+employeeRole.change(function () {
+    console.log($(this).val());
+    if ($(this).val() == 'Admin' || $(this).val() == 'User') {
+        $('#userCredentials').removeClass('d-none');
+    } else {
+        $('#userCredentials').addClass('d-none');
+    }
+})
+
+function disableTxtField() {
+    $("#employeeCode").prop('disabled', true);
+    $("#employeeName").prop('disabled', true);
+    $("#employeeGender").prop('disabled', true);
+    $("#employeeStatus").prop('disabled', true);
+    $("#employeeDesignation").prop('disabled', true);
+    $("#employeeDOB").prop('disabled', true);
+    $("#employeeDOJ").prop('disabled', true);
+    $("#employeeBranch").prop('disabled', true);
+    $("#employeeBuilding").prop('disabled', true);
+    $("#employeeCity").prop('disabled', true);
+    $("#employeeLane").prop('disabled', true);
+    $("#employeeState").prop('disabled', true);
+    $("#employeeEmail").prop('disabled', true);
+    $("#employeeRole").prop('disabled', true);
+    $("#employeePostalCode").prop('disabled', true);
+    $("#employeeContactNumber").prop('disabled', true);
+    $("#employeeGuardian").prop('disabled', true);
+    $("#employeeGuardianContact").prop('disabled', true);
+}
+
+function enableTxtField() {
+    $("#employeeCode").prop('disabled', false);
+    $("#employeeName").prop('disabled', false);
+    $("#employeeGender").prop('disabled', false);
+    $("#employeeStatus").prop('disabled', false);
+    $("#employeeDesignation").prop('disabled', false);
+    $("#employeeDOB").prop('disabled', false);
+    $("#employeeDOJ").prop('disabled', false);
+    $("#employeeBranch").prop('disabled', false);
+    $("#employeeBuilding").prop('disabled', false);
+    $("#employeeCity").prop('disabled', false);
+    $("#employeeLane").prop('disabled', false);
+    $("#employeeState").prop('disabled', false);
+    $("#employeeEmail").prop('disabled', false);
+    $("#employeeRole").prop('disabled', false);
+    $("#employeePostalCode").prop('disabled', false);
+    $("#employeeContactNumber").prop('disabled', false);
+    $("#employeeGuardian").prop('disabled', false);
+    $("#employeeGuardianContact").prop('disabled', false);
+}
 
 
