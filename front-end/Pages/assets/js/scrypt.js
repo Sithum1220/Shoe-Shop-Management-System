@@ -68,3 +68,76 @@ userBtn.click(function () {
     userBtn.addClass('active')
 
 })
+
+
+const tableHeader = document.querySelector('.table-header');
+const table = document.querySelector('#mytable');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+const rowsPerPage = 10; // Change as needed
+let currentPage = 0;
+
+function showPage(pageNumber) {
+    const start = pageNumber * rowsPerPage;
+    const end = start + rowsPerPage;
+
+    const rows = table.querySelectorAll('tbody tr');
+    rows.forEach((row, index) => {
+        if (index >= start && index < end) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+
+function updateButtons() {
+    const totalRows = table.querySelectorAll('tbody tr').length;
+    if (currentPage === 0) {
+        prevBtn.disabled = true;
+    } else {
+        prevBtn.disabled = false;
+    }
+
+    if ((currentPage + 1) * rowsPerPage >= totalRows) {
+        nextBtn.disabled = true;
+    } else {
+        nextBtn.disabled = false;
+    }
+}
+
+prevBtn.addEventListener('click', () => {
+    if (currentPage > 0) {
+        currentPage--;
+        showPage(currentPage);
+        updateButtons();
+    }
+});
+
+nextBtn.addEventListener('click', () => {
+    const totalRows = table.querySelectorAll('tbody tr').length;
+    if (currentPage < Math.ceil(totalRows / rowsPerPage) - 1) {
+        currentPage++;
+        showPage(currentPage);
+        updateButtons();
+    }
+});
+
+window.addEventListener('scroll', function() {
+    const tableRect = table.getBoundingClientRect();
+    const paginationContainer = document.querySelector('.pagination-container');
+    const paginationRect = paginationContainer.getBoundingClientRect();
+
+    if (tableRect.bottom < paginationRect.height) {
+        paginationContainer.style.bottom = `${tableRect.bottom - paginationRect.height}px`;
+    } else {
+        paginationContainer.style.bottom = '20px'; // Adjust as needed
+    }
+});
+
+// Show the first page initially
+showPage(currentPage);
+updateButtons();
+
+
+

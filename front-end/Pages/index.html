@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../assest/boostrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../assest/font-awesome-pro-5/css/all.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+    <title>Shoe Shop</title>
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/employee.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.5/css/dataTables.dataTables.css" />
+
+</head>
+<body>
+<header>
+    <div class="navBarPrimeryDiv container-fluid p-0 position-fixed z-2">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <h2 class="shoes ms-5" href="#">Shoes.</h2>
+                <div class="profile">
+                    <div class="info">
+                        <p class="m-0">Hey, <b>Sithum</b></p>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                    <div class="profile-photo me-2">
+                        <img src="../Pages/assets/images/profile-1.jpg">
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<section class="sideBar bg-white shadow-lg d-flex flex-column  ms-5 pt-5">
+    <a href="#" id="dashboardBtn" class="active">
+                    <span class="material-icons-sharp">
+                        dashboard
+                    </span>
+        <h3 class="fs-6">Dashboard</h3>
+    </a>
+
+    <a href="#" id="employeeBtn">
+                    <span class="material-icons-sharp">
+                        group
+                    </span>
+        <h3 class="fs-6">Employee</h3>
+    </a>
+
+    <a href="#" id="supplierBtn">
+                    <span class="material-symbols-outlined">
+                        user_attributes
+                    </span>
+        <h3 class="fs-6">Supplier</h3>
+    </a>
+
+    <a href="#" id="inventoryBtn">
+                   <span class="material-symbols-outlined">
+                        inventory_2
+                    </span>
+        <h3 class="fs-6">Inventory</h3>
+    </a>
+
+    <a href="#" id="userBtn">
+                    <span class="material-icons-sharp">
+                        person_outline
+                    </span>
+        <h3 class="fs-6">Users</h3>
+    </a>
+    <a href="#">
+                    <span class="material-icons-sharp">
+                        inventory
+                    </span>
+        <h3 class="fs-6">Sale List</h3>
+    </a>
+
+    <a href="#">
+                    <span class="material-icons-sharp">
+                        settings
+                    </span>
+        <h3 class="fs-6">Settings</h3>
+    </a>
+
+    <a href="#">
+                    <span class="material-icons-sharp">
+                        logout
+                    </span>
+        <h3 class="fs-6">Logout</h3>
+    </a>
+</section>
+<main>
+    <section id="dashboard" class="mainSection d-none">
+        <div class="data">
+            <div class="row analyse">
+                <div class="shadow-lg col ">
+                    <!--                    <img src="../Admin Dashboard/assets/images/Frame01.png" alt="">-->
+                    <!--                    <h2>100 <p>Employee Attendance</p></h2>-->
+                    <div class="sales">
+                        <div class="status">
+                            <div class="info">
+                                <h3>Total Sales</h3>
+                                <h1>$65,024</h1>
+                            </div>
+                            <div class="progresss">
+                                <svg>
+                                    <circle cx="38" cy="38" r="36"></circle>
+                                </svg>
+                                <div class="percentage">
+                                    <p>+81%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow-lg col">
+                    <!--                    <img src="../Admin Dashboard/assets/images/Frame02.png" alt="">-->
+                    <!--                    <h2>100 <p>Employee Attendance</p></h2>-->
+                    <div class="sales">
+                        <div class="status">
+                            <div class="info">
+                                <h3>Total Sales</h3>
+                                <h1>$65,024</h1>
+                            </div>
+                            <div class="progresss">
+                                <svg>
+                                    <circle cx="38" cy="38" r="36"></circle>
+                                </svg>
+                                <div class="percentage">
+                                    <p>+81%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow-lg col">
+                    <!--                    <img src="../Admin Dashboard/assets/images/Frame03.png" alt="">-->
+                    <!--                    <h2>100 <p>Employee Attendance</p></h2>-->
+                    <div class="visits">
+                        <div class="status">
+                            <div class="info">
+                                <h3>Site Visit</h3>
+                                <h1>24,981</h1>
+                            </div>
+                            <div class="progresss">
+                                <svg>
+                                    <circle cx="38" cy="38" r="36"></circle>
+                                </svg>
+                                <div class="percentage">
+                                    <p>-48%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow-lg col lastDiv">
+                    <div class="searches">
+                        <div class="status">
+                            <div class="info">
+                                <h3>Searches</h3>
+                                <h1>14,147</h1>
+                            </div>
+                            <div class="progresss">
+                                <svg>
+                                    <circle cx="38" cy="38" r="36"></circle>
+                                </svg>
+                                <div class="percentage">
+                                    <p>+21%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="downMainDiv d-grid">
+            <div class="row mostSaleItem">
+                <h1>Most Sale Item</h1>
+                <div class="col shadow-lg ">
+                    <div class="text-center">
+                        <img class="me-5" src="../Pages/assets/images/shoe01.png" width="260" alt="">
+                    </div>
+                    <div class="text-center ">
+                        <div class="d-inline-block itemDiv me-5 mt-3">
+                            <h6 class="text-center fs-6">Item Id</h6>
+                            <h1 class="text-center ">I001</h1>
+                        </div>
+                        <div class="d-inline-block itemDiv me-5 mt-3">
+                            <h6 class="text-center fs-6">Sold Qty</h6>
+                            <h1 class="text-center ">67</h1>
+                        </div>
+                        <div class="d-inline-block itemDiv mt-3">
+                            <h6 class="text-center">Shoe Size</h6>
+                            <h1 class="text-center ">08</h1>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col shadow-lg">
+                    <div class="qty">
+                        <div class="qtyStatus">
+                            <div class="qtyInfo">
+                                <h3>Quantity On Hand</h3>
+                                <h1 class="ms-2">254</h1>
+                            </div>
+                            <div class="qtyProgresses">
+                                <svg>
+                                    <circle cx="78" cy="78" r="76"></circle>
+                                </svg>
+                                <div class="qtyPercentage">
+                                    <p class="fs-2">+81%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recent-order">
+                <div class="row mostSaleItem">
+                    <h1 class="mt-4">Recent Orders</h1>
+                    <div class="col shadow-lg">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Order Id</th>
+                                <th scope="col">Customer Id</th>
+                                <th scope="col">Customer Name</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Total Price</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>O001</td>
+                                <td>C001</td>
+                                <td>Sithum Perera</td>
+                                <td>2024.01.20</td>
+                                <td>2500</td>
+                            </tr>
+                            <tr>
+                                <td>O002</td>
+                                <td>C002</td>
+                                <td>Imesh Perera</td>
+                                <td>2024.02.10</td>
+                                <td>3500</td>
+                            </tr>
+                            <tr>
+                                <td>O003</td>
+                                <td>C003</td>
+                                <td>Sithum Imesh</td>
+                                <td>2024.03.18</td>
+                                <td>5500</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="employee" class="mainSection">
+        <div class="mainEmployeeDiv">
+                <div class="employeeTblDiv">
+                    <h1>Employee Details</h1>
+                    <div class="col shadow-lg">
+                        <div class="table-container">
+                            <table class="table" id="mytable">
+                                <thead class="table-header">
+                                <tr>
+                                    <th scope="col">
+
+                                    </th>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Contact</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Branch</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                   id="flexCheckDefault1"/>
+                                        </div>
+                                    </th>
+                                    <td>E001</td>
+                                    <td>Sithum Imesh</td>
+                                    <td>Duwagoda Hikkaduwa</td>
+                                    <td>0777524729</td>
+                                    <td>2024.01.20</td>
+                                    <td>Galle</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                   id="flexCheckDefault2"/>
+                                        </div>
+                                    </th>
+                                    <td>E001</td>
+                                    <td>Sithum Imesh</td>
+                                    <td>Duwagoda Hikkaduwa</td>
+                                    <td>0777524729</td>
+                                    <td>2024.01.20</td>
+                                    <td>Galle</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                   id="flexCheckDefault3"/>
+                                        </div>
+                                    </th>
+                                    <td>E001</td>
+                                    <td>Sithum Imesh</td>
+                                    <td>Duwagoda Hikkaduwa</td>
+                                    <td>0777524729</td>
+                                    <td>2024.01.20</td>
+                                    <td>Galle</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                   id="flexCheckDefault4"/>
+                                        </div>
+                                    </th>
+                                    <td>E001</td>
+                                    <td>Sithum Imesh</td>
+                                    <td>Duwagoda Hikkaduwa</td>
+                                    <td>0777524729</td>
+                                    <td>2024.01.20</td>
+                                    <td>Galle</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                   id="flexCheckDefault5"/>
+                                        </div>
+                                    </th>
+                                    <td >E001</td>
+                                    <td>Sithum Imesh</td>
+                                    <td>Duwagoda Hikkaduwa</td>
+                                    <td>0777524729</td>
+                                    <td>2024.01.20</td>
+                                    <td>Galle</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                   id="flexCheckDefault6"/>
+                                        </div>
+                                    </th>
+                                    <td>E001</td>
+                                    <td>Sithum Imesh</td>
+                                    <td>Duwagoda Hikkaduwa</td>
+                                    <td>0777524729</td>
+                                    <td>2024.01.20</td>
+                                    <td>Galle</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                   id="flexCheckDefault7"/>
+                                        </div>
+                                    </th>
+                                    <td>E001</td>
+                                    <td>Sithum Imesh</td>
+                                    <td>Duwagoda Hikkaduwa</td>
+                                    <td>0777524729</td>
+                                    <td>2024.01.20</td>
+                                    <td>Galle</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                   id="flexCheckDefault8"/>
+                                        </div>
+                                    </th>
+                                    <td>E001</td>
+                                    <td>Sithum Imesh</td>
+                                    <td>Duwagoda Hikkaduwa</td>
+                                    <td>0777524729</td>
+                                    <td>2024.01.20</td>
+                                    <td>Galle</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                   id="flexCheckDefault9"/>
+                                        </div>
+                                    </th>
+                                    <td>E001</td>
+                                    <td>Sithum Imesh</td>
+                                    <td>Duwagoda Hikkaduwa</td>
+                                    <td>0777524729</td>
+                                    <td>2024.01.20</td>
+                                    <td>Galle</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                   id="flexCheckDefault10"/>
+                                        </div>
+                                    </th>
+                                    <td>E001</td>
+                                    <td>Sithum Imesh</td>
+                                    <td>Duwagoda Hikkaduwa</td>
+                                    <td>0777524729</td>
+                                    <td>2024.01.20</td>
+                                    <td>Galle</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                   id="flexCheckDefault11"/>
+                                        </div>
+                                    </th>
+                                    <td>E001</td>
+                                    <td>Sithum Imesh</td>
+                                    <td>Duwagoda Hikkaduwa</td>
+                                    <td>0777524729</td>
+                                    <td>2024.01.20</td>
+                                    <td>Galle</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                   id="flexCheckDefault12"/>
+                                        </div>
+                                    </th>
+                                    <td>E001</td>
+                                    <td>Sithum Imesh</td>
+                                    <td>Duwagoda Hikkaduwa</td>
+                                    <td>0777524729</td>
+                                    <td>2024.01.20</td>
+                                    <td>Galle</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                   id="flexCheckDefault13"/>
+                                        </div>
+                                    </th>
+                                    <td>E001</td>
+                                    <td>Sithum Imesh</td>
+                                    <td>Duwagoda Hikkaduwa</td>
+                                    <td>0777524729</td>
+                                    <td>2024.01.20</td>
+                                    <td>Galle</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                   id="flexCheckDefault14"/>
+                                        </div>
+                                    </th>
+                                    <td>E001</td>
+                                    <td>Sithum Imesh</td>
+                                    <td>Duwagoda Hikkaduwa</td>
+                                    <td>0777524729</td>
+                                    <td>2024.01.20</td>
+                                    <td>Galle</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                   id="flexCheckDefault15"/>
+                                        </div>
+                                    </th>
+                                    <td>E001</td>
+                                    <td>Sithum Imesh</td>
+                                    <td>Duwagoda Hikkaduwa</td>
+                                    <td>0777524729</td>
+                                    <td>2024.01.20</td>
+                                    <td>Galle</td>
+
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+                    <div class="pagination-container">
+                        <button class="prev-btn">Previous</button>
+                        <button class="next-btn">Next</button>
+                    </div>
+                </div>
+        </div>
+    </section>
+</main>
+</body>
+<script src="../assest/code.jquery.com_jquery-3.7.1.min.js"></script>
+<script src="assets/js/scrypt.js"></script>
+<script src="https://cdn.datatables.net/2.0.5/js/dataTables.js"></script>
+</html>

@@ -1,0 +1,68 @@
+.mainEmployeeDiv {
+    padding-left: 2rem;
+    padding-right: 3rem;
+}
+
+.employeeTblDiv .col {
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: 20px;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 38rem;
+    margin-top: 20px;
+}
+
+.employeeTblDiv h1 {
+    font-weight: 550;
+    font-size: 25px;
+    margin-top: 5px;
+    margin-left: 2px;
+}
+
+.table-container {
+    overflow-y: auto;
+    max-height: 30rem;
+    position: relative;
+}
+
+.pagination-container {
+    text-align: center;
+    z-index: 999;
+}
+
+.prev-btn,
+.next-btn {
+    margin: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+
+}
+
+.prev-btn:disabled,
+.next-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.table th {
+    font-size: 16px;
+}
+
+.table td {
+    font-size: 14px;
+}
+
+.table thead th {
+    position: sticky;
+    top: 0;
+    background-color: white; /* Ensures the header appears above the scrollbar */
+    z-index: 1; /* Ensures the header stays above the tbody content */
+}
+
+.table tbody {
+    overflow-y: auto;
+   /* Adjust as needed */
+}
+

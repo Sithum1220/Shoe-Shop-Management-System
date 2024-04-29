@@ -135,7 +135,7 @@ main {
 }
 
 .mainSection {
-    margin-left: 16rem;
+    margin-left: 18rem;
     margin-top: 6rem;
 }
 
@@ -224,7 +224,7 @@ main .analyse .progresss .percentage {
 
 .downMainDiv {
     margin-top: 2rem;
-    padding-left: 4rem;
+    padding-left: 2rem;
     padding-right: 3rem;
 }
 .mostSaleItem{
@@ -248,10 +248,6 @@ main .analyse .progresss .percentage {
     margin-top: 5px;
 }
 
-.mostSaleItem img {
-    /*width: 15rem;*/
-
-}
 
 .mostSaleItem p {
     font-size: 20px;
