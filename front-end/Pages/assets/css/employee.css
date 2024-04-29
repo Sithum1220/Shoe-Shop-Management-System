@@ -1,9 +1,8 @@
-.mainEmployeeDiv {
+.employeeTblDiv{
     padding-left: 2rem;
     padding-right: 3rem;
 }
-
-.employeeTblDiv .col {
+.employeeTblDiv .tableCol {
     background-color: var(--color-white);
     padding: var(--card-padding);
     border-radius: 20px;
@@ -38,7 +37,8 @@
     margin: 10px;
     padding: 5px 10px;
     cursor: pointer;
-
+    background-color: white;
+    font-size: 20px;
 }
 
 .prev-btn:disabled,
@@ -64,6 +64,21 @@
 
 .table tbody {
     overflow-y: auto;
-   /* Adjust as needed */
+    /* Adjust as needed */
+}
+
+
+.manageBtn {
+    background-color: var(--color-white);
+    padding: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 60%;
+}
+
+
+.manageBtn button{
+    font-weight: bold;
 }
 
