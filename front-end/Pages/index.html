@@ -10,11 +10,12 @@
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
     <title>Shoe Shop</title>
     <link rel="stylesheet" href="assets/css/responsive.css">
-    <link rel="stylesheet" href="assets/css/employee.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.5/css/dataTables.dataTables.css"/>
+    <link rel="stylesheet" href="assets/css/pages.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
 
 </head>
-<body>
+<body class="home w-100 h-100">
 <header>
     <div class="navBarPrimeryDiv container-fluid p-0 position-fixed z-2">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -261,87 +262,204 @@
         </div>
     </section>
     <section id="employee" class="mainSection">
-            <div class="employeeTblDiv row">
-                <h1>Employee Details</h1>
-                <div class="col-9 tableCol shadow-lg">
-                    <div class="table-container">
-                        <table class="table" id="mytable">
-                            <thead class="table-header">
-                            <tr>
-                                <th scope="col">
-                                </th>
-                                <th scope="col">Id</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Address</th>
-                                <th scope="col">Contact</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Branch</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <th scope="row">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                               id="flexCheckDefault1"/>
-                                    </div>
-                                </th>
-                                <td>E001</td>
-                                <td>Sithum Imesh</td>
-                                <td>Duwagoda Hikkaduwa</td>
-                                <td>0777524729</td>
-                                <td>2024.01.20</td>
-                                <td>Galle</td>
+        <div class="tblDiv row">
+            <h1>Employee Details</h1>
+            <div class="col-9 tableCol shadow-lg">
+                <div class="table-container">
+                    <table class="table" id="mytable">
+                        <thead class="table-header">
+                        <tr>
+                            <th scope="col">
+                            </th>
+                            <th scope="col">Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Contact</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Branch</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value=""
+                                           id="flexCheckDefault1"/>
+                                </div>
+                            </th>
+                            <td>E001</td>
+                            <td>Sithum Imesh</td>
+                            <td>Duwagoda Hikkaduwa</td>
+                            <td>0777524729</td>
+                            <td>2024.01.20</td>
+                            <td>Galle</td>
 
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                               id="flexCheckDefault2"/>
-                                    </div>
-                                </th>
-                                <td>E001</td>
-                                <td>Sithum Imesh</td>
-                                <td>Duwagoda Hikkaduwa</td>
-                                <td>0777524729</td>
-                                <td>2024.01.20</td>
-                                <td>Galle</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value=""
+                                           id="flexCheckDefault2"/>
+                                </div>
+                            </th>
+                            <td>E001</td>
+                            <td>Sithum Imesh</td>
+                            <td>Duwagoda Hikkaduwa</td>
+                            <td>0777524729</td>
+                            <td>2024.01.20</td>
+                            <td>Galle</td>
 
-                            </tr>
+                        </tr>
 
-                            </tbody>
-                        </table>
+                        </tbody>
+                    </table>
 
-                    </div>
-                    <div class="pagination-container">
-                        <button class="prev-btn">
-                            <img src="../Pages/assets/images/arrow-point-to-left.png" width="25" alt="">
-                        </button>
-                        <button class="next-btn">
-                            <img src="../Pages/assets/images/arrow-point-to-right.png" width="25" alt="">
-                        </button>
-                    </div>
                 </div>
-                <div class="col-3 btnCol d-flex flex-column align-items-center gap-5 mt-5">
-                    <button class="shadow-lg"><i class="fal fa-plus-circle"></i>
-                         <h1>Add Employee</h1>
+                <div class="pagination-container">
+                    <button class="prev-btn">
+                        <img src="../Pages/assets/images/arrow-point-to-left.png" width="25" alt="">
                     </button>
-                    <button class="shadow-lg"><i class="fal fa-edit"></i>
-                         <h1>Update Employee</h1>
-                    </button>
-                    <button class="shadow-lg"><i class="fal fa-trash"></i>
-                         <h1>Delete Employee</h1>
-                    </button>
-                    <button class="shadow-lg"><i class="fal fa-info-circle"></i>
-                         <h1>Employee Details</h1>
+                    <button class="next-btn">
+                        <img src="../Pages/assets/images/arrow-point-to-right.png" width="25" alt="">
                     </button>
                 </div>
             </div>
+            <div class="col-3 btnCol d-flex flex-column align-items-center gap-5 mt-5">
+                <button class="shadow-lg" id="addEmployee"><i class="fal fa-plus-circle"></i>
+                    <h1>Add Employee</h1>
+                </button>
+                <button class="shadow-lg" id="updateEmployee"><i class="fal fa-edit"></i>
+                    <h1>Update Employee</h1>
+                </button>
+                <button class="shadow-lg" id="deleteEmployee"><i class="fal fa-trash"></i>
+                    <h1>Delete Employee</h1>
+                </button>
+                <button class="shadow-lg" id="showDetails"><i class="fal fa-info-circle"></i>
+                    <h1>Employee Details</h1>
+                </button>
+            </div>
+        </div>
+
+        <!-------------------------------add/Update/details Employee------------------------------------------->
+        <div class="form-container">
+            <i class="uil uil-times from_close"></i>
+            <div class="form login-form">
+                <form action="#">
+                    <h2 id="mainlable">Add Employee Details</h2>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="text" id="employeeCode" placeholder="Employee Code">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <select class="form-select" aria-label="Default select example" id="employeeGender">
+                                    <option selected>Select Gender</option>
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                    <option value="3">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="text" id="employeeName" placeholder="Employee Name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="text" id="employeeStatus" placeholder="Employee Status">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="text" id="employeeDesignation" placeholder="Employee Designation">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="date" id="employeeDOB" placeholder="Date Of Birth">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="date" id="employeeDOJ" placeholder="Date Of Join">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="text" id="employeeBranch" placeholder="Branch">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="text" id="employeeBuilding" placeholder="Building No. Or Name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="text" id="employeeLane" placeholder="Lane">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="text" id="employeeCity" placeholder="City">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="text" id="employeeState" placeholder="State">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="text" id="employeePostalCode" placeholder="Postal Code">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="tel" id="employeeContactNumber" placeholder="Contact Number">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="email" id="employeeEmail" placeholder="email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="text" id="employeeGuardian" placeholder="Name of Guardian">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="tel" id="employeeGuardianContact" placeholder="guardian Contact Details">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="saveBtn" id="saveBtn">
+                        Save
+                    </button>
+                </form>
+            </div>
+        </div>
+        <!-------------------------------add/Update/details Employee end------------------------------------------->
+
     </section>
 </main>
 </body>
 <script src="../assest/code.jquery.com_jquery-3.7.1.min.js"></script>
+<script src="../assest/boostrap/js/bootstrap.bundle.js"></script>
 <script src="assets/js/scrypt.js"></script>
-<script src="https://cdn.datatables.net/2.0.5/js/dataTables.js"></script>
 </html>

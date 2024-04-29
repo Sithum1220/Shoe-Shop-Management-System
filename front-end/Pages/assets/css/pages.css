@@ -1,0 +1,234 @@
+.tblDiv{
+    padding-left: 2rem;
+    padding-right: 3rem;
+}
+.tblDiv .tableCol {
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: 20px;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 38rem;
+    margin-top: 20px;
+}
+
+.tblDiv h1 {
+    font-weight: 550;
+    font-size: 25px;
+    margin-top: 5px;
+    margin-left: 2px;
+}
+
+.table-container {
+    overflow-y: auto;
+    max-height: 32rem;
+    position: relative;
+}
+
+.pagination-container {
+    text-align: right;
+    z-index: 999;
+
+}
+
+.prev-btn,
+.next-btn {
+    margin: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: white;
+    font-size: 20px;
+}
+
+.prev-btn:disabled,
+.next-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.table th {
+    font-size: 16px;
+}
+
+.table td {
+    font-size: 14px;
+}
+
+.table thead th {
+    position: sticky;
+    top: 0;
+    background-color: white; /* Ensures the header appears above the scrollbar */
+    z-index: 1; /* Ensures the header stays above the tbody content */
+}
+
+.table tbody {
+    overflow-y: auto;
+    /* Adjust as needed */
+}
+
+
+.btnCol button {
+    background-color: var(--color-white);
+    padding: 10px 15px 10px 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    max-width: 13rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.btnCol button h1{
+    font-weight: 500;
+    font-size: 14px;
+    opacity: 70%;
+    margin-top: 5px;
+}
+.btnCol button:first-child{
+    padding-right: 12%;
+}
+.btnCol button i{
+    font-size: 20px;
+    opacity: 70%;
+}
+.btnCol button:hover{
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+
+
+
+
+.form-container {
+    position: fixed;
+    max-width: 800px;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.2);
+    z-index: 101;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: rgb(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease-out;
+}
+
+.from_close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: black;
+    font-size: 22px;
+    opacity: 0.7;
+    cursor: pointer;
+
+}
+
+.form-container h2 {
+    font-size: 22px;
+    color: #0b0217;
+    text-align: center;
+}
+
+.input_box {
+    position: relative;
+    margin-top: 30px;
+    width: 100%;
+    height: 40px;
+}
+
+.input_box input {
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 0 30px;
+    color: #333;
+    transition: all 0.2s ease;
+    border-bottom: 1.5px solid #aaaa;
+}
+
+.input_box input:focus {
+    border-color: #0a53be;
+}
+
+.input_box i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.input_box i.email,
+.input_box i.password {
+    left: 0;
+    color: #707070;
+}
+
+.input_box input:focus ~ i.email,
+.input_box input:focus ~ i.password {
+    color: #0a53be;
+}
+
+.input_box i.pw_hide {
+    right: 0;
+    font-size: 18px;
+}
+
+.form-container .saveBtn {
+    background: #0a53be;
+    color: #fff;
+    margin-top: 30px;
+    width: 50%;
+    padding: 10px 0;
+    border-radius: 10px;
+    border-color: white;
+    position: relative;
+    left: 10rem;
+}
+
+.form-container .btn {
+    /*background: #0a53be;*/
+    margin-top: 15px;
+    width: 48%;
+    border-radius: 10px;
+    border-color: black;
+    border: 1px solid #d5d5d5;
+}
+
+.home{
+    z-index: 1002;
+}
+
+.home.show .form-container {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.home::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease-out ;
+}
+.home.show::before{
+    opacity: 1;
+    pointer-events: auto;
+
+}
+
+input[type="date"]::before{
+    color: #999;
+    content: attr(placeholder);
+}

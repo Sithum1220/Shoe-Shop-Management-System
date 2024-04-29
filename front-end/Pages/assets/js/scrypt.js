@@ -3,6 +3,12 @@ const employeeBtn = $('#employeeBtn');
 const supplierBtn = $('#supplierBtn');
 const inventoryBtn = $('#inventoryBtn');
 const userBtn = $('#userBtn');
+const addEmployee = $('#addEmployee'),
+    updateEmployee = $('#updateEmployee'),
+    deleteEmployee = $('#deleteEmployee'),
+    showDetails = $('#showDetails'),
+    form_close = $('.from_close'),
+    home = $('.home');
 
 dashboardBtn.click(function () {
     // $('#dashboard').css("display", "block");
@@ -139,5 +145,51 @@ window.addEventListener('scroll', function() {
 showPage(currentPage);
 updateButtons();
 
+addEmployee.click(function () {
+    $('#mainlable').text('Add Employee Details')
+    home.addClass('show')
+    $('#saveBtn').text("Save")
+
+})
+updateEmployee.click(function () {
+    $('#mainlable').text('Update Employee Details')
+    home.addClass('show')
+    $('#saveBtn').text("Update")
+
+})
+deleteEmployee.click(function () {
+    $('#mainlable').text('Delete Employee Details')
+    $('#saveBtn').text("Delete")
+
+    home.addClass('show')
+})
+showDetails.click(function () {
+    $('#mainlable').text('All Employee Details')
+    $("#employeeCode").prop('disabled', true);
+    $("#employeeName").prop('disabled', true);
+    $("#employeeGender").prop('disabled', true);
+    $("#employeeStatus").prop('disabled', true);
+    $("#employeeDesignation").prop('disabled', true);
+    $("#employeeDOB").prop('disabled', true);
+    $("#employeeDOJ").prop('disabled', true);
+    $("#employeeBranch").prop('disabled', true);
+    $("#employeeBuilding").prop('disabled', true);
+    $("#employeeCity").prop('disabled', true);
+    $("#employeeState").prop('disabled', true);
+    $("#employeePostalCode").prop('disabled', true);
+    $("#employeeContactNumber").prop('disabled', true);
+    $("#employeeGuardian").prop('disabled', true);
+    $("#employeeGuardianContact").prop('disabled', true);
+    $('#saveBtn').text("Close")
+    $('#saveBtn').click(function () {
+        home.removeClass('show');
+    })
+
+    home.addClass('show')
+
+})
+form_close.click(function () {
+    home.removeClass('show');
+})
 
 
