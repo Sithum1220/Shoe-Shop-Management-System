@@ -206,7 +206,7 @@
     z-index: 100;
     opacity: 0;
     pointer-events: none;
-    transition: all 0.5s ease-out;
+    /*transition: all 0.5s ease-out;*/
 }
 
 .home.show::before {
@@ -264,4 +264,8 @@ input[type="date"]::before {
     /*max-width: 13rem;*/
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
     font-size: 14px;
+}
+
+.imgUploader{
+    padding-top: 11px;
 }

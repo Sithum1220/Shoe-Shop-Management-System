@@ -1,4 +1,3 @@
-
 function supplierFunction() {
     const addSupplier = $('#addSupplier'),
         updateSupplier = $('#updateSupplier'),
@@ -14,15 +13,15 @@ function supplierFunction() {
         supplierPopupClose = $('#supplierPopupClose');
 
 
-
     addSupplier.click(function () {
+        console.log("hiiii")
         home.addClass('show')
         supplierPopupAddBtn.text("Save")
         supplierPopupAddBtn.css('display', 'block');
         supplierPopupCancelBtn.css('width', '48%');
         supplierDeletePopupBox.css('display', 'none');
         supplierTxtFieldBox.css('display', 'block');
-        supplierFormIcon.attr('src', '../assest/images/Frame07.png')
+        supplierFormIcon.attr('src', '../../assest/images/Frame07.png')
         supplierFormTitle.text('Add Supplier')
         supplierFormContainer.css('max-width', '800px')
         enableTxtField()
@@ -35,7 +34,7 @@ function supplierFunction() {
         supplierPopupCancelBtn.css('width', '48%');
         supplierDeletePopupBox.css('display', 'none');
         supplierTxtFieldBox.css('display', 'block');
-        supplierFormIcon.attr('src', '../assest/images/edit-btn.png')
+        supplierFormIcon.attr('src', '../../assest/images/edit-btn.png')
         supplierFormContainer.css('max-width', '800px')
         enableTxtField()
     })
@@ -47,7 +46,7 @@ function supplierFunction() {
         supplierPopupCancelBtn.css('width', '48%');
         supplierTxtFieldBox.css('display', 'none');
         supplierDeletePopupBox.css('display', 'block');
-        supplierFormIcon.attr('src', '../assest/images/deleteIcon.png')
+        supplierFormIcon.attr('src', '../../assest/images/deleteIcon.png')
         supplierFormContainer.css('max-width', '600px')
         supplierFormContainer.css('max-transition', 'none')
     })
@@ -55,7 +54,7 @@ function supplierFunction() {
         supplierFormTitle.text('Supplier Details')
         supplierPopupAddBtn.css('display', 'none');
         supplierPopupCancelBtn.css('width', '100%');
-        supplierFormIcon.attr('src', '../assest/images/detailsIcon.png')
+        supplierFormIcon.attr('src', '../../assest/images/detailsIcon.png')
         supplierDeletePopupBox.css('display', 'none');
         supplierTxtFieldBox.css('display', 'block');
         supplierFormContainer.css('max-width', '800px')

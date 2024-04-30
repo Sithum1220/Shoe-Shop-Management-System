@@ -24,7 +24,7 @@ function employeeFunction() {
         employeePopupCancelBtn.css('width', '48%');
         employeeDeletePopupBox.css('display', 'none');
         employeeTxtFieldBox.css('display', 'block');
-        employeeFormIcon.attr('src', '../assest/images/Frame07.png')
+        employeeFormIcon.attr('src', '../../assest/images/Frame07.png')
         employeeFormTitle.text('Add Employee')
         employeeFormContainer.css('max-width', '800px')
         enableTxtField()
@@ -37,7 +37,7 @@ function employeeFunction() {
         employeePopupCancelBtn.css('width', '48%');
         employeeDeletePopupBox.css('display', 'none');
         employeeTxtFieldBox.css('display', 'block');
-        employeeFormIcon.attr('src', '../assest/images/edit-btn.png')
+        employeeFormIcon.attr('src', '../../assest/images/edit-btn.png')
         employeeFormContainer.css('max-width', '800px')
         enableTxtField()
     })
@@ -48,7 +48,7 @@ function employeeFunction() {
         employeePopupCancelBtn.css('width', '48%');
         employeeTxtFieldBox.css('display', 'none');
         employeeDeletePopupBox.css('display', 'block');
-        employeeFormIcon.attr('src', '../assest/images/deleteIcon.png')
+        employeeFormIcon.attr('src', '../../assest/images/deleteIcon.png')
         employeeFormContainer.css('max-width', '600px')
         employeeFormContainer.css('max-transition', 'none')
 
@@ -59,7 +59,7 @@ function employeeFunction() {
         employeeFormTitle.text('Employee Details')
         employeePopupAddBtn.css('display', 'none');
         employeePopupCancelBtn.css('width', '100%');
-        employeeFormIcon.attr('src', '../assest/images/detailsIcon.png')
+        employeeFormIcon.attr('src', '../../assest/images/detailsIcon.png')
         employeeDeletePopupBox.css('display', 'none');
         employeeTxtFieldBox.css('display', 'block');
         employeeFormContainer.css('max-width', '800px')

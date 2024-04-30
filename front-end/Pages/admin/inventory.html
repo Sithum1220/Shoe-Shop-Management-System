@@ -11,7 +11,7 @@
         <div class="search p-0 row">
             <div class="col-9 p-0 d-flex align-items-center justify-content-end">
                 <div class="d-flex align-items-center">
-                    <img class="ms-2 mb-1 opacity-75" src="../assest/images/search-normal.png" width="25"
+                    <img class="ms-2 mb-1 opacity-75" src="../../assest/images/search-normal.png" width="25"
                          height="25" alt="">
                     <input class="shadow-lg text-center ps" type="text" placeholder="Search by Id or Name">
                 </div>
@@ -101,11 +101,11 @@
             <form action="#">
                 <div class="pt-4 pb-4 ps-5 pe-5 d-flex justify-content-between">
                     <div>
-                        <img id="itemFormIcon" src="../assest/images/Frame07.png" width="75" alt="">
-                        <h2 id="itemFormTitle" class="d-inline-block ms-3">Add Employee</h2>
+                        <img id="itemFormIcon" src="../../assest/images/Frame07.png" width="75" alt="">
+                        <h2 id="itemFormTitle" class="d-inline-block ms-3">Add Inventory</h2>
                     </div>
                     <div>
-                        <img class="popupClose" id="itemPopupClose" src="../assest/images/close-btn.png" width="75"
+                        <img class="popupClose" id="itemPopupClose" src="../../assest/images/close-btn.png" width="75"
                              alt="">
                     </div>
                 </div>
@@ -122,12 +122,11 @@
                             </div>
                         </div>
                         <div class="col">
-                            <div class="input_box">
-                                <input class="txt" type="text" id="itemCategory" placeholder="Category">
+                            <div class="input_box d-flex align-items-center justify-content-center">
+                                <label for="itemCode" class="file-label ms-1 mb-2 opacity-75">Item Status</label>
                             </div>
                         </div>
                     </div>
-
 
                     <div class="row">
 
@@ -138,20 +137,23 @@
                         </div>
 
                         <div class="col">
-                            <div class="input_box ">
-                                <input class="txt" type="text" readonly id="supplierName" placeholder="Supplier Name">
+                            <div class="input_box d-flex align-items-center justify-content-center">
+                                <label for="itemCode" class="file-label ms-1 mb-2 opacity-75">Supplier name</label>
+
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col">
-
+                            <div class="input_box">
+                                <input class="txt" type="text" id="itemSellPrice" placeholder="Unit price -Buy">
+                            </div>
                         </div>
 
                         <div class="col">
                             <div class="input_box">
-                                <input class="txt" type="text" id="itemDesc" placeholder="Item Description">
+                                <input class="txt" type="text" id="itemBuyPrice" placeholder="Unit price - Sale">
                             </div>
                         </div>
                     </div>
@@ -164,33 +166,31 @@
 
                         <div class="col">
                             <div class="input_box">
-                                <input class="txt" type="number" id="itemBuyPrice" placeholder="Unit price - Sale">
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="input_box">
-                                <input class="txt" type="number" id="itemSellPrice" placeholder="Unit price -Buy">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input_box">
-                                <input class="txt" type="number" readonly id="supplierContactNumber01" placeholder="Expected Profit">
+                                <input class="txt" type="text" id="itemCategory" placeholder="Category">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <div class="input_box">
-                                <input class="txt" type="tel" readonly id="supplierContactNumber02" placeholder="Profit margin">
+                                <input class="txt" type="text" id="itemDesc" placeholder="Item Description">
+                            </div>
+                        </div>
+                        <div class="col">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex align-items-center">
+                            <div class="input_box">
+                                <label for="imgUploader" class="file-label ms-1 mb-2 opacity-50">Select a image...</label>
+                                <input class="form-control imgUploader" type="file" id="imgUploader" placeholder="Select Item Image" multiple/>
                             </div>
                         </div>
 
                         <div class="col">
-                            <div class="input_box">
-                                <input class="txt" type="text" readonly id="supplierEmail" placeholder="Status">
+                            <div class="d-flex justify-content-center pt-3">
+                                <img id="imgViewer" alt="" width="200" src="../../assest/images/shoe01.png"/>
                             </div>
                         </div>
                     </div>
