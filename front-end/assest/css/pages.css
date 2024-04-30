@@ -120,7 +120,7 @@
     transition: all 0.4s ease;
 }
 
-.from_close {
+.popupClose {
     opacity: 0.7;
     cursor: pointer;
 }
@@ -147,7 +147,7 @@
     text-align: center;
     border: #c5c5c5 solid 1px;
     border-radius: 15px;
-    font-size: 15px;
+    font-size: 12px;
 }
 
 .input_box input:focus {
@@ -240,7 +240,7 @@ input[type="date"]::before {
     background-color: var(--color-white);
     padding: 10px 15px 10px 10px;
     border-radius: 15px;
-    cursor: pointer;
+    cursor: auto;
     transition: all 0.3s ease;
     width: 15rem;
     /*margin-right: 100px;*/

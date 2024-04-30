@@ -139,7 +139,7 @@ main {
 }
 
 .data {
-    padding-left: 4rem;
+    padding-left: 2rem;
     padding-right: 3rem;
 }
 
@@ -307,4 +307,9 @@ main .analyse .progresss .percentage {
 
 .itemDiv h1{
 font-size: 2rem;
+}
+@media all and (min-width: 1261px) and (max-width: 1548px) {
+    .lastDiv {
+        margin-right: 45.5rem;
+    }
 }
