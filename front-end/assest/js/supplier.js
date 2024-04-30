@@ -71,30 +71,4 @@ function supplierFunction() {
         supplierFormContainer.css('max-width', '800px')
 
     })
-
-    function disableTxtField() {
-        $("#supplierCode").prop('disabled', true);
-        $("#supplierName").prop('disabled', true);
-        $("#supplierBuilding").prop('disabled', true);
-        $("#supplierCity").prop('disabled', true);
-        $("#supplierLane").prop('disabled', true);
-        $("#supplierState").prop('disabled', true);
-        $("#supplierEmail").prop('disabled', true);
-        $("#supplierPostalCode").prop('disabled', true);
-        $("#supplierContactNumber01").prop('disabled', true);
-        $("#supplierContactNumber02").prop('disabled', true);
-    }
-
-    function enableTxtField() {
-        $("#supplierCode").prop('disabled', false);
-        $("#supplierName").prop('disabled', false);
-        $("#supplierBuilding").prop('disabled', false);
-        $("#supplierCity").prop('disabled', false);
-        $("#supplierLane").prop('disabled', false);
-        $("#supplierState").prop('disabled', false);
-        $("#supplierEmail").prop('disabled', false);
-        $("#supplierPostalCode").prop('disabled', false);
-        $("#supplierContactNumber01").prop('disabled', false);
-        $("#supplierContactNumber02").prop('disabled', false);
-    }
 }

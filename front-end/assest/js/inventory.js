@@ -1,4 +1,4 @@
-function supplierFunction() {
+function inventoryFunction() {
     const addItem = $('#addItem'),
         updateItem = $('#updateItem'),
         deleteItem = $('#deleteItem'),
@@ -71,35 +71,14 @@ function supplierFunction() {
 
     })
 
-    function disableTxtField() {
-        // $("#itemCode").prop('disabled', true);
-        // $("#supplierName").prop('disabled', true);
-        // $("#supplierBuilding").prop('disabled', true);
-        // $("#supplierCity").prop('disabled', true);
-        // $("#supplierLane").prop('disabled', true);
-        // $("#supplierState").prop('disabled', true);
-        // $("#supplierEmail").prop('disabled', true);
-        // $("#supplierPostalCode").prop('disabled', true);
-        // $("#supplierContactNumber01").prop('disabled', true);
-        // $("#supplierContactNumber02").prop('disabled', true);
-        $('.txt').attr('readonly', "");
-
-    }
-
-    function enableTxtField() {
-        // $("#supplierCode").prop('disabled', false);
-        // $("#supplierName").prop('disabled', false);
-        // $("#supplierBuilding").prop('disabled', false);
-        // $("#supplierCity").prop('disabled', false);
-        // $("#supplierLane").prop('disabled', false);
-        // $("#supplierState").prop('disabled', false);
-        // $("#supplierEmail").prop('disabled', false);
-        // $("#supplierPostalCode").prop('disabled', false);
-        // $("#supplierContactNumber01").prop('disabled', false);
-        // $("#supplierContactNumber02").prop('disabled', false);
-        $('.txt').removeAttr('readonly');
-
-    }
+    // function disableTxtField() {
+    //     $('.txt').attr('readonly', "");
+    //
+    // }
+    //
+    // function enableTxtField() {
+    //     $('.txt').removeAttr('readonly');
+    // }
 
     $(document).ready(function () {
         $('#uploadForm').submit(function (e) {

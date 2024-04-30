@@ -27,6 +27,10 @@ function employeeFunction() {
         employeeFormIcon.attr('src', '../../assest/images/Frame07.png')
         employeeFormTitle.text('Add Employee')
         employeeFormContainer.css('max-width', '800px')
+        $("#employeeGender").prop('disabled', false);
+        $("#employeeDOB").prop('disabled', false);
+        $("#employeeDOJ").prop('disabled', false);
+        $("#employeeRole").prop('disabled', false);
         enableTxtField()
     })
     updateEmployee.click(function () {
@@ -39,6 +43,10 @@ function employeeFunction() {
         employeeTxtFieldBox.css('display', 'block');
         employeeFormIcon.attr('src', '../../assest/images/edit-btn.png')
         employeeFormContainer.css('max-width', '800px')
+        $("#employeeGender").prop('disabled', false);
+        $("#employeeDOB").prop('disabled', false);
+        $("#employeeDOJ").prop('disabled', false);
+        $("#employeeRole").prop('disabled', false);
         enableTxtField()
     })
     deleteEmployee.click(function () {
@@ -51,8 +59,6 @@ function employeeFunction() {
         employeeFormIcon.attr('src', '../../assest/images/deleteIcon.png')
         employeeFormContainer.css('max-width', '600px')
         employeeFormContainer.css('max-transition', 'none')
-
-
         home.addClass('show')
     })
     showEmployeeDetails.click(function () {
@@ -64,6 +70,10 @@ function employeeFunction() {
         employeeTxtFieldBox.css('display', 'block');
         employeeFormContainer.css('max-width', '800px')
         home.addClass('show')
+        $("#employeeGender").prop('disabled', true);
+        $("#employeeDOB").prop('disabled', true);
+        $("#employeeDOJ").prop('disabled', true);
+        $("#employeeRole").prop('disabled', true);
         disableTxtField();
     })
     employeePopupClose.click(function () {
@@ -84,48 +94,6 @@ function employeeFunction() {
             employeePageUserCredentials.addClass('d-none');
         }
     })
-
-    function disableTxtField() {
-        $("#employeeCode").prop('disabled', true);
-        $("#employeeName").prop('disabled', true);
-        $("#employeeGender").prop('disabled', true);
-        $("#employeeStatus").prop('disabled', true);
-        $("#employeeDesignation").prop('disabled', true);
-        $("#employeeDOB").prop('disabled', true);
-        $("#employeeDOJ").prop('disabled', true);
-        $("#employeeBranch").prop('disabled', true);
-        $("#employeeBuilding").prop('disabled', true);
-        $("#employeeCity").prop('disabled', true);
-        $("#employeeLane").prop('disabled', true);
-        $("#employeeState").prop('disabled', true);
-        $("#employeeEmail").prop('disabled', true);
-        $("#employeeRole").prop('disabled', true);
-        $("#employeePostalCode").prop('disabled', true);
-        $("#employeeContactNumber").prop('disabled', true);
-        $("#employeeGuardian").prop('disabled', true);
-        $("#employeeGuardianContact").prop('disabled', true);
-    }
-
-    function enableTxtField() {
-        $("#employeeCode").prop('disabled', false);
-        $("#employeeName").prop('disabled', false);
-        $("#employeeGender").prop('disabled', false);
-        $("#employeeStatus").prop('disabled', false);
-        $("#employeeDesignation").prop('disabled', false);
-        $("#employeeDOB").prop('disabled', false);
-        $("#employeeDOJ").prop('disabled', false);
-        $("#employeeBranch").prop('disabled', false);
-        $("#employeeBuilding").prop('disabled', false);
-        $("#employeeCity").prop('disabled', false);
-        $("#employeeLane").prop('disabled', false);
-        $("#employeeState").prop('disabled', false);
-        $("#employeeEmail").prop('disabled', false);
-        $("#employeeRole").prop('disabled', false);
-        $("#employeePostalCode").prop('disabled', false);
-        $("#employeeContactNumber").prop('disabled', false);
-        $("#employeeGuardian").prop('disabled', false);
-        $("#employeeGuardianContact").prop('disabled', false);
-    }
 
     $(document).ready(function () {
         $("#employeeDOJ").datepicker({

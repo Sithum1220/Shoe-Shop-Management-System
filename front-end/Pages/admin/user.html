@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Inventory</title>
+    <title>User</title>
 </head>
 <body>
-<section id="inventorySection">
+<section id="userSection">
     <div class="tblDiv row" id="">
-        <h1>Employee Details</h1>
+        <h1>User Details</h1>
         <div class="search p-0 row">
             <div class="col-9 p-0 d-flex align-items-center justify-content-end">
                 <div class="d-flex align-items-center">
@@ -25,12 +25,9 @@
                         <th scope="col">
                         </th>
                         <th scope="col">Id</th>
-                        <th scope="col">Supplier Code</th>
-                        <th scope="col">Supplier name</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Size</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Contact</th>
+                        <th scope="col">Email</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -38,16 +35,13 @@
                         <th scope="row">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value=""
-                                       id="employeeTblCheckBox"/>
+                                       id="supplierTblCheckBox"/>
                             </div>
                         </th>
-                        <td>I001</td>
-                        <td>S001</td>
+                        <td>E001</td>
                         <td>Sithum Imesh</td>
-                        <td>Formal Shoes</td>
-                        <td>Shoe</td>
-                        <td>10</td>
-                        <td>Available</td>
+                        <td>0777524729</td>
+                        <td>sithumimesh82@gmail.com</td>
 
                     </tr>
                     <tr>
@@ -57,13 +51,11 @@
                                        id="flexCheckDefault3"/>
                             </div>
                         </th>
-                        <td>I002</td>
-                        <td>S002</td>
+                        <td>E002</td>
                         <td>Sithum Perera</td>
-                        <td>Ladies Shoes</td>
-                        <td>Shoe</td>
-                        <td>07</td>
-                        <td>Available</td>
+                        <td>0777938904</td>
+                        <td>sithumperera@gmail.com</td>
+
                     </tr>
                     </tbody>
                 </table>
@@ -80,130 +72,130 @@
 
         </div>
         <div class="col-3 btnCol d-flex flex-column align-items-center gap-5 mt-5">
-            <button class="shadow-lg" id="addItem"><i class="fal fa-plus-circle"></i>
-                <h1>Add Item</h1>
+            <button class="shadow-lg" id="changeUserPw"><i class="fal fa-edit"></i>
+                <h1>Update Supplier</h1>
             </button>
-            <button class="shadow-lg" id="updateItem"><i class="fal fa-edit"></i>
-                <h1>Update Item</h1>
+            <button class="shadow-lg" id="deleteSupplier"><i class="fal fa-trash"></i>
+                <h1>Delete Supplier</h1>
             </button>
-            <button class="shadow-lg" id="deleteItem"><i class="fal fa-trash"></i>
-                <h1>Delete Item</h1>
-            </button>
-            <button class="shadow-lg" id="showItemDetails"><i class="fal fa-info-circle"></i>
-                <h1>Item Details</h1>
+            <button class="shadow-lg" id="showSupplierDetails"><i class="fal fa-info-circle"></i>
+                <h1>Supplier Details</h1>
             </button>
         </div>
     </div>
 
     <!-------------------------------Add/Update/Details/Delete Employee Form Start------------------------------------------->
-    <div class="form-container" id="itemFormContainer">
+    <div class="form-container" id="supplierFormContainer">
         <div class="form">
             <form action="#">
                 <div class="pt-4 pb-4 ps-5 pe-5 d-flex justify-content-between">
                     <div>
-                        <img id="itemFormIcon" src="../../assest/images/Frame07.png" width="75" alt="">
-                        <h2 id="itemFormTitle" class="d-inline-block ms-3">Add Inventory</h2>
+                        <img id="supplierFormIcon" src="../../assest/images/Frame07.png" width="75" alt="">
+                        <h2 id="supplierFormTitle" class="d-inline-block ms-3">Add Supplier</h2>
                     </div>
                     <div>
-                        <img class="popupClose" id="itemPopupClose" src="../../assest/images/close-btn.png" width="75"
-                             alt="">
+                        <img class="popupClose" id="supplierPopupClose" src="../../assest/images/close-btn.png"
+                             width="75" alt="">
                     </div>
                 </div>
                 <div class="lineDiv"></div>
 
-                <div class="m-5" id="itemDeletePopupBox">
+                <div class="m-5" id="supplierDeletePopupBox">
                     <h1 class="fs-4">Are You Sure ?</h1>
                 </div>
-                <div class="ps-5 pe-5" id="itemTxtFieldBox">
+
+
+                <div class="ps-5 pe-5" id="supplierTxtFieldBox">
                     <div class="row">
                         <div class="col">
                             <div class="input_box ">
-                                <input class="txt" type="text" id="itemCode" placeholder="Item Code">
+                                <input type="text" class="txt" id="supplierCode" placeholder="Supplier Code">
                             </div>
                         </div>
                         <div class="col">
-                            <div class="input_box d-flex align-items-center justify-content-center">
-                                <label for="itemCode" class="file-label ms-1 mb-2 opacity-75">Item Status</label>
+                            <div class="input_box">
+                                <input type="text" class="txt" id="supplierName" placeholder="Supplier Name">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col">
+                            <div class="input_box">
+                                <input type="text" class="txt" id="supplierCategory" placeholder="Categpry">
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="input_box">
+                                <input type="text" class="txt" id="supplierBuilding" placeholder="Building No. Or Name">
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
-
-                        <div class="col">
-                            <div class="input_box ">
-                                <input class="txt" type="text" id="supplierCode" placeholder="Supplier Code">
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="input_box d-flex align-items-center justify-content-center">
-                                <label for="itemCode" class="file-label ms-1 mb-2 opacity-75">Supplier name</label>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
                         <div class="col">
                             <div class="input_box">
-                                <input class="txt" type="text" id="itemSellPrice" placeholder="Unit price -Buy">
+                                <input type="text" class="txt" id="supplierLane" placeholder="Lane">
                             </div>
                         </div>
 
                         <div class="col">
                             <div class="input_box">
-                                <input class="txt" type="text" id="itemBuyPrice" placeholder="Unit price - Sale">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="input_box">
-                                <input class="txt" type="number" id="itemSize" placeholder="Size">
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="input_box">
-                                <input class="txt" type="text" id="itemCategory" placeholder="Category">
+                                <input type="text" class="txt" id="supplierCity" placeholder="City">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <div class="input_box">
-                                <input class="txt" type="text" id="itemDesc" placeholder="Item Description">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input_box">
-                                <input class="txt" type="text" id="itemQty" placeholder="Item Quantity">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col d-flex align-items-center">
-                            <div class="input_box">
-                                <label for="imgUploader" class="file-label ms-1 mb-2 opacity-50">Select a image...</label>
-                                <input class="form-control imgUploader" type="file" id="imgUploader" placeholder="Select Item Image" multiple/>
+                                <input type="text" class="txt" id="supplierState" placeholder="State">
                             </div>
                         </div>
 
                         <div class="col">
-                            <div class="d-flex justify-content-center pt-3">
-                                <img id="imgViewer" alt="" width="200" src="../../assest/images/shoe01.png"/>
+                            <div class="input_box">
+                                <input type="text" class="txt" id="supplierPostalCode" placeholder="Postal Code">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input_box">
+                                <input type="text" class="txt" id="supplierCountry" placeholder="Country">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box">
+                                <input type="tel" class="txt" id="supplierContactNumber01" placeholder="Contact No.1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input_box">
+                                <input type="tel" class="txt" id="supplierContactNumber02" placeholder="Contact No.2">
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="input_box">
+                                <input type="email" class="txt" id="supplierEmail" placeholder="Email">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-between ps-5 pe-5 mb-3">
-                    <button class="cancelBtn" id="itemPopupCancelBtn">Cancel</button>
-                    <button class="addBtn" id="itemPopupAddBtn">Add</button>
+                    <button class="cancelBtn" id="supplierPopupCancelBtn">Cancel</button>
+                    <button class="addBtn" id="supplierPopupAddBtn">Add</button>
                 </div>
             </form>
         </div>
     </div>
 </section>
+
 </body>
 </html>

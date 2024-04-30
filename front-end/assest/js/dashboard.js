@@ -20,6 +20,7 @@ dashboardBtn.click(function () {
     dashboard.css('display', 'block');
     $('#employeSection').remove();
     $('#supplierSection').remove();
+    $('#inventorySection').remove();
 })
 
 employeeBtn.click(function () {
@@ -35,6 +36,7 @@ employeeBtn.click(function () {
     inventoryBtn.removeClass('active')
     dashboard.css('display', 'none');
     $('#supplierSection').remove();
+    $('#inventorySection').remove();
     $('#pages').load('employee.html #employeSection', function () {
         pagination();
         employeeFunction();
@@ -73,7 +75,7 @@ inventoryBtn.click(function () {
     dashboard.css('display', 'none');
     $('#pages').load('inventory.html #inventorySection', function () {
         pagination();
-        supplierFunction();
+        inventoryFunction();
     });
 })
 
@@ -158,4 +160,12 @@ function pagination() {
 
     showPage(currentPage);
     updateButtons();
+}
+function disableTxtField() {
+    $('.txt').attr('readonly', "");
+
+}
+
+function enableTxtField() {
+    $('.txt').removeAttr('readonly');
 }
