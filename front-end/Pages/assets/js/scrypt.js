@@ -261,4 +261,13 @@ function enableTxtField() {
     $("#employeeGuardianContact").prop('disabled', false);
 }
 
-
+$(document).ready(function(){
+    $("#employeeDOJ").datepicker({
+        dateFormat: 'yy-mm-dd',
+        maxDate: new Date()
+    });
+    $("#employeeDOB").datepicker({
+        dateFormat: 'yy-mm-dd',
+        maxDate: new Date()
+    });
+});
