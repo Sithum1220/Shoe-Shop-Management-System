@@ -13,12 +13,6 @@ function employeeFunction() {
         employeeFormIcon = $('#employeeFormIcon'),
         employeeFormContainer = $('#employeeFormContainer'),
         employeePopupClose = $('#employeePopupClose'),
-        smallPopupClose = $('#smallPopupClose'),
-        smallPopupCancelBtn = $('#smallPopupCancelBtn'),
-        smallPopupAddBtn = $('#smallPopupAddBtn'),
-        smallPopupBox = $('#smallPopupBox'),
-        smallFormTitle = $('#smallFormTitle'),
-        smallFormIcon = $('#smallFormIcon'),
         employeeRole = $('#employeeRole');
 
 
@@ -28,11 +22,8 @@ function employeeFunction() {
         employeePopupAddBtn.text("Save")
         employeePopupAddBtn.css('display', 'block');
         employeePopupCancelBtn.css('width', '48%');
-        employeeDeletePopupBox.css('display', 'none');
-        employeeTxtFieldBox.css('display', 'block');
         employeeFormIcon.attr('src', '../../assest/images/Frame07.png')
         employeeFormTitle.text('Add Employee')
-        employeeFormContainer.css('max-width', '800px')
         $("#employeeGender").prop('disabled', false);
         $("#employeeDOB").prop('disabled', false);
         $("#employeeDOJ").prop('disabled', false);
@@ -40,15 +31,12 @@ function employeeFunction() {
         enableTxtField()
     })
     updateEmployee.click(function () {
-        employeeFormTitle.text('Update Employee')
         home.addClass('show')
+        employeeFormTitle.text('Update Employee')
         employeePopupAddBtn.css('display', 'block');
         employeePopupAddBtn.text("Update")
         employeePopupCancelBtn.css('width', '48%');
-        employeeDeletePopupBox.css('display', 'none');
-        employeeTxtFieldBox.css('display', 'block');
         employeeFormIcon.attr('src', '../../assest/images/edit-btn.png')
-        employeeFormContainer.css('max-width', '800px')
         $("#employeeGender").prop('disabled', false);
         $("#employeeDOB").prop('disabled', false);
         $("#employeeDOJ").prop('disabled', false);
@@ -59,14 +47,12 @@ function employeeFunction() {
 
     })
     showEmployeeDetails.click(function () {
+        home.addClass('show')
         employeeFormTitle.text('Employee Details')
         employeePopupAddBtn.css('display', 'none');
         employeePopupCancelBtn.css('width', '100%');
         employeeFormIcon.attr('src', '../../assest/images/detailsIcon.png')
-        employeeDeletePopupBox.css('display', 'none');
         employeeTxtFieldBox.css('display', 'block');
-        employeeFormContainer.css('max-width', '800px')
-        home.addClass('show')
         $("#employeeGender").prop('disabled', true);
         $("#employeeDOB").prop('disabled', true);
         $("#employeeDOJ").prop('disabled', true);
@@ -90,16 +76,6 @@ function employeeFunction() {
         } else {
             employeePageUserCredentials.addClass('d-none');
         }
-    })
-
-    smallPopupClose.click(function () {
-        home2.removeClass('show2');
-    })
-    smallPopupCancelBtn.click(function () {
-        home2.removeClass('show2');
-    })
-    smallPopupAddBtn.click(function () {
-        home2.removeClass('show2');
     })
 
     $(document).ready(function () {

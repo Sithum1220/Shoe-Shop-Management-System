@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer</title>
+</head>
+<body>
+<section id="customerSection">
+    <div class="tblDiv row" id="">
+        <h1>Loyalty Customer Details</h1>
+        <div class="search p-0 row">
+            <div class="col-9 p-0 d-flex align-items-center justify-content-end">
+                <div class="d-flex align-items-center">
+                    <img class="ms-2 mb-1 opacity-75" src="../../assest/images/search-normal.png" width="25"
+                         height="25" alt="">
+                    <input class="shadow-lg text-center ps" type="text" placeholder="Search by Id or Name">
+                </div>
+            </div>
+        </div>
+        <div class="col-9 tableCol shadow-lg ">
+            <div class="table-container">
+                <table class="table mytable">
+                    <thead class="table-header">
+                    <tr>
+                        <th scope="col">
+                        </th>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Join Date</th>
+                        <th scope="col">Total Points</th>
+                        <th scope="col">Level</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value=""
+                                       id="employeeTblCheckBox"/>
+                            </div>
+                        </th>
+                        <td>C001</td>
+                        <td>Sithum Imesh</td>
+                        <td>Duwagoda Hikkaduwa</td>
+                        <td>2024.04.01</td>
+                        <td>567</td>
+                        <td>New</td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value=""
+                                       id="flexCheckDefault3"/>
+                            </div>
+                        </th>
+                        <td>C001</td>
+                        <td>Sithum Imesh</td>
+                        <td>Duwagoda Hikkaduwa</td>
+                        <td>2024.04.01</td>
+                        <td>567</td>
+                        <td>New</td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="pagination-container">
+                <button class="prev-btn"> Previous
+                    <!--                        <img src="../Pages/assets/images/arrow-point-to-left.png" width="25" alt="">-->
+                </button>
+                <button class="next-btn"> Next
+                    <!--                        <img src="../Pages/assets/images/arrow-point-to-right.png" width="25" alt="">-->
+                </button>
+            </div>
+
+        </div>
+        <div class="col-3 btnCol d-flex justify-content-center mt-4">
+            <section class="d-flex flex-column gap-5">
+                <button class="shadow-lg" id="addCustomer"><i class="fal fa-plus-circle"></i>
+                    <h1>Add Customer</h1>
+                </button>
+                <button class="shadow-lg" id="updateCustomer"><i class="fal fa-edit"></i>
+                    <h1>Update Customer</h1>
+                </button>
+                <button class="shadow-lg" id="deleteCustomer" data-toggle="modal" data-target="#my-modal" ><i class="fal fa-trash"></i>
+                    <h1>Delete Customer</h1>
+                </button>
+                <button class="shadow-lg" id="showCustomerDetails"><i class="fal fa-info-circle"></i>
+                    <h1>Employee Customer</h1>
+                </button>
+            </section>
+        </div>
+    </div>
+
+    <!-------------------------------Add/Update/Details/Delete Employee Form Start------------------------------------------->
+    <div class="form-container" id="CustomerFormContainer">
+        <div class="form">
+            <form action="#">
+                <div class="pt-4 pb-4 ps-5 pe-5 d-flex justify-content-between">
+                    <div>
+                        <img id="customerFormIcon" src="../../assest/images/Frame07.png" width="75" alt="">
+                        <h2 id="customerFormTitle" class="d-inline-block ms-3">Add Employee</h2>
+                    </div>
+                    <div>
+                        <img class="popupClose" id="customerPopupClose" src="../../assest/images/close-btn.png"
+                             width="75" alt="">
+                    </div>
+                </div>
+                <div class="lineDiv"></div>
+                <div class="ps-5 pe-5" id="customerTxtFieldBox">
+                    <div class="row">
+                        <div class="col">
+                            <div class="input_box ">
+                                <input type="text" class="txt" id="customerCode" placeholder="Customer Code">
+                            </div>
+                        </div>
+                        <div class="col p-0">
+                            <div class="input_box">
+                                <select class="select form-select opacity-75 txt"
+                                        aria-label="Default select example"
+                                        id="customerGender">
+                                    <option selected>Select Gender</option>
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                    <option value="3">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col">
+                            <div class="input_box">
+                                <input type="text" class="txt" id="customerName" placeholder="Customer Name">
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="input_box">
+                                <input type="text" id="customerDOB" class="form-control txt"
+                                       placeholder="Date Of Birth">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input_box">
+                                <input type="text" id="customerDOJ" class="form-control txt"
+                                       placeholder="Date Of Join">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box">
+                                <input type="text" class="txt" id="customerBuilding"
+                                       placeholder="Building No. Or Name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input_box">
+                                <input type="text" class="txt" id="employeeLane" placeholder="Lane">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box">
+                                <input type="text" class="txt" id="employeeCity" placeholder="City">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input_box">
+                                <input type="text" class="txt" id="employeeState" placeholder="State">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box">
+                                <input type="text" class="txt" id="employeePostalCode" placeholder="Postal Code">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="d-flex justify-content-between ps-5 pe-5 mb-3">
+                    <button class="cancelBtn" id="customerPopupCancelBtn">Cancel</button>
+                    <button class="addBtn" id="customerPopupAddBtn">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container d-flex justify-content-center">
+        <div id="my-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content border-0">
+                    <div class="modal-body p-0">
+                        <div class="card border-0 p-sm-3 p-2 justify-content-center">
+                            <div class="card-header pb-0 bg-white border-0 ">
+                                <div class="row">
+                                    <div class="col ml-auto d-flex justify-content-end me-2">
+                                        <button type="button" class="close deleteBtn bg-white" data-dismiss="modal" aria-label="Close">
+                                            <span class="closeIcon" aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <p class="font-weight-bold mb-2 fw-bold"> Are you sure you wanna delete this ?</p>
+                                <p class="deleteMutedTxt"> This change will reflect in your portal after an hour.</p>
+                            </div>
+                            <div class="card-body px-sm-4 mb-2 pt-1 pb-0">
+                                <div class="row justify-content-end no-gutters">
+                                    <div class="col-auto">
+                                        <button type="button" class="btn btn-light text-muted deleteBtn" data-dismiss="modal">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="button" class="btn btn-danger px-4 deleteBtn" data-dismiss="modal">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
