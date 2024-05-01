@@ -4,6 +4,7 @@ const supplierBtn = $('#supplierBtn');
 const inventoryBtn = $('#inventoryBtn');
 const userBtn = $('#userBtn'),
     home = $('.home'),
+    home2 = $('.home2'),
     dashboard = $('#dashboard');
 
 dashboardBtn.click(function () {
@@ -21,6 +22,7 @@ dashboardBtn.click(function () {
     $('#employeSection').remove();
     $('#supplierSection').remove();
     $('#inventorySection').remove();
+    $('#userSection').remove();
 })
 
 employeeBtn.click(function () {
@@ -37,6 +39,7 @@ employeeBtn.click(function () {
     dashboard.css('display', 'none');
     $('#supplierSection').remove();
     $('#inventorySection').remove();
+    $('#userSection').remove();
     $('#pages').load('employee.html #employeSection', function () {
         pagination();
         employeeFunction();
@@ -56,6 +59,7 @@ supplierBtn.click(function () {
     dashboard.css('display', 'none');
     $('#employeSection').remove();
     $('#inventorySection').remove();
+    $('#userSection').remove();
     $('#pages').load('supplier.html #supplierSection', function () {
         pagination();
         supplierFunction();
@@ -72,6 +76,9 @@ inventoryBtn.click(function () {
     supplierBtn.removeClass('active')
     userBtn.removeClass('active')
     inventoryBtn.addClass('active')
+    $('#employeSection').remove();
+    $('#userSection').remove();
+    $('#supplierSection').remove();
     dashboard.css('display', 'none');
     $('#pages').load('inventory.html #inventorySection', function () {
         pagination();
@@ -90,7 +97,14 @@ userBtn.click(function () {
     supplierBtn.removeClass('active')
     inventoryBtn.removeClass('active')
     userBtn.addClass('active')
-
+    $('#employeSection').remove();
+    $('#inventorySection').remove();
+    $('#supplierSection').remove();
+    dashboard.css('display', 'none');
+    $('#pages').load('user.html #userSection', function () {
+        pagination();
+        userFunction();
+    });
 })
 
 function pagination() {

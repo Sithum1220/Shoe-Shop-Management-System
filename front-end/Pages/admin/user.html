@@ -71,130 +71,63 @@
             </div>
 
         </div>
-        <div class="col-3 btnCol d-flex flex-column align-items-center gap-5 mt-5">
-            <button class="shadow-lg" id="changeUserPw"><i class="fal fa-edit"></i>
-                <h1>Update Supplier</h1>
-            </button>
-            <button class="shadow-lg" id="deleteSupplier"><i class="fal fa-trash"></i>
-                <h1>Delete Supplier</h1>
-            </button>
-            <button class="shadow-lg" id="showSupplierDetails"><i class="fal fa-info-circle"></i>
-                <h1>Supplier Details</h1>
-            </button>
+        <div class="col-3 btnCol d-flex justify-content-center mt-4">
+            <section class="d-flex flex-column gap-5">
+                <button class="shadow-lg" id="changeUserPw"><i class="fal fa-edit"></i>
+                    <h1>Change Credentials</h1>
+                </button>
+                <button class="shadow-lg" id="deleteUser"><i class="fal fa-trash"></i>
+                    <h1>Delete User</h1>
+                </button>
+                <button class="shadow-lg" id="showCredentialsDetails"><i class="fal fa-info-circle"></i>
+                    <h1>Show Credentials</h1>
+                </button>
+            </section>
         </div>
     </div>
 
-    <!-------------------------------Add/Update/Details/Delete Employee Form Start------------------------------------------->
-    <div class="form-container" id="supplierFormContainer">
+    <div class="small-form-container">
         <div class="form">
             <form action="#">
-                <div class="pt-4 pb-4 ps-5 pe-5 d-flex justify-content-between">
+                <div class="pt-2 pb-2 ps-4 pe-4 d-flex justify-content-between">
                     <div>
-                        <img id="supplierFormIcon" src="../../assest/images/Frame07.png" width="75" alt="">
-                        <h2 id="supplierFormTitle" class="d-inline-block ms-3">Add Supplier</h2>
+                        <img id="smallFormIcon" src="../../assest/images/deleteIcon.png" width="50" alt="">
+                        <h2 id="smallFormTitle" class="d-inline-block ms-3 fs-5">Delete Supplier</h2>
                     </div>
                     <div>
-                        <img class="popupClose" id="supplierPopupClose" src="../../assest/images/close-btn.png"
-                             width="75" alt="">
+                        <img class="popupClose" id="smallPopupClose" src="../../assest/images/close-btn.png"
+                             width="50" alt="">
                     </div>
                 </div>
-                <div class="lineDiv"></div>
+                <div class="smallPopupLineDiv"></div>
 
-                <div class="m-5" id="supplierDeletePopupBox">
-                    <h1 class="fs-4">Are You Sure ?</h1>
+                <div class="mt-4 ms-4" id="smallPopupBox">
+                    <h1 class="fs-5">Are You Sure ?</h1>
                 </div>
 
-
-                <div class="ps-5 pe-5" id="supplierTxtFieldBox">
-                    <div class="row">
-                        <div class="col">
-                            <div class="input_box ">
-                                <input type="text" class="txt" id="supplierCode" placeholder="Supplier Code">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="supplierName" placeholder="Supplier Name">
-                            </div>
+                <div class="row ps-4 pe-4" id="smallPopupInput">
+                    <div class="col">
+                        <div class="input_box">
+                            <input type="email" class="txt" id="userNewUserName" placeholder="New User Name or Email">
                         </div>
                     </div>
 
-
-                    <div class="row">
-
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="supplierCategory" placeholder="Categpry">
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="supplierBuilding" placeholder="Building No. Or Name">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="supplierLane" placeholder="Lane">
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="supplierCity" placeholder="City">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="supplierState" placeholder="State">
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="supplierPostalCode" placeholder="Postal Code">
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="supplierCountry" placeholder="Country">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="tel" class="txt" id="supplierContactNumber01" placeholder="Contact No.1">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="tel" class="txt" id="supplierContactNumber02" placeholder="Contact No.2">
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="email" class="txt" id="supplierEmail" placeholder="Email">
-                            </div>
+                    <div class="col">
+                        <div class="input_box">
+                            <input type="password" class="txt" id="userNewPw" placeholder="New Password">
                         </div>
                     </div>
                 </div>
-                <div class="d-flex justify-content-between ps-5 pe-5 mb-3">
-                    <button class="cancelBtn" id="supplierPopupCancelBtn">Cancel</button>
-                    <button class="addBtn" id="supplierPopupAddBtn">Add</button>
+
+
+                <div class="d-flex justify-content-between ps-4 pe-4 mb-2">
+                    <button class="cancelBtn" id="smallPopupCancelBtn">Cancel</button>
+                    <button class="addBtn" id="smallPopupAddBtn">Delete</button>
                 </div>
             </form>
         </div>
     </div>
+
 </section>
 
 </body>

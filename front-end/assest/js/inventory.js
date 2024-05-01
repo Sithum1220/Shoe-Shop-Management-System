@@ -11,6 +11,12 @@ function inventoryFunction() {
         itemFormIcon = $('#itemFormIcon'),
         itemFormContainer = $('#itemFormContainer'),
         itemPopupClose = $('#itemPopupClose'),
+        smallPopupClose = $('#smallPopupClose'),
+        smallPopupCancelBtn = $('#smallPopupCancelBtn'),
+        smallPopupAddBtn = $('#smallPopupAddBtn'),
+        smallPopupBox = $('#smallPopupBox'),
+        smallFormTitle = $('#smallFormTitle'),
+        smallFormIcon = $('#smallFormIcon'),
         imgUploader = $('#imgUploader');
 
 
@@ -39,15 +45,7 @@ function inventoryFunction() {
         enableTxtField()
     })
     deleteItem.click(function () {
-        home.addClass('show')
-        itemFormTitle.text('Delete Item')
-        itemPopupAddBtn.text("Delete")
-        itemPopupAddBtn.css('display', 'block');
-        itemPopupCancelBtn.css('width', '48%');
-        itemTxtFieldBox.css('display', 'none');
-        itemDeletePopupBox.css('display', 'block');
-        itemFormIcon.attr('src', '../../assest/images/deleteIcon.png')
-        itemFormContainer.css('max-width', '600px')
+        home2.addClass('show2')
     })
     showItemDetails.click(function () {
         itemFormTitle.text('Item Details')
@@ -71,14 +69,15 @@ function inventoryFunction() {
 
     })
 
-    // function disableTxtField() {
-    //     $('.txt').attr('readonly', "");
-    //
-    // }
-    //
-    // function enableTxtField() {
-    //     $('.txt').removeAttr('readonly');
-    // }
+    smallPopupClose.click(function () {
+        home2.removeClass('show2');
+    })
+    smallPopupCancelBtn.click(function () {
+        home2.removeClass('show2');
+    })
+    smallPopupAddBtn.click(function () {
+        home2.removeClass('show2');
+    })
 
     $(document).ready(function () {
         $('#uploadForm').submit(function (e) {

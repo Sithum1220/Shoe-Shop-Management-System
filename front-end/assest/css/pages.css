@@ -1,6 +1,6 @@
 .tblDiv {
     padding-left: 2rem;
-    padding-right: 3rem;
+    /*padding-right: 3rem;*/
     width: 100%;
 
 }
@@ -12,7 +12,7 @@
     box-shadow: var(--box-shadow);
     cursor: pointer;
     transition: all 0.3s ease;
-    height: 38rem;
+    height: 37rem;
     margin-top: 20px;
 }
 
@@ -69,13 +69,16 @@
     overflow-y: auto;
 }
 
+.btnCol section{
+    width: 13rem;
+}
+
 .btnCol button {
     background-color: var(--color-white);
-    padding: 10px 15px 10px 10px;
+    padding: 10px 20px 10px 20px;
     border-radius: 15px;
     cursor: pointer;
     transition: all 0.3s ease;
-    max-width: 13rem;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -88,9 +91,9 @@
     margin-top: 5px;
 }
 
-.btnCol button:first-child {
-    padding-right: 12%;
-}
+/*.btnCol button:first-child {*/
+/*    padding-right: 12%;*/
+/*}*/
 
 .btnCol button i {
     font-size: 20px;
@@ -102,6 +105,22 @@
     color: var(--color-white);
 }
 
+.small-form-container{
+    position: fixed;
+    max-width: 500px;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.2);
+    z-index: 101;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: rgb(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+}
 
 .form-container {
     position: fixed;
@@ -125,6 +144,8 @@
     cursor: pointer;
 }
 
+
+.small-form-container h2,
 .form-container h2 {
     font-size: 22px;
     color: #0b0217;
@@ -153,10 +174,30 @@
 .input_box input:focus {
     border-color: #0a53be;
 }
+.small-form-container .cancelBtn,
+.small-form-container .addBtn{
+    margin-top: 20px;
+    width: 48%;
+    padding: 5px 0;
+    border-radius: 10px;
+    border-color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
 
-.form-container .addBtn {
+.small-form-container .addBtn {
     background: #0a53be;
     color: #fff;
+}
+
+.small-form-container .cancelBtn {
+    background: #ffffff;
+    color: #000000;
+    border: #c5c5c5 solid 1px;
+}
+
+.form-container .addBtn,
+.form-container .cancelBtn{
     margin-top: 30px;
     width: 48%;
     padding: 10px 0;
@@ -166,37 +207,29 @@
     font-size: 20px;
 }
 
+.form-container .addBtn {
+    background: #0a53be;
+    color: #fff;
+}
+
 .form-container .cancelBtn {
     background: #ffffff;
     color: #000000;
-    margin-top: 30px;
-    width: 48%;
-    padding: 10px 0;
-    border-radius: 10px;
     border: #c5c5c5 solid 1px;
-    font-weight: bold;
-    font-size: 20px;
 }
-
-/*.form-container .btn {*/
-/*    !*background: #0a53be;*!*/
-/*    margin-top: 15px;*/
-/*    width: 48%;*/
-/*    border-radius: 10px;*/
-/*    border-color: black;*/
-/*    border: 1px solid #d5d5d5;*/
-/*}*/
-
+.home2,
 .home {
     z-index: 1002;
 }
 
+.home2.show2 .small-form-container,
 .home.show .form-container {
     opacity: 1;
     pointer-events: auto;
     transform: translate(-50%, -50%) scale(1);
 }
 
+.home2::before,
 .home::before {
     content: "";
     position: absolute;
@@ -209,6 +242,7 @@
     /*transition: all 0.5s ease-out;*/
 }
 
+.home2.show2::before,
 .home.show::before {
     opacity: 1;
     pointer-events: auto;
@@ -218,14 +252,21 @@ input[type="date"]::before {
     color: #999;
     content: attr(placeholder);
 }
-
-.lineDiv {
+.smallPopupLineDiv,
+.lineDiv{
+    opacity: 40%;
     width: 90%;
     height: 1px;
     background-color: #656565;
     position: relative;
+}
+
+.smallPopupLineDiv {
+    left: 22px;
+}
+
+.lineDiv {
     left: 35px;
-    opacity: 40%;
 }
 
 .form-floating > .bi-calendar-date + .datepicker_input + label {

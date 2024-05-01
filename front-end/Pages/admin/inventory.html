@@ -79,19 +79,21 @@
             </div>
 
         </div>
-        <div class="col-3 btnCol d-flex flex-column align-items-center gap-5 mt-5">
-            <button class="shadow-lg" id="addItem"><i class="fal fa-plus-circle"></i>
-                <h1>Add Item</h1>
-            </button>
-            <button class="shadow-lg" id="updateItem"><i class="fal fa-edit"></i>
-                <h1>Update Item</h1>
-            </button>
-            <button class="shadow-lg" id="deleteItem"><i class="fal fa-trash"></i>
-                <h1>Delete Item</h1>
-            </button>
-            <button class="shadow-lg" id="showItemDetails"><i class="fal fa-info-circle"></i>
-                <h1>Item Details</h1>
-            </button>
+        <div class="col-3 btnCol d-flex justify-content-center mt-4">
+            <section class="d-flex flex-column gap-5">
+                <button class="shadow-lg" id="addItem"><i class="fal fa-plus-circle"></i>
+                    <h1>Add Item</h1>
+                </button>
+                <button class="shadow-lg" id="updateItem"><i class="fal fa-edit"></i>
+                    <h1>Update Item</h1>
+                </button>
+                <button class="shadow-lg" id="deleteItem"><i class="fal fa-trash"></i>
+                    <h1>Delete Item</h1>
+                </button>
+                <button class="shadow-lg" id="showItemDetails"><i class="fal fa-info-circle"></i>
+                    <h1>Item Details</h1>
+                </button>
+            </section>
         </div>
     </div>
 
@@ -110,10 +112,6 @@
                     </div>
                 </div>
                 <div class="lineDiv"></div>
-
-                <div class="m-5" id="itemDeletePopupBox">
-                    <h1 class="fs-4">Are You Sure ?</h1>
-                </div>
                 <div class="ps-5 pe-5" id="itemTxtFieldBox">
                     <div class="row">
                         <div class="col">
@@ -204,6 +202,35 @@
             </form>
         </div>
     </div>
+
+    <div class="small-form-container">
+        <div class="form">
+            <form action="#">
+                <div class="pt-2 pb-2 ps-4 pe-4 d-flex justify-content-between">
+                    <div>
+                        <img id="smallFormIcon" src="../../assest/images/deleteIcon.png" width="50" alt="">
+                        <h2 id="smallFormTitle" class="d-inline-block ms-3 fs-5">Delete Item</h2>
+                    </div>
+                    <div>
+                        <img class="popupClose" id="smallPopupClose" src="../../assest/images/close-btn.png"
+                             width="50" alt="">
+                    </div>
+                </div>
+                <div class="smallPopupLineDiv"></div>
+
+                <div class="mt-4 ms-4" id="smallPopupBox">
+                    <h1 class="fs-5">Are You Sure ?</h1>
+                </div>
+
+                <div class="d-flex justify-content-between ps-4 pe-4 mb-2">
+                    <button class="cancelBtn" id="smallPopupCancelBtn">Cancel</button>
+                    <button class="addBtn" id="smallPopupAddBtn">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-------------------------------Add/Update/Details/Delete Employee Form End------------------------------------------->
+
 </section>
 </body>
 </html>
