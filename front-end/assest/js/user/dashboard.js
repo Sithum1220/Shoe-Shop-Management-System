@@ -19,6 +19,7 @@ dashboardBtn.click(function () {
     profileBtn.removeClass('active')
     dashboard.css('display', 'block');
     $('#customerSection').remove();
+    $('#inventorySection').remove();
     // $('#supplierSection').remove();
     // $('#inventorySection').remove();
     // $('#userSection').remove();
@@ -39,6 +40,7 @@ customerBtn.click(function () {
     // $('#supplierSection').remove();
     // $('#inventorySection').remove();
     // $('#userSection').remove();
+    $('#inventorySection').remove();
     $('#pages').load('customer.html #customerSection', function () {
         customerFunction();
         pagination();
@@ -56,9 +58,9 @@ orderBtn.click(function () {
     inventoryBtn.removeClass('active')
     profileBtn.removeClass('active')
     dashboard.css('display', 'none');
-    $('#employeSection').remove();
-    $('#inventorySection').remove();
-    $('#userSection').remove();
+    // $('#employeSection').remove();
+    // $('#inventorySection').remove();
+    // $('#userSection').remove();
     // $('#pages').load('supplier.html #supplierSection', function () {
     //     pagination();
     //     supplierFunction();
@@ -75,14 +77,12 @@ inventoryBtn.click(function () {
     orderBtn.removeClass('active')
     profileBtn.removeClass('active')
     inventoryBtn.addClass('active')
-    // $('#employeSection').remove();
-    // $('#userSection').remove();
-    // $('#supplierSection').remove();
-    // dashboard.css('display', 'none');
-    // $('#pages').load('inventory.html #inventorySection', function () {
-    //     pagination();
-    //     inventoryFunction();
-    // });
+    dashboard.css('display', 'none');
+    $('#customerSection').remove();
+    $('#pages').load('inventory.html #inventorySection', function () {
+        pagination();
+        inventoryFunction();
+    });
 })
 
 profileBtn.click(function () {

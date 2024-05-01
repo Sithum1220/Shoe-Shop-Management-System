@@ -2,9 +2,12 @@
 
 .tblDiv {
     padding-left: 2rem;
-    /*padding-right: 3rem;*/
     width: 100%;
 
+}
+.userTblDiv .tableCol{
+    height: 39.25rem !important;
+    border-radius: 25px;
 }
 
 .tblDiv .tableCol {
@@ -14,7 +17,7 @@
     box-shadow: var(--box-shadow);
     cursor: pointer;
     transition: all 0.3s ease;
-    height: 37rem;
+    height: 41.5rem;
     margin-top: 20px;
 }
 
@@ -27,7 +30,7 @@
 
 .table-container {
     overflow-y: auto;
-    height: 31rem;
+    height: 32rem;
     position: relative;
 }
 

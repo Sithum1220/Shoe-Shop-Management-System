@@ -2,12 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Customer</title>
+    <link rel="stylesheet" href="../../assest/boostrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../assest/font-awesome-pro-5/css/all.css">
+    <link rel="stylesheet" href="../../assest/css/all.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+    <link rel="stylesheet" href="../../assest/css/responsive.css">
+    <link rel="stylesheet" href="../../assest/css/pages.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <title>Orders</title>
 </head>
 <body>
-<section id="customerSection">
+<section id="orderSection">
     <div class="tblDiv row" id="">
-        <h1>Loyalty Customer Details</h1>
+        <h1>Supplier Details</h1>
         <div class="search p-0 row">
             <div class="col-9 p-0 d-flex align-items-center justify-content-end">
                 <div class="d-flex align-items-center">
@@ -27,9 +37,9 @@
                         <th scope="col">Id</th>
                         <th scope="col">Name</th>
                         <th scope="col">Address</th>
-                        <th scope="col">Join Date</th>
-                        <th scope="col">Total Points</th>
-                        <th scope="col">Level</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Contact</th>
+                        <th scope="col">Email</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -37,15 +47,15 @@
                         <th scope="row">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value=""
-                                       id="employeeTblCheckBox"/>
+                                       id="supplierTblCheckBox"/>
                             </div>
                         </th>
-                        <td>C001</td>
+                        <td>S001</td>
                         <td>Sithum Imesh</td>
                         <td>Duwagoda Hikkaduwa</td>
-                        <td>2024.04.01</td>
-                        <td>567</td>
-                        <td>New</td>
+                        <td>Shoes</td>
+                        <td>0777524729</td>
+                        <td>sithumimesh82@gmail.com</td>
 
                     </tr>
                     <tr>
@@ -55,15 +65,14 @@
                                        id="flexCheckDefault3"/>
                             </div>
                         </th>
-                        <td>C001</td>
-                        <td>Sithum Imesh</td>
-                        <td>Duwagoda Hikkaduwa</td>
-                        <td>2024.04.01</td>
-                        <td>567</td>
-                        <td>New</td>
+                        <td>S002</td>
+                        <td>Sithum Perera</td>
+                        <td>Wellawatta Hikkaduwa</td>
+                        <td>Socks</td>
+                        <td>0777938904</td>
+                        <td>sithumperera@gmail.com</td>
 
                     </tr>
-
                     </tbody>
                 </table>
 
@@ -80,117 +89,129 @@
         </div>
         <div class="col-3 btnCol d-flex justify-content-center mt-4">
             <section class="d-flex flex-column gap-5">
-                <button class="shadow-lg" id="addCustomer"><i class="fal fa-plus-circle"></i>
-                    <h1>Add Customer</h1>
+                <button class="shadow-lg" id="addSupplier"><i class="fal fa-plus-circle"></i>
+                    <h1>Add Supplier</h1>
                 </button>
-                <button class="shadow-lg" id="updateCustomer"><i class="fal fa-edit"></i>
-                    <h1>Update Customer</h1>
+                <button class="shadow-lg" id="updateSupplier"><i class="fal fa-edit"></i>
+                    <h1>Update Supplier</h1>
                 </button>
-                <button class="shadow-lg" id="deleteCustomer" data-toggle="modal" data-target="#my-modal" ><i class="fal fa-trash"></i>
-                    <h1>Delete Customer</h1>
+                <button class="shadow-lg" id="deleteSupplier" data-toggle="modal" data-target="#my-modal"><i class="fal fa-trash"></i>
+                    <h1>Delete Supplier</h1>
                 </button>
-                <button class="shadow-lg" id="showCustomerDetails"><i class="fal fa-info-circle"></i>
-                    <h1>Employee Customer</h1>
+                <button class="shadow-lg" id="showSupplierDetails"><i class="fal fa-info-circle"></i>
+                    <h1>Supplier Details</h1>
                 </button>
             </section>
+
         </div>
     </div>
-    <div class="form-container" id="CustomerFormContainer">
+
+    <!-------------------------------Add/Update/Details/Delete Employee Form Start------------------------------------------->
+    <div class="form-container" id="supplierFormContainer">
         <div class="form">
             <form action="#">
                 <div class="pt-4 pb-4 ps-5 pe-5 d-flex justify-content-between">
                     <div>
-                        <img id="customerFormIcon" src="../../assest/images/Frame07.png" width="75" alt="">
-                        <h2 id="customerFormTitle" class="d-inline-block ms-3">Add Employee</h2>
+                        <img id="supplierFormIcon" src="../../assest/images/deleteIcon.png" width="75" alt="">
+                        <h2 id="supplierFormTitle" class="d-inline-block ms-3">Add Supplier</h2>
                     </div>
                     <div>
-                        <img class="popupClose" id="customerPopupClose" src="../../assest/images/close-btn.png"
+                        <img class="popupClose" id="supplierPopupClose" src="../../assest/images/close-btn.png"
                              width="75" alt="">
                     </div>
                 </div>
                 <div class="lineDiv"></div>
-                <div class="ps-5 pe-5" id="customerTxtFieldBox">
+
+                <div class="ps-5 pe-5" id="supplierTxtFieldBox">
                     <div class="row">
                         <div class="col">
                             <div class="input_box ">
-                                <input type="text" class="txt" id="customerCode" placeholder="Customer Code">
+                                <input type="text" class="txt" id="supplierCode" placeholder="Supplier Code">
                             </div>
                         </div>
-                        <div class="col p-0">
+                        <div class="col">
                             <div class="input_box">
-                                <select class="select form-select opacity-75 txt"
-                                        aria-label="Default select example"
-                                        id="customerGender">
-                                    <option selected>Select Gender</option>
-                                    <option value="1">Male</option>
-                                    <option value="2">Female</option>
-                                    <option value="3">Other</option>
-                                </select>
+                                <input type="text" class="txt" id="supplierName" placeholder="Supplier Name">
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
 
                         <div class="col">
                             <div class="input_box">
-                                <input type="text" class="txt" id="customerName" placeholder="Customer Name">
+                                <input type="text" class="txt" id="supplierCategory" placeholder="Categpry">
                             </div>
                         </div>
 
                         <div class="col">
                             <div class="input_box">
-                                <input type="text" id="customerDOB" class="form-control txt"
-                                       placeholder="Date Of Birth">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="text" id="customerDOJ" class="form-control txt"
-                                       placeholder="Date Of Join">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="customerBuilding"
-                                       placeholder="Building No. Or Name">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="customerLane" placeholder="Lane">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="customerCity" placeholder="City">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="customerState" placeholder="State">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="customerPostalCode" placeholder="Postal Code">
+                                <input type="text" class="txt" id="supplierBuilding" placeholder="Building No. Or Name">
                             </div>
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col">
+                            <div class="input_box">
+                                <input type="text" class="txt" id="supplierLane" placeholder="Lane">
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="input_box">
+                                <input type="text" class="txt" id="supplierCity" placeholder="City">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input_box">
+                                <input type="text" class="txt" id="supplierState" placeholder="State">
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="input_box">
+                                <input type="text" class="txt" id="supplierPostalCode" placeholder="Postal Code">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input_box">
+                                <input type="text" class="txt" id="supplierCountry" placeholder="Country">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box">
+                                <input type="tel" class="txt" id="supplierContactNumber01" placeholder="Contact No.1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input_box">
+                                <input type="tel" class="txt" id="supplierContactNumber02" placeholder="Contact No.2">
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="input_box">
+                                <input type="email" class="txt" id="supplierEmail" placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="d-flex justify-content-between ps-5 pe-5 mb-3">
-                    <button class="cancelBtn" id="customerPopupCancelBtn">Cancel</button>
-                    <button class="addBtn" id="customerPopupAddBtn">Add</button>
+                    <button class="cancelBtn" id="supplierPopupCancelBtn">Cancel</button>
+                    <button class="addBtn" id="supplierPopupAddBtn">Add</button>
                 </div>
             </form>
         </div>
     </div>
+
     <div class="container d-flex justify-content-center">
         <div id="my-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -228,6 +249,15 @@
             </div>
         </div>
     </div>
+    <!-------------------------------Add/Update/Details/Delete Employee Form End------------------------------------------->
 </section>
+
+<script src="../../assest/js/code.jquery.com_jquery-3.7.1.min.js"></script>
+<script src="../../assest/boostrap/js/bootstrap.bundle.js"></script>
+<script src="../../assest/js/user/dashboard.js"></script>
+<script src="../../assest/js/user/customer.js"></script>
+<script src="../../assest/js/pagination.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

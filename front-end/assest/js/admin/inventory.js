@@ -11,12 +11,6 @@ function inventoryFunction() {
         itemFormIcon = $('#itemFormIcon'),
         itemFormContainer = $('#itemFormContainer'),
         itemPopupClose = $('#itemPopupClose'),
-        smallPopupClose = $('#smallPopupClose'),
-        smallPopupCancelBtn = $('#smallPopupCancelBtn'),
-        smallPopupAddBtn = $('#smallPopupAddBtn'),
-        smallPopupBox = $('#smallPopupBox'),
-        smallFormTitle = $('#smallFormTitle'),
-        smallFormIcon = $('#smallFormIcon'),
         imgUploader = $('#imgUploader');
 
 
