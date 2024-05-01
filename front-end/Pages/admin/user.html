@@ -8,16 +8,29 @@
 <section id="userSection">
     <div class="tblDiv row" id="">
         <h1>User Details</h1>
-        <div class="search p-0 row">
-            <div class="col-9 p-0 d-flex align-items-center justify-content-end">
+        <div class="form-check activeBtn">
+            <input class="form-check-input" checked type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+                Active Users
+            </label>
+        </div>
+        <div class="search m-0 p-0">
+            <div class="me-5 p-0 d-flex align-items-center justify-content-end g-3">
                 <div class="d-flex align-items-center">
                     <img class="ms-2 mb-1 opacity-75" src="../../assest/images/search-normal.png" width="25"
                          height="25" alt="">
                     <input class="shadow-lg text-center ps" type="text" placeholder="Search by Id or Name">
                 </div>
+                <section class="d-flex flex-column btnCol ms-4">
+                    <button class="shadow-lg" id="deleteUser" data-toggle="modal" data-target="#my-modal"><i
+                            class="fal fa-trash"></i>
+                        <h1>Delete User</h1>
+                    </button>
+                </section>
             </div>
+
         </div>
-        <div class="col-9 tableCol shadow-lg ">
+        <div class="col me-5 tableCol shadow-lg ">
             <div class="table-container">
                 <table class="table mytable">
                     <thead class="table-header">
@@ -26,8 +39,11 @@
                         </th>
                         <th scope="col">Id</th>
                         <th scope="col">Name</th>
+                        <th scope="col">Address</th>
                         <th scope="col">Contact</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Role</th>
+
                     </tr>
                     </thead>
                     <tbody>
@@ -40,8 +56,10 @@
                         </th>
                         <td>E001</td>
                         <td>Sithum Imesh</td>
+                        <td>Duwagoda, Hikkaduwa</td>
                         <td>0777524729</td>
                         <td>sithumimesh82@gmail.com</td>
+                        <td>Admin</td>
 
                     </tr>
                     <tr>
@@ -53,8 +71,10 @@
                         </th>
                         <td>E002</td>
                         <td>Sithum Perera</td>
+                        <td>Wellawatte Hikkaduwa</td>
                         <td>0777938904</td>
                         <td>sithumperera@gmail.com</td>
+                        <td>User</td>
 
                     </tr>
                     </tbody>
@@ -71,63 +91,48 @@
             </div>
 
         </div>
-        <div class="col-3 btnCol d-flex justify-content-center mt-4">
-            <section class="d-flex flex-column gap-5">
-                <button class="shadow-lg" id="changeUserPw"><i class="fal fa-edit"></i>
-                    <h1>Change Credentials</h1>
-                </button>
-                <button class="shadow-lg" id="deleteUser"><i class="fal fa-trash"></i>
-                    <h1>Delete User</h1>
-                </button>
-                <button class="shadow-lg" id="showCredentialsDetails"><i class="fal fa-info-circle"></i>
-                    <h1>Show Credentials</h1>
-                </button>
-            </section>
-        </div>
+
     </div>
-
-    <div class="small-form-container">
-        <div class="form">
-            <form action="#">
-                <div class="pt-2 pb-2 ps-4 pe-4 d-flex justify-content-between">
-                    <div>
-                        <img id="smallFormIcon" src="../../assest/images/deleteIcon.png" width="50" alt="">
-                        <h2 id="smallFormTitle" class="d-inline-block ms-3 fs-5">Delete Supplier</h2>
-                    </div>
-                    <div>
-                        <img class="popupClose" id="smallPopupClose" src="../../assest/images/close-btn.png"
-                             width="50" alt="">
-                    </div>
-                </div>
-                <div class="smallPopupLineDiv"></div>
-
-                <div class="mt-4 ms-4" id="smallPopupBox">
-                    <h1 class="fs-5">Are You Sure ?</h1>
-                </div>
-
-                <div class="row ps-4 pe-4" id="smallPopupInput">
-                    <div class="col">
-                        <div class="input_box">
-                            <input type="email" class="txt" id="userNewUserName" placeholder="New User Name or Email">
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="input_box">
-                            <input type="password" class="txt" id="userNewPw" placeholder="New Password">
+    <div class="container d-flex justify-content-center">
+        <div id="my-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content border-0">
+                    <div class="modal-body p-0">
+                        <div class="card border-0 p-sm-3 p-2 justify-content-center">
+                            <div class="card-header pb-0 bg-white border-0 ">
+                                <div class="row">
+                                    <div class="col ml-auto d-flex justify-content-end me-2">
+                                        <button type="button" class="close deleteBtn bg-white" data-dismiss="modal"
+                                                aria-label="Close">
+                                            <span class="closeIcon" aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <p class="font-weight-bold mb-2 fw-bold"> Are you sure you wanna delete this ?</p>
+                                <p class="deleteMutedTxt"> This change will reflect in your portal after an hour.</p>
+                            </div>
+                            <div class="card-body px-sm-4 mb-2 pt-1 pb-0">
+                                <div class="row justify-content-end no-gutters">
+                                    <div class="col-auto">
+                                        <button type="button" class="btn btn-light text-muted deleteBtn"
+                                                data-dismiss="modal">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="button" class="btn btn-danger px-4 deleteBtn"
+                                                data-dismiss="modal">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-
-                <div class="d-flex justify-content-between ps-4 pe-4 mb-2">
-                    <button class="cancelBtn" id="smallPopupCancelBtn">Cancel</button>
-                    <button class="addBtn" id="smallPopupAddBtn">Delete</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
-
 </section>
 
 </body>

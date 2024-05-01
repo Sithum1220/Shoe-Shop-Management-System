@@ -56,16 +56,7 @@ function employeeFunction() {
         enableTxtField()
     })
     deleteEmployee.click(function () {
-        // employeeFormTitle.text('Delete Employee')
-        // employeePopupAddBtn.text("Delete")
-        // employeePopupAddBtn.css('display', 'block');
-        // employeePopupCancelBtn.css('width', '48%');
-        // employeeTxtFieldBox.css('display', 'none');
-        // employeeDeletePopupBox.css('display', 'block');
-        // employeeFormIcon.attr('src', '../../assest/images/deleteIcon.png')
-        // employeeFormContainer.css('max-width', '600px')
-        // employeeFormContainer.css('max-transition', 'none')
-        home2.addClass('show2')
+
     })
     showEmployeeDetails.click(function () {
         employeeFormTitle.text('Employee Details')

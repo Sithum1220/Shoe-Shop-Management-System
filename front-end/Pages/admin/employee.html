@@ -267,7 +267,7 @@
 
                 </div>
                 <div class="pagination-container">
-                    <button class="prev-btn" > Previous
+                    <button class="prev-btn"> Previous
                         <!--                        <img src="../Pages/assets/images/arrow-point-to-left.png" width="25" alt="">-->
                     </button>
                     <button class="next-btn"> Next
@@ -284,7 +284,7 @@
                     <button class="shadow-lg" id="updateEmployee"><i class="fal fa-edit"></i>
                         <h1>Update Employee</h1>
                     </button>
-                    <button class="shadow-lg" id="deleteEmployee"><i class="fal fa-trash"></i>
+                    <button class="shadow-lg" id="deleteEmployee" data-toggle="modal" data-target="#my-modal" ><i class="fal fa-trash"></i>
                         <h1>Delete Employee</h1>
                     </button>
                     <button class="shadow-lg" id="showEmployeeDetails"><i class="fal fa-info-circle"></i>
@@ -304,7 +304,8 @@
                             <h2 id="employeeFormTitle" class="d-inline-block ms-3">Add Employee</h2>
                         </div>
                         <div>
-                            <img class="popupClose" id="employeePopupClose" src="../../assest/images/close-btn.png" width="75" alt="">
+                            <img class="popupClose" id="employeePopupClose" src="../../assest/images/close-btn.png"
+                                 width="75" alt="">
                         </div>
                     </div>
                     <div class="lineDiv"></div>
@@ -317,7 +318,8 @@
                             </div>
                             <div class="col p-0">
                                 <div class="input_box">
-                                    <select class="select form-select opacity-75 txt" aria-label="Default select example"
+                                    <select class="select form-select opacity-75 txt"
+                                            aria-label="Default select example"
                                             id="employeeGender">
                                         <option selected>Select Gender</option>
                                         <option value="1">Male</option>
@@ -341,19 +343,22 @@
                             </div>
                             <div class="col">
                                 <div class="input_box">
-                                    <input type="text" class="txt" id="employeeDesignation" placeholder="Employee Designation">
+                                    <input type="text" class="txt" id="employeeDesignation"
+                                           placeholder="Employee Designation">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input_box">
-                                    <input type="text" id="employeeDOB" class="form-control txt" placeholder="Date Of Birth">
+                                    <input type="text" id="employeeDOB" class="form-control txt"
+                                           placeholder="Date Of Birth">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="input_box">
-                                    <input type="text" id="employeeDOJ" class="form-control txt" placeholder="Date Of Join">
+                                    <input type="text" id="employeeDOJ" class="form-control txt"
+                                           placeholder="Date Of Join">
                                 </div>
                             </div>
                             <div class="col">
@@ -363,7 +368,8 @@
                             </div>
                             <div class="col">
                                 <div class="input_box">
-                                    <input type="text" class="txt" id="employeeBuilding" placeholder="Building No. Or Name">
+                                    <input type="text" class="txt" id="employeeBuilding"
+                                           placeholder="Building No. Or Name">
                                 </div>
                             </div>
                         </div>
@@ -392,7 +398,8 @@
                             </div>
                             <div class="col">
                                 <div class="input_box">
-                                    <input type="tel" class="txt" id="employeeContactNumber" placeholder="Contact Number">
+                                    <input type="tel" class="txt" id="employeeContactNumber"
+                                           placeholder="Contact Number">
                                 </div>
                             </div>
                             <div class="col">
@@ -450,33 +457,43 @@
         </div>
 
 
-        <div class="small-form-container">
-            <div class="form">
-                <form action="#">
-                    <div class="pt-2 pb-2 ps-4 pe-4 d-flex justify-content-between">
-                        <div>
-                            <img id="smallFormIcon" src="../../assest/images/deleteIcon.png" width="50" alt="">
-                            <h2 id="smallFormTitle" class="d-inline-block ms-3 fs-5">Delete Employee</h2>
+        <div class="container d-flex justify-content-center">
+            <div id="my-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content border-0">
+                        <div class="modal-body p-0">
+                            <div class="card border-0 p-sm-3 p-2 justify-content-center">
+                                <div class="card-header pb-0 bg-white border-0 ">
+                                    <div class="row">
+                                        <div class="col ml-auto d-flex justify-content-end me-2">
+                                            <button type="button" class="close deleteBtn bg-white" data-dismiss="modal" aria-label="Close">
+                                                <span class="closeIcon" aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <p class="font-weight-bold mb-2 fw-bold"> Are you sure you wanna delete this ?</p>
+                                    <p class="deleteMutedTxt"> This change will reflect in your portal after an hour.</p>
+                                </div>
+                                <div class="card-body px-sm-4 mb-2 pt-1 pb-0">
+                                    <div class="row justify-content-end no-gutters">
+                                        <div class="col-auto">
+                                            <button type="button" class="btn btn-light text-muted deleteBtn" data-dismiss="modal">
+                                                Cancel
+                                            </button>
+                                        </div>
+                                        <div class="col-auto">
+                                            <button type="button" class="btn btn-danger px-4 deleteBtn" data-dismiss="modal">
+                                                Delete
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <img class="popupClose" id="smallPopupClose" src="../../assest/images/close-btn.png"
-                                 width="50" alt="">
-                        </div>
                     </div>
-                    <div class="smallPopupLineDiv"></div>
-
-                    <div class="mt-4 ms-4" id="smallPopupBox">
-                        <h1 class="fs-5">Are You Sure ?</h1>
-                    </div>
-
-                    <div class="d-flex justify-content-between ps-4 pe-4 mb-2">
-                        <button class="cancelBtn" id="smallPopupCancelBtn">Cancel</button>
-                        <button class="addBtn" id="smallPopupAddBtn">Delete</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
-
     </section>
 </section>
 </body>

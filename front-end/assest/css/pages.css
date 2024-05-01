@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+
 .tblDiv {
     padding-left: 2rem;
     /*padding-right: 3rem;*/
@@ -69,7 +71,7 @@
     overflow-y: auto;
 }
 
-.btnCol section{
+.btnCol section {
     width: 13rem;
 }
 
@@ -105,23 +107,6 @@
     color: var(--color-white);
 }
 
-.small-form-container{
-    position: fixed;
-    max-width: 500px;
-    width: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1.2);
-    z-index: 101;
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 25px;
-    box-shadow: rgb(0, 0, 0, 0.1);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.4s ease;
-}
-
 .form-container {
     position: fixed;
     max-width: 800px;
@@ -144,8 +129,6 @@
     cursor: pointer;
 }
 
-
-.small-form-container h2,
 .form-container h2 {
     font-size: 22px;
     color: #0b0217;
@@ -174,30 +157,9 @@
 .input_box input:focus {
     border-color: #0a53be;
 }
-.small-form-container .cancelBtn,
-.small-form-container .addBtn{
-    margin-top: 20px;
-    width: 48%;
-    padding: 5px 0;
-    border-radius: 10px;
-    border-color: white;
-    font-weight: bold;
-    font-size: 20px;
-}
-
-.small-form-container .addBtn {
-    background: #0a53be;
-    color: #fff;
-}
-
-.small-form-container .cancelBtn {
-    background: #ffffff;
-    color: #000000;
-    border: #c5c5c5 solid 1px;
-}
 
 .form-container .addBtn,
-.form-container .cancelBtn{
+.form-container .cancelBtn {
     margin-top: 30px;
     width: 48%;
     padding: 10px 0;
@@ -217,19 +179,16 @@
     color: #000000;
     border: #c5c5c5 solid 1px;
 }
-.home2,
+
 .home {
     z-index: 1002;
 }
-
-.home2.show2 .small-form-container,
 .home.show .form-container {
     opacity: 1;
     pointer-events: auto;
     transform: translate(-50%, -50%) scale(1);
 }
 
-.home2::before,
 .home::before {
     content: "";
     position: absolute;
@@ -242,7 +201,6 @@
     /*transition: all 0.5s ease-out;*/
 }
 
-.home2.show2::before,
 .home.show::before {
     opacity: 1;
     pointer-events: auto;
@@ -252,17 +210,13 @@ input[type="date"]::before {
     color: #999;
     content: attr(placeholder);
 }
-.smallPopupLineDiv,
-.lineDiv{
+
+.lineDiv {
     opacity: 40%;
     width: 90%;
     height: 1px;
     background-color: #656565;
     position: relative;
-}
-
-.smallPopupLineDiv {
-    left: 22px;
 }
 
 .lineDiv {
@@ -295,6 +249,7 @@ input[type="date"]::before {
 .search div {
     margin-left: 12px;
 }
+
 .prev-btn,
 .next-btn {
     background-color: var(--color-white);
@@ -307,6 +262,71 @@ input[type="date"]::before {
     font-size: 14px;
 }
 
-.imgUploader{
+.imgUploader {
     padding-top: 11px;
 }
+
+.deleteBtn {
+    font-size: calc(12px + (16 - 12) * ((100vw - 360px) / (1600 - 300))) !important;
+}
+
+.deleteBtn:focus {
+    box-shadow: none !important;
+    outline-width: 0;
+}
+
+.card {
+    border-radius: 16px;
+    width: calc(500px + 10 * ((100vw - 320px) / 680));
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.8);
+}
+
+.card-header {
+    border-radius: 12px !important;
+}
+
+.modal-body .btn-danger {
+    border-radius: 11px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-light {
+    background: transparent !important;
+    border: 0px !important;
+}
+
+.btn-light:hover {
+    border-color: #fff !important;
+}
+
+.btn-light:active {
+    border-color: #fff !important;
+}
+
+@media (max-width: 526px) {
+    .card {
+        width: unset;
+    }
+}
+
+.modal-content {
+    background: transparent !important;
+}
+
+.deleteMutedTxt {
+    font-size: 15px;
+    opacity: 75%;
+}
+
+.closeIcon {
+    font-size: 25px !important;
+    font-weight: bold;
+    opacity: 50%;
+}
+
+.activeBtn {
+    position: relative;
+    top: 60px;
+    left: 12px;
+}
+

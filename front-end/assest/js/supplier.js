@@ -40,7 +40,7 @@ function supplierFunction() {
         enableTxtField()
     })
     deleteSupplier.click(function () {
-        home2.addClass('show2')
+
     })
     showSupplierDetails.click(function () {
         supplierFormTitle.text('Supplier Details')
@@ -56,15 +56,5 @@ function supplierFunction() {
     })
     supplierPopupCancelBtn.click(function () {
         home.removeClass('show');
-    })
-
-    smallPopupClose.click(function () {
-        home2.removeClass('show2');
-    })
-    smallPopupCancelBtn.click(function () {
-        home2.removeClass('show2');
-    })
-    smallPopupAddBtn.click(function () {
-        home2.removeClass('show2');
     })
 }

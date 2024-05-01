@@ -45,7 +45,7 @@ function inventoryFunction() {
         enableTxtField()
     })
     deleteItem.click(function () {
-        home2.addClass('show2')
+
     })
     showItemDetails.click(function () {
         itemFormTitle.text('Item Details')
@@ -68,37 +68,6 @@ function inventoryFunction() {
         itemFormContainer.css('max-width', '800px')
 
     })
-
-    smallPopupClose.click(function () {
-        home2.removeClass('show2');
-    })
-    smallPopupCancelBtn.click(function () {
-        home2.removeClass('show2');
-    })
-    smallPopupAddBtn.click(function () {
-        home2.removeClass('show2');
-    })
-
-    $(document).ready(function () {
-        $('#uploadForm').submit(function (e) {
-            e.preventDefault();
-            var formData = new FormData(this);
-
-            $.ajax({
-                url: 'upload.php', // Specify your server-side script to handle the upload
-                type: 'POST',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (response) {
-                    $('#uploadStatus').text(response); // Display upload status
-                },
-                error: function (xhr, status, error) {
-                    console.error(status, error);
-                }
-            });
-        });
-    });
 
     imgUploader.change(function () {
         var file = $(this)[0].files[0];
