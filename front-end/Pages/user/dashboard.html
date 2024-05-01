@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../assest/boostrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../assest/font-awesome-pro-5/css/all.css">
+    <link rel="stylesheet" href="../../assest/css/all.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+    <link rel="stylesheet" href="../../assest/css/responsive.css">
+    <link rel="stylesheet" href="../../assest/css/pages.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <title>Shoe Shop</title>
+</head>
+<body>
+<header>
+    <div class="navBarPrimeryDiv container-fluid position-fixed top-0 p-0  z-2">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <h2 class="shoes ms-5" href="#">Shoes.</h2>
+                <div class="profile">
+                    <div class="info">
+                        <p class="m-0">Hey, <b>Sithum</b></p>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                    <div class="profile-photo me-2">
+                        <img src="../../assest/images/profile-1.jpg">
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<section class="sideBar bg-white shadow-lg d-flex flex-column  ms-5 pt-5">
+    <a href="#" id="dashboardBtn" class="active">
+                    <span class="material-icons-sharp">
+                        dashboard
+                    </span>
+        <h3 class="fs-6">Dashboard</h3>
+    </a>
+
+    <a href="#" id="customerBtn">
+                    <span class="material-icons-sharp">
+                        group
+                    </span>
+        <h3 class="fs-6">Customers</h3>
+    </a>
+
+    <a href="#" id="orderBtn">
+                   <span class="material-symbols-outlined">
+                       orders
+                   </span>
+        <h3 class="fs-6">Orders</h3>
+    </a>
+
+    <a href="#" id="inventoryBtn">
+                   <span class="material-symbols-outlined">
+                        inventory_2
+                    </span>
+        <h3 class="fs-6">Inventory</h3>
+    </a>
+
+    <a href="#" id="profileBtn">
+                    <span class="material-icons-sharp">
+                        person_outline
+                    </span>
+        <h3 class="fs-6">Profile</h3>
+    </a>
+
+    <a href="#">
+                    <span class="material-icons-sharp">
+                        logout
+                    </span>
+        <h3 class="fs-6">Logout</h3>
+    </a>
+</section>
+<main>
+    <section id="dashboard" class="mainSection d-none">
+        <div class="data">
+            <div class="row analyse">
+                <div class="shadow-lg col ">
+                    <div class="sales">
+                        <div class="status">
+                            <div class="info">
+                                <h3>Total Sales</h3>
+                                <h1>$65,024</h1>
+                            </div>
+                            <div class="progresss">
+                                <svg>
+                                    <circle cx="38" cy="38" r="36"></circle>
+                                </svg>
+                                <div class="percentage">
+                                    <p>+81%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow-lg col">
+                    <!--                    <img src="../Admin Dashboard/assets/images/Frame02.png" alt="">-->
+                    <!--                    <h2>100 <p>Employee Attendance</p></h2>-->
+                    <div class="sales">
+                        <div class="status">
+                            <div class="info">
+                                <h3>Total Sales</h3>
+                                <h1>$65,024</h1>
+                            </div>
+                            <div class="progresss">
+                                <svg>
+                                    <circle cx="38" cy="38" r="36"></circle>
+                                </svg>
+                                <div class="percentage">
+                                    <p>+81%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow-lg col">
+                    <!--                    <img src="../Admin Dashboard/assets/images/Frame03.png" alt="">-->
+                    <!--                    <h2>100 <p>Employee Attendance</p></h2>-->
+                    <div class="visits">
+                        <div class="status">
+                            <div class="info">
+                                <h3>Site Visit</h3>
+                                <h1>24,981</h1>
+                            </div>
+                            <div class="progresss">
+                                <svg>
+                                    <circle cx="38" cy="38" r="36"></circle>
+                                </svg>
+                                <div class="percentage">
+                                    <p>-48%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow-lg col lastDiv">
+                    <div class="searches">
+                        <div class="status">
+                            <div class="info">
+                                <h3>Searches</h3>
+                                <h1>14,147</h1>
+                            </div>
+                            <div class="progresss">
+                                <svg>
+                                    <circle cx="38" cy="38" r="36"></circle>
+                                </svg>
+                                <div class="percentage">
+                                    <p>+21%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="downMainDiv d-grid">
+            <div class="row mostSaleItem">
+                <h1>Most Sale Item</h1>
+                <div class="col shadow-lg ">
+                    <div class="text-center">
+                        <img class="me-5" src="../../assest/images/shoe01.png" width="260" alt="">
+                    </div>
+                    <div class="text-center ">
+                        <div class="d-inline-block itemDiv me-5 mt-3">
+                            <h6 class="text-center fs-6">Item Id</h6>
+                            <h1 class="text-center ">I001</h1>
+                        </div>
+                        <div class="d-inline-block itemDiv me-5 mt-3">
+                            <h6 class="text-center fs-6">Sold Qty</h6>
+                            <h1 class="text-center ">67</h1>
+                        </div>
+                        <div class="d-inline-block itemDiv mt-3">
+                            <h6 class="text-center">Shoe Size</h6>
+                            <h1 class="text-center ">08</h1>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col shadow-lg">
+                    <div class="qty">
+                        <div class="qtyStatus">
+                            <div class="qtyInfo">
+                                <h3>Quantity On Hand</h3>
+                                <h1 class="ms-2">254</h1>
+                            </div>
+                            <div class="qtyProgresses">
+                                <svg>
+                                    <circle cx="78" cy="78" r="76"></circle>
+                                </svg>
+                                <div class="qtyPercentage">
+                                    <p class="fs-2">+81%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recent-order">
+                <div class="row mostSaleItem">
+                    <h1 class="mt-4">Recent Orders</h1>
+                    <div class="col shadow-lg">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Order Id</th>
+                                <th scope="col">Customer Id</th>
+                                <th scope="col">Customer Name</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Total Price</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>O001</td>
+                                <td>C001</td>
+                                <td>Sithum Perera</td>
+                                <td>2024.01.20</td>
+                                <td>2500</td>
+                            </tr>
+                            <tr>
+                                <td>O002</td>
+                                <td>C002</td>
+                                <td>Imesh Perera</td>
+                                <td>2024.02.10</td>
+                                <td>3500</td>
+                            </tr>
+                            <tr>
+                                <td>O003</td>
+                                <td>C003</td>
+                                <td>Sithum Imesh</td>
+                                <td>2024.03.18</td>
+                                <td>5500</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!--    <section id="pages" class="mainSection"></section>-->
+
+    <section id="customer" class="mainSection">
+        <section id="customerSection">
+            <div class="tblDiv row" id="">
+                <h1>Employee Details</h1>
+                <div class="search p-0 row">
+                    <div class="col-9 p-0 d-flex align-items-center justify-content-end">
+                        <div class="d-flex align-items-center">
+                            <img class="ms-2 mb-1 opacity-75" src="../../assest/images/search-normal.png" width="25"
+                                 height="25" alt="">
+                            <input class="shadow-lg text-center ps" type="text" placeholder="Search by Id or Name">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-9 tableCol shadow-lg ">
+                    <div class="table-container">
+                        <table class="table mytable">
+                            <thead class="table-header">
+                            <tr>
+                                <th scope="col">
+                                </th>
+                                <th scope="col">Id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Join Date</th>
+                                <th scope="col">Contact</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Branch</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value=""
+                                               id="employeeTblCheckBox"/>
+                                    </div>
+                                </th>
+                                <td>E001</td>
+                                <td>Sithum Imesh</td>
+                                <td>Duwagoda Hikkaduwa</td>
+                                <td>0777524729</td>
+                                <td>2024.01.20</td>
+                                <td>Galle</td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value=""
+                                               id="flexCheckDefault3"/>
+                                    </div>
+                                </th>
+                                <td>E001</td>
+                                <td>Sithum Imesh</td>
+                                <td>Duwagoda Hikkaduwa</td>
+                                <td>0777524729</td>
+                                <td>2024.01.20</td>
+                                <td>Galle</td>
+
+                            </tr>
+
+                            <tr>
+                                <th scope="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value=""
+                                               id="flexCheckDefault4"/>
+                                    </div>
+                                </th>
+                                <td>E001</td>
+                                <td>Sithum Imesh</td>
+                                <td>Duwagoda Hikkaduwa</td>
+                                <td>0777524729</td>
+                                <td>2024.01.20</td>
+                                <td>Galle</td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value=""
+                                               id="flexCheckDefault5"/>
+                                    </div>
+                                </th>
+                                <td>E001</td>
+                                <td>Sithum Imesh</td>
+                                <td>Duwagoda Hikkaduwa</td>
+                                <td>0777524729</td>
+                                <td>2024.01.20</td>
+                                <td>Galle</td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value=""
+                                               id="flexCheckDefault6"/>
+                                    </div>
+                                </th>
+                                <td>E001</td>
+                                <td>Sithum Imesh</td>
+                                <td>Duwagoda Hikkaduwa</td>
+                                <td>0777524729</td>
+                                <td>2024.01.20</td>
+                                <td>Galle</td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value=""
+                                               id="flexCheckDefault7"/>
+                                    </div>
+                                </th>
+                                <td>E001</td>
+                                <td>Sithum Imesh</td>
+                                <td>Duwagoda Hikkaduwa</td>
+                                <td>0777524729</td>
+                                <td>2024.01.20</td>
+                                <td>Galle</td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value=""
+                                               id="flexCheckDefault8"/>
+                                    </div>
+                                </th>
+                                <td>E001</td>
+                                <td>Sithum Imesh</td>
+                                <td>Duwagoda Hikkaduwa</td>
+                                <td>0777524729</td>
+                                <td>2024.01.20</td>
+                                <td>Galle</td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value=""
+                                               id="flexCheckDefault9"/>
+                                    </div>
+                                </th>
+                                <td>E001</td>
+                                <td>Sithum Imesh</td>
+                                <td>Duwagoda Hikkaduwa</td>
+                                <td>0777524729</td>
+                                <td>2024.01.20</td>
+                                <td>Galle</td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value=""
+                                               id="flexCheckDefault10"/>
+                                    </div>
+                                </th>
+                                <td>E001</td>
+                                <td>Sithum Imesh</td>
+                                <td>Duwagoda Hikkaduwa</td>
+                                <td>0777524729</td>
+                                <td>2024.01.20</td>
+                                <td>Galle</td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value=""
+                                               id="flexCheckDefault11"/>
+                                    </div>
+                                </th>
+                                <td>E001</td>
+                                <td>Sithum Imesh</td>
+                                <td>Duwagoda Hikkaduwa</td>
+                                <td>0777524729</td>
+                                <td>2024.01.20</td>
+                                <td>Galle</td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value=""
+                                               id="flexCheckDefault12"/>
+                                    </div>
+                                </th>
+                                <td>E001</td>
+                                <td>Sithum Imesh</td>
+                                <td>Duwagoda Hikkaduwa</td>
+                                <td>0777524729</td>
+                                <td>2024.01.20</td>
+                                <td>Galle</td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value=""
+                                               id="flexCheckDefault13"/>
+                                    </div>
+                                </th>
+                                <td>E001</td>
+                                <td>Sithum Imesh</td>
+                                <td>Duwagoda Hikkaduwa</td>
+                                <td>0777524729</td>
+                                <td>2024.01.20</td>
+                                <td>Galle</td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value=""
+                                               id="flexCheckDefault14"/>
+                                    </div>
+                                </th>
+                                <td>E001</td>
+                                <td>Sithum Imesh</td>
+                                <td>Duwagoda Hikkaduwa</td>
+                                <td>0777524729</td>
+                                <td>2024.01.20</td>
+                                <td>Galle</td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value=""
+                                               id="flexCheckDefault15"/>
+                                    </div>
+                                </th>
+                                <td>E001</td>
+                                <td>Sithum Imesh</td>
+                                <td>Duwagoda Hikkaduwa</td>
+                                <td>0777524729</td>
+                                <td>2024.01.20</td>
+                                <td>Galle</td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value=""
+                                               id="flexCheckDefault16"/>
+                                    </div>
+                                </th>
+                                <td>E001</td>
+                                <td>Sithum Imesh</td>
+                                <td>Duwagoda Hikkaduwa</td>
+                                <td>0777524729</td>
+                                <td>2024.01.20</td>
+                                <td>Galle</td>
+
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="pagination-container">
+                        <button class="prev-btn"> Previous
+                            <!--                        <img src="../Pages/assets/images/arrow-point-to-left.png" width="25" alt="">-->
+                        </button>
+                        <button class="next-btn"> Next
+                            <!--                        <img src="../Pages/assets/images/arrow-point-to-right.png" width="25" alt="">-->
+                        </button>
+                    </div>
+
+                </div>
+                <div class="col-3 btnCol d-flex justify-content-center mt-4">
+                    <section class="d-flex flex-column gap-5">
+                        <button class="shadow-lg" id="addEmployee"><i class="fal fa-plus-circle"></i>
+                            <h1>Add Employee</h1>
+                        </button>
+                        <button class="shadow-lg" id="updateEmployee"><i class="fal fa-edit"></i>
+                            <h1>Update Employee</h1>
+                        </button>
+                        <button class="shadow-lg" id="deleteEmployee" data-toggle="modal" data-target="#my-modal" ><i class="fal fa-trash"></i>
+                            <h1>Delete Employee</h1>
+                        </button>
+                        <button class="shadow-lg" id="showEmployeeDetails"><i class="fal fa-info-circle"></i>
+                            <h1>Employee Details</h1>
+                        </button>
+                    </section>
+                </div>
+            </div>
+
+            <!-------------------------------Add/Update/Details/Delete Employee Form Start------------------------------------------->
+            <div class="form-container" id="employeeFormContainer">
+                <div class="form">
+                    <form action="#">
+                        <div class="pt-4 pb-4 ps-5 pe-5 d-flex justify-content-between">
+                            <div>
+                                <img id="employeeFormIcon" src="../../assest/images/Frame07.png" width="75" alt="">
+                                <h2 id="employeeFormTitle" class="d-inline-block ms-3">Add Employee</h2>
+                            </div>
+                            <div>
+                                <img class="popupClose" id="employeePopupClose" src="../../assest/images/close-btn.png"
+                                     width="75" alt="">
+                            </div>
+                        </div>
+                        <div class="lineDiv"></div>
+                        <div class="ps-5 pe-5" id="employeeTxtFieldBox">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="input_box ">
+                                        <input type="text" class="txt" id="employeeCode" placeholder="Employee Code">
+                                    </div>
+                                </div>
+                                <div class="col p-0">
+                                    <div class="input_box">
+                                        <select class="select form-select opacity-75 txt"
+                                                aria-label="Default select example"
+                                                id="employeeGender">
+                                            <option selected>Select Gender</option>
+                                            <option value="1">Male</option>
+                                            <option value="2">Female</option>
+                                            <option value="3">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="input_box">
+                                        <input type="text" class="txt" id="employeeName" placeholder="Employee Name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col">
+                                    <div class="input_box">
+                                        <input type="text" class="txt" id="employeeStatus" placeholder="Employee Status">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="input_box">
+                                        <input type="text" class="txt" id="employeeDesignation"
+                                               placeholder="Employee Designation">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="input_box">
+                                        <input type="text" id="employeeDOB" class="form-control txt"
+                                               placeholder="Date Of Birth">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="input_box">
+                                        <input type="text" id="employeeDOJ" class="form-control txt"
+                                               placeholder="Date Of Join">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="input_box">
+                                        <input type="text" class="txt" id="employeeBranch" placeholder="Branch">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="input_box">
+                                        <input type="text" class="txt" id="employeeBuilding"
+                                               placeholder="Building No. Or Name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="input_box">
+                                        <input type="text" class="txt" id="employeeLane" placeholder="Lane">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="input_box">
+                                        <input type="text" class="txt" id="employeeCity" placeholder="City">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="input_box">
+                                        <input type="text" class="txt" id="employeeState" placeholder="State">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="input_box">
+                                        <input type="text" class="txt" id="employeePostalCode" placeholder="Postal Code">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="input_box">
+                                        <input type="tel" class="txt" id="employeeContactNumber"
+                                               placeholder="Contact Number">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="input_box">
+                                        <input type="email" class="txt" id="employeeEmail" placeholder="email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="input_box">
+                                        <input type="text" class="txt" id="employeeGuardian" placeholder="Name of Guardian">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="input_box">
+                                        <input type="tel" class="txt" id="employeeGuardianContact"
+                                               placeholder="guardian Contact Details">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="input_box">
+                                        <select class="form-select opacity-75 txt" aria-label="Default select example"
+                                                id="employeeRole">
+                                            <option selected>Access Role</option>
+                                            <option value="Admin">Admin</option>
+                                            <option value="User">User</option>
+                                            <option value="Salesman">Salesman</option>
+                                            <option value="Cleaner">Cleaner</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row d-none" id="employeePageUserCredentials">
+                                <div class="col">
+                                    <div class="input_box">
+                                        <input type="email" id="EmployeePageUserUserName" placeholder="User Name Or Email">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="input_box">
+                                        <input type="password" id="EmployeePageUserPasswword"
+                                               placeholder="Passwword">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="d-flex justify-content-between ps-5 pe-5 mb-3">
+                            <button class="cancelBtn" id="employeePopupCancelBtn">Cancel</button>
+                            <button class="addBtn" id="employeePopupAddBtn">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+            <div class="container d-flex justify-content-center">
+                <div id="my-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content border-0">
+                            <div class="modal-body p-0">
+                                <div class="card border-0 p-sm-3 p-2 justify-content-center">
+                                    <div class="card-header pb-0 bg-white border-0 ">
+                                        <div class="row">
+                                            <div class="col ml-auto d-flex justify-content-end me-2">
+                                                <button type="button" class="close deleteBtn bg-white" data-dismiss="modal" aria-label="Close">
+                                                    <span class="closeIcon" aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <p class="font-weight-bold mb-2 fw-bold"> Are you sure you wanna delete this ?</p>
+                                        <p class="deleteMutedTxt"> This change will reflect in your portal after an hour.</p>
+                                    </div>
+                                    <div class="card-body px-sm-4 mb-2 pt-1 pb-0">
+                                        <div class="row justify-content-end no-gutters">
+                                            <div class="col-auto">
+                                                <button type="button" class="btn btn-light text-muted deleteBtn" data-dismiss="modal">
+                                                    Cancel
+                                                </button>
+                                            </div>
+                                            <div class="col-auto">
+                                                <button type="button" class="btn btn-danger px-4 deleteBtn" data-dismiss="modal">
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+</main>
+
+<script src="../../assest/js/code.jquery.com_jquery-3.7.1.min.js"></script>
+<script src="../../assest/boostrap/js/bootstrap.bundle.js"></script>
+<script src="../../assest/js/user/dashboard.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
