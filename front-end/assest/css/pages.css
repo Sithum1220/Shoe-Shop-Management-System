@@ -6,8 +6,11 @@
 
 }
 .userTblDiv .tableCol{
-    height: 39.25rem !important;
+    height: 39.5rem !important;
     border-radius: 25px;
+}
+.userTblDiv .tableCol .table-container{
+    height: 33rem;
 }
 
 .tblDiv .tableCol {
@@ -30,7 +33,7 @@
 
 .table-container {
     overflow-y: auto;
-    height: 32rem;
+    height: 35rem;
     position: relative;
 }
 

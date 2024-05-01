@@ -3,7 +3,7 @@ function pagination() {
     const table = $('.mytable');
     const prevBtn = $('.prev-btn');
     const nextBtn = $('.next-btn');
-    const rowsPerPage = 10; // Change as needed
+    const rowsPerPage = 15; // Change as needed
     let currentPage = 0;
 
     prevBtn.click(function() {
