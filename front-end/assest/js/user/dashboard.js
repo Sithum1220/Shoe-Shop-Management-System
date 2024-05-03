@@ -41,10 +41,25 @@ customerBtn.click(function () {
     // $('#inventorySection').remove();
     // $('#userSection').remove();
     $('#inventorySection').remove();
-    $('#pages').load('customer.html #customerSection', function () {
-        customerFunction();
-        pagination();
-    });
+
+    fetch('http://localhost:63342/shoe_management_system/front-end/Pages/customers/customer.html')
+        .then(response => response.text())
+        .then(data => {
+            console.log("HTML file loaded successfully:", data);
+            
+            var tempDiv = document.createElement('div');
+            tempDiv.innerHTML = data;
+
+            var extractedContent = tempDiv.querySelector('#customerSection').innerHTML;
+            
+            $("#pages").html(extractedContent);
+                customerFunction();
+                pagination();
+        })
+        .catch(error => {
+            console.error("Error loading HTML file:", error);
+        });
+    
 })
 orderBtn.click(function () {
     // $('#employee').css("display", "none");
@@ -79,10 +94,24 @@ inventoryBtn.click(function () {
     inventoryBtn.addClass('active')
     dashboard.css('display', 'none');
     $('#customerSection').remove();
-    $('#pages').load('inventory.html #inventorySection', function () {
-        pagination();
-        inventoryFunction();
-    });
+
+    fetch('http://localhost:63342/shoe_management_system/front-end/Pages/user/inventory.html')
+        .then(response => response.text())
+        .then(data => {
+            console.log("HTML file loaded successfully:", data);
+
+            var tempDiv = document.createElement('div');
+            tempDiv.innerHTML = data;
+
+            var extractedContent = tempDiv.querySelector('#inventorySection').innerHTML;
+
+            $("#pages").html(extractedContent);
+            inventoryFunction();
+            pagination();
+        })
+        .catch(error => {
+            console.error("Error loading HTML file:", error);
+        });
 })
 
 profileBtn.click(function () {

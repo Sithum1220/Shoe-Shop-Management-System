@@ -1,6 +1,7 @@
 const dashboardBtn = $('#dashboardBtn');
 const employeeBtn = $('#employeeBtn');
 const supplierBtn = $('#supplierBtn');
+const customerBtn = $('#customerBtn');
 const inventoryBtn = $('#inventoryBtn');
 const userBtn = $('#userBtn'),
     home = $('.home'),
@@ -15,6 +16,7 @@ dashboardBtn.click(function () {
     dashboardBtn.addClass('active')
     employeeBtn.removeClass('active')
     supplierBtn.removeClass('active')
+    customerBtn.removeClass('active')
     userBtn.removeClass('active')
     inventoryBtn.removeClass('active')
     dashboard.css('display', 'block');
@@ -35,14 +37,29 @@ employeeBtn.click(function () {
     supplierBtn.removeClass('active')
     userBtn.removeClass('active')
     inventoryBtn.removeClass('active')
+    customerBtn.removeClass('active')
     dashboard.css('display', 'none');
     $('#supplierSection').remove();
     $('#inventorySection').remove();
     $('#userSection').remove();
-    $('#pages').load('employee.html #employeSection', function () {
-        pagination();
-        employeeFunction();
-    });
+
+    fetch('http://localhost:63342/shoe_management_system/front-end/Pages/admin/employee.html')
+        .then(response => response.text())
+        .then(data => {
+            console.log("HTML file loaded successfully:", data);
+
+            var tempDiv = document.createElement('div');
+            tempDiv.innerHTML = data;
+
+            var extractedContent = tempDiv.querySelector('#employeSection').innerHTML;
+
+            $("#pages").html(extractedContent);
+            employeeFunction();
+            pagination();
+        })
+        .catch(error => {
+            console.error("Error loading HTML file:", error);
+        });
 })
 supplierBtn.click(function () {
     // $('#employee').css("display", "none");
@@ -55,14 +72,66 @@ supplierBtn.click(function () {
     supplierBtn.addClass('active')
     userBtn.removeClass('active')
     inventoryBtn.removeClass('active')
+    customerBtn.removeClass('active')
     dashboard.css('display', 'none');
     $('#employeSection').remove();
     $('#inventorySection').remove();
     $('#userSection').remove();
-    $('#pages').load('supplier.html #supplierSection', function () {
-        pagination();
-        supplierFunction();
-    });
+    $('#customerSection').remove();
+
+    fetch('http://localhost:63342/shoe_management_system/front-end/Pages/admin/supplier.html')
+        .then(response => response.text())
+        .then(data => {
+            console.log("HTML file loaded successfully:", data);
+
+            var tempDiv = document.createElement('div');
+            tempDiv.innerHTML = data;
+
+            var extractedContent = tempDiv.querySelector('#supplierSection').innerHTML;
+
+            $("#pages").html(extractedContent);
+            supplierFunction();
+            pagination();
+        })
+        .catch(error => {
+            console.error("Error loading HTML file:", error);
+        });
+})
+customerBtn.click(function () {
+    // $('#employee').css("display", "none");
+    // $('#dashboard').css("display", "none");
+    // $('#supplier').css("display", "block");
+    // $('#inventory').css("display", "none");
+    // $('#users').css("display", "none");
+    dashboardBtn.removeClass('active')
+    employeeBtn.removeClass('active')
+    supplierBtn.removeClass('active')
+    userBtn.removeClass('active')
+    inventoryBtn.removeClass('active')
+    customerBtn.addClass('active')
+    dashboard.css('display', 'none');
+    $('#employeSection').remove();
+    $('#inventorySection').remove();
+    $('#supplierSection').remove();
+    $('#userSection').remove();
+
+    fetch('http://localhost:63342/shoe_management_system/front-end/Pages/customers/customer.html')
+        .then(response => response.text())
+        .then(data => {
+            console.log("HTML file loaded successfully:", data);
+
+            var tempDiv = document.createElement('div');
+            tempDiv.innerHTML = data;
+
+            var extractedContent = tempDiv.querySelector('#customerSection').innerHTML;
+
+            $("#pages").html(extractedContent);
+            customerFunction();
+            pagination();
+        })
+        .catch(error => {
+            console.error("Error loading HTML file:", error);
+        });
 })
 inventoryBtn.click(function () {
     // $('#employee').css("display", "none");
@@ -75,14 +144,30 @@ inventoryBtn.click(function () {
     supplierBtn.removeClass('active')
     userBtn.removeClass('active')
     inventoryBtn.addClass('active')
+    customerBtn.removeClass('active')
+    
     $('#employeSection').remove();
     $('#userSection').remove();
     $('#supplierSection').remove();
     dashboard.css('display', 'none');
-    $('#pages').load('inventory.html #inventorySection', function () {
-        pagination();
-        inventoryFunction();
-    });
+
+    fetch('http://localhost:63342/shoe_management_system/front-end/Pages/admin/inventory.html')
+        .then(response => response.text())
+        .then(data => {
+            console.log("HTML file loaded successfully:", data);
+
+            var tempDiv = document.createElement('div');
+            tempDiv.innerHTML = data;
+
+            var extractedContent = tempDiv.querySelector('#inventorySection').innerHTML;
+
+            $("#pages").html(extractedContent);
+            inventoryFunction();
+            pagination();
+        })
+        .catch(error => {
+            console.error("Error loading HTML file:", error);
+        });
 })
 
 userBtn.click(function () {
@@ -95,14 +180,30 @@ userBtn.click(function () {
     employeeBtn.removeClass('active')
     supplierBtn.removeClass('active')
     inventoryBtn.removeClass('active')
+    customerBtn.removeClass('active')
     userBtn.addClass('active')
     $('#employeSection').remove();
     $('#inventorySection').remove();
     $('#supplierSection').remove();
     dashboard.css('display', 'none');
-    $('#pages').load('user.html #userSection', function () {
-        pagination();
-    });
+
+    fetch('http://localhost:63342/shoe_management_system/front-end/Pages/admin/user.html')
+        .then(response => response.text())
+        .then(data => {
+            console.log("HTML file loaded successfully:", data);
+
+            var tempDiv = document.createElement('div');
+            tempDiv.innerHTML = data;
+
+            var extractedContent = tempDiv.querySelector('#userSection').innerHTML;
+
+            $("#pages").html(extractedContent);
+            inventoryFunction();
+            pagination();
+        })
+        .catch(error => {
+            console.error("Error loading HTML file:", error);
+        });
 })
 
 function disableTxtField() {

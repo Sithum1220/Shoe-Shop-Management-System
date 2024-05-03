@@ -6,7 +6,7 @@
 
 }
 .userTblDiv .tableCol{
-    height: 39.5rem !important;
+    height: 38.2rem !important;
     border-radius: 25px;
 }
 .userTblDiv .tableCol .table-container{
@@ -20,7 +20,7 @@
     box-shadow: var(--box-shadow);
     cursor: pointer;
     transition: all 0.3s ease;
-    height: 41.5rem;
+    height: 40.2rem;
     margin-top: 20px;
 }
 
