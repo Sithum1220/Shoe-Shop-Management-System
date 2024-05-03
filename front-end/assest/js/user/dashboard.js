@@ -80,6 +80,24 @@ orderBtn.click(function () {
     //     pagination();
     //     supplierFunction();
     // });
+
+    fetch('http://localhost:63342/shoe_management_system/front-end/Pages/customers/customerOrder.html')
+        .then(response => response.text())
+        .then(data => {
+            console.log("HTML file loaded successfully:", data);
+
+            var tempDiv = document.createElement('div');
+            tempDiv.innerHTML = data;
+
+            var extractedContent = tempDiv.querySelector('#customerOrderSection').innerHTML;
+
+            $("#pages").html(extractedContent);
+            customerFunction();
+            pagination();
+        })
+        .catch(error => {
+            console.error("Error loading HTML file:", error);
+        });
 })
 inventoryBtn.click(function () {
     // $('#employee').css("display", "none");
