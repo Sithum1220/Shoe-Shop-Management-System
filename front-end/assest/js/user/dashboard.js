@@ -20,6 +20,7 @@ dashboardBtn.click(function () {
     dashboard.css('display', 'block');
     $('#customerSection').remove();
     $('#inventorySection').remove();
+    $('#customerOrderSection').remove();
     // $('#supplierSection').remove();
     // $('#inventorySection').remove();
     // $('#userSection').remove();
@@ -39,9 +40,7 @@ customerBtn.click(function () {
     dashboard.css('display', 'none');
     // $('#supplierSection').remove();
     // $('#inventorySection').remove();
-    // $('#userSection').remove();
-    $('#inventorySection').remove();
-
+    $('#customerOrderSection').remove();
     fetch('http://localhost:63342/shoe_management_system/front-end/Pages/customers/customer.html')
         .then(response => response.text())
         .then(data => {
@@ -50,7 +49,7 @@ customerBtn.click(function () {
             var tempDiv = document.createElement('div');
             tempDiv.innerHTML = data;
 
-            var extractedContent = tempDiv.querySelector('#customerSection').innerHTML;
+            var extractedContent = tempDiv.querySelector('#customerMainSection').innerHTML;
             
             $("#pages").html(extractedContent);
                 customerFunction();
@@ -89,7 +88,7 @@ orderBtn.click(function () {
             var tempDiv = document.createElement('div');
             tempDiv.innerHTML = data;
 
-            var extractedContent = tempDiv.querySelector('#customerOrderSection').innerHTML;
+            var extractedContent = tempDiv.querySelector('#customerOrderMainSection').innerHTML;
 
             $("#pages").html(extractedContent);
             customerFunction();
@@ -121,7 +120,7 @@ inventoryBtn.click(function () {
             var tempDiv = document.createElement('div');
             tempDiv.innerHTML = data;
 
-            var extractedContent = tempDiv.querySelector('#inventorySection').innerHTML;
+            var extractedContent = tempDiv.querySelector('#inventoryMainSection').innerHTML;
 
             $("#pages").html(extractedContent);
             inventoryFunction();

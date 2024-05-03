@@ -18,7 +18,7 @@ function supplierFunction() {
 
 
     addSupplier.click(function () {
-        home.addClass('show')
+    
         supplierPopupAddBtn.text("Save")
         supplierPopupAddBtn.css('display', 'block');
         supplierPopupCancelBtn.css('width', '48%');
@@ -29,7 +29,7 @@ function supplierFunction() {
         enableTxtField()
     })
     updateSupplier.click(function () {
-        home.addClass('show')
+    
         supplierFormTitle.text('Update Supplier')
         supplierPopupAddBtn.css('display', 'block');
         supplierPopupAddBtn.text("Update")
@@ -48,13 +48,7 @@ function supplierFunction() {
         supplierPopupCancelBtn.css('width', '100%');
         supplierFormIcon.attr('src', '../../assest/images/detailsIcon.png')
         supplierTxtFieldBox.css('display', 'block');
-        home.addClass('show')
+        
         disableTxtField();
-    })
-    supplierPopupClose.click(function () {
-        home.removeClass('show');
-    })
-    supplierPopupCancelBtn.click(function () {
-        home.removeClass('show');
     })
 }

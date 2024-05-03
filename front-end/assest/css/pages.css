@@ -6,7 +6,7 @@
 
 }
 .userTblDiv .tableCol{
-    height: 38.2rem !important;
+    height: 38.85rem !important;
     border-radius: 25px;
 }
 .userTblDiv .tableCol .table-container{
@@ -20,7 +20,7 @@
     box-shadow: var(--box-shadow);
     cursor: pointer;
     transition: all 0.3s ease;
-    height: 40.2rem;
+    /*height: 40.2rem;*/
     margin-top: 20px;
 }
 
@@ -100,9 +100,6 @@
     margin-top: 5px;
 }
 
-/*.btnCol button:first-child {*/
-/*    padding-right: 12%;*/
-/*}*/
 
 .btnCol button i {
     font-size: 20px;
@@ -116,19 +113,21 @@
 
 .form-container {
     position: fixed;
-    max-width: 800px;
+    max-width: 650px;
+    height: auto;
     width: 100%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1.2);
     z-index: 101;
     background: #ffffff;
-    padding: 20px;
+    padding: 10px;
     border-radius: 25px;
     box-shadow: rgb(0, 0, 0, 0.1);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.4s ease;
+}
+
+.windowPopup{
+    max-width: 650px;
 }
 
 .popupClose {
@@ -144,7 +143,7 @@
 
 .input_box {
     position: relative;
-    margin-top: 30px;
+    margin-top: 16px;
     width: 100%;
     height: 40px;
 }
@@ -185,32 +184,6 @@
     background: #ffffff;
     color: #000000;
     border: #c5c5c5 solid 1px;
-}
-
-.home {
-    z-index: 1002;
-}
-.home.show .form-container {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translate(-50%, -50%) scale(1);
-}
-
-.home::before {
-    content: "";
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 100;
-    opacity: 0;
-    pointer-events: none;
-    /*transition: all 0.5s ease-out;*/
-}
-
-.home.show::before {
-    opacity: 1;
-    pointer-events: auto;
 }
 
 input[type="date"]::before {

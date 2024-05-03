@@ -5,125 +5,127 @@
     <title>User</title>
 </head>
 <body>
-<section id="userSection">
-    <div class="tblDiv userTblDiv row" id="">
-        <h1>User Details</h1>
-        <div class="form-check activeBtn">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-            <label class="form-check-label" for="flexRadioDefault2">
-                Active Users
-            </label>
-        </div>
-        <div class="search m-0 p-0">
-            <div class="me-5 p-0 d-flex align-items-center justify-content-end g-3">
-                <div class="d-flex align-items-center">
-                    <img class="ms-2 mb-1 opacity-75" src="../../assest/images/search-normal.png" width="25"
-                         height="25" alt="">
-                    <input class="shadow-lg text-center ps" type="text" placeholder="Search by Id or Name">
+<section id="UserMainSection">
+    <section id="userSection">
+        <div class="tblDiv userTblDiv row" id="">
+            <h1>User Details</h1>
+            <div class="form-check activeBtn">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Active Users
+                </label>
+            </div>
+            <div class="search m-0 p-0">
+                <div class="me-5 p-0 d-flex align-items-center justify-content-end g-3">
+                    <div class="d-flex align-items-center">
+                        <img class="ms-2 mb-1 opacity-75" src="../../assest/images/search-normal.png" width="25"
+                             height="25" alt="">
+                        <input class="shadow-lg text-center ps" type="text" placeholder="Search by Id or Name">
+                    </div>
+                    <section class="d-flex flex-column btnCol userDeleteBtn ms-4">
+                        <button class="shadow-lg" id="deleteUser" data-toggle="modal" data-target="#my-modal"><i
+                                class="fal fa-trash"></i>
+                            <h1>Delete User</h1>
+                        </button>
+                    </section>
                 </div>
-                <section class="d-flex flex-column btnCol userDeleteBtn ms-4">
-                    <button class="shadow-lg" id="deleteUser" data-toggle="modal" data-target="#my-modal"><i
-                            class="fal fa-trash"></i>
-                        <h1>Delete User</h1>
-                    </button>
-                </section>
-            </div>
-
-        </div>
-        <div class="col me-5 tableCol shadow-lg ">
-            <div class="table-container">
-                <table class="table mytable">
-                    <thead class="table-header">
-                    <tr>
-                        <th scope="col">
-                        </th>
-                        <th scope="col">Id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">Contact</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
-
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value=""
-                                       id="supplierTblCheckBox"/>
-                            </div>
-                        </th>
-                        <td>E001</td>
-                        <td>Sithum Imesh</td>
-                        <td>Duwagoda, Hikkaduwa</td>
-                        <td>0777524729</td>
-                        <td>sithumimesh82@gmail.com</td>
-                        <td>Admin</td>
-
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value=""
-                                       id="flexCheckDefault3"/>
-                            </div>
-                        </th>
-                        <td>E002</td>
-                        <td>Sithum Perera</td>
-                        <td>Wellawatte Hikkaduwa</td>
-                        <td>0777938904</td>
-                        <td>sithumperera@gmail.com</td>
-                        <td>User</td>
-
-                    </tr>
-                    </tbody>
-                </table>
 
             </div>
-            <div class="pagination-container">
-                <button class="prev-btn"> Previous
-                    <!--                        <img src="../Pages/assets/images/arrow-point-to-left.png" width="25" alt="">-->
-                </button>
-                <button class="next-btn"> Next
-                    <!--                        <img src="../Pages/assets/images/arrow-point-to-right.png" width="25" alt="">-->
-                </button>
-            </div>
+            <div class="col me-5 tableCol shadow-lg ">
+                <div class="table-container">
+                    <table class="table mytable">
+                        <thead class="table-header">
+                        <tr>
+                            <th scope="col">
+                            </th>
+                            <th scope="col">Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Contact</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Role</th>
 
-        </div>
-
-    </div>
-    <div class="container d-flex justify-content-center">
-        <div id="my-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content border-0">
-                    <div class="modal-body p-0">
-                        <div class="card border-0 p-sm-3 p-2 justify-content-center">
-                            <div class="card-header pb-0 bg-white border-0 ">
-                                <div class="row">
-                                    <div class="col ml-auto d-flex justify-content-end me-2">
-                                        <button type="button" class="close deleteBtn bg-white" data-dismiss="modal"
-                                                aria-label="Close">
-                                            <span class="closeIcon" aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value=""
+                                           id="supplierTblCheckBox"/>
                                 </div>
-                                <p class="font-weight-bold mb-2 fw-bold"> Are you sure you wanna delete this ?</p>
-                                <p class="deleteMutedTxt"> This change will reflect in your portal after an hour.</p>
-                            </div>
-                            <div class="card-body px-sm-4 mb-2 pt-1 pb-0">
-                                <div class="row justify-content-end no-gutters">
-                                    <div class="col-auto">
-                                        <button type="button" class="btn btn-light text-muted deleteBtn"
-                                                data-dismiss="modal">
-                                            Cancel
-                                        </button>
+                            </th>
+                            <td>E001</td>
+                            <td>Sithum Imesh</td>
+                            <td>Duwagoda, Hikkaduwa</td>
+                            <td>0777524729</td>
+                            <td>sithumimesh82@gmail.com</td>
+                            <td>Admin</td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value=""
+                                           id="flexCheckDefault3"/>
+                                </div>
+                            </th>
+                            <td>E002</td>
+                            <td>Sithum Perera</td>
+                            <td>Wellawatte Hikkaduwa</td>
+                            <td>0777938904</td>
+                            <td>sithumperera@gmail.com</td>
+                            <td>User</td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="pagination-container">
+                    <button class="prev-btn"> Previous
+                        <!--                        <img src="../Pages/assets/images/arrow-point-to-left.png" width="25" alt="">-->
+                    </button>
+                    <button class="next-btn"> Next
+                        <!--                        <img src="../Pages/assets/images/arrow-point-to-right.png" width="25" alt="">-->
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="container d-flex justify-content-center">
+            <div id="my-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content border-0">
+                        <div class="modal-body p-0">
+                            <div class="card border-0 p-sm-3 p-2 justify-content-center">
+                                <div class="card-header pb-0 bg-white border-0 ">
+                                    <div class="row">
+                                        <div class="col ml-auto d-flex justify-content-end me-2">
+                                            <button type="button" class="close deleteBtn bg-white" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                <span class="closeIcon" aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div class="col-auto">
-                                        <button type="button" class="btn btn-danger px-4 deleteBtn"
-                                                data-dismiss="modal">
-                                            Delete
-                                        </button>
+                                    <p class="font-weight-bold mb-2 fw-bold"> Are you sure you wanna delete this ?</p>
+                                    <p class="deleteMutedTxt"> This change will reflect in your portal after an hour.</p>
+                                </div>
+                                <div class="card-body px-sm-4 mb-2 pt-1 pb-0">
+                                    <div class="row justify-content-end no-gutters">
+                                        <div class="col-auto">
+                                            <button type="button" class="btn btn-light text-muted deleteBtn"
+                                                    data-dismiss="modal">
+                                                Cancel
+                                            </button>
+                                        </div>
+                                        <div class="col-auto">
+                                            <button type="button" class="btn btn-danger px-4 deleteBtn"
+                                                    data-dismiss="modal">
+                                                Delete
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -132,7 +134,8 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
 </section>
 
 </body>

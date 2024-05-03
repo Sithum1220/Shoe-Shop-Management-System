@@ -4,7 +4,6 @@ const supplierBtn = $('#supplierBtn');
 const customerBtn = $('#customerBtn');
 const inventoryBtn = $('#inventoryBtn');
 const userBtn = $('#userBtn'),
-    home = $('.home'),
     dashboard = $('#dashboard');
 
 dashboardBtn.click(function () {
@@ -51,7 +50,7 @@ employeeBtn.click(function () {
             var tempDiv = document.createElement('div');
             tempDiv.innerHTML = data;
 
-            var extractedContent = tempDiv.querySelector('#employeSection').innerHTML;
+            var extractedContent = tempDiv.querySelector('#employeeMainSection').innerHTML;
 
             $("#pages").html(extractedContent);
             employeeFunction();
@@ -87,7 +86,7 @@ supplierBtn.click(function () {
             var tempDiv = document.createElement('div');
             tempDiv.innerHTML = data;
 
-            var extractedContent = tempDiv.querySelector('#supplierSection').innerHTML;
+            var extractedContent = tempDiv.querySelector('#supplierMainSection').innerHTML;
 
             $("#pages").html(extractedContent);
             supplierFunction();
@@ -123,7 +122,7 @@ customerBtn.click(function () {
             var tempDiv = document.createElement('div');
             tempDiv.innerHTML = data;
 
-            var extractedContent = tempDiv.querySelector('#customerSection').innerHTML;
+            var extractedContent = tempDiv.querySelector('#customerMainSection').innerHTML;
 
             $("#pages").html(extractedContent);
             customerFunction();
@@ -159,7 +158,7 @@ inventoryBtn.click(function () {
             var tempDiv = document.createElement('div');
             tempDiv.innerHTML = data;
 
-            var extractedContent = tempDiv.querySelector('#inventorySection').innerHTML;
+            var extractedContent = tempDiv.querySelector('#InventoryMainSection').innerHTML;
 
             $("#pages").html(extractedContent);
             inventoryFunction();
@@ -195,7 +194,7 @@ userBtn.click(function () {
             var tempDiv = document.createElement('div');
             tempDiv.innerHTML = data;
 
-            var extractedContent = tempDiv.querySelector('#userSection').innerHTML;
+            var extractedContent = tempDiv.querySelector('#UserMainSection').innerHTML;
 
             $("#pages").html(extractedContent);
             inventoryFunction();
