@@ -1,2 +1,5 @@
-package lk.ijse.spring.shoeshop.embedded;public enum Category {
+package lk.ijse.spring.shoeshop.embedded;
+
+public enum Category {
+    INTERNATIONAL, LOCAL
 }

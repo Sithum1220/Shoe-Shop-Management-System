@@ -1,4 +1,4 @@
-package lk.ijse.gdse66.springbootwithjwt.util;
+package lk.ijse.spring.shoeshop.util;
 
 public enum Role {
     ADMIN,USER
