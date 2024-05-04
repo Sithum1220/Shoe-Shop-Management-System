@@ -213,3 +213,13 @@ function disableTxtField() {
 function enableTxtField() {
     $('.txt').removeAttr('readonly');
 }
+function datePicker() {
+        $("#employeeDOJ").datepicker({
+            dateFormat: 'yy-mm-dd',
+            maxDate: new Date()
+        });
+        $("#employeeDOB").datepicker({
+            dateFormat: 'yy-mm-dd',
+            maxDate: new Date()
+        });
+}

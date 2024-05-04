@@ -116,46 +116,28 @@ function employeeFunction() {
                 console.log("success: ", jqxhr);
                 /*if(jqxhr.status == 201)
                     alert("Added customer successfully")*/
-                if (resp.code === 200) {
-                    alert(jqxhr.responseText);
+                if (resp.state == 200) {
+                    console.log(resp);
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Employee has been saved",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
                 }
             },
             error: function (resp) {
-                alert(resp.responseJSON.message);
+                console.log(resp)
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: resp.responseJSON.message,
+                    footer: '<a href="#"></a>'
+                });
             }
         })
-
-
-// Fetch POST request
-//         fetch("http://localhost:8080/api/v1/employees", {
-//             method: "POST",
-//             headers: {
-//                 "Content-Type": "application/json"
-//             },
-//             body: JSON.stringify(postData) // Convert data to JSON format
-//         })
-//             .then(response => {
-//                 if (!response.ok) {
-//                     throw new Error('Network response was not ok');
-//                 }
-//                 return response.json();
-//             })
-//             .then(data => {
-//                 console.log(data);
-//             })
-//             .catch(error => {
-//                 console.error('Error:', error);
-//             });
     })
 
-    $(document).ready(function () {
-        $("#employeeDOJ").datepicker({
-            dateFormat: 'yy-mm-dd',
-            maxDate: new Date()
-        });
-        $("#employeeDOB").datepicker({
-            dateFormat: 'yy-mm-dd',
-            maxDate: new Date()
-        });
-    });
+
 }

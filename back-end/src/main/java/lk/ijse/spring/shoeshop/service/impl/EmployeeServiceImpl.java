@@ -30,20 +30,23 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (!employeeRepository.existsById(employeeDTo.getEmployeeId())) {
             if (!employeeRepository.existsByEmail(employeeDTo.getEmail())) {
                 if (!employeeRepository.existsByContactNo(employeeDTo.getContactNo())) {
-                    if (employeeRepository.existsByEmergencyContact(employeeDTo.getEmergencyContact())) {
-                        throw new EntityExistsException("Employee Contact Number already exists!");
-                    }else {
+                    if (!employeeRepository.existsByEmergencyContact(employeeDTo.getEmergencyContact())) {
                         System.out.println(employeeDTo.toString());
 
                         Employee employee = modelMapper.map(employeeDTo, Employee.class);
 
                         employee.setAddress(employeeDTo.getAddress());
                         employeeRepository.save(employee);
+                    }else {
+                        throw new EntityExistsException("Emergency Contact Number already exists!");
                     }
+                }else {
                     throw new EntityExistsException("Employee Contact Number already exists!");
                 }
+            }else {
                 throw new EntityExistsException("Email Address already exists!");
             }
+        }else {
             throw new EntityExistsException("Employee already exists!");
         }
     }

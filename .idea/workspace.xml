@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="032d1856-7f95-44cb-a7e8-c221ea7611af" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9132a697-4a09-4a6c-b8d3-c02493ec795e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9132a697-4a09-4a6c-b8d3-c02493ec795e.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/repository/EmployeeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/repository/EmployeeRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/EmployeeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/test/java/lk/ijse/spring/shoeshop/service/impl/EmployeeServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/test/java/lk/ijse/spring/shoeshop/service/impl/EmployeeServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/employee.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/employee.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/assest/js/admin/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/js/admin/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/assest/js/admin/employee.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/js/admin/employee.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/front-end.iml" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/front-end.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +183,7 @@
       <workItem from="1714731919617" duration="10293000" />
       <workItem from="1714758286865" duration="193000" />
       <workItem from="1714758488589" duration="14758000" />
-      <workItem from="1714795909850" duration="9095000" />
+      <workItem from="1714795909850" duration="14523000" />
     </task>
     <servers />
   </component>
