@@ -26,19 +26,25 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void saveEmployee(EmployeeDTO employee) {
-        if (employeeRepository.existsById(employee.getEmployeeId())){
+    public void saveEmployee(EmployeeDTO employeeDTo) {
+        if (employeeRepository.existsById(employeeDTo.getEmployeeId())) {
             throw new EntityExistsException("Employee already exists!");
-        }else {
-            employeeRepository.save(modelMapper.map(employee, Employee.class));
+        } else {
+            System.out.println(employeeDTo.toString());
+
+            Employee employee = modelMapper.map(employeeDTo, Employee.class);
+
+            employee.setAddress(employeeDTo.getAddress());
+            employeeRepository.save(employee);
         }
     }
 
     @Override
     public void updateEmployee(EmployeeDTO employee) {
-        if (employeeRepository.existsById(employee.getEmployeeId())){
+        if (employeeRepository.existsById(employee.getEmployeeId())) {
+            if (employeeRepository.existsById(employee.getEmployeeId())) {}
             employeeRepository.save(modelMapper.map(employee, Employee.class));
-        }else {
+        } else {
             throw new EntityExistsException("Employee Not Found!");
         }
 
@@ -46,9 +52,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void deleteEmployee(String id) {
-        if (employeeRepository.existsById(id)){
+        if (employeeRepository.existsById(id)) {
             employeeRepository.deleteById(id);
-        }else {
+        } else {
             throw new EntityExistsException("Employee Not Found!");
         }
     }
@@ -60,7 +66,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<EmployeeDTO> getAllEmployees() {
-        return modelMapper.map(employeeRepository.findAll(),new TypeToken<List<EmployeeDTO>>() {}.getType());
+        return modelMapper.map(employeeRepository.findAll(), new TypeToken<List<EmployeeDTO>>() {
+        }.getType());
     }
 
     @Override
