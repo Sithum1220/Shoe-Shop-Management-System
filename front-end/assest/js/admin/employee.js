@@ -1,4 +1,3 @@
-
 function employeeFunction() {
     const addEmployee = $('#addEmployee'),
         updateEmployee = $('#updateEmployee'),
@@ -16,7 +15,6 @@ function employeeFunction() {
         employeeRole = $('#employeeRole');
 
 
-
     addEmployee.click(function () {
         employeePopupAddBtn.text("Save")
         employeePopupAddBtn.css('display', 'block');
@@ -28,6 +26,22 @@ function employeeFunction() {
         $("#employeeDOJ").prop('disabled', false);
         $("#employeeRole").prop('disabled', false);
         enableTxtField()
+        $('#employeeCode').attr('readonly', "");
+        fetch("http://localhost:8080/api/v1/employees")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json(); // Read response as text
+            })
+            .then(data => {
+                console.log(data);
+                $('#employeeCode').val(data.data); // Assuming data is a string
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        
     })
     updateEmployee.click(function () {
         employeeFormTitle.text('Update Employee')
@@ -56,7 +70,7 @@ function employeeFunction() {
         $("#employeeRole").prop('disabled', true);
         disableTxtField();
     })
-   
+
     employeeRole.change(function () {
         console.log($(this).val());
         if ($(this).val() === 'Admin' || $(this).val() === 'User') {
