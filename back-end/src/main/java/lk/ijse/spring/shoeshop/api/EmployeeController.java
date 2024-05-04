@@ -8,7 +8,10 @@ import lk.ijse.spring.shoeshop.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/employees")
@@ -44,4 +47,11 @@ public class EmployeeController {
 //        System.out.println("jjeee");
 //        return new ResponseUtil("200", "Successfully Fetched Employee Count", employeeService.countEmployee());
 //    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<EmployeeDTO> getImageById(@PathVariable("id") String id) {
+        Optional<EmployeeDTO> optionalImageEntity = Optional.ofNullable(employeeService.getEmployee(id));
+        return optionalImageEntity.map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
 }

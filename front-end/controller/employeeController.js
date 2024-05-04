@@ -1,7 +1,9 @@
 function employeeControlFunction() {
     saveEmployee();
     imageUploader();
-    getAllEmployeeData()
+    getAllEmployeeData();
+    clickTblRow();
+    setEmployeeImg();
 }
 
 var base64String;
@@ -126,6 +128,47 @@ function getAllEmployeeData() {
             console.log("error: ", error);
         }
     })
+}
+
+function clickTblRow() {
+
+    $('#tblEmployee').on('click', 'tr', function(event) {
+        var checkbox = $(this).find('input[type="checkbox"]');
+
+        var isCheckboxClick = $(event.target).is('input[type="checkbox"]');
+        
+        if (!isCheckboxClick) {
+            checkbox.prop('checked', !checkbox.prop('checked'));
+        }
+        
+        setImage(checkbox);
+    });
+    
+    $('#tblEmployee').on('change', 'input[type="checkbox"]', function() {
+        setImage($(this).find('input[type="checkbox"]'));
+    });
+
+   
+}
+function setImage(checkbox) {
+    var row = checkbox.closest('tr');
+    if (checkbox.is(':checked')) {
+        var id = row.find('td:eq(0)').text();
+        $.ajax({
+            url: "http://localhost:8080/api/v1/employees/"+id,
+            type: "GET",
+            dataType: "json",
+            success: function(response) {
+                $('#employeeImg').attr('src', 'data:image/jpeg;base64,' + response.proPic);
+                console.log(response);
+            },
+            error: function(xhr, status, error) {
+                console.error('Failed to fetch image:', error);
+            }
+        });
+    } else {
+        $('#employeeImg').attr('src', '#');
+    }
 }
 
 // var respLength;
