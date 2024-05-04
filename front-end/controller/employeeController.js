@@ -1,20 +1,49 @@
+
 function employeeControlFunction() {
     saveEmployee();
-
+    imageUploader();
 }
-
+var base64String;
 function saveEmployee() {
-    const  employeePopupAddBtn = $('#employeePopupAddBtn');
-    
+    const employeePopupAddBtn = $('#employeePopupAddBtn');
+
+
+    // const fileInput = $('#file-input')[0];
+    // const file = fileInput.files[0];
+    //
+    // if (!file) {
+    //     console.error('No file selected');
+    //     return;
+    // }
+
+    // var reader = new FileReader();
+    // const base64String = reader.result.split(',')[1]; // Get the Base64 string without the data URL prefix
+    // // Send the Base64 string to the server
+    // $.ajax({
+    //     url: 'http://localhost:8080/api/v1/upload',
+    //     type: 'POST',
+    //     contentType: 'text/plain',
+    //     data: base64String,
+    //     success: function (response) {
+    //         console.log('Upload successful:', response);
+    //         // Handle successful upload
+    //     },
+    //     error: function (xhr, status, error) {
+    //         console.error('Upload failed:', error);
+    //         // Handle error
+    //     }
+    // });
+
+
     employeePopupAddBtn.click(function () {
 
-        if($('#employeeRole').val() === "Admin" || $('#employeeRole').val() === "User"){
-           var role = $('#employeeRole').val().toUpperCase();
+        if ($('#employeeRole').val() === "Admin" || $('#employeeRole').val() === "User") {
+            var role = $('#employeeRole').val().toUpperCase();
         }
-        if($('#employeeGender').val() === "Male" || $('#employeeGender').val() === "Female"){
+        if ($('#employeeGender').val() === "Male" || $('#employeeGender').val() === "Female") {
             var gender = $('#employeeGender').val().toUpperCase();
         }
-        
+
         const postData = {
             employeeId: $('#employeeCode').val(),
             gender: gender,
@@ -22,9 +51,10 @@ function saveEmployee() {
             employeeStatus: $('#employeeStatus').val(),
             branch: $('#employeeBranch').val(),
             designation: $('#employeeDesignation').val(),
+            proPic: base64String,
             joinDate: $('#employeeDOJ').val(),
             employeeDob: $('#employeeDOB').val(),
-            role:role,
+            role: role,
             address: {
                 buildNo: $('#employeeBuilding').val(),
                 city: $('#employeeCity').val(),
@@ -71,6 +101,45 @@ function saveEmployee() {
                 });
             }
         })
+
+
+        $.ajax({
+            url: 'http://localhost:8080/api/v1/upload',
+            type: 'POST',
+            contentType: 'text/plain',
+            data: base64String,
+            success: function (response) {
+                console.log('Upload successful:', response);
+                // Handle successful upload
+            },
+            error: function (xhr, status, error) {
+                console.error('Upload failed:', error);
+                // Handle error
+            }
+        });
     })
 }
 
+function imageUploader() {
+    const imgUploader = $('#imgUploader');
+    const imgViewer = $('#imgViewer');
+    imgUploader.change(function () {
+
+        var file = this.files[0]; // Get the selected file
+
+        if (file) {
+            var reader = new FileReader(); // Initialize FileReader object
+
+            reader.onload = function (e) {
+                imgViewer.attr('src', e.target.result);
+                 base64String = reader.result.split(',')[1]; // Get the Base64 string without the data URL prefix
+                // Send the Base64 string to the server
+                // Set image source to the read file data
+            };
+
+            reader.readAsDataURL(file); // Read the file as a data URL
+        } else {
+            imgViewer.attr('src', '#'); // Clear the image source if no file is selected
+        }
+    })
+}

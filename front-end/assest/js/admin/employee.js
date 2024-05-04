@@ -13,7 +13,8 @@ function employeeFunction() {
         employeeFormContainer = $('#employeeFormContainer'),
         employeePopupClose = $('#employeePopupClose'),
         employeeRole = $('#employeeRole');
-
+    const  imgUploader = $('#imgUploader');
+    const  imgViewer = $('#imgViewer');
 
     addEmployee.click(function () {
         employeePopupAddBtn.text("Save")
@@ -79,8 +80,8 @@ function employeeFunction() {
             employeePageUserCredentials.addClass('d-none');
         }
     })
-    
 
+    
 
 
 }
