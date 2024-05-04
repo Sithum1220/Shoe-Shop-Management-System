@@ -20,8 +20,9 @@
     box-shadow: var(--box-shadow);
     cursor: pointer;
     transition: all 0.3s ease;
-    /*height: 40.2rem;*/
+    height: 35rem;
     margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 .tblDiv h1 {
@@ -33,7 +34,7 @@
 
 .table-container {
     overflow-y: auto;
-    height: 35rem;
+    height: 31rem;
     position: relative;
 }
 

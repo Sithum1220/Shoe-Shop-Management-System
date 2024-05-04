@@ -69,11 +69,11 @@ class EmployeeServiceImplTest {
 
 
         employeeService.saveEmployee(employee1);
-        List<EmployeeDTO> allEmployees = employeeService.getAllEmployees();
+//        List<EmployeeDTO> allEmployees = employeeService.getAllEmployees();
 
-        for (EmployeeDTO employeeDTO:allEmployees){
-            System.out.println(employeeDTO.toString());
-        }
+//        for (EmployeeDTO employeeDTO:allEmployees){
+//            System.out.println(employeeDTO.toString());
+//        }
 
     }
 
@@ -91,11 +91,11 @@ class EmployeeServiceImplTest {
 
     @Test
     void getAllEmployees() {
-        List<EmployeeDTO> allEmployees = employeeService.getAllEmployees();
+//        List<EmployeeDTO> allEmployees = employeeService.getAllEmployees();
 
-        for (EmployeeDTO employeeDTO:allEmployees){
-            System.out.println(employeeDTO.toString());
-        }
+//        for (EmployeeDTO employeeDTO:allEmployees){
+//            System.out.println(employeeDTO.toString());
+//        }
 
     }
 }

@@ -28,7 +28,7 @@ function employeeFunction() {
         $("#employeeRole").prop('disabled', false);
         enableTxtField()
         $('#employeeCode').attr('readonly', "");
-        fetch("http://localhost:8080/api/v1/employees")
+        fetch("http://localhost:8080/api/v1/employees/id")
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

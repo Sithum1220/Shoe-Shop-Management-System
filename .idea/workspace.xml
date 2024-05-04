@@ -5,12 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="032d1856-7f95-44cb-a7e8-c221ea7611af" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/ImageUploadController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/detailsIcon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dtodetailsIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/Pages/admin/temp.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/EmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/ImageUploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/ImageUploadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/EmployeeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/test/java/lk/ijse/spring/shoeshop/service/impl/EmployeeServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/test/java/lk/ijse/spring/shoeshop/service/impl/EmployeeServiceImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/employee.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/employee.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/temp.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/temp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/assest/css/pages.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/css/pages.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/assest/js/admin/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/js/admin/dashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/assest/js/admin/employee.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/js/admin/employee.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/assest/js/pagination.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/js/pagination.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/controller/employeeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/employeeController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,9 +30,9 @@
         <option value="Enum" />
         <option value="Interface" />
         <option value="JUnit5 Test Class" />
-        <option value="JavaScript File" />
         <option value="HTML File" />
         <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -52,6 +58,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.main.executor": "Run",
     "DefaultHtmlFileTemplate": "HTML File",
+    "JUnit.EmployeeServiceImplTest.countEmployee.executor": "Run",
     "JUnit.EmployeeServiceImplTest.getAllEmployees.executor": "Run",
     "JUnit.EmployeeServiceImplTest.saveEmployee.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
@@ -102,6 +109,22 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.WebAppInitializer">
+    <configuration name="EmployeeServiceImplTest.countEmployee" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="back-end" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="lk.ijse.spring.shoeshop.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="lk.ijse.spring.shoeshop.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="lk.ijse.spring.shoeshop.service.impl.EmployeeServiceImplTest" />
+      <option name="METHOD_NAME" value="countEmployee" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="EmployeeServiceImplTest.getAllEmployees" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="back-end" />
       <extension name="coverage">
@@ -158,6 +181,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.EmployeeServiceImplTest.countEmployee" />
         <item itemvalue="JUnit.EmployeeServiceImplTest.saveEmployee" />
         <item itemvalue="JUnit.EmployeeServiceImplTest.getAllEmployees" />
         <item itemvalue="Spring Boot.WebAppInitializer" />
@@ -183,7 +207,7 @@
       <workItem from="1714731919617" duration="10293000" />
       <workItem from="1714758286865" duration="193000" />
       <workItem from="1714758488589" duration="14758000" />
-      <workItem from="1714795909850" duration="25793000" />
+      <workItem from="1714795909850" duration="36481000" />
     </task>
     <servers />
   </component>

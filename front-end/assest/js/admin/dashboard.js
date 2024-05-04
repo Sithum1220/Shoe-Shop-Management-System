@@ -54,7 +54,6 @@ employeeBtn.click(function () {
 
             $("#pages").html(extractedContent);
             employeeFunction();
-            pagination();
             employeeControlFunction();
         })
         .catch(error => {
@@ -91,7 +90,6 @@ supplierBtn.click(function () {
 
             $("#pages").html(extractedContent);
             supplierFunction();
-            pagination();
         })
         .catch(error => {
             console.error("Error loading HTML file:", error);
@@ -127,7 +125,6 @@ customerBtn.click(function () {
 
             $("#pages").html(extractedContent);
             customerFunction();
-            pagination();
         })
         .catch(error => {
             console.error("Error loading HTML file:", error);
@@ -163,7 +160,6 @@ inventoryBtn.click(function () {
 
             $("#pages").html(extractedContent);
             inventoryFunction();
-            pagination();
         })
         .catch(error => {
             console.error("Error loading HTML file:", error);
@@ -199,7 +195,6 @@ userBtn.click(function () {
 
             $("#pages").html(extractedContent);
             inventoryFunction();
-            pagination();
         })
         .catch(error => {
             console.error("Error loading HTML file:", error);

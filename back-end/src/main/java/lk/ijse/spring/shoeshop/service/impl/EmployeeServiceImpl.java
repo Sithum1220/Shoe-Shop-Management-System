@@ -8,6 +8,8 @@ import lk.ijse.spring.shoeshop.service.EmployeeService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -80,6 +82,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<EmployeeDTO> getAllEmployees() {
         return modelMapper.map(employeeRepository.findAll(), new TypeToken<List<EmployeeDTO>>() {
         }.getType());
+
+
     }
 
     @Override
