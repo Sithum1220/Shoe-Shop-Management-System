@@ -55,6 +55,7 @@ employeeBtn.click(function () {
             $("#pages").html(extractedContent);
             employeeFunction();
             pagination();
+            employeeControlFunction();
         })
         .catch(error => {
             console.error("Error loading HTML file:", error);

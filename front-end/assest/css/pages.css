@@ -126,15 +126,33 @@
     box-shadow: rgb(0, 0, 0, 0.1);
 }
 
+.employeeForm-container{
+    position: fixed;
+    /*max-width: 1000px;*/
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*z-index: 101;*/
+    max-width: 700px;
+    background: #ffffff;
+    padding: 5px;
+    border-radius: 25px;
+    box-shadow: rgb(0, 0, 0, 0.1);
+}
+
 .windowPopup{
     max-width: 650px;
 }
+.employeeWindowPopup{
+    max-width: 700px;
 
+}
 .popupClose {
     opacity: 0.7;
     cursor: pointer;
 }
-
+.employeeForm-container h2,
 .form-container h2 {
     font-size: 22px;
     color: #0b0217;
@@ -163,7 +181,8 @@
 .input_box input:focus {
     border-color: #0a53be;
 }
-
+.employeeForm-container .addBtn,
+.employeeForm-container .cancelBtn,
 .form-container .addBtn,
 .form-container .cancelBtn {
     margin-top: 30px;
@@ -174,12 +193,13 @@
     font-weight: bold;
     font-size: 20px;
 }
-
+.employeeForm-container .addBtn,
 .form-container .addBtn {
     background: #0a53be;
     color: #fff;
 }
 
+.employeeForm-container .cancelBtn,
 .form-container .cancelBtn {
     background: #ffffff;
     color: #000000;
