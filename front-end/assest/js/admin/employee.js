@@ -13,8 +13,8 @@ function employeeFunction() {
         employeeFormContainer = $('#employeeFormContainer'),
         employeePopupClose = $('#employeePopupClose'),
         employeeRole = $('#employeeRole');
-    const  imgUploader = $('#imgUploader');
-    const  imgViewer = $('#imgViewer');
+    const imgUploader = $('#imgUploader');
+    const imgViewer = $('#imgViewer');
 
     addEmployee.click(function () {
         employeePopupAddBtn.text("Save")
@@ -28,21 +28,11 @@ function employeeFunction() {
         $("#employeeRole").prop('disabled', false);
         enableTxtField()
         $('#employeeCode').attr('readonly', "");
-        fetch("http://localhost:8080/api/v1/employees/id")
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json(); // Read response as text
-            })
-            .then(data => {
-                console.log(data);
-                $('#employeeCode').val(data.data); // Assuming data is a string
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        
+        $('.txt').val("")
+        $('#employeeGender').val($('#employeeGender option:first').val());
+        $('#employeeRole').val($('#employeeRole option:first').val());
+        $('#imgViewer').attr('src','#')
+        generateNewId();
     })
     updateEmployee.click(function () {
         employeeFormTitle.text('Update Employee')
@@ -80,8 +70,6 @@ function employeeFunction() {
             employeePageUserCredentials.addClass('d-none');
         }
     })
-
-    
 
 
 }

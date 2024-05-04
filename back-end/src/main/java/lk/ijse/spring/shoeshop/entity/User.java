@@ -1,13 +1,9 @@
 package lk.ijse.spring.shoeshop.entity;
 
 import jakarta.persistence.*;
-import lk.ijse.spring.shoeshop.util.Role;
+import lk.ijse.spring.shoeshop.embedded.Role;
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
-
-
-import java.util.Collection;
-import java.util.HashSet;
 
 @Getter
 @Setter

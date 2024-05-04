@@ -60,7 +60,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void updateEmployee(EmployeeDTO employee) {
         if (employeeRepository.existsById(employee.getEmployeeId())) {
-            if (employeeRepository.existsById(employee.getEmployeeId())) {}
             employeeRepository.save(modelMapper.map(employee, Employee.class));
         } else {
             throw new EntityExistsException("Employee Not Found!");

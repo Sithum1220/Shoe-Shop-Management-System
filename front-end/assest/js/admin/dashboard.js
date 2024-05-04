@@ -41,6 +41,7 @@ employeeBtn.click(function () {
     $('#supplierSection').remove();
     $('#inventorySection').remove();
     $('#userSection').remove();
+    // $('#tblEmployee tbody').empty()
 
     fetch('http://localhost:63342/shoe_management_system/front-end/Pages/admin/employee.html')
         .then(response => response.text())

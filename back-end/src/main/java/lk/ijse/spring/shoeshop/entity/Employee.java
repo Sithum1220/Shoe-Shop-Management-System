@@ -3,7 +3,7 @@ package lk.ijse.spring.shoeshop.entity;
 import jakarta.persistence.*;
 import lk.ijse.spring.shoeshop.embedded.Address;
 import lk.ijse.spring.shoeshop.embedded.Gender;
-import lk.ijse.spring.shoeshop.util.Role;
+import lk.ijse.spring.shoeshop.embedded.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -3,10 +3,9 @@ package lk.ijse.spring.shoeshop.service.impl;
 import lk.ijse.spring.shoeshop.dto.EmployeeDTO;
 import lk.ijse.spring.shoeshop.embedded.Address;
 import lk.ijse.spring.shoeshop.embedded.Gender;
-import lk.ijse.spring.shoeshop.entity.Employee;
 import lk.ijse.spring.shoeshop.repository.EmployeeRepository;
 import lk.ijse.spring.shoeshop.util.GenerateNewId;
-import lk.ijse.spring.shoeshop.util.Role;
+import lk.ijse.spring.shoeshop.embedded.Role;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,8 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
@@ -69,11 +66,11 @@ class EmployeeServiceImplTest {
 
 
         employeeService.saveEmployee(employee1);
-//        List<EmployeeDTO> allEmployees = employeeService.getAllEmployees();
+        List<EmployeeDTO> allEmployees = employeeService.getAllEmployees();
 
-//        for (EmployeeDTO employeeDTO:allEmployees){
-//            System.out.println(employeeDTO.toString());
-//        }
+        for (EmployeeDTO employeeDTO:allEmployees){
+            System.out.println(employeeDTO.toString());
+        }
 
     }
 

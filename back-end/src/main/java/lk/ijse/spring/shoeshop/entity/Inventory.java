@@ -18,6 +18,7 @@ public class Inventory {
     private String itemDesc;
     @Column(columnDefinition = "LONGTEXT")
     private String itemPicture;
+    private int qty;
     private String category;
     private Integer size;
     @ManyToOne
