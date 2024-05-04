@@ -101,13 +101,12 @@ function imageUploader() {
 }
 
 function getAllEmployeeData() {
-    $('#tblEmployee tbody').empty()
     $.ajax({
         url: "http://localhost:8080/api/v1/employees",
         method: "GET",
         success: function (resp) {
             console.log("Success: ", resp);
-           
+            $('#tblEmployee tbody').empty()
             for (const employee of resp.data) {
                 const row = `<tr>
                                 <th scope="row">
@@ -117,7 +116,7 @@ function getAllEmployeeData() {
                                 </th>
                                 <td>${employee.employeeId}</td>
                                 <td>${employee.employeeName}</td>
-                                <td>${employee.address.buildNo + ", " + employee.address.lane + ", " + employee.address.state + ", " + employee.address.city + ", " + employee.address.postalCode}</td>
+                                <td>${employee.address.buildNo + " " + employee.address.lane + " " + employee.address.state + " " + employee.address.city + " " + employee.address.postalCode}</td>
                                 <td>${employee.contactNo}</td>
                                 <td>${employee.joinDate}</td>
                                 <td>${employee.branch}</td>
@@ -151,6 +150,7 @@ function clickTblRow() {
 
         // Uncheck all other checkboxes
         setImage(checkbox);
+        updateCustomer(checkbox)
     });
 
     $('#tblEmployee').on('change', 'input[type="checkbox"]', function () {
@@ -184,7 +184,7 @@ function setImage(checkbox) {
     }
 }
 
-function updateCustomer(checkBox) {
+function updateCustomer(checkbox) {
     $('#employeePopupAddBtn').click(function () {
         if ($(this).text().trim() === 'Update') {
 
@@ -235,7 +235,26 @@ function updateCustomer(checkBox) {
                             showConfirmButton: false,
                             timer: 1500
                         });
-                        getAllEmployeeData();
+
+                        setImage(checkbox)
+                        $('#tblEmployee tr').each(function () {
+                            var isChecked = $(this).find('input[type="checkbox"]').prop('checked');
+
+                            if (isChecked) {
+                                // Update data of checked row
+                                var row = $(this);
+
+                                // Example: Update first name to 'New First Name' and last name to 'New Last Name'
+                                row.find('td:eq(0)').text($('#employeeCode').val());
+                                row.find('td:eq(1)').text($('#employeeName').val());
+                                row.find('td:eq(2)').text($('#employeeBuilding').val() + " " +
+                                    $('#employeeLane').val() + " " + $('#employeeState').val() + " " + $('#employeeCity').val()
+                                    + " " + $('#employeePostalCode').val());
+                                row.find('td:eq(3)').text($('#employeeContactNumber').val());
+                                row.find('td:eq(4)').text($('#employeeDOJ').val());
+                                row.find('td:eq(5)').text($('#employeeBranch').val());
+                            }
+                        });
                     }
                 },
                 error: function (resp) {
@@ -248,13 +267,13 @@ function updateCustomer(checkBox) {
                     });
                 }
             })
-            
+
         }
     });
 }
 
 function setDataToTextField(response) {
- 
+
     $('#employeeCode').val(response.employeeId);
     $('#employeeName').val(response.employeeName);
     $('#employeeStatus').val(response.employeeStatus);
@@ -273,7 +292,8 @@ function setDataToTextField(response) {
     $('#employeeGuardianContact').val(response.emergencyContact);
     $('#employeeGender').val(response.gender);
     $('#employeeRole').val(response.role);
-    console.log(response.address.building);
+    // $('#imgUploader').val(response.proPic);
+    base64String = response.proPic;
     $('#imgViewer').attr('src', 'data:image/jpeg;base64,' + response.proPic)
 }
 

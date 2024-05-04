@@ -32,7 +32,7 @@ function employeeFunction() {
         $('#employeeGender').val($('#employeeGender option:first').val());
         $('#employeeRole').val($('#employeeRole option:first').val());
         $('#imgViewer').attr('src','#')
-        generateNewId();
+        setDataToTextField()
     })
     updateEmployee.click(function () {
         employeeFormTitle.text('Update Employee')
