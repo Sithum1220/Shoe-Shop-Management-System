@@ -1,8 +1,11 @@
 package lk.ijse.spring.shoeshop.repository;
 
+import lk.ijse.spring.shoeshop.entity.Employee;
 import lk.ijse.spring.shoeshop.entity.Supplier;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 public interface SupplierRepository extends JpaRepository<Supplier, String> {
     @Query(value = "SELECT supplier_code FROM Supplier ORDER BY LENGTH(supplier_code) DESC, supplier_code DESC LIMIT 1", nativeQuery = true)
@@ -15,5 +18,8 @@ public interface SupplierRepository extends JpaRepository<Supplier, String> {
 
     boolean existsByMobileNo(String mobileNo);
     boolean existsByLandNo(String landNo);
+
+    List<Supplier> findBySupplierCodeStartingWithOrSupplierNameStartingWith(String employeeIdStart, String employeeNameStart);
+
 
 }

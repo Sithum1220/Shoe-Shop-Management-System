@@ -1,5 +1,6 @@
 package lk.ijse.spring.shoeshop.service;
 
+import lk.ijse.spring.shoeshop.dto.EmployeeDTO;
 import lk.ijse.spring.shoeshop.dto.SupplierDTO;
 import lk.ijse.spring.shoeshop.entity.Supplier;
 
@@ -12,6 +13,6 @@ public interface SupplierService {
     SupplierDTO getSupplier(String id);
     List<SupplierDTO> getAllSuppliers();
     String lastId();
-
+    List<SupplierDTO> searchSuppliersById(String idOrName);
 
 }

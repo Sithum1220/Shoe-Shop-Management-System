@@ -11,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -54,4 +55,17 @@ public class SupplierController {
         return new ResponseUtil("200", "Successfully Updated!", null);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
+    @DeleteMapping(path = "/{id}")
+    public ResponseUtil deleteEmployee(@PathVariable("id") String id) {
+        supplierService.deleteSupplier(id);
+        return new ResponseUtil("200", "Successfully Deleted!", null);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping(params = "idOrName",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchEmployees(@RequestParam("idOrName") String idOrName) {
+        return new ResponseUtil("200", "Successfully Fetched Employees", supplierService.searchSuppliersById(idOrName));
+
+    }
 }

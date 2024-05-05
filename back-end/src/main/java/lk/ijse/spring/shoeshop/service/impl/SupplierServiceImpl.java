@@ -65,7 +65,11 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public void deleteSupplier(String id) {
-
+        if (supplierRepository.existsById(id)) {
+            supplierRepository.deleteById(id);
+        } else {
+            throw new EntityExistsException("Supplier Not Found!");
+        }
     }
 
     @Override
@@ -83,5 +87,11 @@ public class SupplierServiceImpl implements SupplierService {
     @Override
     public String lastId() {
         return supplierRepository.getLastIndex();
+    }
+
+    @Override
+    public List<SupplierDTO> searchSuppliersById(String idOrName) {
+        return modelMapper.map(supplierRepository.findBySupplierCodeStartingWithOrSupplierNameStartingWith(idOrName,idOrName),new TypeToken<List<SupplierDTO>>() {}.getType());
+
     }
 }

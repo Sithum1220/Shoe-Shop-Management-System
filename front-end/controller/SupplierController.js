@@ -3,6 +3,7 @@ function supplierControlFunction() {
     getAllSuppliers()
     clickSupplierTblRow();
     updateSupplier();
+    searchSupplier();
 }
 
 function generateNewSupplierId() {
@@ -257,3 +258,43 @@ function deleteSupplier(id) {
         });
     })
 }
+
+function searchSupplier() {
+    $('#searchSuppliers').keyup(function (event) {
+
+        var idOrName = $(this).val();
+        $.ajax({
+            url: "http://localhost:8080/api/v1/supplier?idOrName=" + idOrName,
+            type: "GET",
+            dataType: "json",
+            success: function (response) {
+                $('#tblSupplier tbody').empty()
+                for (const supplier of response.data) {
+                    const row = `<tr>
+                                <th scope="row">
+                                 <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value=""/>
+                                </div>
+                                </th>
+                                <td>${supplier.supplierCode}</td>
+                                <td>${supplier.supplierName}</td>
+                                <td>${supplier.category}</td>
+                                <td>${supplier.mobileNo}</td>
+                                <td>${supplier.email}</td>
+                                
+                            </tr>`;
+                    $('#tblSupplier').append(row);
+                }
+            },
+            error: function (resp) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: resp.responseJSON.message,
+                    footer: '<a href="#"></a>'
+                });
+            }
+        });
+    })
+}
+

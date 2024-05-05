@@ -63,20 +63,16 @@ public class EmployeeController {
         return optionalImageEntity.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
-
+    @ResponseStatus(HttpStatus.CREATED)
     @DeleteMapping(path = "/{id}")
     public ResponseUtil deleteEmployee(@PathVariable("id") String id) {
         employeeService.deleteEmployee(id);
         return new ResponseUtil("200", "Successfully Deleted!", null);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @GetMapping(params = "idOrName",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchEmployees(@RequestParam("idOrName") String idOrName) {
-        List<EmployeeDTO> employeeDTOS = employeeService.searchEmployeesById(idOrName);
-        System.out.println("idOrName : " + idOrName);
-        for (EmployeeDTO employeeDTO : employeeDTOS) {
-            System.out.println(employeeDTO.getEmployeeId());
-        }
         return new ResponseUtil("200", "Successfully Fetched Employees", employeeService.searchEmployeesById(idOrName));
 
     }
