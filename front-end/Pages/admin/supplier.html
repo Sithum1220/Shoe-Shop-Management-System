@@ -20,62 +20,31 @@
             </div>
             <div class="col-10 tableCol shadow-lg ">
                 <div class="table-container">
-                    <table class="table mytable">
+                    <table id="tblSupplier" class="table mytable">
                         <thead class="table-header">
                         <tr>
                             <th scope="col">
                             </th>
                             <th scope="col">Id</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Address</th>
                             <th scope="col">Category</th>
-                            <th scope="col">Contact</th>
+                            <th scope="col">Mobile Number</th>
                             <th scope="col">Email</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                           id="supplierTblCheckBox"/>
-                                </div>
-                            </th>
-                            <td>S001</td>
-                            <td>Sithum Imesh</td>
-                            <td>Duwagoda Hikkaduwa</td>
-                            <td>Shoes</td>
-                            <td>0777524729</td>
-                            <td>sithumimesh82@gmail.com</td>
-
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                           id="flexCheckDefault3"/>
-                                </div>
-                            </th>
-                            <td>S002</td>
-                            <td>Sithum Perera</td>
-                            <td>Wellawatta Hikkaduwa</td>
-                            <td>Socks</td>
-                            <td>0777938904</td>
-                            <td>sithumperera@gmail.com</td>
-
-                        </tr>
                         </tbody>
                     </table>
 
                 </div>
-                <div class="pagination-container">
-                    <button class="prev-btn"> Previous
-                        <!--                        <img src="../Pages/assets/images/arrow-point-to-left.png" width="25" alt="">-->
-                    </button>
-                    <button class="next-btn"> Next
-                        <!--                        <img src="../Pages/assets/images/arrow-point-to-right.png" width="25" alt="">-->
-                    </button>
-                </div>
+<!--                <div class="pagination-container">-->
+<!--                    <button class="prev-btn"> Previous-->
+<!--                        &lt;!&ndash;                        <img src="../Pages/assets/images/arrow-point-to-left.png" width="25" alt="">&ndash;&gt;-->
+<!--                    </button>-->
+<!--                    <button class="next-btn"> Next-->
+<!--                        &lt;!&ndash;                        <img src="../Pages/assets/images/arrow-point-to-right.png" width="25" alt="">&ndash;&gt;-->
+<!--                    </button>-->
+<!--                </div>-->
 
             </div>
             <div class="col-2 btnCol d-flex justify-content-center mt-4">
@@ -118,90 +87,109 @@
                                 <div class="lineDiv"></div>
 
                                 <div class="ps-5 pe-5" id="supplierTxtFieldBox">
-                                    <div class="row">
+                                    <div class="row mb-3">
                                         <div class="col">
                                             <div class="input_box ">
+                                                <label for="supplierCode" class="opacity-50  lbl">Supplier Code</label>
                                                 <input type="text" class="txt" id="supplierCode" placeholder="Supplier Code">
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="input_box">
+                                                <label for="supplierName" class="opacity-50  lbl">Supplier Name</label>
                                                 <input type="text" class="txt" id="supplierName" placeholder="Supplier Name">
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="row">
 
                                         <div class="col">
                                             <div class="input_box">
-                                                <input type="text" class="txt" id="supplierCategory" placeholder="Category">
+                                                <label for="supplierCategory" class="opacity-50  lbl">Select Category</label>
+                                                <select class="select form-select opacity-75 txt"
+                                                        aria-label="Default select example"
+                                                        id="supplierCategory">
+                                                    <option disabled  value="null" selected>Select Category</option>
+                                                    <option value="INTERNATIONAL">International</option>
+                                                    <option value="LOCAL">Local</option>
+                                                </select>
                                             </div>
                                         </div>
+                                    </div>
+
+                                    <div class="row mb-3">
 
                                         <div class="col">
                                             <div class="input_box">
+                                                <label for="supplierBuilding" class="opacity-50  lbl">Building No. Or Name</label>
                                                 <input type="text" class="txt" id="supplierBuilding" placeholder="Building No. Or Name">
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div class="row">
                                         <div class="col">
                                             <div class="input_box">
+                                                <label for="supplierLane" class="opacity-50  lbl">Lane</label>
                                                 <input type="text" class="txt" id="supplierLane" placeholder="Lane">
                                             </div>
                                         </div>
 
                                         <div class="col">
                                             <div class="input_box">
+                                                <label for="supplierCity" class="opacity-50  lbl">City</label>
                                                 <input type="text" class="txt" id="supplierCity" placeholder="City">
                                             </div>
                                         </div>
+
                                     </div>
-                                    <div class="row">
+
+                                    <div class="row mb-3">
                                         <div class="col">
                                             <div class="input_box">
+                                                <label for="supplierState" class="opacity-50  lbl">State</label>
                                                 <input type="text" class="txt" id="supplierState" placeholder="State">
                                             </div>
                                         </div>
 
                                         <div class="col">
                                             <div class="input_box">
+                                                <label for="supplierPostalCode" class="opacity-50  lbl">Postal Code</label>
                                                 <input type="text" class="txt" id="supplierPostalCode" placeholder="Postal Code">
                                             </div>
                                         </div>
-
-                                    </div>
-                                    <div class="row">
                                         <div class="col">
                                             <div class="input_box">
+                                                <label for="supplierCountry" class="opacity-50  lbl">Country</label>
                                                 <input type="text" class="txt" id="supplierCountry" placeholder="Country">
                                             </div>
                                         </div>
-                                        <div class="col">
-                                            <div class="input_box">
-                                                <input type="tel" class="txt" id="supplierContactNumber01" placeholder="Contact No.1">
-                                            </div>
-                                        </div>
+
+
                                     </div>
-                                    <div class="row">
+                                    <div class="row mb-3">
+
                                         <div class="col">
                                             <div class="input_box">
-                                                <input type="tel" class="txt" id="supplierContactNumber02" placeholder="Contact No.2">
+                                                <label for="supplierContactNumber01" class="opacity-50  lbl">Mobile Number</label>
+                                                <input type="tel" class="txt" id="supplierContactNumber01" placeholder="Mobile Number">
                                             </div>
                                         </div>
 
                                         <div class="col">
                                             <div class="input_box">
+                                                <label for="supplierContactNumber02" class="opacity-50  lbl">Land Number</label>
+                                                <input type="tel" class="txt" id="supplierContactNumber02" placeholder="Land Number">
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="input_box">
+                                                <label for="supplierEmail" class="opacity-50  lbl">Email</label>
                                                 <input type="email" class="txt" id="supplierEmail" placeholder="Email">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between ps-5 pe-5 mb-3">
-                                    <button class="cancelBtn" id="supplierPopupCancelBtn">Cancel</button>
-                                    <button class="addBtn" id="supplierPopupAddBtn">Add</button>
+                                    <button class="cancelBtn" data-dismiss="modal" id="supplierPopupCancelBtn">Cancel</button>
+                                    <button class="addBtn hiding" id="supplierPopupAddBtn">Add</button>
                                 </div>
                             </div>
                         </div>

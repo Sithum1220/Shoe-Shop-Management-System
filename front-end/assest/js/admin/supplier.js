@@ -27,6 +27,9 @@ function supplierFunction() {
         supplierFormTitle.text('Add Supplier')
         // supplierFormContainer.css('max-width', '800px')
         enableTxtField()
+        $('#supplierCode').attr('readonly', "");
+        console.log("supplierFunction");
+        generateNewSupplierId();
     })
     updateSupplier.click(function () {
     

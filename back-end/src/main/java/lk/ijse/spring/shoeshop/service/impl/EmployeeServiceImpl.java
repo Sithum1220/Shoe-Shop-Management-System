@@ -37,7 +37,6 @@ public class EmployeeServiceImpl implements EmployeeService {
             if (!employeeRepository.existsByEmail(employeeDTo.getEmail())) {
                 if (!employeeRepository.existsByContactNo(employeeDTo.getContactNo())) {
                     if (!employeeRepository.existsByEmergencyContact(employeeDTo.getEmergencyContact())) {
-                        System.out.println(employeeDTo.toString());
 
                         Employee employee = modelMapper.map(employeeDTo, Employee.class);
 

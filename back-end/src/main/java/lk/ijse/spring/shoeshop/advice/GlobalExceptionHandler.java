@@ -14,7 +14,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler({Exception.class})
     public ResponseUtil exceptionHandler(Exception e) {
-        return new lk.ijse.spring.shoeshop.util.ResponseUtil("500", e.getMessage(), null);
+        return new ResponseUtil("500", e.getMessage(), null);
     }
 
 }

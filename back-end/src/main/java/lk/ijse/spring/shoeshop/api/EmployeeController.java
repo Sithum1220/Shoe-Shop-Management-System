@@ -30,7 +30,7 @@ public class EmployeeController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public ResponseUtil saveCustomer(@RequestBody EmployeeDTO employee) {
+    public ResponseUtil saveEmployee(@RequestBody EmployeeDTO employee) {
         System.out.println("hellow");
         System.out.println(employee.toString());
         employeeService.saveEmployee(employee);

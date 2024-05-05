@@ -305,7 +305,7 @@ function setDataToTextField(response) {
     $('#imgViewer').attr('src', 'data:image/jpeg;base64,' + response.proPic)
 }
 
-function generateNewId() {
+function generateNewEmployeeId() {
     fetch("http://localhost:8080/api/v1/employees/id")
         .then(response => {
             if (!response.ok) {

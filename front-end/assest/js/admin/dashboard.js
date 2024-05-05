@@ -91,6 +91,7 @@ supplierBtn.click(function () {
 
             $("#pages").html(extractedContent);
             supplierFunction();
+            supplierControlFunction();
         })
         .catch(error => {
             console.error("Error loading HTML file:", error);

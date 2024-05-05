@@ -1019,7 +1019,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </schema>
     <schema id="295" parent="1" name="hello_shoe_shop">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2024-05-05.08:27:46</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-05-05.15:22:23</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="296" parent="1" name="gdse66_springboot_jwt">
@@ -1526,15 +1526,15 @@ order_no</ColNames>
       <DasType>enum(&apos;INTERNATIONAL&apos;, &apos;LOCAL&apos;)|0e</DasType>
       <Position>8</Position>
     </column>
-    <column id="415" parent="310" name="land_no">
+    <column id="415" parent="310" name="email">
       <DasType>varchar(255)|0s</DasType>
       <Position>9</Position>
     </column>
-    <column id="416" parent="310" name="mobile_no">
+    <column id="416" parent="310" name="land_no">
       <DasType>varchar(255)|0s</DasType>
       <Position>10</Position>
     </column>
-    <column id="417" parent="310" name="email">
+    <column id="417" parent="310" name="mobile_no">
       <DasType>varchar(255)|0s</DasType>
       <Position>11</Position>
     </column>
@@ -1552,106 +1552,122 @@ order_no</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="421" parent="310" name="PRIMARY">
+    <index id="421" parent="310" name="UK_m9k8336464nvbdatidxvr1pdh">
+      <ColNames>land_no</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="422" parent="310" name="UK_bmxg2u9fi3rixdciap8lcf0a1">
+      <ColNames>mobile_no</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="423" parent="310" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="422" parent="310" name="UK_g7qiwwu4vpciysmeeyme9gg1d">
+    <key id="424" parent="310" name="UK_g7qiwwu4vpciysmeeyme9gg1d">
       <UnderlyingIndexName>UK_g7qiwwu4vpciysmeeyme9gg1d</UnderlyingIndexName>
     </key>
-    <column id="423" parent="311" name="id">
+    <key id="425" parent="310" name="UK_m9k8336464nvbdatidxvr1pdh">
+      <UnderlyingIndexName>UK_m9k8336464nvbdatidxvr1pdh</UnderlyingIndexName>
+    </key>
+    <key id="426" parent="310" name="UK_bmxg2u9fi3rixdciap8lcf0a1">
+      <UnderlyingIndexName>UK_bmxg2u9fi3rixdciap8lcf0a1</UnderlyingIndexName>
+    </key>
+    <column id="427" parent="311" name="id">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="424" parent="311" name="email">
+    <column id="428" parent="311" name="email">
       <DasType>varchar(255)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="425" parent="311" name="password">
+    <column id="429" parent="311" name="password">
       <DasType>varchar(255)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="426" parent="311" name="role">
+    <column id="430" parent="311" name="role">
       <DasType>enum(&apos;ADMIN&apos;, &apos;USER&apos;)|0e</DasType>
       <Position>4</Position>
     </column>
-    <index id="427" parent="311" name="PRIMARY">
+    <index id="431" parent="311" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="428" parent="311" name="UK_ob8kqyqqgmefl0aco34akdtpe">
+    <index id="432" parent="311" name="UK_ob8kqyqqgmefl0aco34akdtpe">
       <ColNames>email</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="429" parent="311" name="PRIMARY">
+    <key id="433" parent="311" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="430" parent="311" name="UK_ob8kqyqqgmefl0aco34akdtpe">
+    <key id="434" parent="311" name="UK_ob8kqyqqgmefl0aco34akdtpe">
       <UnderlyingIndexName>UK_ob8kqyqqgmefl0aco34akdtpe</UnderlyingIndexName>
     </key>
-    <column id="431" parent="312" name="customer_id">
+    <column id="435" parent="312" name="customer_id">
       <AutoIncrement>1</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="432" parent="312" name="name">
+    <column id="436" parent="312" name="name">
       <DasType>varchar(100)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="433" parent="312" name="email">
+    <column id="437" parent="312" name="email">
       <DasType>varchar(100)|0s</DasType>
       <Position>3</Position>
     </column>
-    <index id="434" parent="312" name="PRIMARY">
+    <index id="438" parent="312" name="PRIMARY">
       <ColNames>customer_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="435" parent="312" name="PRIMARY">
+    <key id="439" parent="312" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="436" parent="313" name="order_id">
+    <column id="440" parent="313" name="order_id">
       <AutoIncrement>1</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="437" parent="313" name="order_number">
+    <column id="441" parent="313" name="order_number">
       <DasType>varchar(20)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="438" parent="313" name="order_date">
+    <column id="442" parent="313" name="order_date">
       <DasType>date|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="439" parent="313" name="customer_id">
+    <column id="443" parent="313" name="customer_id">
       <DasType>int|0s</DasType>
       <Position>4</Position>
     </column>
-    <foreign-key id="440" parent="313" name="orders_ibfk_1">
+    <foreign-key id="444" parent="313" name="orders_ibfk_1">
       <ColNames>customer_id</ColNames>
       <RefColNames>customer_id</RefColNames>
       <RefTableName>customers</RefTableName>
     </foreign-key>
-    <index id="441" parent="313" name="PRIMARY">
+    <index id="445" parent="313" name="PRIMARY">
       <ColNames>order_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="442" parent="313" name="customer_id">
+    <index id="446" parent="313" name="customer_id">
       <ColNames>customer_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="443" parent="313" name="PRIMARY">
+    <key id="447" parent="313" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

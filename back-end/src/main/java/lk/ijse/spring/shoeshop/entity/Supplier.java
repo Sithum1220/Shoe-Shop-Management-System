@@ -2,7 +2,6 @@ package lk.ijse.spring.shoeshop.entity;
 
 import jakarta.persistence.*;
 import lk.ijse.spring.shoeshop.embedded.Category;
-import lk.ijse.spring.shoeshop.embedded.Contact;
 import lk.ijse.spring.shoeshop.embedded.InAddress;
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -25,8 +24,10 @@ public class Supplier {
     private Category category;
     @Embedded
     private InAddress address;
-
-    private Contact contact;
+    @Column(unique = true)
+    private String mobileNo;
+    @Column(unique = true)
+    private String landNo;
     @NotNull
     @Column(unique = true)
     private String email;
