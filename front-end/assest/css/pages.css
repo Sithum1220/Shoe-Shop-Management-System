@@ -79,9 +79,12 @@
 }
 
 .btnCol section {
-    width: 13rem;
+    width: 80%;
 }
+.btnCol img{
+    width: 100%;
 
+}
 .btnCol button {
     background-color: var(--color-white);
     padding: 10px 2px 2px 2px;
@@ -91,7 +94,7 @@
     /*display: flex;*/
     /*align-items: center;*/
     /*gap: 1rem;*/
-    margin-left: 10px;
+    /*margin-left: 10px;*/
 }
 
 .btnCol button h1 {

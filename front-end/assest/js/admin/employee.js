@@ -33,6 +33,7 @@ function employeeFunction() {
         $('#employeeRole').val($('#employeeRole option:first').val());
         $('#imgViewer').attr('src','#')
         setDataToTextField()
+        generateNewId();
     })
     updateEmployee.click(function () {
         employeeFormTitle.text('Update Employee')
