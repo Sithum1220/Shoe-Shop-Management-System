@@ -32,7 +32,6 @@ function employeeFunction() {
         $('#employeeGender').val($('#employeeGender option:first').val());
         $('#employeeRole').val($('#employeeRole option:first').val());
         $('#imgViewer').attr('src','#')
-        setDataToTextField()
         generateNewId();
     })
     updateEmployee.click(function () {
@@ -65,7 +64,7 @@ function employeeFunction() {
 
     employeeRole.change(function () {
         console.log($(this).val());
-        if ($(this).val() === 'Admin' || $(this).val() === 'User') {
+        if ($(this).val() === 'ADMIN' || $(this).val() === 'USER') {
             employeePageUserCredentials.removeClass('d-none');
         } else {
             employeePageUserCredentials.addClass('d-none');
