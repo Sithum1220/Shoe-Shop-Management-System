@@ -187,17 +187,14 @@ function setImage(checkbox) {
 function updateCustomer(checkbox) {
     $('#employeePopupAddBtn').click(function () {
         if ($(this).text().trim() === 'Update') {
-
-            if ($('#employeeRole').val() === "Admin" || $('#employeeRole').val() === "User") {
-                var role = $('#employeeRole').val().toUpperCase();
-            }
-            if ($('#employeeGender').val() === "Male" || $('#employeeGender').val() === "Female") {
-                var employeeGender = $('#employeeGender').val().toUpperCase();
+            var role;
+            if ('none' !== $('#employeeRole').val()) {
+                 role = $('#employeeRole').val().toUpperCase();
             }
 
             const postData = {
                 employeeId: $('#employeeCode').val(),
-                gender: employeeGender,
+                gender: $('#employeeGender').val().toUpperCase(),
                 employeeName: $('#employeeName').val(),
                 employeeStatus: $('#employeeStatus').val(),
                 branch: $('#employeeBranch').val(),
@@ -292,7 +289,9 @@ function setDataToTextField(response) {
     $('#employeeGuardianContact').val(response.emergencyContact);
     $('#employeeGender').val(response.gender);
     $('#employeeRole').val(response.role);
-    // $('#imgUploader').val(response.proPic);
+    
+    console.log(response.role)
+    
     base64String = response.proPic;
     $('#imgViewer').attr('src', 'data:image/jpeg;base64,' + response.proPic)
 }

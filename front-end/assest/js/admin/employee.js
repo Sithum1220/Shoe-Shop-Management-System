@@ -61,7 +61,7 @@ function employeeFunction() {
         $("#employeeRole").prop('disabled', true);
         disableTxtField();
     })
-
+    
     employeeRole.change(function () {
         console.log($(this).val());
         if ($(this).val() === 'ADMIN' || $(this).val() === 'USER') {
