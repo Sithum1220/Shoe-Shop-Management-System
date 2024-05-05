@@ -27,6 +27,8 @@ function supplierFunction() {
         supplierFormTitle.text('Add Supplier')
         // supplierFormContainer.css('max-width', '800px')
         enableTxtField()
+        $('.txt').val("")
+        $('#supplierCategory').val($('#supplierCategory option:first').val());
         $('#supplierCode').attr('readonly', "");
         console.log("supplierFunction");
         generateNewSupplierId();
@@ -54,4 +56,26 @@ function supplierFunction() {
         
         disableTxtField();
     })
+
+    $('#supplierPopupCancelBtn,#supplierPopupClose').click(function () {
+        $('#tblSupplier tr').each(function () {
+            $('#tblSupplier input[type="checkbox"]').not($(this)).prop('checked', false);
+        })
+        $('.txt').val("")
+        $('#supplierCategory').val($('#supplierCategory option:first').val());
+    });
+    // $('#supplierPopupClose').click(function () {
+    //     $('#tblSupplier tr').each(function () {
+    //         $('#tblSupplier input[type="checkbox"]').not($(this)).prop('checked', false);
+    //     })
+    //     $('.txt').val("")
+    //     $('#supplierCategory').val($('#employeeGender option:first').val());
+    // });
+    // $('#supplierPopupAddBtn').click(function () {
+    //     $('#tblSupplier tr').each(function () {
+    //         $('#tblSupplier input[type="checkbox"]').not($(this)).prop('checked', false);
+    //     })
+    //     $('.txt').val("")
+    //     $('#supplierCategory').val($('#employeeGender option:first').val());
+    // });
 }

@@ -72,17 +72,7 @@ function employeeFunction() {
         }
     })
 
-    $('#employeePopupCancelBtn').click(function () {
-        $('#tblEmployee tr').each(function () {
-            $('#tblEmployee input[type="checkbox"]').not($(this)).prop('checked', false);
-        })
-        $('.txt').val("")
-        $('#employeeGender').val($('#employeeGender option:first').val());
-        $('#employeeRole').val($('#employeeRole option:first').val());
-        $('#imgViewer').attr('src','#')
-        $('#employeeImg').attr('src','#')
-    });
-    $('#employeePopupClose').click(function () {
+    $('#employeePopupCancelBtn,#employeePopupClose').click(function () {
         $('#tblEmployee tr').each(function () {
             $('#tblEmployee input[type="checkbox"]').not($(this)).prop('checked', false);
         })

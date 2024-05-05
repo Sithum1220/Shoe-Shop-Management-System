@@ -164,7 +164,6 @@ function clickTblRow() {
 
 }
 
-
 function setImage(checkbox) {
     var row = checkbox.closest('tr');
     if (checkbox.is(':checked')) {

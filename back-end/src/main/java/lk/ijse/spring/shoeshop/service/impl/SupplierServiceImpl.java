@@ -1,5 +1,6 @@
 package lk.ijse.spring.shoeshop.service.impl;
 
+import jakarta.persistence.EntityExistsException;
 import lk.ijse.spring.shoeshop.dto.EmployeeDTO;
 import lk.ijse.spring.shoeshop.dto.SupplierDTO;
 import lk.ijse.spring.shoeshop.entity.Employee;
@@ -55,7 +56,11 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public void updateSupplier(SupplierDTO supplierDto) {
-
+        if (supplierRepository.existsById(supplierDto.getSupplierCode())) {
+            supplierRepository.save(modelMapper.map(supplierDto, Supplier.class));
+        } else {
+            throw new EntityExistsException("Supplier Not Found!");
+        }
     }
 
     @Override
@@ -65,7 +70,8 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public SupplierDTO getSupplier(String id) {
-        return null;
+        return modelMapper.map(supplierRepository.findById(id).get(), SupplierDTO.class);
+
     }
 
     @Override

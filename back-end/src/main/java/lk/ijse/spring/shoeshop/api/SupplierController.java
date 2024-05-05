@@ -8,7 +8,10 @@ import lk.ijse.spring.shoeshop.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/supplier")
@@ -34,6 +37,21 @@ public class SupplierController {
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getEmployees() {
         return new ResponseUtil("200", "Successfully Fetched Employees", supplierService.getAllSuppliers());
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping("/{id}")
+    public ResponseEntity<SupplierDTO> getEmployeeById(@PathVariable("id") String id) {
+        Optional<SupplierDTO> optionalImageEntity = Optional.ofNullable(supplierService.getSupplier(id));
+        return optionalImageEntity.map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PatchMapping
+    public ResponseUtil updateEmployee(@RequestBody SupplierDTO supplierDTO) {
+        supplierService.updateSupplier(supplierDTO);
+        return new ResponseUtil("200", "Successfully Updated!", null);
     }
 
 }
