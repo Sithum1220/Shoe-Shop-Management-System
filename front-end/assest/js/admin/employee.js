@@ -80,6 +80,7 @@ function employeeFunction() {
         $('#employeeGender').val($('#employeeGender option:first').val());
         $('#employeeRole').val($('#employeeRole option:first').val());
         $('#imgViewer').attr('src','#')
+        $('#employeeImg').attr('src','#')
     });
     $('#employeePopupClose').click(function () {
         $('#tblEmployee tr').each(function () {
@@ -89,6 +90,7 @@ function employeeFunction() {
         $('#employeeGender').val($('#employeeGender option:first').val());
         $('#employeeRole').val($('#employeeRole option:first').val());
         $('#imgViewer').attr('src','#')
+        $('#employeeImg').attr('src','#')
     });
 
 }

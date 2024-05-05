@@ -11,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -69,8 +70,14 @@ public class EmployeeController {
         return new ResponseUtil("200", "Successfully Deleted!", null);
     }
 
-    @GetMapping(params = "idOrName")
+    @GetMapping(params = "idOrName",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchEmployees(@RequestParam("idOrName") String idOrName) {
+        List<EmployeeDTO> employeeDTOS = employeeService.searchEmployeesById(idOrName);
+        System.out.println("idOrName : " + idOrName);
+        for (EmployeeDTO employeeDTO : employeeDTOS) {
+            System.out.println(employeeDTO.getEmployeeId());
+        }
         return new ResponseUtil("200", "Successfully Fetched Employees", employeeService.searchEmployeesById(idOrName));
+
     }
 }

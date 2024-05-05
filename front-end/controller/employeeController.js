@@ -4,6 +4,7 @@ function employeeControlFunction() {
     getAllEmployeeData();
     clickTblRow();
     updateCustomer();
+    searchEmployee();
 }
 
 var base64String;
@@ -12,16 +13,18 @@ function saveEmployee() {
     $('#employeePopupAddBtn').click(function () {
         if ($(this).text().trim() === 'Save') {
             console.log("Saving Employee");
-            if ($('#employeeRole').val() === "Admin" || $('#employeeRole').val() === "User") {
-                var role = $('#employeeRole').val().toUpperCase();
+            var role;
+            var gender;
+            if ('none' !== $('#employeeRole').val()) {
+                role = $('#employeeRole').val().toUpperCase();
             }
-            if ($('#employeeGender').val() === "Male" || $('#employeeGender').val() === "Female") {
-                var employeeGender = $('#employeeGender').val().toUpperCase();
+            if ('Select Gender' !== $('#employeeGender').val()) {
+                gender = $('#employeeGender').val().toUpperCase();
             }
 
             const postData = {
                 employeeId: $('#employeeCode').val(),
-                gender: employeeGender,
+                gender: gender,
                 employeeName: $('#employeeName').val(),
                 employeeStatus: $('#employeeStatus').val(),
                 branch: $('#employeeBranch').val(),
@@ -189,13 +192,18 @@ function updateCustomer(checkbox) {
     $('#employeePopupAddBtn').click(function () {
         if ($(this).text().trim() === 'Update') {
             var role;
+            var gender;
             if ('none' !== $('#employeeRole').val()) {
                 role = $('#employeeRole').val().toUpperCase();
             }
+            if ('Select Gender' !== $('#employeeGender').val()) {
+                gender = $('#employeeGender').val().toUpperCase();
+            }
+
 
             const postData = {
                 employeeId: $('#employeeCode').val(),
-                gender: $('#employeeGender').val().toUpperCase(),
+                gender: gender,
                 employeeName: $('#employeeName').val(),
                 employeeStatus: $('#employeeStatus').val(),
                 branch: $('#employeeBranch').val(),
@@ -342,7 +350,43 @@ function deleteEmployee(id) {
 }
 
 function searchEmployee() {
+    $('#search_employee').keyup(function (event) {
 
+        var idOrName = $(this).val();
+        $.ajax({
+            url: "http://localhost:8080/api/v1/employees?idOrName=" + idOrName,
+            type: "GET",
+            dataType: "json",
+            success: function (response) {
+                $('#tblEmployee tbody').empty()
+                for (const employee of response.data) {
+                    const row = `<tr>
+                                <th scope="row">
+                                 <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value=""/>
+                                </div>
+                                </th>
+                                <td>${employee.employeeId}</td>
+                                <td>${employee.employeeName}</td>
+                                <td>${employee.address.buildNo + " " + employee.address.lane + " " + employee.address.state + " " + employee.address.city + " " + employee.address.postalCode}</td>
+                                <td>${employee.contactNo}</td>
+                                <td>${employee.joinDate}</td>
+                                <td>${employee.branch}</td>
+                                
+                            </tr>`;
+                    $('#tblEmployee').append(row);
+                }
+            },
+            error: function (resp) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: resp.responseJSON.message,
+                    footer: '<a href="#"></a>'
+                });
+            }
+        });
+    })
 }
 
 // var respLength;
