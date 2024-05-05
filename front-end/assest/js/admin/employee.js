@@ -59,6 +59,7 @@ function employeeFunction() {
         $("#employeeDOB").prop('disabled', true);
         $("#employeeDOJ").prop('disabled', true);
         $("#employeeRole").prop('disabled', true);
+        $("#imgUploader").prop('disabled', true);
         disableTxtField();
     })
     
@@ -71,5 +72,23 @@ function employeeFunction() {
         }
     })
 
+    $('#employeePopupCancelBtn').click(function () {
+        $('#tblEmployee tr').each(function () {
+            $('#tblEmployee input[type="checkbox"]').not($(this)).prop('checked', false);
+        })
+        $('.txt').val("")
+        $('#employeeGender').val($('#employeeGender option:first').val());
+        $('#employeeRole').val($('#employeeRole option:first').val());
+        $('#imgViewer').attr('src','#')
+    });
+    $('#employeePopupClose').click(function () {
+        $('#tblEmployee tr').each(function () {
+            $('#tblEmployee input[type="checkbox"]').not($(this)).prop('checked', false);
+        })
+        $('.txt').val("")
+        $('#employeeGender').val($('#employeeGender option:first').val());
+        $('#employeeRole').val($('#employeeRole option:first').val());
+        $('#imgViewer').attr('src','#')
+    });
 
 }

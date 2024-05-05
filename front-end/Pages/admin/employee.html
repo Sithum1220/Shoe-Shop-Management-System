@@ -14,7 +14,7 @@
                     <div class="d-flex align-items-center">
                         <img class="ms-2 mb-1 opacity-75" src="../../assest/images/search-normal.png" width="25"
                              height="25" alt="">
-                        <input class="shadow-lg text-center ps" type="text" placeholder="Search by Id or Name">
+                        <input class="shadow-lg text-center ps" type="text" id="search_employee" placeholder="Search by Id or Name">
                     </div>
                 </div>
             </div>
@@ -91,120 +91,138 @@
 
 
                                 <div class="ps-5 pe-5" id="employeeTxtFieldBox">
-                                    <div class="row">
+                                    <div class="row mb-3">
                                         <div class="col">
                                             <div class="input_box ">
-                                                <input type="text" class="txt" id="employeeCode" placeholder="Employee Code">
+                                                <label for="employeeCode" class="opacity-50  lbl">Employee Code</label>
+                                                <input type="text" class="txt" id="employeeCode" >
                                             </div>
                                         </div>
                                         <div class="col p-0">
-                                            <div class="input_box">
+                                            <div class="input_box ">
+                                                <label for="employeeGender" class="opacity-50  lbl">Select Gender</label>
                                                 <select class="select form-select opacity-75 txt"
                                                         aria-label="Default select example"
                                                         id="employeeGender">
-                                                    <option disabled  value="null" selected>Select Gender</option>
+<!--                                                    <option disabled  value="null" selected>Select Gender</option>-->
                                                     <option value="MALE">Male</option>
                                                     <option value="FEMALE">Female</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <div class="input_box">
+                                            <div class="input_box ">
+                                                <label for="employeeName" class="opacity-50 lbl">Employee Name</label>
                                                 <input type="text" class="txt" id="employeeName" placeholder="Employee Name">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row mb-3">
 
                                         <div class="col">
-                                            <div class="input_box">
+                                            <div class="input_box ">
+                                                <label for="employeeStatus" class="opacity-50  lbl">Employee Status</label>
                                                 <input type="text" class="txt" id="employeeStatus" placeholder="Employee Status">
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="input_box">
+                                                <label for="employeeDesignation" class="opacity-50 lbl">Employee Designation</label>
                                                 <input type="text" class="txt" id="employeeDesignation"
                                                        placeholder="Employee Designation">
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="input_box">
+                                                <label for="employeeDOB" class="opacity-50 lbl">Date Of Birth</label>
                                                 <input type="date" id="employeeDOB" class="form-control txt"
                                                        placeholder="Date Of Birth">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row mb-3">
                                         <div class="col">
                                             <div class="input_box">
+                                                <label for="employeeDOJ" class="opacity-50 lbl">Date Of Join</label>
                                                 <input type="date" id="employeeDOJ" class="form-control txt"
                                                        placeholder="Date Of Join">
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="input_box">
+                                                <label for="employeeBranch" class="opacity-50 lbl">Branch</label>
                                                 <input type="text" class="txt" id="employeeBranch" placeholder="Branch">
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="input_box">
+                                                <label for="employeeBuilding" class="opacity-50 lbl">Building No. Or Name</label>
                                                 <input type="text" class="txt" id="employeeBuilding"
                                                        placeholder="Building No. Or Name">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row mb-3">
                                         <div class="col">
                                             <div class="input_box">
+                                                <label for="employeeLane" class="opacity-50 lbl">Lane</label>
                                                 <input type="text" class="txt" id="employeeLane" placeholder="Lane">
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="input_box">
+                                                <label for="employeeCity" class="opacity-50 lbl">City</label>
                                                 <input type="text" class="txt" id="employeeCity" placeholder="City">
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="input_box">
+                                                <label for="employeeState" class="opacity-50 lbl">State</label>
                                                 <input type="text" class="txt" id="employeeState" placeholder="State">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row mb-3">
                                         <div class="col">
                                             <div class="input_box">
+                                                <label for="employeePostalCode" class="opacity-50 lbl">Postal Code</label>
                                                 <input type="text" class="txt" id="employeePostalCode" placeholder="Postal Code">
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="input_box">
+                                                <label for="employeeContactNumber" class="opacity-50 lbl">Contact Number</label>
                                                 <input type="tel" class="txt" id="employeeContactNumber"
                                                        placeholder="Contact Number">
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="input_box">
+                                                <label for="employeeEmail" class="opacity-50 lbl">email</label>
                                                 <input type="email" class="txt" id="employeeEmail" placeholder="email">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row mb-3">
                                         <div class="col">
                                             <div class="input_box">
+                                                <label for="employeeGuardian" class="opacity-50 lbl">Name of Guardian</label>
                                                 <input type="text" class="txt" id="employeeGuardian" placeholder="Name of Guardian">
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="input_box">
+                                                <label for="employeeGuardianContact" class="opacity-50 lbl">Emergency Contact</label>
                                                 <input type="tel" class="txt" id="employeeGuardianContact"
-                                                       placeholder="Emergency Contact Details">
+                                                       placeholder="Emergency Contact">
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="input_box">
+                                                <label for="employeeRole" class="opacity-50 lbl">Role</label>
                                                 <select class="form-select opacity-75 txt" aria-label="Default select example"
                                                         id="employeeRole">
-                                                    <option value="null" disabled selected>Access Role</option>
+                                                    <option value="null" disabled selected>Role</option>
                                                     <option value="ADMIN">Admin</option>
                                                     <option value="USER">User</option>
                                                     <option value="none">None</option>
@@ -212,14 +230,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row d-none employeePageUserCredentials">
+                                    <div class="row mb-3 d-none employeePageUserCredentials">
                                         <div class="col">
                                             <div class="input_box">
+                                                <label for="EmployeePageUserUserName" class="opacity-50 lbl">User Name Or Email</label>
                                                 <input type="email" id="EmployeePageUserUserName" placeholder="User Name Or Email">
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="input_box">
+                                                <label for="EmployeePageUserPasswword" class="opacity-50 lbl">Passwword</label>
                                                 <input type="password" id="EmployeePageUserPasswword"
                                                        placeholder="Passwword">
                                             </div>
@@ -229,7 +249,7 @@
                                         <div class="col d-flex align-items-center mb-4">
                                             <div class="input_box">
                                                 <label for="imgUploader" class="file-label ms-1 mb-2 opacity-50">Select a image...</label>
-                                                <input class="form-control imgUploader" type="file" id="imgUploader" placeholder="Select Item Image" multiple/>
+                                                <input class="form-control imgUploader txt" type="file" id="imgUploader" placeholder="Select Item Image" multiple/>
                                             </div>
                                         </div>
 
@@ -282,7 +302,7 @@
                                             </button>
                                         </div>
                                         <div class="col-auto">
-                                            <button type="button" class="btn btn-danger px-4 deleteBtn" data-dismiss="modal">
+                                            <button type="button" id="deleteEmployeeBtn" class="btn btn-danger px-4 deleteBtn" data-dismiss="modal">
                                                 Delete
                                             </button>
                                         </div>

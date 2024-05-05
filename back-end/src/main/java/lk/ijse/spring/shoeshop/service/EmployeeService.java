@@ -13,5 +13,6 @@ public interface EmployeeService {
     EmployeeDTO getEmployee(String id);
     List<EmployeeDTO> getAllEmployees();
     String lastId();
+    List<EmployeeDTO> searchEmployeesById(String idOrName);
 
 }

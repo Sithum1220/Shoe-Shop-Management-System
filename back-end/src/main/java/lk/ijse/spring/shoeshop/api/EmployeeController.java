@@ -62,4 +62,15 @@ public class EmployeeController {
         return optionalImageEntity.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @DeleteMapping(path = "/{id}")
+    public ResponseUtil deleteEmployee(@PathVariable("id") String id) {
+        employeeService.deleteEmployee(id);
+        return new ResponseUtil("200", "Successfully Deleted!", null);
+    }
+
+    @GetMapping(params = "idOrName")
+    public ResponseUtil searchEmployees(@RequestParam("idOrName") String idOrName) {
+        return new ResponseUtil("200", "Successfully Fetched Employees", employeeService.searchEmployeesById(idOrName));
+    }
 }

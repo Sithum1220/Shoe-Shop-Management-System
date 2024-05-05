@@ -174,6 +174,7 @@ function setImage(checkbox) {
                 $('#employeeImg').attr('src', 'data:image/jpeg;base64,' + response.proPic);
                 console.log(response);
                 setDataToTextField(response)
+                deleteEmployee(id)
             },
             error: function (xhr, status, error) {
                 console.error('Failed to fetch image:', error);
@@ -189,7 +190,7 @@ function updateCustomer(checkbox) {
         if ($(this).text().trim() === 'Update') {
             var role;
             if ('none' !== $('#employeeRole').val()) {
-                 role = $('#employeeRole').val().toUpperCase();
+                role = $('#employeeRole').val().toUpperCase();
             }
 
             const postData = {
@@ -289,9 +290,9 @@ function setDataToTextField(response) {
     $('#employeeGuardianContact').val(response.emergencyContact);
     $('#employeeGender').val(response.gender);
     $('#employeeRole').val(response.role);
-    
+
     console.log(response.role)
-    
+
     base64String = response.proPic;
     $('#imgViewer').attr('src', 'data:image/jpeg;base64,' + response.proPic)
 }
@@ -311,6 +312,37 @@ function generateNewId() {
         .catch(error => {
             console.error('Error:', error);
         });
+}
+
+function deleteEmployee(id) {
+    $('#deleteEmployeeBtn').click(function () {
+        $.ajax({
+            url: "http://localhost:8080/api/v1/employees/" + id,
+            type: "DELETE",
+            success: function (response) {
+                getAllEmployeeData();
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Employee has been Deleted",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            },
+            error: function (resp) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: resp.responseJSON.message,
+                    footer: '<a href="#"></a>'
+                });
+            }
+        });
+    })
+}
+
+function searchEmployee() {
+
 }
 
 // var respLength;

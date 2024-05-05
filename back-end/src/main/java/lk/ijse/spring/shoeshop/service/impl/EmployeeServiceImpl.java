@@ -94,4 +94,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.getLastIndex();
     }
 
+    @Override
+    public List<EmployeeDTO> searchEmployeesById(String idOrName) {
+        return modelMapper.map(employeeRepository.findByEmployeeIdStartingWithOrEmployeeNameStartingWith(idOrName,idOrName),new TypeToken<List<EmployeeDTO>>() {}.getType());
+    }
+
 }
