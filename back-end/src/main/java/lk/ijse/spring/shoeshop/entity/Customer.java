@@ -27,6 +27,7 @@ public class Customer {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    @Temporal(TemporalType.DATE)
     private Date loyaltyDate;
 
     @Enumerated(EnumType.STRING)
@@ -39,15 +40,14 @@ public class Customer {
 
     @Embedded
     private Address address;
+
+    @Column(unique = true)
     private String contactNo;
     @Column(unique = true)
     private String email;
     private Timestamp recentPurchase;
 
-    @Column(columnDefinition = "LONGTEXT")
-    private String proPic;
-
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "customerName")
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "customerId")
     private List<Sales> sales = new ArrayList<>();
 }
 

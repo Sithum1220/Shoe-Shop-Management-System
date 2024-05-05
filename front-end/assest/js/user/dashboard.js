@@ -3,7 +3,6 @@ const customerBtn = $('#customerBtn');
 const orderBtn = $('#orderBtn');
 const inventoryBtn = $('#inventoryBtn');
 const profileBtn = $('#profileBtn'),
-    home = $('.home'),
     dashboard = $('#dashboard');
 
 dashboardBtn.click(function () {
