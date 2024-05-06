@@ -62,4 +62,11 @@ public class CustomerController {
         customerService.deleteCustomer(id);
         return new ResponseUtil("200", "Successfully Deleted!", null);
     }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping(params = "idOrName",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchCustomers(@RequestParam("idOrName") String idOrName) {
+        return new ResponseUtil("200", "Successfully Fetched Customers", customerService.searchCustomersById(idOrName));
+
+    }
 }

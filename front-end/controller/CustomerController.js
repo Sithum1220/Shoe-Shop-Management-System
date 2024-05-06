@@ -2,7 +2,9 @@ function customerControlFunction() {
     saveCustomer();
     getAllCustomer();
     clickCustomerTblRow();
+    searchCustomer();
 }
+
 function generateNewCustomerId() {
     fetch("http://localhost:8080/api/v1/customer/id")
         .then(response => {
@@ -266,3 +268,44 @@ function deleteCustomer(id) {
         });
     })
 }
+
+function searchCustomer() {
+    $('#searchCustomer').keyup(function (event) {
+
+        var idOrName = $(this).val();
+        $.ajax({
+            url: "http://localhost:8080/api/v1/customer?idOrName=" + idOrName,
+            type: "GET",
+            dataType: "json",
+            success: function (response) {
+                $('#tblCustomer tbody').empty()
+                for (const customer of response.data) {
+                    const row = `<tr>
+                                <th scope="row">
+                                 <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value=""/>
+                                </div>
+                                </th>
+                                <td>${customer.customerId}</td>
+                                <td>${customer.customerName}</td>
+                                <td>${customer.address.buildNo + " " + customer.address.lane + " " + customer.address.state + " " + customer.address.city + " " + customer.address.postalCode}</td>
+                                <td>${customer.loyaltyDate}</td>
+                                <td>${customer.totalPoints}</td>
+                                <td>${customer.level}</td>
+                                
+                            </tr>`;
+                    $('#tblCustomer').append(row);
+                }
+            },
+            error: function (resp) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: resp.responseJSON.message,
+                    footer: '<a href="#"></a>'
+                });
+            }
+        });
+    })
+}
+

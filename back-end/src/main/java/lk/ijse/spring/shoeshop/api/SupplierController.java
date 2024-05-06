@@ -65,7 +65,7 @@ public class SupplierController {
     @ResponseStatus(HttpStatus.CREATED)
     @GetMapping(params = "idOrName",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchSuppliers(@RequestParam("idOrName") String idOrName) {
-        return new ResponseUtil("200", "Successfully Fetched Employees", supplierService.searchSuppliersById(idOrName));
+        return new ResponseUtil("200", "Successfully Fetched Suppliers", supplierService.searchSuppliersById(idOrName));
 
     }
 }
