@@ -32,16 +32,15 @@ public class EmployeeController {
     @PostMapping
     public ResponseUtil saveEmployee(@RequestBody EmployeeDTO employee) {
         System.out.println("hellow");
-        System.out.println(employee.toString());
         employeeService.saveEmployee(employee);
         return new ResponseUtil("200", "Successfully Saved!", null);
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil getEmployees() {
-        return new ResponseUtil("200", "Successfully Fetched Employees", employeeService.getAllEmployees());
-    }
+//    @ResponseStatus(HttpStatus.CREATED)
+//    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseUtil getEmployees() {
+//        return new ResponseUtil("200", "Successfully Fetched Employees", employeeService.getAllEmployees());
+//    }
 
 //    @GetMapping("/count")
 //    public ResponseUtil getEmployeesCount() {
@@ -60,6 +59,7 @@ public class EmployeeController {
     @GetMapping("/{id}")
     public ResponseEntity<EmployeeDTO> getEmployeeById(@PathVariable("id") String id) {
         Optional<EmployeeDTO> optionalImageEntity = Optional.ofNullable(employeeService.getEmployee(id));
+
         return optionalImageEntity.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -71,9 +71,16 @@ public class EmployeeController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @GetMapping(params = "idOrName",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil searchEmployees(@RequestParam("idOrName") String idOrName) {
-        return new ResponseUtil("200", "Successfully Fetched Employees", employeeService.searchEmployeesById(idOrName));
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchEmployees(@ModelAttribute("idOrName") String idOrName,@ModelAttribute("activeStatus") boolean activeStatus) {
+        return new ResponseUtil("200", "Successfully Fetched Employees", employeeService.searchEmployeesById(idOrName,activeStatus));
+
+    }
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping(path = "active/{activeStatus}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getEmployeeByActiveStatus(@PathVariable("activeStatus") boolean activeStatus) {
+        System.out.println("getEmployeeByActiveStatus");
+        return new ResponseUtil("200", "Successfully Fetched Employees", employeeService.findAllByActiveStatus(activeStatus));
 
     }
 }

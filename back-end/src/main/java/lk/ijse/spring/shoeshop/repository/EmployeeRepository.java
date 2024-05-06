@@ -20,5 +20,10 @@ public interface EmployeeRepository extends JpaRepository<Employee, String> {
 //    @Query(value = "SELECT employee_id FROM employee WHERE employee_id LIKE ?1 OR employee_name LIKE ?1;", nativeQuery = true)
 //    List<String> searchEmployee(String id);
 
-    List<Employee> findByEmployeeIdStartingWithOrEmployeeNameStartingWith(String employeeIdStart, String employeeNameStart);
+    Employee findByEmployeeId(String employeeId);
+    List<Employee> findAllByActiveStatus(boolean activeStatus);
+    boolean existsByEmployeeId(String employeeId);
+    void deleteByEmployeeId(String employeeId);
+    List<Employee> findByEmployeeIdStartingWithAndActiveStatusOrEmployeeNameStartingWithAndActiveStatus
+            (String employeeIdStart, boolean activeStatus1, String employeeNameStart, boolean activeStatus2);
 }

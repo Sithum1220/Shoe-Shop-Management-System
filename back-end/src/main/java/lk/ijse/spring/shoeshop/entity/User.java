@@ -11,16 +11,21 @@ import org.antlr.v4.runtime.misc.NotNull;
 @NoArgsConstructor
 @Entity
 public class User {
+
+
     @Id
-    private String id;
-    @Column(unique = true)
-    @NotNull
     private String email;
-    @NotNull
+
+
     private String password;
+
     @Enumerated(EnumType.STRING)
     @NotNull
     private Role role;
+
+    @ManyToOne
+    private Employee employee;
+    private boolean activeStatus;
 
 //    @Override
 //    public Collection<? extends GrantedAuthority> getAuthorities() {

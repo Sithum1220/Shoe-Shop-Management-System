@@ -59,13 +59,12 @@ class EmployeeServiceImplTest {
 //                "Edward Davis", "789-012-3456");
 //        employeeService.saveEmployee(employee5);
 
-        EmployeeDTO employee1 = new EmployeeDTO(GenerateNewId.nextId(employeeRepository.getLastIndex(), "E00"), "John Doe", "profile1.jpg", Gender.MALE,
-                "Active", "Branch1", "Manager", Role.ADMIN, new Date(), new Date(),
-                new Address("123", "lane", "City", "State", "12345"), "123-456-7890", "john@example.com",
-                "Jane Doe", "987-654-3210");
+//        EmployeeDTO employee1 = new EmployeeDTO(GenerateNewId.nextId(employeeRepository.getLastIndex(), "E00"), "John Doe", "profile1.jpg", Gender.MALE,
+//                "Active", "Branch1", "Manager", Role.ADMIN, new Date(), new Date(),
+//                new Address("123", "lane", "City", "State", "12345"), "123-456-7890", "john@example.com",
+//                "Jane Doe", "987-654-3210");
 
 
-        employeeService.saveEmployee(employee1);
         List<EmployeeDTO> allEmployees = employeeService.getAllEmployees();
 
         for (EmployeeDTO employeeDTO : allEmployees) {

@@ -5,6 +5,7 @@ function employeeControlFunction() {
     clickTblRow();
     updateCustomer();
     searchEmployee();
+    activeStatusCheckBox();
 }
 
 var base64String;
@@ -15,8 +16,12 @@ function saveEmployee() {
             console.log("Saving Employee");
             var role;
             var gender;
-            if ('none' !== $('#employeeRole').val()) {
+            var userPassword;
+            if ('ADMIN' === $('#employeeRole').val() || 'USER' === $('#employeeRole').val()) {
                 role = $('#employeeRole').val().toUpperCase();
+                userPassword = $('#EmployeePageUserPasswword').val()
+            }else {
+                userPassword = null;
             }
             if ('Select Gender' !== $('#employeeGender').val()) {
                 gender = $('#employeeGender').val().toUpperCase();
@@ -44,6 +49,8 @@ function saveEmployee() {
                 guardianName: $('#employeeGuardian').val(),
                 contactNo: $('#employeeContactNumber').val(),
                 emergencyContact: $('#employeeGuardianContact').val(),
+                activeStatus:true,
+                password: userPassword
             };
             console.log(base64String);
 
@@ -103,9 +110,9 @@ function imageUploader() {
     })
 }
 
-function getAllEmployeeData() {
+function getAllEmployeeAjaxReq(status,value) {
     $.ajax({
-        url: "http://localhost:8080/api/v1/employees",
+        url: "http://localhost:8080/api/v1/employees/"+status+"/"+value,
         method: "GET",
         success: function (resp) {
             console.log("Success: ", resp);
@@ -119,7 +126,8 @@ function getAllEmployeeData() {
                                 </th>
                                 <td>${employee.employeeId}</td>
                                 <td>${employee.employeeName}</td>
-                                <td>${employee.address.buildNo + " " + employee.address.lane + " " + employee.address.state + " " + employee.address.city + " " + employee.address.postalCode}</td>
+                                <td>${employee.address.buildNo + " " + employee.address.lane + " " +
+                employee.address.state + " " + employee.address.city + " " + employee.address.postalCode}</td>
                                 <td>${employee.contactNo}</td>
                                 <td>${employee.joinDate}</td>
                                 <td>${employee.branch}</td>
@@ -134,6 +142,23 @@ function getAllEmployeeData() {
     })
 }
 
+function getAllEmployeeData() {
+    
+    if ( $('#employeeActiveCheckBox').prop('checked') ) {
+        getAllEmployeeAjaxReq("active",true);
+        $('#addEmployee,#updateEmployee,#deleteEmployee').attr('disabled',false);
+    }else {
+        getAllEmployeeAjaxReq("active",false);
+        $('#addEmployee,#updateEmployee,#deleteEmployee').attr('disabled',true);
+    }
+}
+
+function activeStatusCheckBox() {
+    $('#employeeActiveCheckBox').change(function () {
+        getAllEmployeeData();
+    })
+}
+
 function clickTblRow() {
 
     $('#tblEmployee').on('click', 'tr', function (event) {
@@ -142,18 +167,18 @@ function clickTblRow() {
 
         // Uncheck all other checkboxes
 
-        var checkbox = $(this).find('input[type="checkbox"]');
+        var employeeCheckbox = $(this).find('input[type="checkbox"]');
         var isCheckboxClick = $(event.target).is('input[type="checkbox"]');
 
         if (!isCheckboxClick) {
-            checkbox.prop('checked', !checkbox.prop('checked'));
+            employeeCheckbox.prop('checked', !employeeCheckbox.prop('checked'));
 
         }
-        $('#tblEmployee input[type="checkbox"]').not(checkbox).prop('checked', false);
+        $('#tblEmployee input[type="checkbox"]').not(employeeCheckbox).prop('checked', false);
 
         // Uncheck all other checkboxes
-        setImage(checkbox);
-        updateCustomer(checkbox)
+        setImage(employeeCheckbox);
+        updateCustomer(employeeCheckbox)
     });
 
     $('#tblEmployee').on('change', 'input[type="checkbox"]', function () {
@@ -164,9 +189,9 @@ function clickTblRow() {
 
 }
 
-function setImage(checkbox) {
-    var row = checkbox.closest('tr');
-    if (checkbox.is(':checked')) {
+function setImage(employeeCheckbox) {
+    var row = employeeCheckbox.closest('tr');
+    if (employeeCheckbox.is(':checked')) {
         var id = row.find('td:eq(0)').text();
         $.ajax({
             url: "http://localhost:8080/api/v1/employees/" + id,
@@ -187,7 +212,7 @@ function setImage(checkbox) {
     }
 }
 
-function updateCustomer(checkbox) {
+function updateCustomer(employeeCheckbox) {
     $('#employeePopupAddBtn').click(function () {
         if ($(this).text().trim() === 'Update') {
             var role;
@@ -241,7 +266,7 @@ function updateCustomer(checkbox) {
                             timer: 1500
                         });
 
-                        setImage(checkbox)
+                        setImage(employeeCheckbox)
                         $('#tblEmployee tr').each(function () {
                             var isChecked = $(this).find('input[type="checkbox"]').prop('checked');
 
@@ -350,16 +375,17 @@ function deleteEmployee(id) {
 
 function searchEmployee() {
     $('#search_employee').keyup(function (event) {
-
         var idOrName = $(this).val();
-        $.ajax({
-            url: "http://localhost:8080/api/v1/employees?idOrName=" + idOrName,
-            type: "GET",
-            dataType: "json",
-            success: function (response) {
-                $('#tblEmployee tbody').empty()
-                for (const employee of response.data) {
-                    const row = `<tr>
+
+        if ($('#employeeActiveCheckBox').prop('checked')) {
+            $.ajax({
+                url: "http://localhost:8080/api/v1/employees?idOrName=" + idOrName+"&activeStatus=" + true,
+                type: "GET",
+                dataType: "json",
+                success: function (response) {
+                    $('#tblEmployee tbody').empty()
+                    for (const employee of response.data) {
+                        const row = `<tr>
                                 <th scope="row">
                                  <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value=""/>
@@ -373,18 +399,54 @@ function searchEmployee() {
                                 <td>${employee.branch}</td>
                                 
                             </tr>`;
-                    $('#tblEmployee').append(row);
+                        $('#tblEmployee').append(row);
+                    }
+                },
+                error: function (resp) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: resp.responseJSON.message,
+                        footer: '<a href="#"></a>'
+                    });
                 }
-            },
-            error: function (resp) {
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: resp.responseJSON.message,
-                    footer: '<a href="#"></a>'
-                });
-            }
-        });
+            });
+        }else {
+            $.ajax({
+                url: "http://localhost:8080/api/v1/employees?idOrName=" + idOrName+"&activeStatus=" + false,
+                type: "GET",
+                dataType: "json",
+                success: function (response) {
+                    $('#tblEmployee tbody').empty()
+                    for (const employee of response.data) {
+                        const row = `<tr>
+                                <th scope="row">
+                                 <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value=""/>
+                                </div>
+                                </th>
+                                <td>${employee.employeeId}</td>
+                                <td>${employee.employeeName}</td>
+                                <td>${employee.address.buildNo + " " + employee.address.lane + " " + employee.address.state + " " + employee.address.city + " " + employee.address.postalCode}</td>
+                                <td>${employee.contactNo}</td>
+                                <td>${employee.joinDate}</td>
+                                <td>${employee.branch}</td>
+                                
+                            </tr>`;
+                        $('#tblEmployee').append(row);
+                    }
+                },
+                error: function (resp) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: resp.responseJSON.message,
+                        footer: '<a href="#"></a>'
+                    });
+                }
+            });
+        }
+        
     })
 }
 

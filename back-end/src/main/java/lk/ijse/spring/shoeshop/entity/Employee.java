@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
 import java.util.Date;
 
 @Data
@@ -16,8 +17,7 @@ import java.util.Date;
 @ToString
 @Entity
 public class Employee {
-
-    @Id
+    @Column(unique = true, nullable = false)
     private String employeeId;
     private String employeeName;
     @Column(columnDefinition = "LONGTEXT")
@@ -37,10 +37,10 @@ public class Employee {
     private Address address;
     @Column(unique = true)
     private String contactNo;
-    @Column(unique = true)
+    @Id
     private String email;
+    private boolean activeStatus;
     private String guardianName;
     @Column(unique = true)
     private String emergencyContact;
-
 }

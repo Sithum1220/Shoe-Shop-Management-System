@@ -29,4 +29,6 @@ public class EmployeeDTO {
     private String email;
     private String guardianName;
     private String emergencyContact;
+    private boolean activeStatus;
+    private String password;
 }

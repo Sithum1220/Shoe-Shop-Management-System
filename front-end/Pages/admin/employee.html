@@ -9,6 +9,12 @@
     <section id="employeSection">
         <div class="tblDiv row" id="">
             <h1>Employee Details</h1>
+            <div class="form-check activeBtn">
+                <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="employeeActiveCheckBox" checked>
+                <label class="form-check-label" for="employeeActiveCheckBox">
+                    Active Employees
+                </label>
+            </div>
             <div class="search p-0 row">
                 <div class="col-9 p-0 d-flex align-items-center justify-content-end">
                     <div class="d-flex align-items-center">
@@ -231,17 +237,18 @@
                                     <div class="row mb-3 d-none employeePageUserCredentials">
                                         <div class="col">
                                             <div class="input_box">
-                                                <label for="EmployeePageUserUserName" class="opacity-50 lbl">User Name Or Email</label>
-                                                <input type="email" id="EmployeePageUserUserName" placeholder="User Name Or Email">
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="input_box">
                                                 <label for="EmployeePageUserPasswword" class="opacity-50 lbl">Passwword</label>
                                                 <input type="password" id="EmployeePageUserPasswword"
                                                        placeholder="Passwword">
                                             </div>
                                         </div>
+                                        <div class="col">
+<!--                                            <div class="input_box">-->
+<!--                                                <label for="EmployeePageUserUserName" class="opacity-50 lbl">User Name Or Email</label>-->
+<!--                                                <input type="email" id="EmployeePageUserUserName" placeholder="User Name Or Email">-->
+<!--                                            </div>-->
+                                        </div>
+
                                     </div>
                                     <div class="row">
                                         <div class="col d-flex align-items-center mb-4">
@@ -270,10 +277,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
 
         <div class="container d-flex justify-content-center">
             <div id="my-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">

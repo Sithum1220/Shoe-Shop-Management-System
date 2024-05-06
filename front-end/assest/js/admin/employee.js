@@ -33,6 +33,14 @@ function employeeFunction() {
         $('#employeeRole').val($('#employeeRole option:first').val());
         $('#imgViewer').attr('src','#')
         generateNewEmployeeId();
+        employeeRole.change(function () {
+            console.log($(this).val());
+            if ($(this).val() === 'ADMIN' || $(this).val() === 'USER') {
+                employeePageUserCredentials.removeClass('d-none');
+            } else {
+                employeePageUserCredentials.addClass('d-none');
+            }
+        })
     })
     updateEmployee.click(function () {
         employeeFormTitle.text('Update Employee')
@@ -45,6 +53,14 @@ function employeeFunction() {
         $("#employeeDOJ").prop('disabled', false);
         $("#employeeRole").prop('disabled', false);
         enableTxtField()
+        employeeRole.change(function () {
+            console.log($(this).val());
+            if ($(this).val() === 'ADMIN' || $(this).val() === 'USER') {
+                employeePageUserCredentials.addClass('d-none');
+            } else {
+                employeePageUserCredentials.addClass('d-none');
+            }
+        })
     })
     deleteEmployee.click(function () {
 
@@ -63,14 +79,7 @@ function employeeFunction() {
         disableTxtField();
     })
     
-    employeeRole.change(function () {
-        console.log($(this).val());
-        if ($(this).val() === 'ADMIN' || $(this).val() === 'USER') {
-            employeePageUserCredentials.removeClass('d-none');
-        } else {
-            employeePageUserCredentials.addClass('d-none');
-        }
-    })
+    
 
     $('#employeePopupCancelBtn,#employeePopupClose').click(function () {
         $('#tblEmployee tr').each(function () {

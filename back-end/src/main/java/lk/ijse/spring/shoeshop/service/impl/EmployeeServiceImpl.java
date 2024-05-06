@@ -3,7 +3,9 @@ package lk.ijse.spring.shoeshop.service.impl;
 import jakarta.persistence.EntityExistsException;
 import lk.ijse.spring.shoeshop.dto.EmployeeDTO;
 import lk.ijse.spring.shoeshop.entity.Employee;
+import lk.ijse.spring.shoeshop.entity.User;
 import lk.ijse.spring.shoeshop.repository.EmployeeRepository;
+import lk.ijse.spring.shoeshop.repository.UserRepository;
 import lk.ijse.spring.shoeshop.service.EmployeeService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -24,16 +26,18 @@ import java.util.Optional;
 public class EmployeeServiceImpl implements EmployeeService {
 
     EmployeeRepository employeeRepository;
+    UserRepository userRepository;
     ModelMapper modelMapper;
 
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository, ModelMapper modelMapper) {
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository, ModelMapper modelMapper, UserRepository userRepository) {
         this.employeeRepository = employeeRepository;
         this.modelMapper = modelMapper;
+        this.userRepository = userRepository;
     }
 
     @Override
     public void saveEmployee(EmployeeDTO employeeDTo) {
-        if (!employeeRepository.existsById(employeeDTo.getEmployeeId())) {
+        if (!employeeRepository.existsByEmployeeId(employeeDTo.getEmployeeId())) {
             if (!employeeRepository.existsByEmail(employeeDTo.getEmail())) {
                 if (!employeeRepository.existsByContactNo(employeeDTo.getContactNo())) {
                     if (!employeeRepository.existsByEmergencyContact(employeeDTo.getEmergencyContact())) {
@@ -42,23 +46,30 @@ public class EmployeeServiceImpl implements EmployeeService {
 
                         employee.setAddress(employeeDTo.getAddress());
                         employeeRepository.save(employee);
-                    }else {
+                        System.out.println(employeeDTo.getPassword());
+
+                        if (employeeDTo.getPassword() != null) {
+                            User user = new User(employeeDTo.getEmail(), employeeDTo.getPassword(), employeeDTo.getRole(), employee, employeeDTo.isActiveStatus());
+                            userRepository.save(user);
+                        }
+
+                    } else {
                         throw new EntityExistsException("Emergency Contact Number already exists!");
                     }
-                }else {
+                } else {
                     throw new EntityExistsException("Employee Contact Number already exists!");
                 }
-            }else {
+            } else {
                 throw new EntityExistsException("Email Address already exists!");
             }
-        }else {
+        } else {
             throw new EntityExistsException("Employee already exists!");
         }
     }
 
     @Override
     public void updateEmployee(EmployeeDTO employee) {
-        if (employeeRepository.existsById(employee.getEmployeeId())) {
+        if (employeeRepository.existsByEmployeeId(employee.getEmployeeId())) {
             employeeRepository.save(modelMapper.map(employee, Employee.class));
         } else {
             throw new EntityExistsException("Employee Not Found!");
@@ -68,8 +79,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void deleteEmployee(String id) {
-        if (employeeRepository.existsById(id)) {
-            employeeRepository.deleteById(id);
+        if (employeeRepository.existsByEmployeeId(id)) {
+            Employee byEmployeeId = employeeRepository.findByEmployeeId(id);
+            byEmployeeId.setActiveStatus(false);
+            employeeRepository.save(byEmployeeId);
         } else {
             throw new EntityExistsException("Employee Not Found!");
         }
@@ -77,15 +90,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public EmployeeDTO getEmployee(String id) {
-        return modelMapper.map(employeeRepository.findById(id).get(), EmployeeDTO.class);
+        return modelMapper.map(employeeRepository.findByEmployeeId(id), EmployeeDTO.class);
     }
 
     @Override
     public List<EmployeeDTO> getAllEmployees() {
         return modelMapper.map(employeeRepository.findAll(), new TypeToken<List<EmployeeDTO>>() {
         }.getType());
-
-
     }
 
     @Override
@@ -94,8 +105,21 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<EmployeeDTO> searchEmployeesById(String idOrName) {
-        return modelMapper.map(employeeRepository.findByEmployeeIdStartingWithOrEmployeeNameStartingWith(idOrName,idOrName),new TypeToken<List<EmployeeDTO>>() {}.getType());
+    public List<EmployeeDTO> searchEmployeesById(String idOrName,  boolean activeStatus) {
+        return modelMapper.map(employeeRepository.
+                findByEmployeeIdStartingWithAndActiveStatusOrEmployeeNameStartingWithAndActiveStatus
+                        (idOrName,activeStatus, idOrName, activeStatus), new
+                TypeToken<List<EmployeeDTO>>() {}.getType());
+    }
+
+    @Override
+    public List<EmployeeDTO> findAllByActiveStatus(boolean activeStatus) {
+        List<Employee> allByActiveStatus = employeeRepository.findAllByActiveStatus(activeStatus);
+        for (Employee employee:allByActiveStatus){
+            System.out.println(employee.getEmployeeId());
+        }
+        return modelMapper.map(employeeRepository.findAllByActiveStatus(activeStatus),
+                new TypeToken<List<EmployeeDTO>>() {}.getType());
     }
 
 }

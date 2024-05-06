@@ -33,9 +33,9 @@ class EmployeeRepositoryTest {
 
     @Test
     void searchEmployee() {
-        List<Employee> strings = employeeRepository.findByEmployeeIdStartingWithOrEmployeeNameStartingWith("A","N");
-       for (Employee employee : strings) {
-           System.out.println(employee.getEmployeeId());
-       }
+//        List<Employee> strings = employeeRepository.findByEmployeeIdStartingWithOrEmployeeNameStartingWith("A","N");
+//       for (Employee employee : strings) {
+//           System.out.println(employee.getEmployeeId());
+//       }
     }
 }
