@@ -197,7 +197,7 @@ userBtn.click(function () {
             var extractedContent = tempDiv.querySelector('#UserMainSection').innerHTML;
 
             $("#pages").html(extractedContent);
-            inventoryFunction();
+            userController();
         })
         .catch(error => {
             console.error("Error loading HTML file:", error);

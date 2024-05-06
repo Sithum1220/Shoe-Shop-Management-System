@@ -83,6 +83,11 @@ public class EmployeeServiceImpl implements EmployeeService {
             Employee byEmployeeId = employeeRepository.findByEmployeeId(id);
             byEmployeeId.setActiveStatus(false);
             employeeRepository.save(byEmployeeId);
+            if(userRepository.existsById(byEmployeeId.getEmail())){
+                User byEmail = userRepository.findByEmail(byEmployeeId.getEmail());
+                byEmail.setActiveStatus(false);
+                userRepository.save(byEmail);
+            }
         } else {
             throw new EntityExistsException("Employee Not Found!");
         }

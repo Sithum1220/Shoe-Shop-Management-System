@@ -24,6 +24,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, String> {
     List<Employee> findAllByActiveStatus(boolean activeStatus);
     boolean existsByEmployeeId(String employeeId);
     void deleteByEmployeeId(String employeeId);
+    List<Employee> findAllByEmail(String email);
     List<Employee> findByEmployeeIdStartingWithAndActiveStatusOrEmployeeNameStartingWithAndActiveStatus
             (String employeeIdStart, boolean activeStatus1, String employeeNameStart, boolean activeStatus2);
 }

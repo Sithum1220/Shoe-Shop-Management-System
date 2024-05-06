@@ -111,6 +111,7 @@ function imageUploader() {
 }
 
 function getAllEmployeeAjaxReq(status,value) {
+    console.log(status);
     $.ajax({
         url: "http://localhost:8080/api/v1/employees/"+status+"/"+value,
         method: "GET",
