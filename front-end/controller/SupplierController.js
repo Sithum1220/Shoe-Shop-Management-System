@@ -58,8 +58,7 @@ function saveSupplier() {
                             showConfirmButton: false,
                             timer: 1500
                         });
-                        $('#supplierPopupAddBtn').attr('data-dismiss', 'modal');
-                        // $('#supplierFormContainer').modal('hide');
+                        getAllSuppliers();                        // $('#supplierFormContainer').modal('hide');
                         console.log("resp");
                     }
                 },
@@ -242,7 +241,7 @@ function deleteSupplier(id) {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: "Employee has been Deleted",
+                    title: "Customer has been Deleted",
                     showConfirmButton: false,
                     timer: 1500
                 });

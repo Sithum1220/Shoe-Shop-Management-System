@@ -9,7 +9,10 @@ import lk.ijse.spring.shoeshop.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/customer")
@@ -34,7 +37,29 @@ public class CustomerController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil getEmployees() {
+    public ResponseUtil getCustomers() {
         return new ResponseUtil("200", "Successfully Fetched Employees", customerService.getAllCustomers());
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping("/{id}")
+    public ResponseEntity<CustomerDTO> getCustomersById(@PathVariable("id") String id) {
+        Optional<CustomerDTO> optionalImageEntity = Optional.ofNullable(customerService.getCustomer(id));
+        return optionalImageEntity.map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PatchMapping
+    public ResponseUtil updateCustomers(@RequestBody CustomerDTO customerDTO) {
+        customerService.updateCustomer(customerDTO);
+        return new ResponseUtil("200", "Successfully Updated!", null);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @DeleteMapping(path = "/{id}")
+    public ResponseUtil deleteCustomers(@PathVariable("id") String id) {
+        customerService.deleteCustomer(id);
+        return new ResponseUtil("200", "Successfully Deleted!", null);
     }
 }

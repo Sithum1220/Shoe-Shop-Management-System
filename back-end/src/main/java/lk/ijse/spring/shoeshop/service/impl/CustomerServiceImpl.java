@@ -5,6 +5,7 @@ import lk.ijse.spring.shoeshop.dto.CustomerDTO;
 import lk.ijse.spring.shoeshop.dto.SupplierDTO;
 import lk.ijse.spring.shoeshop.entity.Customer;
 import lk.ijse.spring.shoeshop.entity.Employee;
+import lk.ijse.spring.shoeshop.entity.Supplier;
 import lk.ijse.spring.shoeshop.repository.CustomerRepository;
 import lk.ijse.spring.shoeshop.repository.SupplierRepository;
 import lk.ijse.spring.shoeshop.service.CustomerService;
@@ -48,18 +49,26 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void updateCustomer(CustomerDTO customer) {
-
+    public void updateCustomer(CustomerDTO customerDTO) {
+        if (customerRepository.existsById(customerDTO.getCustomerId())) {
+            customerRepository.save(modelMapper.map(customerDTO, Customer.class));
+        } else {
+            throw new EntityExistsException("Customer Not Found!");
+        }
     }
 
     @Override
     public void deleteCustomer(String id) {
-
+        if (customerRepository.existsById(id)) {
+            customerRepository.deleteById(id);
+        } else {
+            throw new EntityExistsException("Customer Not Found!");
+        }
     }
 
     @Override
     public CustomerDTO getCustomer(String id) {
-        return null;
+        return modelMapper.map(customerRepository.findById(id).get(), CustomerDTO.class);
     }
 
     @Override
@@ -71,5 +80,11 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public String lastId() {
         return customerRepository.getLastIndex();
+    }
+
+    @Override
+    public List<CustomerDTO> searchCustomersById(String idOrName) {
+        return modelMapper.map(customerRepository.findByCustomerIdStartingWithOrCustomerNameStartingWith(idOrName,idOrName),new TypeToken<List<CustomerDTO>>() {}.getType());
+
     }
 }

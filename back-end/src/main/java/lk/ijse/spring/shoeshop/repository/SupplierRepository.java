@@ -19,7 +19,7 @@ public interface SupplierRepository extends JpaRepository<Supplier, String> {
     boolean existsByMobileNo(String mobileNo);
     boolean existsByLandNo(String landNo);
 
-    List<Supplier> findBySupplierCodeStartingWithOrSupplierNameStartingWith(String employeeIdStart, String employeeNameStart);
+    List<Supplier> findBySupplierCodeStartingWithOrSupplierNameStartingWith(String supplierIdStart, String supplierNameStart);
 
 
 }

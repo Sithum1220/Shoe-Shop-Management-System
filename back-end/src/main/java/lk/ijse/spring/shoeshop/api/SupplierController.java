@@ -36,13 +36,13 @@ public class SupplierController {
     }
     @ResponseStatus(HttpStatus.CREATED)
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil getEmployees() {
+    public ResponseUtil getSuppliers() {
         return new ResponseUtil("200", "Successfully Fetched Employees", supplierService.getAllSuppliers());
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @GetMapping("/{id}")
-    public ResponseEntity<SupplierDTO> getEmployeeById(@PathVariable("id") String id) {
+    public ResponseEntity<SupplierDTO> getSuppliersById(@PathVariable("id") String id) {
         Optional<SupplierDTO> optionalImageEntity = Optional.ofNullable(supplierService.getSupplier(id));
         return optionalImageEntity.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -50,21 +50,21 @@ public class SupplierController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PatchMapping
-    public ResponseUtil updateEmployee(@RequestBody SupplierDTO supplierDTO) {
+    public ResponseUtil updateSuppliers(@RequestBody SupplierDTO supplierDTO) {
         supplierService.updateSupplier(supplierDTO);
         return new ResponseUtil("200", "Successfully Updated!", null);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @DeleteMapping(path = "/{id}")
-    public ResponseUtil deleteEmployee(@PathVariable("id") String id) {
+    public ResponseUtil deleteSuppliers(@PathVariable("id") String id) {
         supplierService.deleteSupplier(id);
         return new ResponseUtil("200", "Successfully Deleted!", null);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @GetMapping(params = "idOrName",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil searchEmployees(@RequestParam("idOrName") String idOrName) {
+    public ResponseUtil searchSuppliers(@RequestParam("idOrName") String idOrName) {
         return new ResponseUtil("200", "Successfully Fetched Employees", supplierService.searchSuppliersById(idOrName));
 
     }

@@ -5,23 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="032d1856-7f95-44cb-a7e8-c221ea7611af" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/CustomerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/CustomerDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/repository/CustomerRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/CustomerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/CustomerServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/controller/CustomerController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9132a697-4a09-4a6c-b8d3-c02493ec795e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9132a697-4a09-4a6c-b8d3-c02493ec795e.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Sales.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Sales.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/customers/customer.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/customers/customer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/assest/css/pages.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/css/pages.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/assest/js/admin/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/js/admin/dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/assest/js/customers/customer.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/js/customers/customer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/assest/js/user/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/js/user/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/SupplierController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/SupplierController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/CustomerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/controller/CustomerController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/CustomerController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/controller/SupplierController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/SupplierController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +79,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "copyright",
+    "settings.editor.selected.configurable": "editor.preferences.folding",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -251,7 +241,8 @@
       <workItem from="1714795909850" duration="62348000" />
       <workItem from="1714888001875" duration="17605000" />
       <workItem from="1714908220655" duration="2128000" />
-      <workItem from="1714912950747" duration="29036000" />
+      <workItem from="1714912950747" duration="29402000" />
+      <workItem from="1714974095171" duration="3885000" />
     </task>
     <servers />
   </component>

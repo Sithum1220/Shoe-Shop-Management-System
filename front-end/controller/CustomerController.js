@@ -1,6 +1,7 @@
 function customerControlFunction() {
     saveCustomer();
     getAllCustomer();
+    clickCustomerTblRow();
 }
 function generateNewCustomerId() {
     fetch("http://localhost:8080/api/v1/customer/id")
@@ -104,5 +105,164 @@ function getAllCustomer(){
         error: function (error) {
             console.log("error: ", error);
         }
+    })
+}
+
+function clickCustomerTblRow() {
+    console.log("kkkkkkk")
+    $('#tblCustomer').on('click', 'tr', function (event) {
+
+
+        var customerCheckbox = $(this).find('input[type="checkbox"]');
+        var isCheckboxClick = $(event.target).is('input[type="checkbox"]');
+
+        if (!isCheckboxClick) {
+            customerCheckbox.prop('checked', !customerCheckbox.prop('checked'));
+
+        }
+        $('#tblCustomer input[type="checkbox"]').not(customerCheckbox).prop('checked', false);
+
+        getCustomerDataByClickTblRow(customerCheckbox);
+    });
+
+    $('#tblCustomer').on('change', 'input[type="checkbox"]', function () {
+        getCustomerDataByClickTblRow($(this).find('input[type="checkbox"]'));
+        $('#tblCustomer input[type="checkbox"]').not($(this)).prop('checked', false);
+    });
+}
+
+function getCustomerDataByClickTblRow(customerCheckbox) {
+    var row = customerCheckbox.closest('tr');
+    if (customerCheckbox.is(':checked')) {
+        var id = row.find('td:eq(0)').text();
+        $.ajax({
+            url: "http://localhost:8080/api/v1/customer/" + id,
+            type: "GET",
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+                setCustomerDataToTextField(response)
+                customerUpdate(response);
+                deleteCustomer(id);
+            },
+            error: function (xhr, status, error) {
+                console.error('Failed to fetch image:', error);
+            }
+        });
+    } else {
+    }
+}
+
+function setCustomerDataToTextField(response) {
+    $('#customerCode').val(response.customerId);
+    $('#customerName').val(response.customerName);
+    $('#customerGender').val(response.gender);
+    $('#customerDOB').val(response.customerDob);
+    $('#customerDOJ').val(response.loyaltyDate);
+    $('#customerBuilding').val(response.address.buildNo);
+    $('#customerLane').val(response.address.lane);
+    $('#customerCity').val(response.address.city);
+    $('#customerState').val(response.address.state);
+    $('#customerPostalCode').val(response.address.postalCode);
+    $('#customerContactNo').val(response.contactNo);
+    $('#customerEmail').val(response.email);
+    $('#customerLevel').val(response.level);
+    $('#customerPoint').val(response.totalPoints);
+    $('#customerRecentPurchaseDate').val(response.recentPurchase);
+}
+
+function customerUpdate(response) {
+    console.log("updateCustomer");
+    $('#customerPopupAddBtn').click(function () {
+        if ($(this).text().trim() === 'Update') {
+            const postData = {
+                customerId: $('#customerCode').val(),
+                customerName: $('#customerName').val(),
+                gender: $('#customerGender').val(),
+                loyaltyDate: $('#customerDOJ').val(),
+                customerDob: $('#customerDOB').val(),
+                address: {
+                    buildNo: $('#customerBuilding').val(),
+                    lane: $('#customerLane').val(),
+                    city: $('#customerCity').val(),
+                    state: $('#customerState').val(),
+                    postalCode: $('#customerPostalCode').val()
+                },
+                totalPoints: response.totalPoints,
+                level: response.level,
+                recentPurchase: response.recentPurchase,
+                contactNo: $('#customerContactNo').val(),
+                email: $('#customerEmail').val(),
+            };
+
+            $.ajax({
+                url: "http://localhost:8080/api/v1/customer",
+                method: "PATCH",
+                data: JSON.stringify(postData),
+                contentType: "application/json",
+                success: function (resp) {
+                    if (resp.state == 200) {
+                        console.log(resp);
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Customer has been Updated",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        $('#tblCustomer tr').each(function () {
+                            var isChecked = $(this).find('input[type="checkbox"]').prop('checked');
+
+                            if (isChecked) {
+                                var row = $(this);
+                                row.find('td:eq(0)').text($('#customerCode').val());
+                                row.find('td:eq(1)').text($('#customerName').val());
+                                row.find('td:eq(2)').text($('#customerBuilding').val()+" "+
+                                    $('#customerLane').val()+" "+$('#customerState').val()+" "+$('#customerCity').val()
+                                    +" "+$('#customerPostalCode').val());
+                                row.find('td:eq(3)').text($('#customerDOJ').val());
+                            }
+                        });
+                    }
+                },
+                error: function (resp) {
+                    console.log(resp)
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: resp.responseJSON.message,
+                        footer: '<a href="#"></a>'
+                    });
+                }
+            })
+
+        }
+    });
+}
+
+function deleteCustomer(id) {
+    $('#customerDeleteBtn').click(function () {
+        $.ajax({
+            url: "http://localhost:8080/api/v1/customer/" + id,
+            type: "DELETE",
+            success: function (response) {
+                getAllCustomer();
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Customer has been Deleted",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            },
+            error: function (resp) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: resp.responseJSON.message,
+                    footer: '<a href="#"></a>'
+                });
+            }
+        });
     })
 }
