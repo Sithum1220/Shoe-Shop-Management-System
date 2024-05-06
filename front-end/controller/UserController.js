@@ -3,6 +3,7 @@ function userController() {
     getAllUserData();
     userActiveStatusCheckBox();
     clickUserTblRow();
+    searchUsers();
 }
 function getAllUsersAjaxReq(status,value) {
     console.log("status");
@@ -120,5 +121,78 @@ function deleteUser(id) {
                 });
             }
         });
+    })
+}
+
+function searchUsers() {
+    $('#searchUsers').keyup(function (event) {
+        var idOrName = $(this).val();
+
+        if ($('#userActiveCheckbox').prop('checked')) {
+            $.ajax({
+                url: "http://localhost:8080/api/v1/users?idOrName=" + idOrName+"&activeStatus=" + true,
+                type: "GET",
+                dataType: "json",
+                success: function (response) {
+                    $('#tblUser tbody').empty()
+                    for (const user of response.data) {
+                        const row = `<tr>
+                                <th scope="row">
+                                 <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value=""/>
+                                </div>
+                                </th>
+                             
+                                <td>${user.employeeName}</td>
+                                <td>${user.contactNo}</td>
+                                <td>${user.email}</td>
+                                <td>${user.role}</td>
+                            </tr>`;
+                        $('#tblUser').append(row);
+                    }
+                },
+                error: function (resp) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: resp.responseJSON.message,
+                        footer: '<a href="#"></a>'
+                    });
+                }
+            });
+        }else {
+            $.ajax({
+                url: "http://localhost:8080/api/v1/users?idOrName=" + idOrName+"&activeStatus=" + false,
+                type: "GET",
+                dataType: "json",
+                success: function (response) {
+                    $('#tblUser tbody').empty()
+                    for (const user of response.data) {
+                        const row = `<tr>
+                                <th scope="row">
+                                 <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value=""/>
+                                </div>
+                                </th>
+                             
+                                <td>${user.employeeName}</td>
+                                <td>${user.contactNo}</td>
+                                <td>${user.email}</td>
+                                <td>${user.role}</td>
+                            </tr>`;
+                        $('#tblUser').append(row);
+                    }
+                },
+                error: function (resp) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: resp.responseJSON.message,
+                        footer: '<a href="#"></a>'
+                    });
+                }
+            });
+        }
+
     })
 }

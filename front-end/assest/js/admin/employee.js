@@ -32,9 +32,12 @@ function employeeFunction() {
         $('#employeeGender').val($('#employeeGender option:first').val());
         $('#employeeRole').val($('#employeeRole option:first').val());
         $('#imgViewer').attr('src','#')
+        employeePageUserCredentials.addClass('d-none');
         generateNewEmployeeId();
         employeeRole.change(function () {
             console.log($(this).val());
+            $('#EmployeePageUserPasswword').val("")
+            $('#EmployeePageUserPasswword2').val("")
             if ($(this).val() === 'ADMIN' || $(this).val() === 'USER') {
                 employeePageUserCredentials.removeClass('d-none');
             } else {
@@ -52,6 +55,7 @@ function employeeFunction() {
         $("#employeeDOB").prop('disabled', false);
         $("#employeeDOJ").prop('disabled', false);
         $("#employeeRole").prop('disabled', false);
+        employeePageUserCredentials.addClass('d-none');
         enableTxtField()
         employeeRole.change(function () {
             console.log($(this).val());
@@ -76,6 +80,7 @@ function employeeFunction() {
         $("#employeeDOJ").prop('disabled', true);
         $("#employeeRole").prop('disabled', true);
         $("#imgUploader").prop('disabled', true);
+        employeePageUserCredentials.addClass('d-none');
         disableTxtField();
     })
     

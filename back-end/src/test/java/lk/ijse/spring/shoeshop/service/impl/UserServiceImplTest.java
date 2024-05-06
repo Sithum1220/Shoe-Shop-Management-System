@@ -22,4 +22,26 @@ class UserServiceImplTest {
             System.out.println(customDTO.toString());
         }
     }
+
+    @Test
+    void testFindAllByActiveStatus() {
+    }
+
+    @Test
+    void deleteUser() {
+    }
+
+    @Test
+    void getUser() {
+    }
+
+    @Test
+    void searchUsersById() {
+        List<CustomDTO> s = userService.searchUsersById("i", true);
+//
+        for (CustomDTO customDTO : s) {
+
+            System.out.println(customDTO.toString());
+        }
+    }
 }

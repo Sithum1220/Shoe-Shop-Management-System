@@ -12,6 +12,7 @@ import lk.ijse.spring.shoeshop.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,6 +64,27 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO getUser(String id) {
         return modelMapper.map(userRepository.findById(id).get(), UserDTO.class);
+
+    }
+
+    @Override
+    public List<CustomDTO> searchUsersById(String idOrName, boolean activeStatus) {
+
+        List<Employee> employeeList = employeeRepository.findByEmployeeNameStartingWithOrEmailStartingWith(idOrName, idOrName);
+
+        List<CustomDTO> customDTOs = new ArrayList<>();
+
+        for (Employee employee : employeeList) {
+            if (userRepository.existsByActiveStatusAndEmail(activeStatus, employee.getEmail())) {
+                CustomDTO customDTO = new CustomDTO();
+                customDTO.setEmployeeName(employee.getEmployeeName());
+                customDTO.setEmail(employee.getEmail());
+                customDTO.setRole(employee.getRole());
+                customDTO.setContactNo(employee.getContactNo());
+                customDTOs.add(customDTO);
+            }
+        }
+        return customDTOs;
 
     }
 

@@ -36,4 +36,9 @@ public interface EmployeeRepository extends JpaRepository<Employee, String> {
 
     List<Employee> findByEmployeeIdStartingWithAndActiveStatusOrEmployeeNameStartingWithAndActiveStatus
             (String employeeIdStart, boolean activeStatus1, String employeeNameStart, boolean activeStatus2);
+
+//    List<Employee> findByEmailStartingWithAndActiveStatusOrEmployeeNameStartingWithAndActiveStatus
+//            (String employeeEmailStart, boolean activeStatus1, String employeeNameStart, boolean activeStatus2);
+
+    List<Employee> findByEmployeeNameStartingWithOrEmailStartingWith(String employeeNameStart, String email);
 }

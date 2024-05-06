@@ -40,4 +40,11 @@ public class UserController {
         return optionalImageEntity.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchUsers(@ModelAttribute("idOrName") String idOrName,@ModelAttribute("activeStatus") boolean activeStatus) {
+        return new ResponseUtil("200", "Successfully Fetched Employees", userService.searchUsersById(idOrName,activeStatus));
+
+    }
 }

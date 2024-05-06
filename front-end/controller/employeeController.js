@@ -13,75 +13,84 @@ var base64String;
 function saveEmployee() {
     $('#employeePopupAddBtn').click(function () {
         if ($(this).text().trim() === 'Save') {
-            console.log("Saving Employee");
-            var role;
-            var gender;
-            var userPassword;
-            if ('ADMIN' === $('#employeeRole').val() || 'USER' === $('#employeeRole').val()) {
-                role = $('#employeeRole').val().toUpperCase();
-                userPassword = $('#EmployeePageUserPasswword').val()
-            }else {
-                userPassword = null;
-            }
-            if ('Select Gender' !== $('#employeeGender').val()) {
-                gender = $('#employeeGender').val().toUpperCase();
-            }
-
-            const postData = {
-                employeeId: $('#employeeCode').val(),
-                gender: gender,
-                employeeName: $('#employeeName').val(),
-                employeeStatus: $('#employeeStatus').val(),
-                branch: $('#employeeBranch').val(),
-                designation: $('#employeeDesignation').val(),
-                proPic: base64String,
-                joinDate: $('#employeeDOJ').val(),
-                employeeDob: $('#employeeDOB').val(),
-                role: role,
-                address: {
-                    buildNo: $('#employeeBuilding').val(),
-                    city: $('#employeeCity').val(),
-                    lane: $('#employeeLane').val(),
-                    state: $('#employeeState').val(),
-                    postalCode: $('#employeePostalCode').val()
-                },
-                email: $('#employeeEmail').val(),
-                guardianName: $('#employeeGuardian').val(),
-                contactNo: $('#employeeContactNumber').val(),
-                emergencyContact: $('#employeeGuardianContact').val(),
-                activeStatus:true,
-                password: userPassword
-            };
-            console.log(base64String);
-
-            $.ajax({
-                url: "http://localhost:8080/api/v1/employees",
-                method: "POST",
-                data: JSON.stringify(postData),
-                contentType: "application/json",
-                success: function (resp) {
-                    if (resp.state == 200) {
-                        console.log(resp);
-                        Swal.fire({
-                            position: "top-end",
-                            icon: "success",
-                            title: "Employee has been saved",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                        getAllEmployeeData();
-                    }
-                },
-                error: function (resp) {
-                    console.log(resp)
-                    Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        text: resp.responseJSON.message,
-                        footer: '<a href="#"></a>'
-                    });
+            if ($('#EmployeePageUserPasswword').val() === $('#EmployeePageUserPasswword2').val()){
+                console.log("Saving Employee");
+                var role;
+                var gender;
+                var userPassword;
+                if ('ADMIN' === $('#employeeRole').val() || 'USER' === $('#employeeRole').val()) {
+                    role = $('#employeeRole').val().toUpperCase();
+                    userPassword = $('#EmployeePageUserPasswword').val()
+                }else {
+                    userPassword = null;
                 }
-            })
+                if ('Select Gender' !== $('#employeeGender').val()) {
+                    gender = $('#employeeGender').val().toUpperCase();
+                }
+
+                const postData = {
+                    employeeId: $('#employeeCode').val(),
+                    gender: gender,
+                    employeeName: $('#employeeName').val(),
+                    employeeStatus: $('#employeeStatus').val(),
+                    branch: $('#employeeBranch').val(),
+                    designation: $('#employeeDesignation').val(),
+                    proPic: base64String,
+                    joinDate: $('#employeeDOJ').val(),
+                    employeeDob: $('#employeeDOB').val(),
+                    role: role,
+                    address: {
+                        buildNo: $('#employeeBuilding').val(),
+                        city: $('#employeeCity').val(),
+                        lane: $('#employeeLane').val(),
+                        state: $('#employeeState').val(),
+                        postalCode: $('#employeePostalCode').val()
+                    },
+                    email: $('#employeeEmail').val(),
+                    guardianName: $('#employeeGuardian').val(),
+                    contactNo: $('#employeeContactNumber').val(),
+                    emergencyContact: $('#employeeGuardianContact').val(),
+                    activeStatus:true,
+                    password: userPassword
+                };
+                console.log(base64String);
+
+                $.ajax({
+                    url: "http://localhost:8080/api/v1/employees",
+                    method: "POST",
+                    data: JSON.stringify(postData),
+                    contentType: "application/json",
+                    success: function (resp) {
+                        if (resp.state == 200) {
+                            console.log(resp);
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: "Employee has been saved",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            getAllEmployeeData();
+                        }
+                    },
+                    error: function (resp) {
+                        console.log(resp)
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: resp.responseJSON.message,
+                            footer: '<a href="#"></a>'
+                        });
+                    }
+                })
+            }else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Password do not match",
+                    footer: '<a href="#"></a>'
+                });
+            }
         }
 
     })

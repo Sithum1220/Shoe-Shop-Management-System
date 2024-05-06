@@ -9,4 +9,6 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, String> {
     List<User> findAllByActiveStatus(boolean activeStatus);
     User findByEmail(String email);
+
+    boolean existsByActiveStatusAndEmail(boolean activeStatus, String email);
 }

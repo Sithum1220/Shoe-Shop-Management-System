@@ -331,6 +331,7 @@ input[type="date"]::before {
     position: relative;
     top: 60px;
     left: 12px;
+    width: 50%;
 }
 .userDeleteBtn{
     width: 13rem;

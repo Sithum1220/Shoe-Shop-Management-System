@@ -11,5 +11,7 @@ public interface UserService {
     List<CustomDTO> findAllByActiveStatus(boolean activeStatus);
     void deleteUser(String id);
     UserDTO getUser(String id);
+    List<CustomDTO> searchUsersById(String idOrName, boolean activeStatus);
+
 
 }
