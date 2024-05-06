@@ -2,6 +2,7 @@ function userController() {
     console.log("hiiiiiii");
     getAllUserData();
     userActiveStatusCheckBox();
+    clickUserTblRow();
 }
 function getAllUsersAjaxReq(status,value) {
     console.log("status");
@@ -33,6 +34,7 @@ function getAllUsersAjaxReq(status,value) {
         }
     })
 }
+
 function getAllUserData() {
 
     if ( $('#userActiveCheckbox').prop('checked') ) {
@@ -48,5 +50,75 @@ function userActiveStatusCheckBox() {
     $('#userActiveCheckbox').change(function () {
         console.log('userActiveCheckbox');
         getAllUserData();
+    })
+}
+
+function clickUserTblRow() {
+
+    $('#tblUser').on('click', 'tr', function (event) {
+        console.log("Nannnaaa");
+
+        var userCheckbox = $(this).find('input[type="checkbox"]');
+        var isCheckboxClick = $(event.target).is('input[type="checkbox"]');
+
+        if (!isCheckboxClick) {
+            userCheckbox.prop('checked', !userCheckbox.prop('checked'));
+
+        }
+        $('#tblUser input[type="checkbox"]').not(userCheckbox).prop('checked', false);
+
+        getUserDataByClickTblRow(userCheckbox);
+    });
+
+    $('#tblUser').on('change', 'input[type="checkbox"]', function () {
+        getUserDataByClickTblRow($(this).find('input[type="checkbox"]'));
+        $('#tblUser input[type="checkbox"]').not($(this)).prop('checked', false);
+    });
+}
+
+function getUserDataByClickTblRow(userCheckbox) {
+    var row = userCheckbox.closest('tr');
+    if (userCheckbox.is(':checked')) {
+        var id = row.find('td:eq(2)').text();
+        $.ajax({
+            url: "http://localhost:8080/api/v1/users/" + id,
+            type: "GET",
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+                deleteUser(id);
+            },
+            error: function (xhr, status, error) {
+                console.error('Failed to fetch image:', error);
+            }
+        });
+    } else {
+    }
+}
+
+function deleteUser(id) {
+    $('#userDeleteBtn').click(function () {
+        $.ajax({
+            url: "http://localhost:8080/api/v1/users/" + id,
+            type: "DELETE",
+            success: function (response) {
+                getAllUserData();
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "User has been Deleted",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            },
+            error: function (resp) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: resp.responseJSON.message,
+                    footer: '<a href="#"></a>'
+                });
+            }
+        });
     })
 }

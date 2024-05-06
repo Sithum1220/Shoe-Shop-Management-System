@@ -14,17 +14,26 @@ public interface EmployeeRepository extends JpaRepository<Employee, String> {
     String getLastIndex();
 
     boolean existsByContactNo(String contactNo);
+
     boolean existsByEmail(String email);
+
     boolean existsByEmergencyContact(String emergencyContact);
 
 //    @Query(value = "SELECT employee_id FROM employee WHERE employee_id LIKE ?1 OR employee_name LIKE ?1;", nativeQuery = true)
 //    List<String> searchEmployee(String id);
 
     Employee findByEmployeeId(String employeeId);
+
+    Employee findByEmail(String email);
+
     List<Employee> findAllByActiveStatus(boolean activeStatus);
+
     boolean existsByEmployeeId(String employeeId);
+
     void deleteByEmployeeId(String employeeId);
+
     List<Employee> findAllByEmail(String email);
+
     List<Employee> findByEmployeeIdStartingWithAndActiveStatusOrEmployeeNameStartingWithAndActiveStatus
             (String employeeIdStart, boolean activeStatus1, String employeeNameStart, boolean activeStatus2);
 }
