@@ -54,17 +54,10 @@ function employeeFunction() {
         $("#employeeGender").prop('disabled', false);
         $("#employeeDOB").prop('disabled', false);
         $("#employeeDOJ").prop('disabled', false);
-        $("#employeeRole").prop('disabled', false);
+        $("#employeeRole").prop('disabled', true);
         employeePageUserCredentials.addClass('d-none');
         enableTxtField()
-        employeeRole.change(function () {
-            console.log($(this).val());
-            if ($(this).val() === 'ADMIN' || $(this).val() === 'USER') {
-                employeePageUserCredentials.addClass('d-none');
-            } else {
-                employeePageUserCredentials.addClass('d-none');
-            }
-        })
+     
     })
     deleteEmployee.click(function () {
 
