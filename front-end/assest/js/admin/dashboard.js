@@ -163,6 +163,7 @@ inventoryBtn.click(function () {
 
             $("#pages").html(extractedContent);
             inventoryFunction();
+            inventoryController();
         })
         .catch(error => {
             console.error("Error loading HTML file:", error);

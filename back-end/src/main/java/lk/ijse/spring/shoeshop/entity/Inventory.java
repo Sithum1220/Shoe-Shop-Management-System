@@ -19,6 +19,7 @@ public class Inventory {
     @Column(columnDefinition = "LONGTEXT")
     private String itemPicture;
     private int qty;
+    private int originalQty;
     private String category;
     private Integer size;
     @ManyToOne

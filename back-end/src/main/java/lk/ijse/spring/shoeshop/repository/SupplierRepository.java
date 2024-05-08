@@ -13,8 +13,9 @@ public interface SupplierRepository extends JpaRepository<Supplier, String> {
 
     boolean existsByEmail(String email);
 
-//    @Query("SELECT CASE WHEN COUNT(s) > 0 THEN true ELSE false END FROM Supplier s WHERE s.mobile_no = :mobileNo")
-//    boolean checkByMobileNo(String mobileNo);
+    @Query("SELECT s.supplierName FROM Supplier s WHERE s.supplierCode = :id")
+    String findNameById(String id);
+
 
     boolean existsByMobileNo(String mobileNo);
     boolean existsByLandNo(String landNo);

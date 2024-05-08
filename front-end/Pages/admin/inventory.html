@@ -20,7 +20,7 @@
             </div>
             <div class="col-10 tableCol shadow-lg ">
                 <div class="table-container">
-                    <table class="table mytable">
+                    <table class="table mytable" id="tblInventory">
                         <thead class="table-header">
                         <tr>
                             <th scope="col">
@@ -70,18 +70,11 @@
                     </table>
 
                 </div>
-                <div class="pagination-container">
-                    <button class="prev-btn"> Previous
-                        <!--                        <img src="../Pages/assets/images/arrow-point-to-left.png" width="25" alt="">-->
-                    </button>
-                    <button class="next-btn"> Next
-                        <!--                        <img src="../Pages/assets/images/arrow-point-to-right.png" width="25" alt="">-->
-                    </button>
-                </div>
 
             </div>
             <div class="col-2 btnCol d-flex justify-content-center mt-4">
                 <section class="d-flex flex-column gap-5">
+                    <img  id="itemImg" src="#" class="" alt="">
                     <button class="shadow-lg" id="addItem" data-toggle="modal" data-target="#itemFormContainer"><i class="fal fa-plus-circle"></i>
                         <h1>Add Item</h1>
                     </button>
@@ -106,7 +99,7 @@
                     <div class="modal-content border-0">
                         <div class="modal-body p-0">
                             <div class=" border-0 p-sm-3 p-2 justify-content-center form-container">
-                                <div class="pt-4 pb-4 ps-5 pe-5 d-flex justify-content-between">
+                                <div class="pt-2 pb-2 ps-2 pe- d-flex justify-content-between">
                                     <div>
                                         <img id="itemFormIcon" src="../../assest/images/Frame07.png" width="75" alt="">
                                         <h2 id="itemFormTitle" class="d-inline-block ms-3">Add Inventory</h2>
@@ -126,7 +119,7 @@
                                         </div>
                                         <div class="col">
                                             <div class="input_box d-flex align-items-center justify-content-center">
-                                                <label for="itemCode" class="file-label ms-1 mb-2 opacity-75">Item Status</label>
+                                                <label for="itemCode" id="itemStatus" class="file-label ms-1 mb-2 opacity-75">Item Status</label>
                                             </div>
                                         </div>
                                     </div>
@@ -141,8 +134,7 @@
 
                                         <div class="col">
                                             <div class="input_box d-flex align-items-center justify-content-center">
-                                                <label for="itemCode" class="file-label ms-1 mb-2 opacity-75">Supplier name</label>
-
+                                                <label id="supplierName" class="file-label ms-1 mb-2 opacity-75">Supplier name</label>
                                             </div>
                                         </div>
                                     </div>
@@ -185,17 +177,17 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row mb-3">
                                         <div class="col d-flex align-items-center">
                                             <div class="input_box">
-                                                <label for="imgUploader" class="file-label ms-1 mb-2 opacity-50">Select a image...</label>
-                                                <input class="form-control imgUploader" type="file" id="imgUploader" placeholder="Select Item Image" multiple/>
+                                                <label for="itemImgUploader" class="file-label ms-1 mb-2 opacity-50">Select a image...</label>
+                                                <input class="form-control imgUploader" type="file" id="itemImgUploader" placeholder="Select Item Image" multiple/>
                                             </div>
                                         </div>
 
                                         <div class="col">
                                             <div class="d-flex justify-content-center pt-3">
-                                                <img id="imgViewer" alt="" width="200" src="../../assest/images/shoe01.png"/>
+                                                <img id="itemImgViewer" alt="" width="120" src="#"/>
                                             </div>
                                         </div>
                                     </div>
