@@ -3,6 +3,7 @@ function inventoryController() {
     checkSupplier();
     saveItem();
     itemImageUploader();
+    itemClickTblRow();
 }
 
 var base64String;
@@ -22,6 +23,7 @@ function saveItem() {
                 },
                 salePrice: $('#itemSellPrice').val(),
                 buyPrice: $('#itemBuyPrice').val(),
+                itemPicture:base64String
             };
             console.log(postData);
             $.ajax({
@@ -76,10 +78,18 @@ function checkItem() {
             success: function (resp) {
                 if (resp.state == 200) {
                     console.log(resp);
+                    var split = resp.data.split(",");
                     if ($('#itemCode').val() === '') {
                         $('#itemStatus').text('Item Status');
                     }else {
-                        $('#itemStatus').text(resp.data);
+                        $('#itemStatus').text(split[0]);
+                        if (split[0] !== "No Item Found") {
+                            console.log(split[0]);
+                            base64String = split[1];
+                            $('#itemImgViewer').attr('src', 'data:image/jpeg;base64,' + split[1]);
+                        }else {
+                            $('#itemImgViewer').attr('src', '#');
+                        }
                     }
                    
                 }
@@ -171,18 +181,18 @@ function itemClickTblRow() {
 
         // Uncheck all other checkboxes
 
-        var employeeCheckbox = $(this).find('input[type="checkbox"]');
+        var itemCheckbox = $(this).find('input[type="checkbox"]');
         var isCheckboxClick = $(event.target).is('input[type="checkbox"]');
 
         if (!isCheckboxClick) {
-            employeeCheckbox.prop('checked', !employeeCheckbox.prop('checked'));
+            itemCheckbox.prop('checked', !itemCheckbox.prop('checked'));
 
         }
-        $('#tblInventory input[type="checkbox"]').not(employeeCheckbox).prop('checked', false);
+        $('#tblInventory input[type="checkbox"]').not(itemCheckbox).prop('checked', false);
 
         // Uncheck all other checkboxes
-        setImage(employeeCheckbox);
-        updateCustomer(employeeCheckbox)
+        setImage(itemCheckbox);
+        // updateCustomer(employeeCheckbox)
     });
 
     $('#tblInventory').on('change', 'input[type="checkbox"]', function () {

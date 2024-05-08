@@ -53,8 +53,9 @@ public class InventoryServiceImpl implements InventoryService {
     public String checkStatus(InventoryDTO inventoryDTO) {
         if (inventoryRepository.existsById(inventoryDTO.getItemCode())) {
             String status = inventoryRepository.findStatusById(inventoryDTO.getItemCode());
+            String pictureById = inventoryRepository.findPictureById(inventoryDTO.getItemCode());
             System.out.println(status);
-            return status;
+            return status+","+pictureById;
         } else {
             return "No Item Found";
         }
@@ -86,6 +87,6 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public InventoryDTO getInventory(String id) {
-        return null;
+        return modelMapper.map(inventoryRepository.findById(id), InventoryDTO.class);
     }
 }

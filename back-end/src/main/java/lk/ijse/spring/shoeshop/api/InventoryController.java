@@ -1,12 +1,16 @@
 package lk.ijse.spring.shoeshop.api;
 
+import lk.ijse.spring.shoeshop.dto.EmployeeDTO;
 import lk.ijse.spring.shoeshop.dto.InventoryDTO;
 import lk.ijse.spring.shoeshop.dto.SupplierDTO;
 import lk.ijse.spring.shoeshop.service.InventoryService;
 import lk.ijse.spring.shoeshop.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/inventory")
@@ -34,6 +38,15 @@ public class InventoryController {
     public ResponseUtil saveSupplier(@RequestBody InventoryDTO inventoryDTO) {
         inventoryService.saveInventory(inventoryDTO);
         return new ResponseUtil("200", "Successfully Saved!", null);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping("/{id}")
+    public ResponseEntity<InventoryDTO> getEmployeeById(@PathVariable("id") String id) {
+        Optional<InventoryDTO> optionalImageEntity = Optional.ofNullable(inventoryService.getInventory(id));
+
+        return optionalImageEntity.map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
 }
