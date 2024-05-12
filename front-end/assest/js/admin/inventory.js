@@ -3,35 +3,38 @@ function inventoryFunction() {
         updateItem = $('#updateItem'),
         deleteItem = $('#deleteItem'),
         showItemDetails = $('#showItemDetails'),
-        itemFormTitle = $('#itemFormTitle'),
+        popupTitle = $('#popupTitle'),
         itemPopupCancelBtn = $('#itemPopupCancelBtn'),
         itemTxtFieldBox = $('#itemTxtFieldBox'),
         itemDeletePopupBox = $('#itemDeletePopupBox'),
-        itemPopupAddBtn = $('#itemPopupAddBtn'),
-        itemFormIcon = $('#itemFormIcon'),
+        inventoryPopupBtn = $('#inventoryPopupBtn'),
+        titleImg = $('#titleImg'),
         itemFormContainer = $('#itemFormContainer'),
         imgUploader = $('#imgUploader');
 
 
     addItem.click(function () {
-        itemPopupAddBtn.text("Save")
-        itemPopupAddBtn.css('display', 'block');
-        itemPopupCancelBtn.css('width', '48%');
-        itemDeletePopupBox.css('display', 'none');
-        itemTxtFieldBox.css('display', 'block');
-        itemFormIcon.attr('src', '../assest/images/Frame07.png')
-        itemFormTitle.text('Add Item')
+        inventoryPopupBtn.text("Save")
+        // itemPopupAddBtn.css('display', 'block');
+        // itemPopupCancelBtn.css('width', '48%');
+        // itemDeletePopupBox.css('display', 'none');
+        // itemTxtFieldBox.css('display', 'block');
+        titleImg.attr('src', '../../assest/images/Frame07.png')
+        popupTitle.text('Add Item')
+        $('.dis').prop('disabled', false);
+        $('.dis').val('')
+        $('#itemCode').val('')
         enableTxtField()
     })
     updateItem.click(function () {
-        itemFormTitle.text('Update Item')
-        itemPopupAddBtn.css('display', 'block');
-        itemPopupAddBtn.text("Update")
-        itemPopupCancelBtn.css('width', '48%');
-        itemDeletePopupBox.css('display', 'none');
-        itemTxtFieldBox.css('display', 'block');
-        itemFormIcon.attr('src', '../../assest/images/edit-btn.png')
-        enableTxtField()
+        // itemFormTitle.text('Update Item')
+        // itemPopupAddBtn.css('display', 'block');
+        // itemPopupAddBtn.text("Update")
+        // itemPopupCancelBtn.css('width', '48%');
+        // itemDeletePopupBox.css('display', 'none');
+        // itemTxtFieldBox.css('display', 'block');
+        // itemFormIcon.attr('src', '../../assest/images/edit-btn.png')
+        // enableTxtField()
     })
     deleteItem.click(function () {
 
@@ -45,7 +48,7 @@ function inventoryFunction() {
         itemTxtFieldBox.css('display', 'block');
         disableTxtField();
     })
-    
+
     imgUploader.change(function () {
         var file = $(this)[0].files[0];
         if (file) {
@@ -56,4 +59,27 @@ function inventoryFunction() {
         }
     });
 
+    $('#addNew').click(function() {
+        // // Clone the first input fields
+        // var newInput1 = $('.input-field:eq(0)').clone();
+        // var newInput2 = $('.input-field:eq(1)').clone();
+        // var newInput3 = $('.input-field:eq(2)').clone();
+        //
+        // // Clear their values
+        // newInput1.find('input').val('');
+        // newInput2.find('input').val('');
+        // newInput3.find('input').val('');
+        //
+        // // Append the new input fields to the container
+        // $('#inputContainer').append(newInput1, newInput2, newInput3);
+        var newInput = $('.inputBox:last').clone();
+
+        // Clear their values
+        newInput.find('input').val('');
+
+        // Append the new input fields to the container
+        $('#inputContainer').append(newInput);
+        
+    });
+  
 }

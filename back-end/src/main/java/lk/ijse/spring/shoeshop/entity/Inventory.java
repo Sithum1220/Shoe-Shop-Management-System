@@ -1,5 +1,7 @@
 package lk.ijse.spring.shoeshop.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,6 +14,9 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "itemCode")
 public class Inventory {
     @Id
     private String itemCode;
@@ -21,7 +26,6 @@ public class Inventory {
     private int qty;
     private int originalQty;
     private String category;
-    private Integer size;
     @ManyToOne
     @JoinColumn(name = "supplier_id", nullable = false, unique = true)
     private Supplier supplier;
@@ -33,4 +37,6 @@ public class Inventory {
     private String status;
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "inventory")
     private List<SaleDetails> saleDetails = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "inventory")
+    private List<Size> sizeList = new ArrayList<>();
 }

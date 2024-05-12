@@ -7,6 +7,7 @@ import lk.ijse.spring.shoeshop.service.InventoryService;
 import lk.ijse.spring.shoeshop.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,15 +35,15 @@ public class InventoryController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping
-    public ResponseUtil saveSupplier(@RequestBody InventoryDTO inventoryDTO) {
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil saveInventory(@RequestBody InventoryDTO inventoryDTO) {
         inventoryService.saveInventory(inventoryDTO);
         return new ResponseUtil("200", "Successfully Saved!", null);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @GetMapping("/{id}")
-    public ResponseEntity<InventoryDTO> getEmployeeById(@PathVariable("id") String id) {
+    public ResponseEntity<InventoryDTO> getInventoryById(@PathVariable("id") String id) {
         Optional<InventoryDTO> optionalImageEntity = Optional.ofNullable(inventoryService.getInventory(id));
 
         return optionalImageEntity.map(ResponseEntity::ok)

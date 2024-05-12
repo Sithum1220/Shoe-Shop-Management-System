@@ -360,3 +360,10 @@ input[type="date"]::before {
 .form-container select{
     font-size: 12px;
 }
+.itemLbl{
+    font-size: 10px;
+}
+.sizeInputBody{
+    max-height: 18rem;
+    overflow-y: auto;
+}

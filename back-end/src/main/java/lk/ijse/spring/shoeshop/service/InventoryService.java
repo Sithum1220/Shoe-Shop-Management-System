@@ -11,7 +11,7 @@ import java.util.List;
 public interface InventoryService {
 
     void saveInventory(InventoryDTO inventoryDTO);
-    String checkStatus(InventoryDTO inventoryDTO);
+    InventoryDTO checkStatus(InventoryDTO inventoryDTO);
     String checkSupplier(InventoryDTO inventoryDTO);
 
     void updateInventory(InventoryDTO inventoryDTO);

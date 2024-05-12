@@ -4,27 +4,71 @@ function inventoryController() {
     saveItem();
     itemImageUploader();
     itemClickTblRow();
+    getSizes();
 }
 
 var base64String;
-
+var inputData = [];
 function saveItem() {
+    
+        $('#saveSizes').click(function () {
+            if (inputData.length > 0) {
+                $('.inputBox').each(function (index) {
+                    var color = $(this).find('input[id="itemColor"]').val();
+                    var size = $(this).find('input[id="itemSize"]').val();
+                    var quantity = $(this).find('input[id="itemQty"]').val();
 
-    $('#itemPopupAddBtn').click(function () {
+                    if (!color || !size || !quantity) {
+                        return;
+                    }
+                    // var itemData = {
+                    //     color: color,
+                    //     size: size,
+                    //     qty: quantity
+                    // };
+                    //
+                    // inputData.push(itemData);
+                    inputData[index].color = color;
+                    inputData[index].size = size;
+                    inputData[index].qty = quantity;
+                }); 
+            }else {
+                $('.inputBox').each(function () {
+                    var color = $(this).find('input[id="itemColor"]').val();
+                    var size = $(this).find('input[id="itemSize"]').val();
+                    var quantity = $(this).find('input[id="itemQty"]').val();
+
+                    if (!color || !size || !quantity) {
+                        return;
+                    }
+                    var itemData = {
+                        color: color,
+                        size: size,
+                        qty: quantity
+                    };
+
+                    inputData.push(itemData);
+                });
+            }
+
+        });
+        
+    $('#inventoryPopupBtn').click(function () {
         if ($(this).text().trim() === 'Save') {
             const postData = {
                 itemCode: $('#itemCode').val(),
                 itemDesc: $('#itemDesc').val(),
-                qty: $('#itemQty').val(),
-                size: $('#itemSize').val(),
                 category: $('#itemCategory').val(),
                 supplier: {
                     supplierCode: $('#supplierCode').val(),
                 },
                 salePrice: $('#itemSellPrice').val(),
                 buyPrice: $('#itemBuyPrice').val(),
-                itemPicture:base64String
+                itemPicture: base64String,
+                supplierName: $('#supplierName').text(),
+                sizeList: inputData,
             };
+            
             console.log(postData);
             $.ajax({
                 url: "http://localhost:8080/api/v1/inventory",
@@ -65,6 +109,7 @@ function saveItem() {
 
     })
 }
+
 function checkItem() {
     $('#itemCode').keyup(function () {
         const code = {
@@ -78,20 +123,54 @@ function checkItem() {
             success: function (resp) {
                 if (resp.state == 200) {
                     console.log(resp);
-                    var split = resp.data.split(",");
                     if ($('#itemCode').val() === '') {
-                        $('#itemStatus').text('Item Status');
-                    }else {
-                        $('#itemStatus').text(split[0]);
-                        if (split[0] !== "No Item Found") {
-                            console.log(split[0]);
-                            base64String = split[1];
-                            $('#itemImgViewer').attr('src', 'data:image/jpeg;base64,' + split[1]);
-                        }else {
+                        $('#itemStatus').text('');
+                    } else {
+                        $('#itemStatus').text(resp.data.status);
+                        if (resp.data.status !== "No Item Found") {
+
+                            console.log(resp);
+                            $('#itemImgViewer').attr('src', 'data:image/jpeg;base64,' + resp.data.itemPicture);
+                            $('#itemBuyPrice').val(resp.data.buyPrice);
+                            $('#itemSellPrice').val(resp.data.salePrice);
+                            $('#itemDesc').val(resp.data.itemDesc);
+                            $('#itemCategory').val(resp.data.category);
+                            $('#supplierCode').val(resp.data.supplier.supplierCode);
+                            $('#supplierName').text(resp.data.supplierName);
+                            base64String = resp.data.itemPicture;
+                            
+                            $('.inputBox').not(':first').remove();
+
+                            inputData = resp.data.sizeList;
+                            resp.data.sizeList.forEach(function (item, index) {
+                                if (index > 0) {
+                                    var newInput = $('.inputBox:first').clone();
+                                    $('#inputContainer').append(newInput);
+                                }
+                                var inputBox = $('.inputBox');
+                                inputBox.eq(index).find('input[id="itemColor"]').val(item.color);
+                                inputBox.eq(index).find('input[id="itemSize"]').val(item.size);
+                                // inputBox.eq(index).find('input[id="itemQty"]').val(item.qty);
+                            });
+                            $('#itemStatus').css('color', 'green');
+                            $('.dis').prop('disabled', true);
+
+                        } else {
                             $('#itemImgViewer').attr('src', '#');
+                            $('#itemBuyPrice').val('');
+                            $('#itemSellPrice').val('');
+                            $('#itemSize').val('');
+                            $('#itemDesc').val('');
+                            $('#supplierCode').val('');
+                            $('#itemCategory').val('');
+                            $('#itemStatus').css('color', 'red');
+                            $('#inputContainer .inputBox:not(:first)').remove();
+                            $('#itemColor, #itemSize, #itemQty').val('');
+                            $('.dis').prop('disabled', false);
+                            
                         }
                     }
-                   
+
                 }
             },
             error: function (resp) {
@@ -106,6 +185,7 @@ function checkItem() {
         })
     })
 }
+
 function checkSupplier() {
     $('#supplierCode').keyup(function () {
         const code = {
@@ -122,17 +202,16 @@ function checkSupplier() {
                 if (resp.state == 200) {
                     console.log(resp);
                     if ($('#supplierCode').val() === '') {
-                        $('#supplierName').text('Supplier Name');
-                        $('#supplierName').css('color', 'black');
-                    }else {
+                        $('#supplierName').text('');
+                    } else {
                         if (resp.data === 'Supplier Not Found') {
                             $('#supplierName').css('color', 'red');
                             $('#supplierName').text(resp.data);
-                        }else {
+                        } else {
                             $('#supplierName').css('color', 'green');
                             $('#supplierName').text(resp.data);
                         }
-                        
+
                     }
 
                 }
@@ -222,4 +301,8 @@ function setItemImage(itemCheckbox) {
     } else {
         $('#itemImg').attr('src', '#');
     }
+}
+
+function getSizes() {
+
 }

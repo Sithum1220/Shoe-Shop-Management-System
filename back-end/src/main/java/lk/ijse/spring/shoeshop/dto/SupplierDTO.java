@@ -18,5 +18,4 @@ public class SupplierDTO {
     private String mobileNo;
     private String landNo;
     private String email;
-
 }

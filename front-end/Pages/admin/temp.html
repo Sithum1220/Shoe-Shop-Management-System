@@ -6,24 +6,103 @@
 
     <title>Title</title>
     <style>
-        .pagination {
-            display: inline-block;
-            margin-top: 20px;
+        .lbl {
+            font-size: 14px;
+            opacity: 50%;
         }
-        .pagination a {
-            color: black;
-            float: left;
-            padding: 8px 16px;
-            text-decoration: none;
-            transition: background-color .3s;
-        }
-        .pagination a.active {
-            background-color: #007bff;
-            color: white;
+
+        .modal-body input{
+            opacity: 70%;
         }
     </style>
 </head>
 <body>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content ">
+            <div class="modal-header ">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+
+                <form class="row g-3">
+                    <div class="col-md-4">
+                        <label for="itemCode" class="form-label lbl">Item Code</label>
+                        <input type="text" class="form-control" id="itemCode" required>
+                        <div class="valid-feedback d-block">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="supplierCode" class="form-label lbl">Supplier Code</label>
+                        <input type="text" class="form-control" id="supplierCode" required>
+                        <div class="valid-feedback d-block">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="itemCategory" class="form-label lbl">Category</label>
+                        <input type="text" class="form-control" id="itemCategory" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="itemBuyPrice" class="form-label lbl">Unit price -Buy</label>
+                        <input type="text" class="form-control" id="itemBuyPrice" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="itemSellPrice" class="form-label lbl">Unit price -Sale</label>
+                        <input type="text" class="form-control" id="itemSellPrice" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="itemQty" class="form-label lbl">Item Quantity</label>
+                        <input type="text" class="form-control" id="itemQty" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="itemDesc" class="form-label lbl">Description</label>
+                        <input type="text" class="form-control" id="itemDesc" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="itemSize" class="form-label lbl">Size</label>
+                        <input type="text" class="form-control" id="itemSize" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="itemImgUploader" class="form-label lbl">Select a image...</label>
+                        <input type="file" class="form-control w-75" onchange="updatePlaceholder(this)" id="itemImgUploader" >
+                    </div>
+                    <div class=" d-flex justify-content-center">
+                        <img id="itemImgViewer" alt="" width="150" src="../../assest/images/shoe01.png"/>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function updatePlaceholder(input) {
+        const fileName = input.value.split('\\').pop(); // Extracting the file name from the file path
+        const placeholder = input.nextElementSibling; // Get the placeholder element
+        if (fileName) {
+            placeholder.textContent = fileName;
+        } else {
+            placeholder.textContent = "Choose File";
+        }
+    }
+</script>
+<script src="../../assest/boostrap/js/bootstrap.bundle.js"></script>
 <script src="../../assest/js/code.jquery.com_jquery-3.7.1.min.js"></script>
 <script src="temp.js"></script>
 </body>

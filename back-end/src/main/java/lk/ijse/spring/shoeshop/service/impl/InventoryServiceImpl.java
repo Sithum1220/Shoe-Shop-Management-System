@@ -2,12 +2,16 @@ package lk.ijse.spring.shoeshop.service.impl;
 
 import jakarta.persistence.EntityExistsException;
 import lk.ijse.spring.shoeshop.dto.InventoryDTO;
+import lk.ijse.spring.shoeshop.dto.SizeDTO;
 import lk.ijse.spring.shoeshop.dto.SupplierDTO;
 import lk.ijse.spring.shoeshop.entity.Inventory;
+import lk.ijse.spring.shoeshop.entity.Size;
 import lk.ijse.spring.shoeshop.repository.InventoryRepository;
+import lk.ijse.spring.shoeshop.repository.SizeRepository;
 import lk.ijse.spring.shoeshop.repository.SupplierRepository;
 import lk.ijse.spring.shoeshop.service.InventoryService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,45 +23,85 @@ import java.util.Optional;
 public class InventoryServiceImpl implements InventoryService {
     SupplierRepository supplierRepository;
     InventoryRepository inventoryRepository;
+    SizeRepository sizeRepository;
     ModelMapper modelMapper;
 
     public InventoryServiceImpl(InventoryRepository inventoryRepository, ModelMapper modelMapper,
-                                SupplierRepository supplierRepository) {
+                                SupplierRepository supplierRepository, SizeRepository sizeRepository) {
         this.inventoryRepository = inventoryRepository;
         this.modelMapper = modelMapper;
         this.supplierRepository = supplierRepository;
+        this.sizeRepository = sizeRepository;
     }
 
     @Override
     public void saveInventory(InventoryDTO inventoryDTO) {
-
+        System.out.println("Inside saveInventory");
         if (supplierRepository.existsById(inventoryDTO.getSupplier().getSupplierCode())) {
 
-            String qtyById = inventoryRepository.findQtyById(inventoryDTO.getItemCode());
-            System.out.println(qtyById);
-            if (qtyById == null) {
-                qtyById = "0";
+            int totalQty = 0;
+            InventoryDTO inventoryDTO1 = new InventoryDTO();
+            inventoryDTO1.setItemCode(inventoryDTO.getItemCode());
+
+            for (int i = 0; i < inventoryDTO.getSizeList().size(); i++) {
+                inventoryDTO.getSizeList().get(i).setInventory(modelMapper.map(inventoryDTO1, Inventory.class));
+                totalQty += Integer.parseInt(inventoryDTO.getSizeList().get(i).getQty());
             }
-            int i = Integer.parseInt(qtyById) + inventoryDTO.getQty();
-            System.out.println(i);
-            inventoryDTO.setOriginalQty(i);
-            inventoryDTO.setQty(i);
+
+            if (inventoryRepository.existsById(inventoryDTO.getItemCode())) {
+                String qtyById = inventoryRepository.findQtyById(inventoryDTO.getItemCode());
+
+                if (qtyById == null) {
+                    qtyById = "0";
+                }
+                int i = Integer.parseInt(qtyById) + totalQty;
+                inventoryDTO.setOriginalQty(i);
+                inventoryDTO.setQty(i);
+
+            }else {
+                inventoryDTO.setOriginalQty(totalQty);
+                inventoryDTO.setQty(totalQty);
+            }
+
             inventoryDTO.setStatus("Available");
-            inventoryRepository.save(modelMapper.map(inventoryDTO, Inventory.class));
+
+            if (inventoryDTO.getSalePrice() > inventoryDTO.getBuyPrice()) {
+
+                double profit = inventoryDTO.getSalePrice() - inventoryDTO.getBuyPrice();
+                double profitPercentage = (profit / inventoryDTO.getSalePrice()) * 100;
+                inventoryDTO.setExpectedProfit(profit);
+                inventoryDTO.setProfitMargin(profitPercentage);
+
+            } else {
+                throw new EntityExistsException("please Check Prices!");
+            }
+
+
+            Inventory map = modelMapper.map(inventoryDTO, Inventory.class);
+            System.out.println("map = " + map.toString());
+            inventoryRepository.save(map);
+
         } else {
             throw new EntityExistsException("Supplier Not Found!");
         }
     }
 
     @Override
-    public String checkStatus(InventoryDTO inventoryDTO) {
-        if (inventoryRepository.existsById(inventoryDTO.getItemCode())) {
-            String status = inventoryRepository.findStatusById(inventoryDTO.getItemCode());
-            String pictureById = inventoryRepository.findPictureById(inventoryDTO.getItemCode());
-            System.out.println(status);
-            return status+","+pictureById;
-        } else {
-            return "No Item Found";
+    public InventoryDTO checkStatus(InventoryDTO inventoryDTO) {
+        try {
+            if (inventoryDTO == null || inventoryDTO.getItemCode() == null) {
+                throw new IllegalArgumentException("InventoryDTO or ItemCode cannot be null.");
+            }
+
+            if (inventoryRepository.existsById(inventoryDTO.getItemCode())) {
+                Inventory byItemCode = inventoryRepository.findByItemCode(inventoryDTO.getItemCode());
+                return modelMapper.map(byItemCode, InventoryDTO.class);
+            } else {
+                inventoryDTO.setStatus("No Item Found");
+                return inventoryDTO;
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("An error occurred while checking inventory status.");
         }
     }
 

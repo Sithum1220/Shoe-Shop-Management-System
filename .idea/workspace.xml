@@ -5,12 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="032d1856-7f95-44cb-a7e8-c221ea7611af" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9132a697-4a09-4a6c-b8d3-c02493ec795e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9132a697-4a09-4a6c-b8d3-c02493ec795e.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/SizeDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Size.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/repository/SizeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9132a697-4a09-4a6c-b8d3-c02493ec795e.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9132a697-4a09-4a6c-b8d3-c02493ec795e/storage_v2/_src_/schema/hello_shoe_shop.nYgcIg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9132a697-4a09-4a6c-b8d3-c02493ec795e/storage_v2/_src_/schema/test.kkQ2AA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/InventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/InventoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/repository/InventoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/repository/InventoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/InventoryDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/InventoryDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/SupplierDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/SupplierDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/embedded/SaleDetailPK.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/embedded/SaleDetailPK.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/InventoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/InventoryService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/InventoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/InventoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/inventory.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/inventory.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/temp.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/temp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/assest/css/pages.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/css/pages.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/assest/js/admin/inventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/js/admin/inventory.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/controller/InventoryController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/InventoryController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/front-end.iml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +50,8 @@
         <option value="Enum" />
         <option value="HTML File" />
         <option value="JUnit5 Test Class" />
-        <option value="Interface" />
         <option value="JavaScript File" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -46,44 +73,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.main.executor&quot;: &quot;Run&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;JUnit.EmployeeRepositoryTest.searchEmployee.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EmployeeServiceImplTest.countEmployee.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EmployeeServiceImplTest.getAllEmployees.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EmployeeServiceImplTest.saveEmployee.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EmployeeServiceImplTest.searchEmployeesById.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SupplierRepositoryTest.existsByMobileNo.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceImplTest.findAllByActiveStatus.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceImplTest.searchUsersById.executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.WebAppInitializer.executor&quot;: &quot;Run&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/sithumimesh/Documents/IDEA PROJECTS/Shoe-Shop-Management-System/back-end/src/main/java/lk/ijse/spring/shoeshop&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.folding&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.main.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JUnit.EmployeeRepositoryTest.searchEmployee.executor": "Run",
+    "JUnit.EmployeeServiceImplTest.countEmployee.executor": "Run",
+    "JUnit.EmployeeServiceImplTest.getAllEmployees.executor": "Run",
+    "JUnit.EmployeeServiceImplTest.saveEmployee.executor": "Run",
+    "JUnit.EmployeeServiceImplTest.searchEmployeesById.executor": "Run",
+    "JUnit.SupplierRepositoryTest.existsByMobileNo.executor": "Run",
+    "JUnit.UserServiceImplTest.findAllByActiveStatus.executor": "Run",
+    "JUnit.UserServiceImplTest.searchUsersById.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.WebAppInitializer.executor": "Run",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "17",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/sithumimesh/Documents/IDEA PROJECTS/Shoe-Shop-Management-System/back-end/src/main/java/lk/ijse/spring/shoeshop",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "editor.preferences.folding",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop" />
@@ -188,6 +215,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="front-end" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="front-end" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="WebAppInitializer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="back-end" />
@@ -245,7 +285,17 @@
       <workItem from="1714912950747" duration="29402000" />
       <workItem from="1714974095171" duration="38396000" />
       <workItem from="1715049286618" duration="17077000" />
-      <workItem from="1715146859356" duration="13247000" />
+      <workItem from="1715146859356" duration="19266000" />
+      <workItem from="1715226751553" duration="69000" />
+      <workItem from="1715274890386" duration="7029000" />
+      <workItem from="1715351228562" duration="11782000" />
+      <workItem from="1715404098050" duration="7108000" />
+      <workItem from="1715440787675" duration="16925000" />
+      <workItem from="1715487595472" duration="16684000" />
+      <workItem from="1715517822152" duration="405000" />
+      <workItem from="1715518293821" duration="62000" />
+      <workItem from="1715518358346" duration="8000" />
+      <workItem from="1715518497101" duration="51000" />
     </task>
     <servers />
   </component>
