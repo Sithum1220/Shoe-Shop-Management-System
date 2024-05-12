@@ -19,7 +19,7 @@ public class Size {
     private int sizeId;
     private String size;
     private String color;
-    private String qty;
+    private int qty;
 
     @ManyToOne
     @JoinColumn(name = "item_code")

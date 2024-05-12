@@ -27,7 +27,7 @@ public class Inventory {
     private int originalQty;
     private String category;
     @ManyToOne
-    @JoinColumn(name = "supplier_id", nullable = false, unique = true)
+    @JoinColumn(name = "supplier_id", nullable = false)
     private Supplier supplier;
     private String supplierName;
     private Double salePrice;

@@ -28,6 +28,9 @@ function saveItem() {
                     // };
                     //
                     // inputData.push(itemData);
+                    console.log(quantity)
+                    console.log(color)
+                    console.log(size)
                     inputData[index].color = color;
                     inputData[index].size = size;
                     inputData[index].qty = quantity;
@@ -44,7 +47,8 @@ function saveItem() {
                     var itemData = {
                         color: color,
                         size: size,
-                        qty: quantity
+                        qty: quantity,
+                        itemCode:$('#itemCode').val()
                     };
 
                     inputData.push(itemData);
@@ -150,7 +154,18 @@ function checkItem() {
                                 var inputBox = $('.inputBox');
                                 inputBox.eq(index).find('input[id="itemColor"]').val(item.color);
                                 inputBox.eq(index).find('input[id="itemSize"]').val(item.size);
-                                // inputBox.eq(index).find('input[id="itemQty"]').val(item.qty);
+                                inputBox.eq(index).find('input[id="itemQty"]').val(0);
+                                inputBox.eq(index).find('input[id="itemQty"]').on('focus', function(){
+                                    if ($(this).val() === '0') {
+                                        $(this).val('');
+                                    }
+                                });
+
+                                inputBox.eq(index).find('input[id="itemQty"]').on('blur', function(){
+                                    if ($(this).val() === '') {
+                                        $(this).val('0');
+                                    }
+                                });
                             });
                             $('#itemStatus').css('color', 'green');
                             $('.dis').prop('disabled', true);

@@ -43,7 +43,7 @@ employeeBtn.click(function () {
     $('#userSection').remove();
     // $('#tblEmployee tbody').empty()
 
-    fetch('http://localhost:63342/shoe_management_system/front-end/Pages/admin/employee.html')
+    fetch('http://localhost:63342/Shoe-Shop-Management-System/front-end/Pages/admin/employee.html')
         .then(response => response.text())
         .then(data => {
             console.log("HTML file loaded successfully:", data);
@@ -79,7 +79,7 @@ supplierBtn.click(function () {
     $('#userSection').remove();
     $('#customerSection').remove();
 
-    fetch('http://localhost:63342/shoe_management_system/front-end/Pages/admin/supplier.html')
+    fetch('http://localhost:63342/Shoe-Shop-Management-System/front-end/Pages/admin/supplier.html')
         .then(response => response.text())
         .then(data => {
             console.log("HTML file loaded successfully:", data);
@@ -115,7 +115,7 @@ customerBtn.click(function () {
     $('#supplierSection').remove();
     $('#userSection').remove();
 
-    fetch('http://localhost:63342/shoe_management_system/front-end/Pages/customers/customer.html')
+    fetch('http://localhost:63342/Shoe-Shop-Management-System/front-end/Pages/customers/customer.html')
         .then(response => response.text())
         .then(data => {
             console.log("HTML file loaded successfully:", data);
@@ -151,7 +151,7 @@ inventoryBtn.click(function () {
     $('#supplierSection').remove();
     dashboard.css('display', 'none');
 
-    fetch('http://localhost:63342/shoe_management_system/front-end/Pages/admin/inventory.html')
+    fetch('http://localhost:63342/Shoe-Shop-Management-System/front-end/Pages/admin/inventory.html')
         .then(response => response.text())
         .then(data => {
             console.log("HTML file loaded successfully:", data);
@@ -187,7 +187,7 @@ userBtn.click(function () {
     $('#supplierSection').remove();
     dashboard.css('display', 'none');
 
-    fetch('http://localhost:63342/shoe_management_system/front-end/Pages/admin/user.html')
+    fetch('http://localhost:63342/Shoe-Shop-Management-System/front-end/Pages/admin/user.html')
         .then(response => response.text())
         .then(data => {
             console.log("HTML file loaded successfully:", data);

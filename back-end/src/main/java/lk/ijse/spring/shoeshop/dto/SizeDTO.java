@@ -14,6 +14,6 @@ public class SizeDTO {
     private int id;
     private String size;
     private String color;
-    private String qty;
-    private Inventory inventory;
+    private int qty;
+    private String itemCode;
 }

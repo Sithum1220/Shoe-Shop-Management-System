@@ -43,25 +43,20 @@ public class InventoryServiceImpl implements InventoryService {
             InventoryDTO inventoryDTO1 = new InventoryDTO();
             inventoryDTO1.setItemCode(inventoryDTO.getItemCode());
 
-            for (int i = 0; i < inventoryDTO.getSizeList().size(); i++) {
-                inventoryDTO.getSizeList().get(i).setInventory(modelMapper.map(inventoryDTO1, Inventory.class));
-                totalQty += Integer.parseInt(inventoryDTO.getSizeList().get(i).getQty());
-            }
 
             if (inventoryRepository.existsById(inventoryDTO.getItemCode())) {
-                String qtyById = inventoryRepository.findQtyById(inventoryDTO.getItemCode());
-
-                if (qtyById == null) {
-                    qtyById = "0";
+                for (int i = 0; i < inventoryDTO.getSizeList().size(); i++) {
+                    Size bySizeId = sizeRepository.findBySizeId(inventoryDTO.getSizeList().get(i).getId());
+                    int qty = inventoryDTO.getSizeList().get(i).getQty() + bySizeId.getQty();
+                    inventoryDTO.getSizeList().get(i).setQty(qty);
                 }
-                int i = Integer.parseInt(qtyById) + totalQty;
-                inventoryDTO.setOriginalQty(i);
-                inventoryDTO.setQty(i);
+            }
 
-            }else {
+            for (int i = 0; i < inventoryDTO.getSizeList().size(); i++) {
+                totalQty += inventoryDTO.getSizeList().get(i).getQty();
+            }
                 inventoryDTO.setOriginalQty(totalQty);
                 inventoryDTO.setQty(totalQty);
-            }
 
             inventoryDTO.setStatus("Available");
 
@@ -78,6 +73,9 @@ public class InventoryServiceImpl implements InventoryService {
 
 
             Inventory map = modelMapper.map(inventoryDTO, Inventory.class);
+            for (int i = 0; i < inventoryDTO.getSizeList().size(); i++) {
+                map.getSizeList().get(i).setInventory(modelMapper.map(inventoryDTO1, Inventory.class));
+            }
             System.out.println("map = " + map.toString());
             inventoryRepository.save(map);
 
