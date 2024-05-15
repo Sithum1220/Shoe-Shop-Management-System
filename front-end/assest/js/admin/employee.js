@@ -13,13 +13,13 @@ function employeeFunction() {
         employeeFormContainer = $('#employeeFormContainer'),
         employeePopupClose = $('#employeePopupClose'),
         employeeRole = $('#employeeRole');
-    const imgUploader = $('#imgUploader');
-    const imgViewer = $('#imgViewer');
+        const imgUploader = $('#imgUploader');
+        const imgViewer = $('#imgViewer');
 
     addEmployee.click(function () {
         employeePopupAddBtn.text("Save")
         employeePopupAddBtn.css('display', 'block');
-        employeePopupCancelBtn.css('width', '48%');
+        // employeePopupCancelBtn.css('width', '48%');
         employeeFormIcon.attr('src', '../../assest/images/Frame07.png')
         employeeFormTitle.text('Add Employee')
         $("#employeeGender").prop('disabled', false);
@@ -31,7 +31,7 @@ function employeeFunction() {
         $('.txt').val("")
         $('#employeeGender').val($('#employeeGender option:first').val());
         $('#employeeRole').val($('#employeeRole option:first').val());
-        $('#imgViewer').attr('src','#')
+        $('#imgViewer').attr('src', '#')
         employeePageUserCredentials.addClass('d-none');
         generateNewEmployeeId();
         employeeRole.change(function () {
@@ -48,16 +48,17 @@ function employeeFunction() {
     updateEmployee.click(function () {
         employeeFormTitle.text('Update Employee')
         employeePopupAddBtn.css('display', 'block');
-        employeePopupAddBtn.text("Update")
-        employeePopupCancelBtn.css('width', '48%');
+        employeePopupAddBtn.text("Save Changes")
+        // employeePopupCancelBtn.css('width', '48%');
         employeeFormIcon.attr('src', '../../assest/images/edit-btn.png')
         $("#employeeGender").prop('disabled', false);
         $("#employeeDOB").prop('disabled', false);
         $("#employeeDOJ").prop('disabled', false);
         $("#employeeRole").prop('disabled', true);
+        $("#employeeCode").val('');
         employeePageUserCredentials.addClass('d-none');
         enableTxtField()
-     
+
     })
     deleteEmployee.click(function () {
 
@@ -76,8 +77,7 @@ function employeeFunction() {
         employeePageUserCredentials.addClass('d-none');
         disableTxtField();
     })
-    
-    
+
 
     $('#employeePopupCancelBtn,#employeePopupClose').click(function () {
         $('#tblEmployee tr').each(function () {
@@ -86,8 +86,8 @@ function employeeFunction() {
         $('.txt').val("")
         $('#employeeGender').val($('#employeeGender option:first').val());
         $('#employeeRole').val($('#employeeRole option:first').val());
-        $('#imgViewer').attr('src','#')
-        $('#employeeImg').attr('src','#')
+        $('#imgViewer').attr('src', '#')
+        $('#employeeImg').attr('src', '#')
     });
 
 }

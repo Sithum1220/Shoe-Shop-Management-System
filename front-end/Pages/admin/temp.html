@@ -2,108 +2,128 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Dark Mode Toggle Example</title>
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../../assest/boostrap/css/bootstrap.css">
 
-    <title>Title</title>
     <style>
-        .lbl {
-            font-size: 14px;
-            opacity: 50%;
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --table-bg-color: #ffffff;
+            --table-text-color: #000000;
+            --table-border-color: #dee2e6;
+            --table-row-hover-bg-light: rgba(0, 0, 0, 0.05);
         }
 
-        .modal-body input{
-            opacity: 70%;
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .table {
+            background-color: var(--table-bg-color);
+            color: var(--table-text-color);
+            border-color: var(--table-border-color);
+        }
+
+        .table th,
+        .table td {
+            border-color: var(--table-border-color);
+        }
+
+        .table tbody tr:hover {
+            background-color: var(--table-row-hover-bg-light);
+        }
+
+        body.dark-mode {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --table-bg-color: #343a40;
+            --table-text-color: #ffffff;
+            --table-border-color: #454d55;
+            --table-row-hover-bg-dark: rgba(255, 255, 255, 0.05);
+        }
+
+        body.dark-mode .table {
+            background-color: var(--table-bg-color);
+            color: var(--table-text-color);
+            border-color: var(--table-border-color);
+        }
+
+        body.dark-mode .table th,
+        body.dark-mode .table td {
+            border-color: var(--table-border-color);
+        }
+
+        body.dark-mode .table tbody tr:hover {
+            background-color: var(--table-row-hover-bg-dark);
         }
     </style>
 </head>
 <body>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog ">
-        <div class="modal-content ">
-            <div class="modal-header ">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-
-                <form class="row g-3">
-                    <div class="col-md-4">
-                        <label for="itemCode" class="form-label lbl">Item Code</label>
-                        <input type="text" class="form-control" id="itemCode" required>
-                        <div class="valid-feedback d-block">
-                            Looks good!
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="supplierCode" class="form-label lbl">Supplier Code</label>
-                        <input type="text" class="form-control" id="supplierCode" required>
-                        <div class="valid-feedback d-block">
-                            Looks good!
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="itemCategory" class="form-label lbl">Category</label>
-                        <input type="text" class="form-control" id="itemCategory" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="itemBuyPrice" class="form-label lbl">Unit price -Buy</label>
-                        <input type="text" class="form-control" id="itemBuyPrice" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="itemSellPrice" class="form-label lbl">Unit price -Sale</label>
-                        <input type="text" class="form-control" id="itemSellPrice" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="itemQty" class="form-label lbl">Item Quantity</label>
-                        <input type="text" class="form-control" id="itemQty" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="itemDesc" class="form-label lbl">Description</label>
-                        <input type="text" class="form-control" id="itemDesc" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="itemSize" class="form-label lbl">Size</label>
-                        <input type="text" class="form-control" id="itemSize" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="itemImgUploader" class="form-label lbl">Select a image...</label>
-                        <input type="file" class="form-control w-75" onchange="updatePlaceholder(this)" id="itemImgUploader" >
-                    </div>
-                    <div class=" d-flex justify-content-center">
-                        <img id="itemImgViewer" alt="" width="150" src="../../assest/images/shoe01.png"/>
-                    </div>
-                </form>
-
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
+<div class="container mt-5">
+    <h1 class="mb-4">Dark Mode Toggle Example</h1>
+    <button id="theme-toggle" class="btn btn-primary">Toggle Theme</button>
+    <p class="mt-3">This is a sample text to demonstrate the theme change.</p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>
-    function updatePlaceholder(input) {
-        const fileName = input.value.split('\\').pop(); // Extracting the file name from the file path
-        const placeholder = input.nextElementSibling; // Get the placeholder element
-        if (fileName) {
-            placeholder.textContent = fileName;
-        } else {
-            placeholder.textContent = "Choose File";
+    $(document).ready(function() {
+        const toggleButton = $('#theme-toggle');
+        const body = $('body');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                body.addClass('dark-mode');
+            } else {
+                body.removeClass('dark-mode');
+            }
+            localStorage.setItem('theme', theme);
         }
-    }
+
+        toggleButton.click(function() {
+            const theme = body.hasClass('dark-mode') ? 'light' : 'dark';
+            applyTheme(theme);
+        });
+
+        // Apply initial theme
+        applyTheme(currentTheme);
+    });
 </script>
+<!-- Bootstrap Bundle with Popper -->
 <script src="../../assest/boostrap/js/bootstrap.bundle.js"></script>
-<script src="../../assest/js/code.jquery.com_jquery-3.7.1.min.js"></script>
-<script src="temp.js"></script>
 </body>
 </html>

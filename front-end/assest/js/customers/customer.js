@@ -12,7 +12,7 @@ function customerFunction() {
     addCustomer.click(function () {
         customerPopupAddBtn.text("Save")
         customerPopupAddBtn.css('display', 'block');
-        customerPopupCancelBtn.css('width', '48%');
+        // customerPopupCancelBtn.css('width', '48%');
         customerFormIcon.attr('src', '../../assest/images/Frame07.png')
         customerFormTitle.text('Add Customer')
         enableTxtField()
@@ -27,7 +27,7 @@ function customerFunction() {
         customerFormTitle.text('Update Customer')
         customerPopupAddBtn.css('display', 'block');
         customerPopupAddBtn.text("Update")
-        customerPopupCancelBtn.css('width', '48%');
+        // customerPopupCancelBtn.css('width', '48%');
         customerFormIcon.attr('src', '../../assest/images/edit-btn.png')
         $("#customerGender,#customerDOB,#customerDOJ").prop('disabled', false);
         $('.hideTxt').addClass('d-none');

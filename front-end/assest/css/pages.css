@@ -367,3 +367,8 @@ input[type="date"]::before {
     max-height: 18rem;
     overflow-y: auto;
 }
+
+.inputBody{
+    max-height: 30rem;
+    overflow-y: auto;
+}
