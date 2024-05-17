@@ -121,12 +121,18 @@ public class InventoryServiceImpl implements InventoryService {
             InventoryDTO inventoryDTO1 = new InventoryDTO();
             inventoryDTO1.setItemCode(inventoryDTO.getItemCode());
 
+
             for (int i = 0; i < inventoryDTO.getSizeList().size(); i++) {
                 totalQty += inventoryDTO.getSizeList().get(i).getQty();
             }
 
-            inventoryDTO.setOriginalQty(totalQty);
-            inventoryDTO.setQty(totalQty);
+            if (totalQty != Integer.parseInt(inventoryRepository.findQtyById(inventoryDTO.getItemCode()))){
+                inventoryDTO.setOriginalQty(totalQty);
+                inventoryDTO.setQty(totalQty);
+            }else {
+                inventoryDTO.setQty(Integer.parseInt(inventoryRepository.findQtyById(inventoryDTO.getItemCode())));
+                inventoryDTO.setOriginalQty(Integer.parseInt(inventoryRepository.findOriginalQtyById(inventoryDTO.getItemCode())));
+            }
 
             inventoryDTO.setStatus("Available");
 

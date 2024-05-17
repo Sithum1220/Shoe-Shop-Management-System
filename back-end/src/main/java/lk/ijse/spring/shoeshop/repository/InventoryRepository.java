@@ -15,6 +15,9 @@ public interface InventoryRepository extends JpaRepository<Inventory, String> {
     @Query("SELECT i.qty FROM Inventory i WHERE i.itemCode = :id")
     String findQtyById(String id);
 
+    @Query("SELECT i.originalQty FROM Inventory i WHERE i.itemCode = :id")
+    String findOriginalQtyById(String id);
+
     @Query("SELECT i.itemPicture FROM Inventory i WHERE i.itemCode = :id")
     String findPictureById(String id);
 }
