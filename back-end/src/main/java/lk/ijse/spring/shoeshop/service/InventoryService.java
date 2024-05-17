@@ -1,5 +1,6 @@
 package lk.ijse.spring.shoeshop.service;
 
+import lk.ijse.spring.shoeshop.dto.EmployeeDTO;
 import lk.ijse.spring.shoeshop.dto.InventoryDTO;
 import lk.ijse.spring.shoeshop.dto.SupplierDTO;
 import org.springframework.stereotype.Service;

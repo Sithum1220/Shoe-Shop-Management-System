@@ -6,6 +6,7 @@ import lk.ijse.spring.shoeshop.dto.SizeDTO;
 import lk.ijse.spring.shoeshop.dto.SupplierDTO;
 import lk.ijse.spring.shoeshop.entity.Inventory;
 import lk.ijse.spring.shoeshop.entity.Size;
+import lk.ijse.spring.shoeshop.entity.Supplier;
 import lk.ijse.spring.shoeshop.repository.InventoryRepository;
 import lk.ijse.spring.shoeshop.repository.SizeRepository;
 import lk.ijse.spring.shoeshop.repository.SupplierRepository;
@@ -114,7 +115,45 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public void updateInventory(InventoryDTO inventoryDTO) {
+        if (inventoryRepository.existsById(inventoryDTO.getItemCode())) {
 
+            int totalQty = 0;
+            InventoryDTO inventoryDTO1 = new InventoryDTO();
+            inventoryDTO1.setItemCode(inventoryDTO.getItemCode());
+
+            for (int i = 0; i < inventoryDTO.getSizeList().size(); i++) {
+                totalQty += inventoryDTO.getSizeList().get(i).getQty();
+            }
+
+            inventoryDTO.setOriginalQty(totalQty);
+            inventoryDTO.setQty(totalQty);
+
+            inventoryDTO.setStatus("Available");
+
+            if (inventoryDTO.getSalePrice() > inventoryDTO.getBuyPrice()) {
+
+                double profit = inventoryDTO.getSalePrice() - inventoryDTO.getBuyPrice();
+                double profitPercentage = (profit / inventoryDTO.getSalePrice()) * 100;
+                inventoryDTO.setExpectedProfit(profit);
+                inventoryDTO.setProfitMargin(profitPercentage);
+
+            } else {
+                throw new EntityExistsException("please Check Prices!");
+            }
+
+
+            Inventory map = modelMapper.map(inventoryDTO, Inventory.class);
+            for (int i = 0; i < inventoryDTO.getSizeList().size(); i++) {
+                map.getSizeList().get(i).setInventory(modelMapper.map(inventoryDTO1, Inventory.class));
+            }
+            System.out.println("map = " + map.toString());
+            inventoryRepository.save(map);
+
+
+
+        } else {
+            throw new EntityExistsException("Item Not Found!");
+        }
     }
 
     @Override
@@ -124,7 +163,8 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public List<InventoryDTO> getAllInventory() {
-        return List.of();
+        return modelMapper.map(inventoryRepository.findAll(), new TypeToken<List<InventoryDTO>>() {
+        }.getType());
     }
 
     @Override

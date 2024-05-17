@@ -50,4 +50,16 @@ public class InventoryController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getItems() {
+        return new ResponseUtil("200", "Successfully Fetched Employees", inventoryService.getAllInventory());
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PatchMapping
+    public ResponseUtil updateItem(@RequestBody InventoryDTO inventoryDTO) {
+        inventoryService.updateInventory(inventoryDTO);
+        return new ResponseUtil("200", "Successfully Updated!", null);
+    }
 }
