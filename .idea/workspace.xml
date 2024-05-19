@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="032d1856-7f95-44cb-a7e8-c221ea7611af" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/front-end/controller/customerOrderController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/SupplierServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/SupplierServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/supplier.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/supplier.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/assest/js/admin/supplier.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/js/admin/supplier.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/controller/SupplierController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/SupplierController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/inventory.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/inventory.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/assest/js/admin/inventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/js/admin/inventory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/controller/InventoryController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/InventoryController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,9 +22,9 @@
         <option value="Enum" />
         <option value="HTML File" />
         <option value="JUnit5 Test Class" />
-        <option value="JavaScript File" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -270,7 +270,7 @@
       <workItem from="1715666501989" duration="2926000" />
       <workItem from="1715772283092" duration="2189000" />
       <workItem from="1716122017882" duration="3630000" />
-      <workItem from="1716126681843" duration="5933000" />
+      <workItem from="1716126681843" duration="10946000" />
     </task>
     <servers />
   </component>

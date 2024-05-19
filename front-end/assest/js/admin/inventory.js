@@ -16,7 +16,7 @@ function inventoryFunction() {
     addItem.click(function () {
         inventoryPopupBtn.text("Save")
         // itemPopupAddBtn.css('display', 'block');
-        // itemPopupCancelBtn.css('width', '48%');
+        itemPopupCancelBtn.css('width', '18%');
         // itemDeletePopupBox.css('display', 'none');
         // itemTxtFieldBox.css('display', 'block');
         titleImg.attr('src', '../../assest/images/Frame07.png')
@@ -27,14 +27,12 @@ function inventoryFunction() {
         enableTxtField()
     })
     updateItem.click(function () {
-        // itemFormTitle.text('Update Item')
+        popupTitle.text('Update Item')
         // itemPopupAddBtn.css('display', 'block');
-        // itemPopupAddBtn.text("Update")
-        // itemPopupCancelBtn.css('width', '48%');
-        // itemDeletePopupBox.css('display', 'none');
-        // itemTxtFieldBox.css('display', 'block');
-        // itemFormIcon.attr('src', '../../assest/images/edit-btn.png')
-        // enableTxtField()
+        inventoryPopupBtn.text("Update")
+        itemPopupCancelBtn.css('width', '18%');
+        titleImg.attr('src', '../../assest/images/edit-btn.png')
+        enableTxtField()
     })
     deleteItem.click(function () {
 
@@ -80,6 +78,13 @@ function inventoryFunction() {
         // Append the new input fields to the container
         $('#inputContainer').append(newInput);
         
+    });
+
+    $('#itemPopupCancelBtn,#inventoryPopupClose').click(function () {
+        $('#tblInventory tr').each(function () {
+            $('#tblInventory input[type="checkbox"]').not($(this)).prop('checked', false);
+        })
+        $('.dis, .txt').val("")
     });
   
 }
