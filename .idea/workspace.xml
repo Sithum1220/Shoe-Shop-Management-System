@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="032d1856-7f95-44cb-a7e8-c221ea7611af" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/employee.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/employee.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/assest/js/admin/employee.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/js/admin/employee.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/controller/InventoryController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/InventoryController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/controller/employeeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/employeeController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/SupplierServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/SupplierServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/supplier.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/supplier.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/assest/js/admin/supplier.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/js/admin/supplier.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/controller/SupplierController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/SupplierController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,10 +72,10 @@
     "Spring Boot.WebAppInitializer.executor": "Run",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "recover__commit",
+    "git-widget-placeholder": "work-branch",
     "jdk.selected.JAVA_MODULE": "17",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/sithumimesh/Documents/IDEA PROJECTS/Shoe-Shop-Management-System",
+    "last_opened_file_path": "/Users/sithumimesh/Desktop/AAD Project/Shoe-Shop-Management-System",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -197,19 +197,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="front-end" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="front-end" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="WebAppInitializer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="back-end" />
@@ -283,6 +270,7 @@
       <workItem from="1715666501989" duration="2926000" />
       <workItem from="1715772283092" duration="2189000" />
       <workItem from="1716122017882" duration="3630000" />
+      <workItem from="1716126681843" duration="5933000" />
     </task>
     <servers />
   </component>
