@@ -13,13 +13,13 @@ function employeeFunction() {
         employeeFormContainer = $('#employeeFormContainer'),
         employeePopupClose = $('#employeePopupClose'),
         employeeRole = $('#employeeRole');
-        const imgUploader = $('#imgUploader');
-        const imgViewer = $('#imgViewer');
+    const imgUploader = $('#imgUploader');
+    const imgViewer = $('#imgViewer');
 
     addEmployee.click(function () {
         employeePopupAddBtn.text("Save")
         employeePopupAddBtn.css('display', 'block');
-        // employeePopupCancelBtn.css('width', '48%');
+        employeePopupCancelBtn.css('width', '18%');
         employeeFormIcon.attr('src', '../../assest/images/Frame07.png')
         employeeFormTitle.text('Add Employee')
         $("#employeeGender").prop('disabled', false);
@@ -34,6 +34,11 @@ function employeeFunction() {
         $('#imgViewer').attr('src', '#')
         employeePageUserCredentials.addClass('d-none');
         generateNewEmployeeId();
+        $('#tblEmployee tr').each(function () {
+            $('#tblEmployee input[type="checkbox"]').not($(this)).prop('checked', false);
+        })
+        $('#employeeImg').attr('src', '#')
+       
         employeeRole.change(function () {
             console.log($(this).val());
             $('#EmployeePageUserPasswword').val("")
@@ -48,16 +53,17 @@ function employeeFunction() {
     updateEmployee.click(function () {
         employeeFormTitle.text('Update Employee')
         employeePopupAddBtn.css('display', 'block');
-        employeePopupAddBtn.text("Save Changes")
-        // employeePopupCancelBtn.css('width', '48%');
+        employeePopupAddBtn.text("Update")
+        employeePopupCancelBtn.css('width', '18%');
         employeeFormIcon.attr('src', '../../assest/images/edit-btn.png')
         $("#employeeGender").prop('disabled', false);
         $("#employeeDOB").prop('disabled', false);
         $("#employeeDOJ").prop('disabled', false);
+        $("#imgUploader").prop('disabled', false);
         $("#employeeRole").prop('disabled', true);
-        $("#employeeCode").val('');
         employeePageUserCredentials.addClass('d-none');
         enableTxtField()
+        $('#employeeCode').attr('readonly', "");
 
     })
     deleteEmployee.click(function () {

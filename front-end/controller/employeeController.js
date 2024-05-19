@@ -3,23 +3,27 @@ function employeeControlFunction() {
     imageUploader();
     getAllEmployeeData();
     clickTblRow();
-    updateCustomer();
+    updateEmployee();
     searchEmployee();
     activeStatusCheckBox();
+    deleteEmployee()
 }
 
 var base64String;
-
+var id;
 function saveEmployee() {
     $('#employeePopupAddBtn').click(function () {
+        
         if ($(this).text().trim() === 'Save') {
+            if ($('#imgUploader').val() === ''){
+                base64String = null;
+            }
             if ($('#EmployeePageUserPasswword').val() === $('#EmployeePageUserPasswword2').val()){
                 console.log("Saving Employee");
                 var role;
                 var gender;
                 var userPassword;
-                if ('ADMIN' === $('#employeeRole').val() || 'USER' === $('#employeeRole').val()) {
-                    role = $('#employeeRole').val().toUpperCase();
+                if ('OTHER' !== $('#employeeRole').val()) {
                     userPassword = $('#EmployeePageUserPasswword').val()
                 }else {
                     userPassword = null;
@@ -38,7 +42,7 @@ function saveEmployee() {
                     proPic: base64String,
                     joinDate: $('#employeeDOJ').val(),
                     employeeDob: $('#employeeDOB').val(),
-                    role: role,
+                    role: $('#employeeRole').val().toUpperCase(),
                     address: {
                         buildNo: $('#employeeBuilding').val(),
                         city: $('#employeeCity').val(),
@@ -188,7 +192,7 @@ function clickTblRow() {
 
         // Uncheck all other checkboxes
         setImage(employeeCheckbox);
-        updateCustomer(employeeCheckbox)
+        updateEmployee(employeeCheckbox)
     });
 
     $('#tblEmployee').on('change', 'input[type="checkbox"]', function () {
@@ -202,7 +206,7 @@ function clickTblRow() {
 function setImage(employeeCheckbox) {
     var row = employeeCheckbox.closest('tr');
     if (employeeCheckbox.is(':checked')) {
-        var id = row.find('td:eq(0)').text();
+         id = row.find('td:eq(0)').text();
         $.ajax({
             url: "http://localhost:8080/api/v1/employees/" + id,
             type: "GET",
@@ -211,7 +215,6 @@ function setImage(employeeCheckbox) {
                 $('#employeeImg').attr('src', 'data:image/jpeg;base64,' + response.proPic);
                 console.log(response);
                 setDataToTextField(response)
-                deleteEmployee(id)
             },
             error: function (xhr, status, error) {
                 console.error('Failed to fetch image:', error);
@@ -222,7 +225,7 @@ function setImage(employeeCheckbox) {
     }
 }
 
-function updateCustomer(employeeCheckbox) {
+function updateEmployee(employeeCheckbox) {
     $('#employeePopupAddBtn').click(function () {
         if ($(this).text().trim() === 'Update') {
             var role;
@@ -356,7 +359,7 @@ function generateNewEmployeeId() {
         });
 }
 
-function deleteEmployee(id) {
+function deleteEmployee() {
     $('#deleteEmployeeBtn').click(function () {
         $.ajax({
             url: "http://localhost:8080/api/v1/employees/" + id,

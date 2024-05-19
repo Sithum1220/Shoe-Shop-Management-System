@@ -7,7 +7,7 @@ function inventoryController() {
     getSizes();
 }
 
-var base64String;
+var itemBase64String;
 var inputData = [];
 function saveItem() {
     
@@ -68,7 +68,7 @@ function saveItem() {
                 },
                 salePrice: $('#itemSellPrice').val(),
                 buyPrice: $('#itemBuyPrice').val(),
-                itemPicture: base64String,
+                itemPicture: itemBase64String,
                 supplierName: $('#supplierName').text(),
                 sizeList: inputData,
             };
@@ -141,7 +141,7 @@ function checkItem() {
                             $('#itemCategory').val(resp.data.category);
                             $('#supplierCode').val(resp.data.supplier.supplierCode);
                             $('#supplierName').text(resp.data.supplierName);
-                            base64String = resp.data.itemPicture;
+                            itemBase64String = resp.data.itemPicture;
                             
                             $('.inputBox').not(':first').remove();
 
@@ -257,7 +257,7 @@ function itemImageUploader() {
 
             reader.onload = function (e) {
                 itemImageViewer.attr('src', e.target.result);
-                base64String = reader.result.split(',')[1];
+                itemBase64String = reader.result.split(',')[1];
             };
 
             reader.readAsDataURL(file);

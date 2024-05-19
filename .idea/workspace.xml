@@ -5,17 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="032d1856-7f95-44cb-a7e8-c221ea7611af" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/21932946-ac1a-4678-bfa8-82770c9422c9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/21932946-ac1a-4678-bfa8-82770c9422c9.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/employee.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/employee.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/inventory.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/inventory.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/supplier.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/supplier.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/temp.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/temp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/customers/customer.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/customers/customer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/assest/css/pages.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/css/pages.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/assest/js/admin/employee.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/js/admin/employee.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/assest/js/admin/supplier.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/js/admin/supplier.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/controller/InventoryController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/InventoryController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/controller/employeeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/employeeController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +29,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProblemsViewState">
@@ -51,49 +50,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.main.executor&quot;: &quot;Run&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;JUnit.EmployeeRepositoryTest.searchEmployee.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EmployeeServiceImplTest.countEmployee.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EmployeeServiceImplTest.getAllEmployees.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EmployeeServiceImplTest.saveEmployee.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EmployeeServiceImplTest.searchEmployeesById.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SupplierRepositoryTest.existsByMobileNo.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceImplTest.findAllByActiveStatus.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceImplTest.searchUsersById.executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.WebAppInitializer.executor&quot;: &quot;Run&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/sithumimesh/Documents/IDEA PROJECTS/Shoe-Shop-Management-System/back-end/src/main/java/lk/ijse/spring/shoeshop&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.folding&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.main.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JUnit.EmployeeRepositoryTest.searchEmployee.executor": "Run",
+    "JUnit.EmployeeServiceImplTest.countEmployee.executor": "Run",
+    "JUnit.EmployeeServiceImplTest.getAllEmployees.executor": "Run",
+    "JUnit.EmployeeServiceImplTest.saveEmployee.executor": "Run",
+    "JUnit.EmployeeServiceImplTest.searchEmployeesById.executor": "Run",
+    "JUnit.SupplierRepositoryTest.existsByMobileNo.executor": "Run",
+    "JUnit.UserServiceImplTest.findAllByActiveStatus.executor": "Run",
+    "JUnit.UserServiceImplTest.searchUsersById.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.WebAppInitializer.executor": "Run",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "recover__commit",
+    "jdk.selected.JAVA_MODULE": "17",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/sithumimesh/Documents/IDEA PROJECTS/Shoe-Shop-Management-System",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "editor.preferences.folding",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop" />
@@ -283,6 +282,7 @@
       <workItem from="1715623155627" duration="1382000" />
       <workItem from="1715666501989" duration="2926000" />
       <workItem from="1715772283092" duration="2189000" />
+      <workItem from="1716122017882" duration="3630000" />
     </task>
     <servers />
   </component>
