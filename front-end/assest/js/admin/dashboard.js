@@ -2,6 +2,7 @@ const dashboardBtn = $('#dashboardBtn');
 const employeeBtn = $('#employeeBtn');
 const supplierBtn = $('#supplierBtn');
 const customerBtn = $('#customerBtn');
+const customerOrderBtn = $('#customerOrderBtn');
 const inventoryBtn = $('#inventoryBtn');
 const userBtn = $('#userBtn'),
     dashboard = $('#dashboard');
@@ -18,11 +19,15 @@ dashboardBtn.click(function () {
     customerBtn.removeClass('active')
     userBtn.removeClass('active')
     inventoryBtn.removeClass('active')
+    customerOrderBtn.removeClass('active')
+    
     dashboard.css('display', 'block');
     $('#employeSection').remove();
     $('#supplierSection').remove();
     $('#inventorySection').remove();
     $('#userSection').remove();
+    $('#customerSection').remove();
+    $('#customerOrderSection').remove();
 })
 
 employeeBtn.click(function () {
@@ -37,6 +42,8 @@ employeeBtn.click(function () {
     userBtn.removeClass('active')
     inventoryBtn.removeClass('active')
     customerBtn.removeClass('active')
+    customerOrderBtn.removeClass('active')
+    
     dashboard.css('display', 'none');
     $('#supplierSection').remove();
     $('#inventorySection').remove();
@@ -73,6 +80,8 @@ supplierBtn.click(function () {
     userBtn.removeClass('active')
     inventoryBtn.removeClass('active')
     customerBtn.removeClass('active')
+    customerOrderBtn.removeClass('active')
+    
     dashboard.css('display', 'none');
     $('#employeSection').remove();
     $('#inventorySection').remove();
@@ -109,6 +118,8 @@ customerBtn.click(function () {
     userBtn.removeClass('active')
     inventoryBtn.removeClass('active')
     customerBtn.addClass('active')
+    customerOrderBtn.removeClass('active')
+    
     dashboard.css('display', 'none');
     $('#employeSection').remove();
     $('#inventorySection').remove();
@@ -145,6 +156,7 @@ inventoryBtn.click(function () {
     userBtn.removeClass('active')
     inventoryBtn.addClass('active')
     customerBtn.removeClass('active')
+    customerOrderBtn.removeClass('active')
     
     $('#employeSection').remove();
     $('#userSection').remove();
@@ -181,6 +193,7 @@ userBtn.click(function () {
     supplierBtn.removeClass('active')
     inventoryBtn.removeClass('active')
     customerBtn.removeClass('active')
+    customerOrderBtn.removeClass('active')
     userBtn.addClass('active')
     $('#employeSection').remove();
     $('#inventorySection').remove();
@@ -199,6 +212,41 @@ userBtn.click(function () {
 
             $("#pages").html(extractedContent);
             userController();
+        })
+        .catch(error => {
+            console.error("Error loading HTML file:", error);
+        });
+})
+
+customerOrderBtn.click(function () {
+    dashboardBtn.removeClass('active')
+    employeeBtn.removeClass('active')
+    supplierBtn.removeClass('active')
+    inventoryBtn.removeClass('active')
+    customerBtn.removeClass('active')
+    customerOrderBtn.addClass('active')
+    userBtn.removeClass('active')
+    dashboard.css('display', 'none');
+    
+    $('#employeSection').remove();
+    $('#inventorySection').remove();
+    $('#supplierSection').remove();
+
+    fetch('http://localhost:63342/Shoe-Shop-Management-System/front-end/Pages/customers/customerOrder.html')
+        .then(response => response.text())
+        .then(data => {
+            console.log("HTML file loaded successfully:", data);
+
+            var tempDiv = document.createElement('div');
+            tempDiv.innerHTML = data;
+
+            var extractedContent = tempDiv.querySelector('#customerOrderMainSection').innerHTML;
+
+            $("#pages").html(extractedContent);
+            customerOrderFunction();
+            orderController();
+            // customerFunction();
+            // customerControlFunction();
         })
         .catch(error => {
             console.error("Error loading HTML file:", error);

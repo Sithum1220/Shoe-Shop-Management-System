@@ -38,11 +38,11 @@
     position: relative;
 }
 
-.pagination-container {
-    text-align: right;
-    z-index: 999;
+/*.pagination-container {*/
+/*    text-align: right;*/
+/*    z-index: 999;*/
 
-}
+/*}*/
 
 .prev-btn,
 .next-btn {
@@ -370,5 +370,10 @@ input[type="date"]::before {
 
 .inputBody{
     max-height: 30rem;
+    overflow-y: auto;
+}
+
+.orderItemTable{
+    max-height: 8rem;
     overflow-y: auto;
 }

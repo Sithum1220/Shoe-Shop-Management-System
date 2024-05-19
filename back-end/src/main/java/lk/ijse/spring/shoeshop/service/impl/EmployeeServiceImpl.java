@@ -70,6 +70,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void updateEmployee(EmployeeDTO employee) {
         if (employeeRepository.existsByEmployeeId(employee.getEmployeeId())) {
+            employee.setActiveStatus(employeeRepository.existsByEmployeeId(employee.getEmployeeId()));
             employeeRepository.save(modelMapper.map(employee, Employee.class));
         } else {
             throw new EntityExistsException("Employee Not Found!");
@@ -83,7 +84,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             Employee byEmployeeId = employeeRepository.findByEmployeeId(id);
             byEmployeeId.setActiveStatus(false);
             employeeRepository.save(byEmployeeId);
-            if(userRepository.existsById(byEmployeeId.getEmail())){
+            if (userRepository.existsById(byEmployeeId.getEmail())) {
                 User byEmail = userRepository.findByEmail(byEmployeeId.getEmail());
                 byEmail.setActiveStatus(false);
                 userRepository.save(byEmail);
@@ -110,21 +111,23 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<EmployeeDTO> searchEmployeesById(String idOrName,  boolean activeStatus) {
+    public List<EmployeeDTO> searchEmployeesById(String idOrName, boolean activeStatus) {
         return modelMapper.map(employeeRepository.
                 findByEmployeeIdStartingWithAndActiveStatusOrEmployeeNameStartingWithAndActiveStatus
-                        (idOrName,activeStatus, idOrName, activeStatus), new
-                TypeToken<List<EmployeeDTO>>() {}.getType());
+                        (idOrName, activeStatus, idOrName, activeStatus), new
+                TypeToken<List<EmployeeDTO>>() {
+                }.getType());
     }
 
     @Override
     public List<EmployeeDTO> findAllByActiveStatus(boolean activeStatus) {
         List<Employee> allByActiveStatus = employeeRepository.findAllByActiveStatus(activeStatus);
-        for (Employee employee:allByActiveStatus){
+        for (Employee employee : allByActiveStatus) {
             System.out.println(employee.getEmployeeId());
         }
         return modelMapper.map(employeeRepository.findAllByActiveStatus(activeStatus),
-                new TypeToken<List<EmployeeDTO>>() {}.getType());
+                new TypeToken<List<EmployeeDTO>>() {
+                }.getType());
     }
 
 }

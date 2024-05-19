@@ -10,72 +10,107 @@
     <section id="customerOrderSection">
         <div class="tblDiv row mb-5">
             <h1>Customer Orders</h1>
-            <section class="row orderRow mb-5 mt-4 justify-content-center">
-                <div class="col-xl-6 col-lg-12 col-xxl-4 orderBox">
+            <section class="row orderRow mb-5 mt-4 ">
+                <div class="col-5  orderBox">
                     <div class="row">
                         <div class="col">
                             <div class="input_box ">
                                 <select class="select form-select opacity-75 txt"
                                         aria-label="Default select example"
-                                        id="customerTyper">
-                                    <option selected>Select Customer</option>
-                                    <option value="1">Loyalty</option>
-                                    <option value="2">Other</option>
+                                        id="customerType">
+                                    <option selected disabled>Select Customer</option>
+                                    <option value="Loyalty">Loyalty</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="customerId" placeholder="Customer Id">
-                            </div>
-
+                        <div class="col cus d-none">
+                            <label for="customerId" class="form-label lbl">Customer Id</label>
+                            <input type="text" class="form-control txt" id="customerId" required>
                         </div>
                     </div>
-                    <div class="row ">
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="customerName" placeholder="Customer Name">
-                            </div>
+                    <div class="row mt-4">
+                        <div class="col cus d-none">
+                            <label for="customerName" class="form-label lbl">Customer Name</label>
+                            <input type="text" readonly class="form-control txt" id="customerName" required>
                         </div>
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="customerLevel" placeholder="Customer Level">
-                            </div>
+                        <div class="col cus d-none">
+                            <label for="customerLevel" class="form-label lbl">Customer Level</label>
+                            <input type="text" readonly class="form-control txt" id="customerLevel" required>
                         </div>
                     </div>
-                    <div class="row mb-4">
+                    <div class="row itm mt-2 mb-4">
                         <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="itemId" placeholder="Item Id">
-                            </div>
+                            <label for="itemId" class="form-label lbl">Item Code</label>
+                            <input type="text" class="form-control txt" id="itemId" required>
                         </div>
                         <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="itemQty" placeholder="Item QTY">
-                            </div>
+                            <label for="itemQty" class="form-label lbl">Item QTY</label>
+                            <input type="text" class="form-control txt" id="itemQty" required>
                         </div>
                     </div>
 
                     <div class="justify-content-end row align-items-center me-1">
-                    <button type="button" class="btn btn-primary purchersBtn mt-3">Add To Cart</button>
-
+                        <button type="button" id="addToCart" class="btn btn-primary purchersBtn mt-3">Add To Cart</button>
                     </div>
 
+                </div>
+                <div class="col-6  orderBox">
+
+                    <div class="row orderItemTable">
+<!--                        <div class="col mt-4 d-flex justify-content-center">-->
+<!--                            <h1>Size</h1>-->
+<!--                        </div>-->
+<!--                        <div class="col mt-4 d-flex justify-content-center">-->
+<!--                            <h1></h1>-->
+<!--                        </div>-->
+                        <table class="table table-responsive ">
+                            <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col" class="d-none">#</th>
+                                <th scope="col">size</th>
+                                <th scope="col">Color</th>
+                                <th scope="col">Qty</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value=""/>
+                                    </div>
+                                </th>
+                                <td class="d-none">1</td>
+                                <td>10</td>
+                                <td>Formal Shoe</td>
+                                <td>50</td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
-                <div class="col-xl-5 col-lg-12 col-xxl-4 orderBox">
-                    <div class="row">
-                        <div class="col">
-                            <div class="input_box ">
-                                <select class="select form-select opacity-75 txt"
-                                        aria-label="Default select example"
-                                        id="paymentMethod">
-                                    <option selected>Payment Method</option>
-                                    <option value="1">Cash Payment</option>
-                                    <option value="2">Card Paymen</option>
-                                </select>
-                            </div>
-                        </div>
+<!--                    <div class="row ">-->
+<!--                        <div class="col mt-4 d-flex justify-content-center">-->
+<!--                            <h1>Desc</h1>-->
+<!--                        </div>-->
+<!--                        <div class="col mt-4 d-flex justify-content-center">-->
+<!--                            <h1 class="itemDesc"></h1>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row ">-->
+<!--                        <div class="col mt-4 d-flex justify-content-center">-->
+<!--                            <h1>Qty</h1>-->
+<!--                        </div>-->
+<!--                        <div class="col mt-4 d-flex justify-content-center">-->
+<!--                            <h1 class="itemTotalQty"></h1>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                    <div class="d-flex justify-content-center">
+                        <img src="#" id="viewItem" width="200" alt=""/>
                     </div>
+                </div>
+                <div class="col-11  orderBox">
+
                     <div class="row d-none">
                         <div class="col">
                             <div class="input_box">
@@ -90,57 +125,64 @@
                     </div>
                     <div class="row">
                         <div class="col d-flex justify-content-center mt-4">
-                            <h1 class="fs-1 fw-bold">Total</h1>
+                            <h1 class="fs-3 fw-bold">Total</h1>
                         </div>
                         <div class="col d-flex justify-content-center align-items-end mt-2">
                             <h2 class="fs-4 d-inline-block me-2">Rs</h2>
-                            <h1 class="fs-2 d-inline-block"> 5470.00</h1>
+                            <h1 class="fs-3 d-inline-block"> 5470.00</h1>
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col  d-flex justify-content-center mt-4">
-                            <h1 class="fs-1 fw-bold ">Balance</h1>
+                            <h1 class="fs-3 fw-bold ">Balance</h1>
                         </div>
                         <div class="col d-flex justify-content-center align-items-end mt-4">
-                            <h2 class="fs-4 d-inline-block me-2">Rs</h2>
+                            <h2 class="fs-3 d-inline-block me-2">Rs</h2>
                             <h1 class="fs-2 d-inline-block"> 1250.00</h1>
                         </div>
                     </div>
+                    <div class="row justify-content-center">
+                        <div class="col-6">
+                            <div class="input_box ">
+                                <select class="select form-select opacity-75 txt"
+                                        aria-label="Default select example"
+                                        id="paymentMethod">
+                                    <option selected disabled>Payment Method</option>
+                                    <option value="Cash Payment">Cash Payment</option>
+                                    <option value="Card Payment">Card Payment</option>
+                                </select>
+                            </div>
+                        </div>
 
+                        <div class="row mt-3 mb-3 justify-content-center">
+                            <div class="d-flex justify-content-center gap-4 d-none cardDiv">
+                                <div class="col-4">
+                                    <div class="input_box ">
+                                        <input type="text" class="txt" id="last4Digit"
+                                               placeholder="last four digits of the card">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="input_box ">
+                                        <input type="text" class="txt" id="bankName" placeholder="bank name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center d-none cashDiv">
+                                <div class="col-4">
+                                    <div class="input_box ">
+                                        <input type="text" class="txt" id="amount" placeholder="Amount">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="justify-content-end row align-items-center me-1">
-                        <button type="button" class="btn btn-success purchersBtn ">Purchers</button>
+                        <button type="button" class="btn btn-success purchersBtn ">Punchers</button>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-12 col-xxl-3 orderBox">
-                    <div class="d-flex justify-content-center">
-                        <img src="../../assest/images/shoe01.png" width="200" />
-                    </div>
-                        <div class="row">
-                            <div class="col mt-4 d-flex justify-content-center">
-                                <h1>Size</h1>
-                            </div>
-                            <div class="col mt-4 d-flex justify-content-center">
-                                <h1>10</h1>
-                            </div>
-                        </div>
-                        <div class="row ">
-                            <div class="col mt-4 d-flex justify-content-center">
-                                <h1>Desc</h1>
-                            </div>
-                            <div class="col mt-4 d-flex justify-content-center">
-                                <h1>Fomal Shoe</h1>
-                            </div>
-                        </div>
-                    <div class="row ">
-                        <div class="col mt-4 d-flex justify-content-center">
-                            <h1>Qty</h1>
-                        </div>
-                        <div class="col mt-4 d-flex justify-content-center">
-                            <h1>50</h1>
-                        </div>
-                    </div>
-                    </div>
+
             </section>
             <div class="search p-0 row">
                 <div class="col-10 p-0 d-flex align-items-center justify-content-end">
@@ -199,27 +241,28 @@
                     </table>
 
                 </div>
-                <div class="pagination-container">
-                    <button class="prev-btn"> Previous
-                        <!--                        <img src="../Pages/assets/images/arrow-point-to-left.png" width="25" alt="">-->
-                    </button>
-                    <button class="next-btn"> Next
-                        <!--                        <img src="../Pages/assets/images/arrow-point-to-right.png" width="25" alt="">-->
-                    </button>
-                </div>
+                <!--                <div class="pagination-container">-->
+                <!--                    <button class="prev-btn"> Previous-->
+                <!--                        &lt;!&ndash;                        <img src="../Pages/assets/images/arrow-point-to-left.png" width="25" alt="">&ndash;&gt;-->
+                <!--                    </button>-->
+                <!--                    <button class="next-btn"> Next-->
+                <!--                        &lt;!&ndash;                        <img src="../Pages/assets/images/arrow-point-to-right.png" width="25" alt="">&ndash;&gt;-->
+                <!--                    </button>-->
+                <!--                </div>-->
 
             </div>
             <div class="col-2 btnCol d-flex justify-content-center mt-4">
                 <section class="d-flex flex-column gap-5">
-                   
+
                     <button class="shadow-lg" id="showOrderDetails"><i class="fal fa-info-circle"></i>
                         <h1>Show Orders</h1>
                     </button>
-                    
-                    <button class="shadow-lg" id="removeCart" data-toggle="modal" data-target="#my-modal" ><i class="fal fa-trash"></i>
+
+                    <button class="shadow-lg" id="removeCart" data-toggle="modal" data-target="#my-modal"><i
+                            class="fal fa-trash"></i>
                         <h1>Remove cart</h1>
                     </button>
-                   
+
                 </section>
             </div>
         </div>
@@ -232,23 +275,27 @@
                                 <div class="card-header pb-0 bg-white border-0 ">
                                     <div class="row">
                                         <div class="col ml-auto d-flex justify-content-end me-2">
-                                            <button type="button" class="close deleteBtn bg-white" data-dismiss="modal" aria-label="Close">
+                                            <button type="button" class="close deleteBtn bg-white" data-dismiss="modal"
+                                                    aria-label="Close">
                                                 <span class="closeIcon" aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                     </div>
                                     <p class="font-weight-bold mb-2 fw-bold"> Are you sure you wanna delete this ?</p>
-                                    <p class="deleteMutedTxt"> This change will reflect in your portal after an hour.</p>
+                                    <p class="deleteMutedTxt"> This change will reflect in your portal after an
+                                        hour.</p>
                                 </div>
                                 <div class="card-body px-sm-4 mb-2 pt-1 pb-0">
                                     <div class="row justify-content-end no-gutters">
                                         <div class="col-auto">
-                                            <button type="button" class="btn btn-light text-muted deleteBtn" data-dismiss="modal">
+                                            <button type="button" class="btn btn-light text-muted deleteBtn"
+                                                    data-dismiss="modal">
                                                 Cancel
                                             </button>
                                         </div>
                                         <div class="col-auto">
-                                            <button type="button" class="btn btn-danger px-4 deleteBtn" data-dismiss="modal">
+                                            <button type="button" class="btn btn-danger px-4 deleteBtn"
+                                                    data-dismiss="modal">
                                                 Delete
                                             </button>
                                         </div>

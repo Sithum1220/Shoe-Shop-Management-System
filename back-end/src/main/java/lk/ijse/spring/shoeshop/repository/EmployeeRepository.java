@@ -41,4 +41,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, String> {
 //            (String employeeEmailStart, boolean activeStatus1, String employeeNameStart, boolean activeStatus2);
 
     List<Employee> findByEmployeeNameStartingWithOrEmailStartingWith(String employeeNameStart, String email);
+
+    boolean getEmployeeByEmployeeId(String employeeId);
 }
