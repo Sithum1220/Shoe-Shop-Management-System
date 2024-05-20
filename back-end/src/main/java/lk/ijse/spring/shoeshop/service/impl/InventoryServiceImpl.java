@@ -47,9 +47,12 @@ public class InventoryServiceImpl implements InventoryService {
 
             if (inventoryRepository.existsById(inventoryDTO.getItemCode())) {
                 for (int i = 0; i < inventoryDTO.getSizeList().size(); i++) {
-                    Size bySizeId = sizeRepository.findBySizeId(inventoryDTO.getSizeList().get(i).getId());
-                    int qty = inventoryDTO.getSizeList().get(i).getQty() + bySizeId.getQty();
-                    inventoryDTO.getSizeList().get(i).setQty(qty);
+                    System.out.println(inventoryDTO.getSizeList().get(i).getId());
+                    if (inventoryDTO.getSizeList().get(i).getId() != 0) {
+                        Size bySizeId = sizeRepository.findBySizeId(inventoryDTO.getSizeList().get(i).getId());
+                        int qty = inventoryDTO.getSizeList().get(i).getQty() + bySizeId.getQty();
+                        inventoryDTO.getSizeList().get(i).setQty(qty);
+                    }
                 }
             }
 

@@ -12,31 +12,57 @@ function inventoryController() {
 var itemBase64String;
 var inputData = [];
 var itemId;
+var inputBoxLength;
+
 function saveItem() {
         $('#saveSizes').click(function () {
+            
             if (inputData.length > 0) {
-                $('.inputBox').each(function (index) {
-                    var color = $(this).find('input[id="itemColor"]').val();
-                    var size = $(this).find('input[id="itemSize"]').val();
-                    var quantity = $(this).find('input[id="itemQty"]').val();
+                console.log("Saving Sizes length: "+$('.inputBox').length);
+
+                $('.inputBox').each(function () {
+                    var color = $(this).find('input[id="itemColor"]:enabled').val();
+                    var size = $(this).find('input[id="itemSize"]:enabled').val();
+                    var quantity = $(this).find('input[id="itemQty"]:enabled').val();
 
                     if (!color || !size || !quantity) {
                         return;
                     }
-                    // var itemData = {
-                    //     color: color,
-                    //     size: size,
-                    //     qty: quantity
-                    // };
-                    //
-                    // inputData.push(itemData);
-                    console.log(quantity)
-                    console.log(color)
-                    console.log(size)
-                    inputData[index].color = color;
-                    inputData[index].size = size;
-                    inputData[index].qty = quantity;
-                }); 
+
+                    var itemData = {
+                        color: color,
+                        size: size,
+                        qty: quantity,
+                        itemCode: $('#itemCode').val()
+                    };
+
+                    inputData.push(itemData);
+                });
+
+
+                $('.inputBox').each(function (index) {
+                    console.log(index)
+                    var color = $(this).find('input[id="itemColor"]:disabled').val();
+                    var size = $(this).find('input[id="itemSize"]:disabled').val();
+                    var quantity = $(this).find('input[id="itemQty"]:enabled').val();
+
+                    // if (!color || !size || !quantity) {
+                    //     return;
+                    // }
+                    
+                    if (inputData[index].id !== undefined){
+                        inputData[index].color = color;
+                        inputData[index].size = size;
+                        inputData[index].qty = quantity;
+                    }
+                    // Update the corresponding entry in the `inputData` array
+                    
+
+                    // Log the values for debugging
+                    // console.log(quantity);
+                    // console.log(color);
+                    // console.log(size);
+                });
             }else {
                 $('.inputBox').each(function () {
                     var color = $(this).find('input[id="itemColor"]').val();
@@ -58,7 +84,7 @@ function saveItem() {
             }
 
         });
-        
+        console.log(inputData);
     $('#inventoryPopupBtn').click(function () {
         if ($(this).text().trim() === 'Save') {
             if ($('#itemImgUploader').val() === ''){
@@ -94,7 +120,6 @@ function saveItem() {
                             showConfirmButton: false,
                             timer: 1500
                         });
-                        // getAllEmployeeData();
                     }
                 },
                 error: function (resp) {
@@ -149,7 +174,7 @@ function checkItem() {
                             itemBase64String = resp.data.itemPicture;
                             
                             $('.inputBox').not(':first').remove();
-
+                                
                             inputData = resp.data.sizeList;
                             resp.data.sizeList.forEach(function (item, index) {
                                 if (index > 0) {
@@ -172,6 +197,8 @@ function checkItem() {
                                     }
                                 });
                             });
+                            inputBoxLength =$('.inputBox').length;
+                            console.log("inputBox length: "+$('.inputBox').length);
                             $('#itemStatus').css('color', 'green');
                             $('.dis').prop('disabled', true);
 
@@ -389,7 +416,6 @@ function updateItem() {
                             showConfirmButton: false,
                             timer: 1500
                         });
-                        // getAllEmployeeData();
                     }
                 },
                 error: function (resp) {

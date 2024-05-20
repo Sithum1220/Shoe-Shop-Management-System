@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="032d1856-7f95-44cb-a7e8-c221ea7611af" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/InventoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/InventoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/assest/js/admin/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/js/admin/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/assest/js/admin/inventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/js/admin/inventory.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/controller/InventoryController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/InventoryController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/controller/employeeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/employeeController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,7 +272,7 @@
       <workItem from="1715772283092" duration="2189000" />
       <workItem from="1716122017882" duration="3630000" />
       <workItem from="1716126681843" duration="11756000" />
-      <workItem from="1716177706861" duration="1542000" />
+      <workItem from="1716177706861" duration="10339000" />
     </task>
     <servers />
   </component>
