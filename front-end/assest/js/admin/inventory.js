@@ -15,7 +15,7 @@ function inventoryFunction() {
 
     addItem.click(function () {
         inventoryPopupBtn.text("Save")
-        // itemPopupAddBtn.css('display', 'block');
+        inventoryPopupBtn.css('display', 'block');
         itemPopupCancelBtn.css('width', '18%');
         // itemDeletePopupBox.css('display', 'none');
         // itemTxtFieldBox.css('display', 'block');
@@ -24,27 +24,36 @@ function inventoryFunction() {
         $('.dis').prop('disabled', false);
         $('.dis').val('')
         $('#itemCode').val('')
+        $('#itemStatus').text('')
+        $('#supplierName').text('')
+        $('#itemImgViewer').attr('src','#')
+        $('#itemImgUploader').prop('disabled', false);
+        $('#addNew').prop('disabled', false);
         enableTxtField()
     })
     updateItem.click(function () {
         popupTitle.text('Update Item')
-        // itemPopupAddBtn.css('display', 'block');
+        inventoryPopupBtn.css('display', 'block');
         inventoryPopupBtn.text("Update")
         itemPopupCancelBtn.css('width', '18%');
         titleImg.attr('src', '../../assest/images/edit-btn.png')
         enableTxtField()
+        $('#itemCode').attr('readonly','')
+        $('#itemImgUploader').prop('disabled', false);
+        $('#addNew').prop('disabled', false);
+        
     })
     deleteItem.click(function () {
 
     })
     showItemDetails.click(function () {
-        itemFormTitle.text('Item Details')
-        itemPopupAddBtn.css('display', 'none');
+        popupTitle.text('Item Details')
+        inventoryPopupBtn.css('display', 'none');
         itemPopupCancelBtn.css('width', '100%');
-        itemFormIcon.attr('src', '../../assest/images/detailsIcon.png')
-        itemDeletePopupBox.css('display', 'none');
-        itemTxtFieldBox.css('display', 'block');
+        titleImg.attr('src', '../../assest/images/detailsIcon.png')
         disableTxtField();
+        $('#itemImgUploader').prop('disabled', true);
+        $('#addNew').prop('disabled', true);
     })
 
     imgUploader.change(function () {
@@ -85,6 +94,8 @@ function inventoryFunction() {
             $('#tblInventory input[type="checkbox"]').not($(this)).prop('checked', false);
         })
         $('.dis, .txt').val("")
+        $('#itemImg').attr('src', '#');
+        
     });
   
 }

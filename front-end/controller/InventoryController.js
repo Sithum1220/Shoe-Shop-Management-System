@@ -6,6 +6,7 @@ function inventoryController() {
     itemClickTblRow();
     getSizes();
     getAllItems();
+    updateItem();
 }
 
 var itemBase64String;
@@ -324,6 +325,10 @@ function setItemImage(itemCheckbox) {
 
 function getSizes() {
 
+}
+
+function updateItem() {
+    
 }
 
 function getAllItems() {
