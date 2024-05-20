@@ -88,6 +88,7 @@ function saveEmployee() {
                     }
                 })
             }else {
+                console.log("mala huttak unane meka");
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",

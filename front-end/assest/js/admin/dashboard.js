@@ -244,7 +244,7 @@ customerOrderBtn.click(function () {
 
             $("#pages").html(extractedContent);
             customerOrderFunction();
-            orderController();
+            // orderController();
             // customerFunction();
             // customerControlFunction();
         })

@@ -29,7 +29,13 @@ function inventoryFunction() {
         $('#itemImgViewer').attr('src','#')
         $('#itemImgUploader').prop('disabled', false);
         $('#addNew').prop('disabled', false);
+        $('#tblInventory tr').each(function () {
+            $('#tblInventory input[type="checkbox"]').not($(this)).prop('checked', false);
+        })
+        $('.dis, .txt').val("")
+        $('#itemImg').attr('src', '#');
         enableTxtField()
+
     })
     updateItem.click(function () {
         popupTitle.text('Update Item')
@@ -41,7 +47,7 @@ function inventoryFunction() {
         $('#itemCode').attr('readonly','')
         $('#itemImgUploader').prop('disabled', false);
         $('#addNew').prop('disabled', false);
-        
+        $('.dis').prop('disabled', false);
     })
     deleteItem.click(function () {
 
@@ -83,6 +89,7 @@ function inventoryFunction() {
 
         // Clear their values
         newInput.find('input').val('');
+        newInput.find('input').prop('disabled', false);
 
         // Append the new input fields to the container
         $('#inputContainer').append(newInput);
@@ -94,7 +101,9 @@ function inventoryFunction() {
             $('#tblInventory input[type="checkbox"]').not($(this)).prop('checked', false);
         })
         $('.dis, .txt').val("")
+        $('#itemStatus, #supplierName').text("")
         $('#itemImg').attr('src', '#');
+        $('#itemImgViewer').attr('src', '#');
         
     });
   
