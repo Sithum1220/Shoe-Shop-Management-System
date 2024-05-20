@@ -30,42 +30,10 @@
                             <th scope="col">Supplier name</th>
                             <th scope="col">Description</th>
                             <th scope="col">Category</th>
-                            <th scope="col">Size</th>
                             <th scope="col">Status</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                           id="employeeTblCheckBox"/>
-                                </div>
-                            </th>
-                            <td>I001</td>
-                            <td>S001</td>
-                            <td>Sithum Imesh</td>
-                            <td>Formal Shoes</td>
-                            <td>Shoe</td>
-                            <td>10</td>
-                            <td>Available</td>
-
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                           id="flexCheckDefault3"/>
-                                </div>
-                            </th>
-                            <td>I002</td>
-                            <td>S002</td>
-                            <td>Sithum Perera</td>
-                            <td>Ladies Shoes</td>
-                            <td>Shoe</td>
-                            <td>07</td>
-                            <td>Available</td>
-                        </tr>
                         </tbody>
                     </table>
 
@@ -78,13 +46,13 @@
                     <button class="shadow-lg" id="addItem" data-bs-toggle="modal" data-bs-target="#itemForm"><i class="fal fa-plus-circle"></i>
                         <h1>Add Item</h1>
                     </button>
-                    <button class="shadow-lg" id="updateItem" data-toggle="modal" data-target="#itemFormContainer"><i class="fal fa-edit"></i>
+                    <button class="shadow-lg" id="updateItem" data-bs-toggle="modal" data-bs-target="#itemForm"><i class="fal fa-edit"></i>
                         <h1>Update Item</h1>
                     </button>
-                    <button class="shadow-lg" id="deleteItem" data-toggle="modal" data-target="#my-modal"><i class="fal fa-trash"></i>
-                        <h1>Delete Item</h1>
-                    </button>
-                    <button class="shadow-lg" id="showItemDetails" data-toggle="modal" data-target="#itemFormContainer"><i class="fal fa-info-circle"></i>
+<!--                    <button class="shadow-lg" id="deleteItem" data-toggle="modal" data-target="#my-modal"><i class="fal fa-trash"></i>-->
+<!--                        <h1>Delete Item</h1>-->
+<!--                    </button>-->
+                    <button class="shadow-lg" id="showItemDetails" data-bs-toggle="modal" data-bs-target="#itemForm"><i class="fal fa-info-circle"></i>
                         <h1>Item Details</h1>
                     </button>
                 </section>
@@ -204,33 +172,33 @@
                     <div class="modal-header bg-white">
                         <img src="#" id="titleImg" width="60" alt="">
                         <h1 class="modal-title fs-5 ms-3" id="popupTitle">Modal title</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" id="itemPopupCancelBtn" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body bg-white">
                         <form class="row g-3">
                             <div class="col-md-4">
                                 <label for="itemCode" class="form-label lbl">Item Code</label>
-                                <input type="text" class="form-control" id="itemCode" required>
+                                <input type="text" class="form-control txt" id="itemCode" required>
                                 <div class="valid-feedback d-block" id="itemStatus">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <label for="supplierCode" class="form-label lbl">Supplier Code</label>
-                                <input type="text" class="form-control dis" id="supplierCode" required>
+                                <input type="text" class="form-control dis txt" id="supplierCode" required>
                                 <div class="valid-feedback d-block dis" id="supplierName">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <label for="itemCategory" class="form-label lbl">Category</label>
-                                <input type="text" class="form-control dis" id="itemCategory" required>
+                                <input type="text" class="form-control dis txt" id="itemCategory" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="itemBuyPrice" class="form-label lbl">Unit price -Buy</label>
-                                <input type="text" class="form-control dis" id="itemBuyPrice" required>
+                                <input type="text" class="form-control dis txt" id="itemBuyPrice" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="itemSellPrice" class="form-label lbl">Unit price -Sale</label>
-                                <input type="text" class="form-control dis" id="itemSellPrice" required>
+                                <input type="text" class="form-control dis txt" id="itemSellPrice" required>
                             </div>
 <!--                            <div class="col-md-4">-->
 <!--                                <label for="itemQty" class="form-label lbl">Item Quantity</label>-->
@@ -238,11 +206,11 @@
 <!--                            </div>-->
                             <div class="col-md-4">
                                 <label for="itemDesc" class="form-label lbl">Description</label>
-                                <input type="text" class="form-control dis" id="itemDesc" required>
+                                <input type="text" class="form-control dis txt" id="itemDesc" required>
                             </div>
                             <div class="col-md-8">
                                 <label for="itemImgUploader" class="form-label lbl">Select a image...</label>
-                                <input type="file" class="form-control dis" id="itemImgUploader" >
+                                <input type="file" class="form-control dis txt" id="itemImgUploader" >
                             </div>
                             <div class="col-md-4">
                                 <label for="itemSizeBtn" class="form-label lbl">More Info</label>
@@ -259,7 +227,7 @@
 
                     </div>
                     <div class="modal-footer bg-white">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="inventoryPopupClose" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="button" id="inventoryPopupBtn" class="btn btn-primary">Save changes</button>
                     </div>
                 </div>
@@ -271,7 +239,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header bg-white">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">More Info</h1>
                         <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#itemForm"></button>
                     </div>
                     <div class="modal-body bg-white sizeInputBody">
@@ -279,15 +247,15 @@
                             <div class="row g-3 m-0 inputBox">
                                     <div class="col-md-4 ">
                                         <label for="itemColor" class="form-label lbl">Item Color</label>
-                                        <input type="text" class="form-control dis" id="itemColor" required>
+                                        <input type="text" class="form-control dis txt" id="itemColor" required>
                                     </div>
                                     <div class="col-md-4 ">
                                         <label for="itemSize" class="form-label lbl">size</label>
-                                        <input type="text" class="form-control dis" id="itemSize" required>
+                                        <input type="text" class="form-control dis txt" id="itemSize" required>
                                     </div>
                                     <div class="col-md-4 ">
                                         <label for="itemQty" class="form-label lbl">Item Quantity</label>
-                                        <input type="text" class="form-control" id="itemQty" required>
+                                        <input type="text" class="form-control txt" id="itemQty" required>
                                     </div>
                             </div>
                         </form>

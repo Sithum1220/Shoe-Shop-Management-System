@@ -5,12 +5,14 @@ function inventoryController() {
     itemImageUploader();
     itemClickTblRow();
     getSizes();
+    getAllItems();
+    updateItem();
 }
 
 var itemBase64String;
 var inputData = [];
+var itemId;
 function saveItem() {
-    
         $('#saveSizes').click(function () {
             if (inputData.length > 0) {
                 $('.inputBox').each(function (index) {
@@ -178,6 +180,7 @@ function checkItem() {
                             $('#itemDesc').val('');
                             $('#supplierCode').val('');
                             $('#itemCategory').val('');
+                            $('#supplierName').text('');
                             $('#itemStatus').css('color', 'red');
                             $('#inputContainer .inputBox:not(:first)').remove();
                             $('#itemColor, #itemSize, #itemQty').val('');
@@ -285,7 +288,7 @@ function itemClickTblRow() {
         $('#tblInventory input[type="checkbox"]').not(itemCheckbox).prop('checked', false);
 
         // Uncheck all other checkboxes
-        setImage(itemCheckbox);
+        setItemImage(itemCheckbox);
         // updateCustomer(employeeCheckbox)
     });
 
@@ -298,14 +301,16 @@ function itemClickTblRow() {
 function setItemImage(itemCheckbox) {
     var row = itemCheckbox.closest('tr');
     if (itemCheckbox.is(':checked')) {
-        var id = row.find('td:eq(0)').text();
+        itemId = row.find('td:eq(0)').text();
+        console.log(row.find('td:eq(0)').text());
         $.ajax({
-            url: "http://localhost:8080/api/v1/inventory/" + id,
+            url: "http://localhost:8080/api/v1/inventory/" + itemId,
             type: "GET",
             dataType: "json",
             success: function (response) {
-                $('#itemImg').attr('src', 'data:image/jpeg;base64,' + response.proPic);
+                $('#itemImg').attr('src', 'data:image/jpeg;base64,' + response.itemPicture);
                 console.log(response);
+                setDataToInput(response)
                 // setDataToTextField(response)
                 // deleteEmployee(id)
             },
@@ -320,4 +325,66 @@ function setItemImage(itemCheckbox) {
 
 function getSizes() {
 
+}
+
+function updateItem() {
+    
+}
+
+function getAllItems() {
+    $.ajax({
+        url: "http://localhost:8080/api/v1/inventory",
+        method: "GET",
+        success: function (resp) {
+            console.log("Success: ", resp);
+            $('#tblInventory tbody').empty()
+            for (const inventory of resp.data) {
+                const row = `<tr>
+                                <th scope="row">
+                                 <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value=""/>
+                                </div>
+                                </th>
+                                <td>${inventory.itemCode}</td>
+                                <td>${inventory.supplier.supplierCode}</td>
+                                <td>${inventory.supplierName}</td>
+                                <td>${inventory.itemDesc}</td>
+                                <td>${inventory.category}</td>
+                                <td>${inventory.status}</td>                             
+                            </tr>`;
+                $('#tblInventory').append(row);
+            }
+        },
+        error: function (error) {
+            console.log("error: ", error);
+        }
+    })
+}
+
+function setDataToInput(resp) {
+    $('#itemImgViewer').attr('src', 'data:image/jpeg;base64,' + resp.itemPicture);
+    $('#itemCode').val(resp.itemCode);
+    $('#itemBuyPrice').val(resp.buyPrice);
+    $('#itemSellPrice').val(resp.salePrice);
+    $('#itemDesc').val(resp.itemDesc);
+    $('#itemCategory').val(resp.category);
+    $('#supplierCode').val(resp.supplier.supplierCode);
+    $('#supplierName').text(resp.supplierName);
+    $('#itemStatus').text(resp.status);
+    itemBase64String = resp.itemPicture;
+    $('.inputBox').not(':first').remove();
+
+    inputData = resp.sizeList;
+    resp.sizeList.forEach(function (item, index) {
+        if (index > 0) {
+            var newInput = $('.inputBox:first').clone();
+            $('#inputContainer').append(newInput);
+        }
+
+        var inputBox = $('.inputBox');
+        inputBox.eq(index).find('input[id="itemColor"]').val(item.color);
+        inputBox.eq(index).find('input[id="itemSize"]').val(item.size);
+        inputBox.eq(index).find('input[id="itemQty"]').val(item.qty);
+
+    });
 }

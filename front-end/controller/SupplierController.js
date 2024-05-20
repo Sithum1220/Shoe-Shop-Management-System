@@ -96,7 +96,7 @@ function getAllSuppliers() {
                                 <td>${supplier.category}</td>
                                 <td>${supplier.mobileNo}</td>
                                 <td>${supplier.email}</td>
-                                
+                             
                             </tr>`;
                 $('#tblSupplier').append(row);
             }
@@ -241,7 +241,7 @@ function deleteSupplier(id) {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: "Customer has been Deleted",
+                    title: "Supplier has been Deleted",
                     showConfirmButton: false,
                     timer: 1500
                 });
