@@ -61,6 +61,9 @@ function saveItem() {
         
     $('#inventoryPopupBtn').click(function () {
         if ($(this).text().trim() === 'Save') {
+            if ($('#itemImgUploader').val() === ''){
+                itemBase64String = null;
+            }
             const postData = {
                 itemCode: $('#itemCode').val(),
                 itemDesc: $('#itemDesc').val(),
@@ -328,7 +331,87 @@ function getSizes() {
 }
 
 function updateItem() {
-    
+
+    if (inputData.length > 0) {
+        $('.inputBox').each(function (index) {
+            var color = $(this).find('input[id="itemColor"]').val();
+            var size = $(this).find('input[id="itemSize"]').val();
+            var quantity = $(this).find('input[id="itemQty"]').val();
+
+            if (!color || !size || !quantity) {
+                return;
+            }
+            // var itemData = {
+            //     color: color,
+            //     size: size,
+            //     qty: quantity
+            // };
+            //
+            // inputData.push(itemData);
+            console.log(quantity)
+            console.log(color)
+            console.log(size)
+            inputData[index].color = color;
+            inputData[index].size = size;
+            inputData[index].qty = quantity;
+        });
+    }
+
+    $('#inventoryPopupBtn').click(function () {
+        if ($(this).text().trim() === 'Update') {
+            const postData = {
+                itemCode: $('#itemCode').val(),
+                itemDesc: $('#itemDesc').val(),
+                category: $('#itemCategory').val(),
+                supplier: {
+                    supplierCode: $('#supplierCode').val(),
+                },
+                salePrice: $('#itemSellPrice').val(),
+                buyPrice: $('#itemBuyPrice').val(),
+                itemPicture: itemBase64String,
+                supplierName: $('#supplierName').text(),
+                sizeList: inputData,
+            };
+
+            console.log(postData);
+            $.ajax({
+                url: "http://localhost:8080/api/v1/inventory",
+                method: "PATCH",
+                data: JSON.stringify(postData),
+                contentType: "application/json",
+                success: function (resp) {
+                    if (resp.state == 200) {
+                        console.log(resp);
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Item has been Updated",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        // getAllEmployeeData();
+                    }
+                },
+                error: function (resp) {
+                    console.log(resp)
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: resp.responseJSON.message,
+                        footer: '<a href="#"></a>'
+                    });
+                }
+            })
+        } else {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Password do not match",
+                footer: '<a href="#"></a>'
+            });
+        }
+
+    })
 }
 
 function getAllItems() {
