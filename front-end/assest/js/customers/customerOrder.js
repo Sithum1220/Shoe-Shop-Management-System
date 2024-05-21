@@ -1,6 +1,6 @@
 function customerOrderFunction() {
     const customerType = $('#customerType'),
-        customerId  = $('#customerId'),
+        orderCustomerId  = $('#orderCustomerId'),
         customerName = $('#customerName'),
         customerLevel = $('#customerLevel'),
         paymentMethod = $('#paymentMethod'),
@@ -14,7 +14,7 @@ function customerOrderFunction() {
 
     customerType.change(function () {
         console.log($(this).val());
-        customerId.val("")
+        orderCustomerId.val("")
         customerName.val("")
         customerLevel.val("")
         if ($(this).val() === 'Loyalty') {
@@ -33,12 +33,12 @@ function customerOrderFunction() {
         bankName.val("")
         amount.val("")
         if ($(this).val() === 'Cash Payment') {
-            cardDiv.removeClass('d-none');
-            cashDiv.addClass('d-none');
-            
-        } else if ($(this).val() === 'Card Payment'){
             cardDiv.addClass('d-none');
             cashDiv.removeClass('d-none');
+            
+        } else if ($(this).val() === 'Card Payment'){
+            cardDiv.removeClass('d-none');
+            cashDiv.addClass('d-none');
         }
     })
     

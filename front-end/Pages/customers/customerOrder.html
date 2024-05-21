@@ -25,10 +25,13 @@
                             </div>
                         </div>
                         <div class="col cus d-none">
-                            <label for="customerId" class="form-label lbl">Customer Id</label>
-                            <input type="text" class="form-control txt" id="customerId" required>
+                            <label for="orderCustomerId" class="form-label lbl">Customer Id</label>
+                            <input type="text" class="form-control txt" id="orderCustomerId" required>
+                            <label for="orderCustomerId" id="customerFoundStatus" class="form-label lbl d-none text-danger">Customer Not Found!</label>
                         </div>
+
                     </div>
+
                     <div class="row mt-4">
                         <div class="col cus d-none">
                             <label for="customerName" class="form-label lbl">Customer Name</label>
@@ -39,10 +42,12 @@
                             <input type="text" readonly class="form-control txt" id="customerLevel" required>
                         </div>
                     </div>
+
                     <div class="row itm mt-2 mb-4">
                         <div class="col">
-                            <label for="itemId" class="form-label lbl">Item Code</label>
-                            <input type="text" class="form-control txt" id="itemId" required>
+                            <label for="OrderItemId" class="form-label lbl">Item Code</label>
+                            <input type="text" class="form-control txt" id="OrderItemId" required>
+                            <label for="OrderItemId" id="itemFoundStatus" class="form-label lbl d-none text-danger">Item Not Found!</label>
                         </div>
                         <div class="col">
                             <label for="itemQty" class="form-label lbl">Item QTY</label>
@@ -64,28 +69,17 @@
 <!--                        <div class="col mt-4 d-flex justify-content-center">-->
 <!--                            <h1></h1>-->
 <!--                        </div>-->
-                        <table class="table table-responsive ">
+                        <table class="table table-responsive table-borderless" id="tblOrderSize">
                             <thead>
                             <tr>
                                 <th scope="col"></th>
-                                <th scope="col" class="d-none">#</th>
+                                <th scope="col" ></th>
                                 <th scope="col">size</th>
                                 <th scope="col">Color</th>
                                 <th scope="col">Qty</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <th scope="row">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value=""/>
-                                    </div>
-                                </th>
-                                <td class="d-none">1</td>
-                                <td>10</td>
-                                <td>Formal Shoe</td>
-                                <td>50</td>
-                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -111,25 +105,13 @@
                 </div>
                 <div class="col-11  orderBox">
 
-                    <div class="row d-none">
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt " id="amountToPay" placeholder="Amount To pay">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="discount" placeholder="Discount">
-                            </div>
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="col d-flex justify-content-center mt-4">
                             <h1 class="fs-3 fw-bold">Total</h1>
                         </div>
                         <div class="col d-flex justify-content-center align-items-end mt-2">
                             <h2 class="fs-4 d-inline-block me-2">Rs</h2>
-                            <h1 class="fs-3 d-inline-block"> 5470.00</h1>
+                            <h1 class="fs-3 d-inline-block" id="totalPrice"> 5470.00</h1>
                         </div>
                     </div>
 
@@ -139,7 +121,7 @@
                         </div>
                         <div class="col d-flex justify-content-center align-items-end mt-4">
                             <h2 class="fs-3 d-inline-block me-2">Rs</h2>
-                            <h1 class="fs-2 d-inline-block"> 1250.00</h1>
+                            <h1 class="fs-2 d-inline-block" id="balancePrice"> 1250.00</h1>
                         </div>
                     </div>
                     <div class="row justify-content-center">

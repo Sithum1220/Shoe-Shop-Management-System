@@ -15,4 +15,5 @@ public interface CustomerService {
     String lastId();
     List<CustomerDTO> searchCustomersById(String idOrName);
 
+    Object getCustomerDetailsForOrder(CustomerDTO customerDTO);
 }
