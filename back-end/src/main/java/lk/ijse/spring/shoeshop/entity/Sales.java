@@ -3,6 +3,8 @@ package lk.ijse.spring.shoeshop.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +21,7 @@ public class Sales {
     private String orderNo;
 
     @CreationTimestamp
-    private LocalDateTime purchaseDate;
+    private LocalDate purchaseDate;
 
     private Double total;
 

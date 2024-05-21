@@ -118,7 +118,6 @@ function addToCart() {
 
                 if (checkBox) {
                     checkBoxChecked = true;
-                    
                     itemSizeId = $(this).find('td:eq(0)').text(); // Assuming first data column is at index 1
                     itemSize = $(this).find('td:eq(1)').text(); // Adjust index as per your table structure
                     itemColor = $(this).find('td:eq(2)').text(); // Adjust index as per your table structure
@@ -128,6 +127,7 @@ function addToCart() {
                     console.log('Item Color:', itemColor);
                     console.log('Item Size:', itemSize);
                     console.log('Item Size Quantity:', itemSizeQty);
+                    
                 }
             });
 
@@ -140,15 +140,26 @@ function addToCart() {
                 });
                 return;
             }
-            if (parseInt(itemSizeQty) > parseInt($('#itemQty').val())) {
+            if (parseInt(itemSizeQty) >= parseInt($('#itemQty').val())) {
                 
-                const newItemQty = parseInt($('#itemQty').val());
+                let newItemQty = parseInt($('#itemQty').val());
                 
                 let itemExists = false;
                 for (let i = 0; i < itemCart.length; i++) {
-                    if (itemCart[i].inventory.itemCode === $('#OrderItemId').val() && itemCart[i].color === itemColor) {
+                    if (itemCart[i].inventory.itemCode === $('#OrderItemId').val() && itemCart[i].color === itemColor && itemCart[i].size === itemSize) {
                         // Update quantity if the item with the same color exists
-                        itemCart[i].itmQTY += newItemQty;
+                        let totalQuantity = itemCart[i].itmQTY + newItemQty;
+                        if (totalQuantity > itemSizeQty) {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops...",
+                                text: "The quantity you selected exceeds the available stock. Please adjust your order.",
+                                footer: '<a href="#"></a>'
+                            });
+                            return;
+                        }
+                        // Update quantity if the item with the same color exists
+                        itemCart[i].itmQTY = totalQuantity;
                         itemExists = true;
                         break; // Exit the loop since we found the item
                     }
@@ -214,12 +225,12 @@ function addToCart() {
             });
         }
 
-        $('#orderCustomerId').val('');
-        $('#OrderItemId').val('');
         $('#itemQty').val('');
-        $('#tblOrderSize tbody').empty()
-        $('#itemFoundStatus').addClass('d-none');
-        $('#viewItem').attr('src', '#');
+        $('#tblOrderSize tbody tr').each(function() {
+            $(this).find('input[type="checkbox"]').prop('checked', false);
+            checkBoxChecked = false;
+        })
+        
 
         let total = 0;
         itemCart.forEach(item => {
@@ -251,48 +262,40 @@ function purchaseOrder() {
         for (let i = 0; i < itemCart.length; i++) {
             itemCart[i].paymentMethod = $('#paymentMethod').val();
         }
-        
-        if ($('#balancePrice').text() === 0 || $('#balancePrice').text() === '00.00'){
-            console.log(itemCart);
-            $.ajax({
-                url: "http://localhost:8080/api/v1/orders",
-                method: "POST",
-                data: JSON.stringify(itemCart),
-                contentType: "application/json",
-                success: function (resp) {
-                    if (resp.state == 200) {
-                        Swal.fire({
-                            position: "top-end",
-                            icon: "success",
-                            title: "Order has been saved",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
 
-                        $('#tblCart tbody').empty();
-                        $('#totalPrice').text('00.00')
-                        $('#balancePrice').text('00.00')
-                        console.log("resp");
-                    }
-                },
-                error: function (resp) {
-                    console.log(resp)
+        console.log(itemCart);
+        $.ajax({
+            url: "http://localhost:8080/api/v1/orders",
+            method: "POST",
+            data: JSON.stringify(itemCart),
+            contentType: "application/json",
+            success: function (resp) {
+                if (resp.state == 200) {
                     Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        text: resp.responseJSON.message,
-                        footer: '<a href="#"></a>'
+                        position: "top-end",
+                        icon: "success",
+                        title: "Order has been saved",
+                        showConfirmButton: false,
+                        timer: 1500
                     });
+
+                    $('#tblCart tbody').empty();
+                    $('#totalPrice').text('00.00')
+                    $('#balancePrice').text('00.00')
+                    console.log("resp");
                 }
-            })
-        }else {
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Please Check Balance",
-                footer: '<a href="#"></a>'
-            });
-        }
+            },
+            error: function (resp) {
+                console.log(resp)
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: resp.responseJSON.message,
+                    footer: '<a href="#"></a>'
+                });
+            }
+        })
+        
     })
 }
 
