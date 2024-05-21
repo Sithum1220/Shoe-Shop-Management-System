@@ -151,7 +151,7 @@ function addToCart() {
                 
                 let itemExists = false;
                 for (let i = 0; i < itemCart.length; i++) {
-                    if (itemCart[i].inventory.itemCode === $('#OrderItemId').val() && itemCart[i].color === itemColor && itemCart[i].size === itemSize) {
+                    if (itemCart[i].saleDetailPK.itemCode === $('#OrderItemId').val() && itemCart[i].color === itemColor && itemCart[i].size === itemSize) {
                         // Update quantity if the item with the same color exists
                         let totalQuantity = itemCart[i].itmQTY + newItemQty;
                         if (totalQuantity > itemQty) {
@@ -173,18 +173,25 @@ function addToCart() {
                 }
                 
                 if (!itemExists) {
+                    
                     const cartDetails = {
-                        orderNo: newId,
+                        saleDetailPK:{
+                            orderNo: newId,
+                            itemCode: $('#OrderItemId').val()
+                        },
                         paymentMethod:null,
                         customerId: {
                             customerId: $('#orderCustomerId').val()
                         },
                         itmQTY: newItemQty,
-                        inventory: {
-                            itemCode: $('#OrderItemId').val(),
-                            sizeList: [{
-                                sizeId: itemSizeId
-                            }]
+                        // inventory: {
+                        //     itemCode: $('#OrderItemId').val(),
+                        //     sizeList: [{
+                        //         sizeId: itemSizeId
+                        //     }]
+                        // },
+                        sizeDTO:{
+                            id: itemSizeId
                         },
                         unitPrice: itemUnitPrice,
                         color: itemColor,
@@ -203,8 +210,8 @@ function addToCart() {
                         </div>
                      </th>
                      
-                    <td>${cart.orderNo}</td>
-                    <td>${cart.inventory.itemCode}</td>
+                    <td>${cart.saleDetailPK.orderNo}</td>
+                    <td>${cart.saleDetailPK.itemCode}</td>
                      <td>${cart.itmQTY}</td>
                      <td>${cart.color}</td>
                      <td>${cart.size}</td>
@@ -264,12 +271,18 @@ function purchaseOrder() {
             $('#balancePrice').text('00.00');
         }
     })
-    
+
+  
     $('#purchaseOrder').click(function () {
         for (let i = 0; i < itemCart.length; i++) {
             itemCart[i].paymentMethod = $('#paymentMethod').val();
+            if (itemCart[i].customerId.customerId === ''){
+                itemCart[i].customerId.customerId = 'Nan';
+                console.log(itemCart[i].customerId);
+            }
         }
 
+        
         console.log(itemCart);
         $.ajax({
             url: "http://localhost:8080/api/v1/orders",

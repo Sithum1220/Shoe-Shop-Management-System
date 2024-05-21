@@ -7,6 +7,7 @@ import lk.ijse.spring.shoeshop.embedded.LoyaltyLevel;
 import lombok.*;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -45,7 +46,7 @@ public class Customer {
     private String contactNo;
     @Column(unique = true)
     private String email;
-    private Timestamp recentPurchase;
+    private LocalDate recentPurchase;
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "customerId")
     private List<Sales> sales = new ArrayList<>();

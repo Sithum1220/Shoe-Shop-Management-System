@@ -1,5 +1,7 @@
 package lk.ijse.spring.shoeshop.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -15,6 +17,9 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "orderNo")
 public class Sales {
 
     @Id

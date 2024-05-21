@@ -3,7 +3,9 @@ package lk.ijse.spring.shoeshop;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.converter.json.GsonHttpMessageConverter;
 
 @SpringBootApplication
 public class WebAppInitializer {
