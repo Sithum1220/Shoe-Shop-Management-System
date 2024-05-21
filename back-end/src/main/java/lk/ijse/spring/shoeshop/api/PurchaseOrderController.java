@@ -2,6 +2,7 @@ package lk.ijse.spring.shoeshop.api;
 
 import lk.ijse.spring.shoeshop.dto.CustomerDTO;
 import lk.ijse.spring.shoeshop.dto.InventoryDTO;
+import lk.ijse.spring.shoeshop.dto.SalesCustomDTO;
 import lk.ijse.spring.shoeshop.service.CustomerService;
 import lk.ijse.spring.shoeshop.service.InventoryService;
 import lk.ijse.spring.shoeshop.service.PurchaseOrderService;
@@ -10,6 +11,8 @@ import lk.ijse.spring.shoeshop.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/orders")
@@ -35,5 +38,12 @@ public class PurchaseOrderController {
     @GetMapping("/id")
     public ResponseUtil getNewId() {
         return new ResponseUtil("200", "Successfully Generated New Id", GenerateNewId.nextId(purchaseOrderService.lastId(), "OR00"));
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping
+    public ResponseUtil purchaseOrder(@RequestBody List<SalesCustomDTO> salesCustomDTOList){
+        purchaseOrderService.purchaseOrder(salesCustomDTOList);
+        return new ResponseUtil("200","Successfully Purchased",null);
     }
 }

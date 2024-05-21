@@ -4,29 +4,13 @@ function purchaseOrderController() {
     generateNewOrderId();
     clickOrderItemDetailsTblRow();
     addToCart();
+    purchaseOrder();
 }
 
-const orderCustomerId = $('#orderCustomerId'),
-    customerName = $('#customerName'),
-    customerLevel = $('#customerLevel'),
-    OrderItemId = $('#OrderItemId'),
-    itemQty = $('#itemQty'),
-    viewItem = $('#viewItem'),
-    totalPrice = $('#totalPrice'),
-    balancePrice = $('#balancePrice'),
-    last4Digit = $('#last4Digit'),
-    bankName = $('#bankName'),
-    amount = $('#amount');
 customerFoundStatus = $('#customerFoundStatus');
 let newId;
 const itemCart = [];
-let itemUnitPrice;
-var checkBoxLength;
-var itemColor;
-var itemSizeId;
-var itemSize;
-var itemSizeQty;
-var enoughQty;
+let itemUnitPrice
 
 function setCustomerDetails() {
     console.log("Controller: PurchaseOrderController");
@@ -101,7 +85,6 @@ function setItemDetails() {
                         }
                         $('#viewItem').attr('src', 'data:image/jpeg;base64,' + response.data.itemPicture);
                         console.log(response.data);
-                        console.log(itemSizeId);
                         itemUnitPrice = response.data.salePrice;
                         // });
                     } else {
@@ -122,76 +105,113 @@ function setItemDetails() {
 
 function addToCart() {
 
+    let itemSizeId;
+    let itemColor;
+    let itemSize;
+    let itemSizeQty;
+    let checkBoxChecked = false;
+    
     $('#addToCart').click(function () {
         if ($('#OrderItemId').val() !== '') {
-            if (checkBoxLength) {
-                if (parseInt(itemSizeQty) > parseInt($('#itemQty').val())) {
-                    console.log(itemSizeId)
-                    console.log(itemColor)
-                    console.log(itemSize)
-                    console.log(itemSizeQty)
-                    const cartDetails = {
-                        orderNo: newId,
-                        paymentMethod: $('#paymentMethod').val(),
-                        Customer: {
-                            customerId: $('#orderCustomerId').val()
-                        },
-                        itmQTY: $('#itemQty').val(),
-                        Inventory: {
-                            itemCode: $('#OrderItemId').val(),
-                            sizeList: {
-                                sizeId: itemSizeId
-                            }
-                        },
-                        unitPrice: itemUnitPrice,
-                        color: itemColor,
-                        size: itemSize
-                    }
+            $('#tblOrderSize tbody tr').each(function() {
+                let checkBox = $(this).find('input[type="checkbox"]').is(':checked');
 
-                    console.log(cartDetails)
-                    console.log(id)
-                    itemCart.push(cartDetails);
-                    $('#tblCart tbody').empty()
-                    for (const cart of itemCart) {
-                        const row = `<tr>
-                                <th scope="row">
-                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""/>
-                                </div>
-                                </th>
-                                <td>${cart.orderNo}</td>
-                                <td>${cart.Inventory.itemCode}</td>
-                                <td>${cart.itmQTY}</td>
-                                <td>${cart.color}</td>
-                                <td>${cart.size}</td>
-                                <td>${cart.unitPrice}</td>
-                             
-                            </tr>`;
-                        $('#tblCart').append(row);
-                    }
-                } else {
-                    Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        text: "item is not enough.",
-                        footer: '<a href="#"></a>'
-                    });
+                if (checkBox) {
+                    checkBoxChecked = true;
+                    
+                    itemSizeId = $(this).find('td:eq(0)').text(); // Assuming first data column is at index 1
+                    itemSize = $(this).find('td:eq(1)').text(); // Adjust index as per your table structure
+                    itemColor = $(this).find('td:eq(2)').text(); // Adjust index as per your table structure
+                    itemSizeQty = $(this).find('td:eq(3)').text(); // Adjust index as per your table structure
+                    
+                    console.log('Item Size ID:', itemSizeId);
+                    console.log('Item Color:', itemColor);
+                    console.log('Item Size:', itemSize);
+                    console.log('Item Size Quantity:', itemSizeQty);
                 }
-            } else {
+            });
+
+            if (!checkBoxChecked) {
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",
                     text: "Please Select Sizes",
                     footer: '<a href="#"></a>'
                 });
+                return;
             }
-        }else {
+            if (parseInt(itemSizeQty) > parseInt($('#itemQty').val())) {
+                
+                const newItemQty = parseInt($('#itemQty').val());
+                
+                let itemExists = false;
+                for (let i = 0; i < itemCart.length; i++) {
+                    if (itemCart[i].inventory.itemCode === $('#OrderItemId').val() && itemCart[i].color === itemColor) {
+                        // Update quantity if the item with the same color exists
+                        itemCart[i].itmQTY += newItemQty;
+                        itemExists = true;
+                        break; // Exit the loop since we found the item
+                    }
+                }
+
+                if (!itemExists) {
+                    const cartDetails = {
+                        orderNo: newId,
+                        paymentMethod:null,
+                        customerId: {
+                            customerId: $('#orderCustomerId').val()
+                        },
+                        itmQTY: newItemQty,
+                        inventory: {
+                            itemCode: $('#OrderItemId').val(),
+                            sizeList: [{
+                                sizeId: itemSizeId
+                            }]
+                        },
+                        unitPrice: itemUnitPrice,
+                        color: itemColor,
+                        size: itemSize
+                    };
+
+                    itemCart.push(cartDetails);
+                }
+
+                $('#tblCart tbody').empty();
+                for (const cart of itemCart) {
+                    const row = `<tr>
+                    <th scope="row">
+                         <div class="form-check">
+                             <input class="form-check-input" type="checkbox" value=""/>
+                        </div>
+                     </th>
+                     
+                    <td>${cart.orderNo}</td>
+                    <td>${cart.inventory.itemCode}</td>
+                     <td>${cart.itmQTY}</td>
+                     <td>${cart.color}</td>
+                     <td>${cart.size}</td>
+                     <td>${cart.unitPrice * cart.itmQTY}</td>
+                  </tr>`;
+                    
+                    $('#tblCart').append(row);
+                }
+
+
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "item is not enough.",
+                    footer: '<a href="#"></a>'
+                });
+            }
+        } else {
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
                 text: "Please Add item",
                 footer: '<a href="#"></a>'
-            });  
+            });
         }
 
         $('#orderCustomerId').val('');
@@ -200,6 +220,79 @@ function addToCart() {
         $('#tblOrderSize tbody').empty()
         $('#itemFoundStatus').addClass('d-none');
         $('#viewItem').attr('src', '#');
+
+        let total = 0;
+        itemCart.forEach(item => {
+            total += item.itmQTY * item.unitPrice; // Calculate total price for each item
+        });
+
+        $('#totalPrice').text(total);
+        console.log(itemCart);
+    })
+}
+
+function purchaseOrder() {
+    $('#paymentMethod').change(function () {
+        if ($(this).val() === 'Cash Payment') {
+
+            $('#amount').keyup(function () {
+                const amount = $(this).val();
+                let balance = amount - $('#totalPrice').text()
+
+                $('#balancePrice').text(balance);
+            });
+
+        } else if ($(this).val() === 'Card Payment'){
+            $('#balancePrice').text('00.00');
+        }
+    })
+    
+    $('#purchaseOrder').click(function () {
+        for (let i = 0; i < itemCart.length; i++) {
+            itemCart[i].paymentMethod = $('#paymentMethod').val();
+        }
+        
+        if ($('#balancePrice').text() === 0 || $('#balancePrice').text() === '00.00'){
+            console.log(itemCart);
+            $.ajax({
+                url: "http://localhost:8080/api/v1/orders",
+                method: "POST",
+                data: JSON.stringify(itemCart),
+                contentType: "application/json",
+                success: function (resp) {
+                    if (resp.state == 200) {
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Order has been saved",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+
+                        $('#tblCart tbody').empty();
+                        $('#totalPrice').text('00.00')
+                        $('#balancePrice').text('00.00')
+                        console.log("resp");
+                    }
+                },
+                error: function (resp) {
+                    console.log(resp)
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: resp.responseJSON.message,
+                        footer: '<a href="#"></a>'
+                    });
+                }
+            })
+        }else {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Please Check Balance",
+                footer: '<a href="#"></a>'
+            });
+        }
     })
 }
 
@@ -231,50 +324,11 @@ function clickOrderItemDetailsTblRow() {
 
         if (!isCheckboxClick) {
             orderSizeCheckbox.prop('checked', !orderSizeCheckbox.prop('checked'));
-
         }
         $('#tblOrderSize input[type="checkbox"]').not(orderSizeCheckbox).prop('checked', false);
-
-        // getSupplierDataByClickTblRow(supplierCheckbox);
-        const row = orderSizeCheckbox.closest('tr');
-        itemSizeId = row.find('td:eq(0)').text()
-        itemColor = row.find('td:eq(2)').text()
-        itemSize = row.find('td:eq(1)').text()
-        itemSizeQty = row.find('td:eq(3)').text()
-
-        console.log(itemSizeId)
-        console.log(itemColor)
-        console.log(itemSize)
-        console.log(itemSizeQty)
-        checkBoxLength = orderSizeCheckbox !== 0;
     });
 
     $('#tblOrderSize').on('change', 'input[type="checkbox"]', function () {
-        const row = $(this).find('input[type="checkbox"]');
-        itemSizeId = row.find('td:eq(0)').text()
-        itemColor = row.find('td:eq(2)').text()
-        itemSize = row.find('td:eq(1)').text()
         $('#tblOrderSize input[type="checkbox"]').not($(this)).prop('checked', false);
     });
 }
-
-// function getSupplierDataByClickTblRow(supplierCheckbox) {
-//     var row = supplierCheckbox.closest('tr');
-//     if (supplierCheckbox.is(':checked')) {
-//         var id = row.find('td:eq(0)').text();
-//         $.ajax({
-//             url: "http://localhost:8080/api/v1/supplier/" + id,
-//             type: "GET",
-//             dataType: "json",
-//             success: function (response) {
-//                 console.log(response);
-//                 setSupplierDataToTextField(response)
-//                 deleteSupplier(id);
-//             },
-//             error: function (xhr, status, error) {
-//                 console.error('Failed to fetch image:', error);
-//             }
-//         });
-//     } else {
-//     }
-// }
