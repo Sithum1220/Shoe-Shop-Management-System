@@ -11,7 +11,7 @@ customerFoundStatus = $('#customerFoundStatus');
 let newId;
 const itemCart = [];
 let itemUnitPrice
-
+let itemQty;
 function setCustomerDetails() {
     console.log("Controller: PurchaseOrderController");
     $('#orderCustomerId').keyup(function () {
@@ -86,6 +86,7 @@ function setItemDetails() {
                         $('#viewItem').attr('src', 'data:image/jpeg;base64,' + response.data.itemPicture);
                         console.log(response.data);
                         itemUnitPrice = response.data.salePrice;
+                        itemQty = response.data.qty;
                         // });
                     } else {
                         console.log("response");
@@ -127,6 +128,10 @@ function addToCart() {
                     console.log('Item Color:', itemColor);
                     console.log('Item Size:', itemSize);
                     console.log('Item Size Quantity:', itemSizeQty);
+                    if ($(this).find('td:eq(3)').text() > 0){
+                        $(this).find('td:eq(3)').text(itemSizeQty - parseInt($('#itemQty').val()));
+
+                    }
                     
                 }
             });
@@ -149,22 +154,24 @@ function addToCart() {
                     if (itemCart[i].inventory.itemCode === $('#OrderItemId').val() && itemCart[i].color === itemColor && itemCart[i].size === itemSize) {
                         // Update quantity if the item with the same color exists
                         let totalQuantity = itemCart[i].itmQTY + newItemQty;
-                        if (totalQuantity > itemSizeQty) {
+                        if (totalQuantity > itemQty) {
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops...",
                                 text: "The quantity you selected exceeds the available stock. Please adjust your order.",
                                 footer: '<a href="#"></a>'
                             });
+                            
                             return;
                         }
+                        
                         // Update quantity if the item with the same color exists
                         itemCart[i].itmQTY = totalQuantity;
                         itemExists = true;
                         break; // Exit the loop since we found the item
                     }
                 }
-
+                
                 if (!itemExists) {
                     const cartDetails = {
                         orderNo: newId,
