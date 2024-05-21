@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="032d1856-7f95-44cb-a7e8-c221ea7611af" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/SaleDetailPKDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/WebAppInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/WebAppInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/SalesCustomDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/SalesCustomDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/embedded/SaleDetailPK.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/embedded/SaleDetailPK.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Sales.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Sales.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/repository/CustomerRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/PurchaseOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/PurchaseOrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/controller/PurchaseOrderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/PurchaseOrderController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -278,7 +270,7 @@
       <workItem from="1716126681843" duration="11756000" />
       <workItem from="1716177706861" duration="10339000" />
       <workItem from="1716217943686" duration="44364000" />
-      <workItem from="1716301883037" duration="14892000" />
+      <workItem from="1716301883037" duration="15979000" />
     </task>
     <servers />
   </component>

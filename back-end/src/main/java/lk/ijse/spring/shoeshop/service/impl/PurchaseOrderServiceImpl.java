@@ -60,20 +60,20 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
         Customer byCustomerId = customerRepository.findByCustomerId(salesCustomDTOList.get(0).getCustomerId().getCustomerId());
         if (totalPrice >= 800) {
-            sales.setTotalPoints(1);
+            sales.setTotalPoints(200);
             int totalPoint = byCustomerId.getTotalPoints() + sales.getTotalPoints();
             byCustomerId.setTotalPoints(totalPoint);
         }
 
         byCustomerId.setRecentPurchase(LocalDate.now());
 
-        if (byCustomerId.getTotalPoints() > 200){
+        if (byCustomerId.getTotalPoints() >= 200){
             byCustomerId.setLevel(LoyaltyLevel.GOLD);
-        } else if (byCustomerId.getTotalPoints() >= 100 && byCustomerId.getTotalPoints() <= 199) {
+        } else if (byCustomerId.getTotalPoints() >= 100) {
             byCustomerId.setLevel(LoyaltyLevel.SILVER);
-        } else if (byCustomerId.getTotalPoints() >= 50 && byCustomerId.getTotalPoints() <= 99) {
+        } else if (byCustomerId.getTotalPoints() >= 50) {
             byCustomerId.setLevel(LoyaltyLevel.BRONZE);
-        } else if (byCustomerId.getTotalPoints() < 50) {
+        } else {
             byCustomerId.setLevel(LoyaltyLevel.NEW);
         }
 
