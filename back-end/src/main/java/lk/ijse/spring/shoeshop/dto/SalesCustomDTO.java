@@ -1,8 +1,5 @@
 package lk.ijse.spring.shoeshop.dto;
 
-import jakarta.persistence.Entity;
-import lk.ijse.spring.shoeshop.entity.Customer;
-import lk.ijse.spring.shoeshop.entity.Inventory;
 import lombok.*;
 
 @Getter
@@ -11,11 +8,10 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class SalesCustomDTO {
-
-    private String orderNo;
+    private SaleDetailPKDTO saleDetailPK;
     private String paymentMethod;
-    private Customer customerId;
+    private CustomerDTO customerId;
     private int itmQTY;
-    private Inventory inventory;
+    private SizeDTO sizeDTO;
     private double unitPrice;
 }
