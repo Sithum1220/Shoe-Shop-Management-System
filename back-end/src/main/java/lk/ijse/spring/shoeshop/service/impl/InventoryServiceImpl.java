@@ -1,9 +1,11 @@
 package lk.ijse.spring.shoeshop.service.impl;
 
 import jakarta.persistence.EntityExistsException;
+import lk.ijse.spring.shoeshop.dto.CustomerDTO;
 import lk.ijse.spring.shoeshop.dto.InventoryDTO;
 import lk.ijse.spring.shoeshop.dto.SizeDTO;
 import lk.ijse.spring.shoeshop.dto.SupplierDTO;
+import lk.ijse.spring.shoeshop.entity.Customer;
 import lk.ijse.spring.shoeshop.entity.Inventory;
 import lk.ijse.spring.shoeshop.entity.Size;
 import lk.ijse.spring.shoeshop.entity.Supplier;
@@ -67,6 +69,7 @@ public class InventoryServiceImpl implements InventoryService {
             if (inventoryDTO.getSalePrice() > inventoryDTO.getBuyPrice()) {
 
                 double profit = inventoryDTO.getSalePrice() - inventoryDTO.getBuyPrice();
+
                 double profitPercentage = (profit / inventoryDTO.getSalePrice()) * 100;
                 inventoryDTO.setExpectedProfit(profit);
                 inventoryDTO.setProfitMargin(profitPercentage);
@@ -180,4 +183,14 @@ public class InventoryServiceImpl implements InventoryService {
     public InventoryDTO getInventory(String id) {
         return modelMapper.map(inventoryRepository.findById(id), InventoryDTO.class);
     }
+
+    @Override
+    public Object getItemDetailsForOrder(InventoryDTO inventoryDTO) {
+        if (inventoryRepository.existsById(inventoryDTO.getItemCode())){
+            return modelMapper.map(inventoryRepository.findById(inventoryDTO.getItemCode()), Inventory.class);
+        }else {
+            return "Item Not Found!";
+        }
+    }
+
 }

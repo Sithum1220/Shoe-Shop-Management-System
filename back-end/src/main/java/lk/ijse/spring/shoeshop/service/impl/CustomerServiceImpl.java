@@ -68,7 +68,11 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO getCustomer(String id) {
-        return modelMapper.map(customerRepository.findById(id).get(), CustomerDTO.class);
+        if (customerRepository.existsById(id)) {
+            return modelMapper.map(customerRepository.findById(id).get(), CustomerDTO.class);
+        }else {
+            return null;
+        }
     }
 
     @Override
@@ -86,5 +90,14 @@ public class CustomerServiceImpl implements CustomerService {
     public List<CustomerDTO> searchCustomersById(String idOrName) {
         return modelMapper.map(customerRepository.findByCustomerIdStartingWithOrCustomerNameStartingWith(idOrName,idOrName),new TypeToken<List<CustomerDTO>>() {}.getType());
 
+    }
+
+    @Override
+    public Object getCustomerDetailsForOrder(CustomerDTO customerDTO) {
+        if (customerRepository.existsById(customerDTO.getCustomerId())){
+            return modelMapper.map(customerRepository.findById(customerDTO.getCustomerId()),Customer.class);
+        }else {
+            return "Customer Not Found!";
+        }
     }
 }

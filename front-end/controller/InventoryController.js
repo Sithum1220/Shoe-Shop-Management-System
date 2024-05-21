@@ -4,7 +4,6 @@ function inventoryController() {
     saveItem();
     itemImageUploader();
     itemClickTblRow();
-    getSizes();
     getAllItems();
     updateItem();
 }
@@ -351,10 +350,6 @@ function setItemImage(itemCheckbox) {
     } else {
         $('#itemImg').attr('src', '#');
     }
-}
-
-function getSizes() {
-
 }
 
 function updateItem() {
