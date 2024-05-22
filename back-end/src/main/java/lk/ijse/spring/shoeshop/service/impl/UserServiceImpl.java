@@ -10,11 +10,14 @@ import lk.ijse.spring.shoeshop.repository.EmployeeRepository;
 import lk.ijse.spring.shoeshop.repository.UserRepository;
 import lk.ijse.spring.shoeshop.service.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -22,6 +25,7 @@ public class UserServiceImpl implements UserService {
     EmployeeRepository employeeRepository;
     UserRepository userRepository;
     ModelMapper modelMapper;
+
 
     public UserServiceImpl(EmployeeRepository employeeRepository, ModelMapper modelMapper, UserRepository userRepository) {
         this.employeeRepository = employeeRepository;
@@ -52,12 +56,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(String id) {
         if (userRepository.existsById(id)) {
-            User byEmail = userRepository.findByEmail(id);
-            byEmail.setActiveStatus(false);
-            Employee employee = employeeRepository.findByEmail(id);
-            employee.setRole(Role.OTHER);
-            userRepository.save(byEmail);
-            employeeRepository.save(employee);
+            Optional<User> byEmail = userRepository.findByEmail(id);
+            if (byEmail.isPresent()) {
+                User user = byEmail.get();
+                user.setActiveStatus(false);
+                Employee employee = employeeRepository.findByEmail(id);
+                employee.setRole(Role.OTHER);
+                userRepository.save(user);
+                employeeRepository.save(employee);
+            }
+
         }
     }
 
@@ -85,6 +93,15 @@ public class UserServiceImpl implements UserService {
             }
         }
         return customDTOs;
+
+    }
+
+    @Override
+    public UserDetailsService userDetailService() {
+        return username -> userRepository.findByEmail(username)
+                .orElseThrow(() -> new
+                        UsernameNotFoundException(
+                        "user not found"));
 
     }
 

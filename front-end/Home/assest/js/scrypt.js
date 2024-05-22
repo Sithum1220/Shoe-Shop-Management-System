@@ -7,7 +7,11 @@ const formOpenBtn = $('#loginBtn'),
     adminBtn = $('#adminBtn'),
     cashierBtn = $('#cashierBtn'),
     adminInputBox = $('.adminInputBox'),
-    cashierInputBox = $('.cashierInputBox');
+    cashierInputBox = $('.cashierInputBox'),
+    employeeRole = $('#employeeRole'),
+    employeePageUserCredentials = $('.employeePageUserCredentials');
+
+
 
 formOpenBtn.click(function () {
     home.addClass('show')
@@ -22,15 +26,28 @@ form_close.click(function () {
     adminInputBox.css("display", "block");
     cashierInputBox.css("display", "none");
 })
-cashierBtn.click(function () {
-    adminBtn.css("background", "white").css("color", "#000");
-    cashierBtn.css("background", "#1F5F9F").css("color", "#fff");
-    adminInputBox.css("display", "none");
-    cashierInputBox.css("display", "block");
+// cashierBtn.click(function () {
+//     adminBtn.css("background", "white").css("color", "#000");
+//     cashierBtn.css("background", "#1F5F9F").css("color", "#fff");
+//     adminInputBox.css("display", "none");
+//     cashierInputBox.css("display", "block");
+// })
+// adminBtn.click(function () {
+//     adminBtn.css("background", "#1F5F9F").css("color", "#fff");
+//     cashierBtn.css("background", "white").css("color", "#000");
+//     adminInputBox.css("display", "block");
+//     cashierInputBox.css("display", "none");
+// })
+
+employeeRole.change(function () {
+    console.log($(this).val());
+    $('#EmployeePageUserPasswword').val("")
+    $('#EmployeePageUserPasswword2').val("")
+    if ($(this).val() === 'ADMIN' || $(this).val() === 'USER') {
+        employeePageUserCredentials.removeClass('d-none');
+    } else {
+        employeePageUserCredentials.addClass('d-none');
+    }
 })
-adminBtn.click(function () {
-    adminBtn.css("background", "#1F5F9F").css("color", "#fff");
-    cashierBtn.css("background", "white").css("color", "#000");
-    adminInputBox.css("display", "block");
-    cashierInputBox.css("display", "none");
-})
+
+$('#employeeCode').attr('readonly','')

@@ -297,3 +297,114 @@ function searchSupplier() {
     })
 }
 
+
+function searchCustomer(id) {
+    console.log(id);
+    return new Promise(function (resolve, reject) {
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
+        console.log(accessToken);
+        $.ajax({
+            url: "http://localhost:8080/helloshoes/api/v1/customer/search/" + id,
+            method: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
+            dataType: "json",
+            success: function (res) {
+                console.log(res);
+                resolve(res);
+            },
+            error: function (ob, textStatus, error) {
+                resolve(error);
+            }
+        });
+    });
+}
+
+
+function performAuthenticatedRequest() {
+    const accessToken = localStorage.getItem('accessToken');
+    if (!accessToken || isTokenExpired(accessToken)) {
+        $.ajax({
+            url: "http://localhost:8080/helloshoes/api/v1/auth/signin",
+            method: "POST",
+            data: JSON.stringify({
+                email: localStorage.getItem('email'),
+                password: localStorage.getItem('password'),
+            }),
+            contentType: "application/json",
+            success: function (res, textStatus, jsXH) {
+                localStorage.setItem('accessToken', res.token);
+                console.log("sign in Successfully " + res.token);
+            },
+            error: function (ob, textStatus, error) {
+                console.log("token renew sign in error " + accessToken);
+            }
+        });
+    } else {
+
+    }
+}
+
+function signIn() {
+    let value = {
+        email: $("#log-in-Username").val(),
+        password: $("#log-in-Password").val(),
+    }
+    console.log(value);
+    $.ajax({
+        url: "http://localhost:8080/helloshoes/api/v1/auth/signin",
+        method: "POST",
+        data: JSON.stringify(value),
+        contentType: "application/json",
+        success: function (res, textStatus, jsXH) {
+            localStorage.setItem('email', value.email);
+            localStorage.setItem('password', value.password);
+            localStorage.setItem('accessToken', res.token);
+            console.log("User SignIn Successfully " + res.token);
+            performAuthenticatedRequest();
+            const accessToken = localStorage.getItem('accessToken');
+
+            $.ajax({
+                url: "http://localhost:8080/helloshoes/api/v1/auth/search/" + value.email,
+                method: "GET",
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                },
+                dataType: "json",
+                success: function (res, textStatus, xhr) {
+                    localStorage.setItem('role', res.role);
+                    localStorage.setItem('cashier', value.email);
+                    if (res.role === "ADMIN") {
+                        // userlimitOff();
+                        // allContainerHide();
+                        // showAlert("Admin");
+                        // adminPage.css('display', 'block');
+                        // adminDashboard.css('display', 'block');
+                        // setAdminPanel();
+                        // $("#formIcon").text("AdminPanel");
+                        // logInPage.css('display', 'none');
+                    } else if (res.role === "USER") {
+                        // userLimits();
+                        // allContainerHide();
+                        // showAlert("User");
+                        // userPage.css('display', 'block');
+                        // userDashboard.css('display', 'block');
+                        // $("#userFormIcon").text("Dashboard");
+                        // logInPage.css('display', 'none');
+                    }
+                },
+                error: function (ob, textStatus, error) {
+
+                }
+            });
+
+        },
+        error: function (ob, textStatus, error) {
+
+        }
+    });
+
+};
+

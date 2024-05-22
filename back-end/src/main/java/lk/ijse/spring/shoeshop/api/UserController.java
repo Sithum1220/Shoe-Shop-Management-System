@@ -1,9 +1,17 @@
 package lk.ijse.spring.shoeshop.api;
 
+import lk.ijse.spring.shoeshop.auth.request.SignInRequest;
+import lk.ijse.spring.shoeshop.auth.request.SignUpRequest;
+import lk.ijse.spring.shoeshop.auth.response.JwtAuthResponse;
+import lk.ijse.spring.shoeshop.dto.EmployeeDTO;
 import lk.ijse.spring.shoeshop.dto.SupplierDTO;
 import lk.ijse.spring.shoeshop.dto.UserDTO;
+import lk.ijse.spring.shoeshop.service.AuthenticationService;
+import lk.ijse.spring.shoeshop.service.EmployeeService;
 import lk.ijse.spring.shoeshop.service.UserService;
+import lk.ijse.spring.shoeshop.util.GenerateNewId;
 import lk.ijse.spring.shoeshop.util.ResponseUtil;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -15,9 +23,14 @@ import java.util.Optional;
 @RestController
 @RequestMapping("api/v1/users")
 @CrossOrigin
+@RequiredArgsConstructor
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private EmployeeService employeeService;
+    private final AuthenticationService authenticationService;
+
 
     @ResponseStatus(HttpStatus.CREATED)
     @GetMapping(path = "active/{activeStatus}",produces = MediaType.APPLICATION_JSON_VALUE)
@@ -47,4 +60,33 @@ public class UserController {
         return new ResponseUtil("200", "Successfully Fetched Employees", userService.searchUsersById(idOrName,activeStatus));
 
     }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping("/id")
+    public ResponseUtil getNewId() {
+        return new ResponseUtil("200", "Successfully Generated New Id", GenerateNewId.nextId(employeeService.lastId(), "E00"));
+    }
+
+
+    @PostMapping("/signin")
+    public ResponseEntity<JwtAuthResponse> signIn(
+            @RequestBody SignInRequest signInRequest){
+        return ResponseEntity.ok(
+                authenticationService.signIn(signInRequest));
+    }
+
+    @PostMapping("/signup")
+    public ResponseEntity<JwtAuthResponse> signUp(
+            @RequestBody SignUpRequest signUpRequest){
+        return ResponseEntity.ok(
+                authenticationService.signUp(signUpRequest));
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping
+    public ResponseUtil saveEmployee(@RequestBody EmployeeDTO employee) {
+        employeeService.saveEmployee(employee);
+        return new ResponseUtil("200", "Successfully Saved!", null);
+    }
+
 }
