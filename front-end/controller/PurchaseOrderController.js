@@ -14,7 +14,7 @@ let newId;
 const itemCart = [];
 let itemUnitPrice
 let itemQty;
-let itemResponse;
+let itemResponse = [];
 
 
 let itemSizeId;
@@ -23,7 +23,7 @@ let itemSize;
 let itemSizeQty;
 let totalQuantity;
 let checkBoxChecked = false;
-
+var OrderItemId;
 function setCustomerDetails() {
     console.log("Controller: PurchaseOrderController");
     $('#orderCustomerId').keyup(function () {
@@ -65,7 +65,8 @@ function setCustomerDetails() {
 function loadDataSizeTable() {
     $('#tblOrderSize tbody').empty()
     for (const item of itemResponse) {
-        const row = `<tr>
+        if (OrderItemId === item.inventory) {
+            const row = `<tr>
                                 <td>${item.sizeId}</td>
                                 <th scope="row">
                                  <div class="form-check">
@@ -76,17 +77,21 @@ function loadDataSizeTable() {
                                 <td>${item.color}</td>
                                 <td>${item.qty}</td>
                             </tr>`;
-        $('#tblOrderSize').append(row);
+            $('#tblOrderSize').append(row);
+        }
     }
 }
 
 
 function setItemDetails() {
     $('#OrderItemId').keyup(function () {
+        OrderItemId = $(this).val();
         const code = {
             itemCode: $(this).val(),
         }
         console.log($(this).val())
+        console.log('aaasss')
+        console.log(itemResponse)
         $.ajax({
             url: "http://localhost:8080/api/v1/orders/item",
             method: "POST",
@@ -99,9 +104,30 @@ function setItemDetails() {
                     if (response.data !== "Item Not Found!") {
                         $('#itemFoundStatus').addClass('d-none');
                         // response.data.sizeList.forEach(function (item, index) {
-                        itemResponse = response.data.sizeList;
-                        console.log(itemResponse);
+                        for (const responseElement of response.data.sizeList) {
+                            // Check if itemResponse is empty
+                            if (itemResponse.length === 0) {
+                                itemResponse.push(responseElement); // If empty, just add responseElement
+                            } else {
+                                let exists = false;
+                                // Check if responseElement already exists in itemResponse
+                                for (const item of itemResponse) {
+                                    if (item.sizeId === responseElement.sizeId) {
+                                        exists = true;
+                                        break; // If it exists, no need to check further
+                                    }
+                                }
+                                // If responseElement doesn't exist in itemResponse, add it
+                                if (!exists) {
+                                    itemResponse.push(responseElement);
+                                }
+                                console.log("itemResponse");
+                                console.log(itemResponse);
+                            }
+                        }
+                        
                         loadDataSizeTable();
+                        // console.log(itemResponse);
                         $('#viewItem').attr('src', 'data:image/jpeg;base64,' + response.data.itemPicture);
                         console.log(response.data);
                         itemUnitPrice = response.data.salePrice;
@@ -118,8 +144,8 @@ function setItemDetails() {
             error: function (resp) {
                 // console.log(resp);
             }
+            
         });
-
     })
 }
 
@@ -150,10 +176,10 @@ function addToCart() {
                         for (const item of itemResponse) {
                             if (item.sizeId === parseInt(itemSizeId)) {
 
-                                
+
                                 item.qty -= parseInt($('#itemQty').val()); // Update the quantity directly on the matched item
                                 loadDataSizeTable();
-                                
+
                                 console.log("AAAAA");
                                 console.log(itemResponse);
                                 break; // Exiting the loop since we found the item we were looking for
@@ -405,7 +431,7 @@ function clickCartDetailsTblRow() {
 
         }
         $('#tblCart input[type="checkbox"]').not(cartCheckbox).prop('checked', false);
-        
+
     });
 
     $('#tblCart').on('change', 'input[type="checkbox"]', function () {
@@ -426,18 +452,18 @@ function deleteCart() {
             // var row = checkBox.closest('tr');
 
             if (checkBox) {
-            
-            id = $(this).find('td:eq(2)').text();
-            qty = $(this).find('td:eq(3)').text();
-            sizeId = $(this).find('td:eq(0)').text();
 
-            console.log(id);
-            console.log("totalQuantity: " + totalQuantity);
-            console.log("itemQty: " + itemQty);
-            console.log("qty: " + qty);
-        }
-            $(this).remove();
-            
+                id = $(this).find('td:eq(2)').text();
+                qty = $(this).find('td:eq(3)').text();
+                sizeId = $(this).find('td:eq(0)').text();
+
+                console.log(id);
+                console.log("totalQuantity: " + totalQuantity);
+                console.log("itemQty: " + itemQty);
+                console.log("qty: " + qty);
+                $(this).remove();
+            }
+
         });
         let index = itemCart.findIndex(function (cartItem) {
             return cartItem.saleDetailPK.itemCode === id;
