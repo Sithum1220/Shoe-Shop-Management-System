@@ -119,8 +119,16 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
             Size bySizeId = sizeRepository.findBySizeId(salesCustomDTO.getSizeDTO().getId());
             bySizeId.setQty(bySizeId.getQty() - salesCustomDTO.getItmQTY());
             System.out.println(bySizeId.getQty());
-
             inventoryData.setQty(inventoryData.getQty() - salesCustomDTO.getItmQTY());
+
+            double percentage = ((double) inventoryData.getQty() / inventoryData.getOriginalQty() ) *100;
+            if (percentage > 50){
+                inventoryData.setStatus("Available");
+            } else if (percentage <= 50 && percentage > 0) {
+                inventoryData.setStatus("Low");
+            } else if (inventoryData.getQty() == 0) {
+                inventoryData.setStatus("Not Available");
+            }
         }
 
     }

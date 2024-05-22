@@ -87,7 +87,8 @@ function getAllCustomer(){
             console.log("Success: ", resp);
             $('#tblCustomer tbody').empty()
             for (const customer of resp.data) {
-                const row = `<tr>
+                if (customer.customerId !== 'Nan') {
+                    const row = `<tr>
                                 <th scope="row">
                                  <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value=""/>
@@ -101,7 +102,8 @@ function getAllCustomer(){
                                 <td>${customer.level}</td>
                                 
                             </tr>`;
-                $('#tblCustomer').append(row);
+                    $('#tblCustomer').append(row);
+                }
             }
         },
         error: function (error) {

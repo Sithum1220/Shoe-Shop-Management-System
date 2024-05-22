@@ -119,6 +119,7 @@ function saveItem() {
                             showConfirmButton: false,
                             timer: 1500
                         });
+                        getAllItems();
                     }
                 },
                 error: function (resp) {
@@ -411,6 +412,7 @@ function updateItem() {
                             showConfirmButton: false,
                             timer: 1500
                         });
+                        getAllItems();
                     }
                 },
                 error: function (resp) {

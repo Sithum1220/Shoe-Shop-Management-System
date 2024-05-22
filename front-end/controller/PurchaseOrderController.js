@@ -5,6 +5,8 @@ function purchaseOrderController() {
     clickOrderItemDetailsTblRow();
     addToCart();
     purchaseOrder();
+    clickCartDetailsTblRow();
+    deleteCart();
 }
 
 customerFoundStatus = $('#customerFoundStatus');
@@ -12,6 +14,16 @@ let newId;
 const itemCart = [];
 let itemUnitPrice
 let itemQty;
+let itemResponse = [];
+
+
+let itemSizeId;
+let itemColor;
+let itemSize;
+let itemSizeQty;
+let totalQuantity;
+let checkBoxChecked = false;
+var OrderItemId;
 function setCustomerDetails() {
     console.log("Controller: PurchaseOrderController");
     $('#orderCustomerId').keyup(function () {
@@ -50,12 +62,36 @@ function setCustomerDetails() {
 
 }
 
+function loadDataSizeTable() {
+    $('#tblOrderSize tbody').empty()
+    for (const item of itemResponse) {
+        if (OrderItemId === item.inventory) {
+            const row = `<tr>
+                                <td>${item.sizeId}</td>
+                                <th scope="row">
+                                 <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value=""/>
+                                </div>
+                                </th>
+                                <td>${item.size}</td>
+                                <td>${item.color}</td>
+                                <td>${item.qty}</td>
+                            </tr>`;
+            $('#tblOrderSize').append(row);
+        }
+    }
+}
+
+
 function setItemDetails() {
     $('#OrderItemId').keyup(function () {
+        OrderItemId = $(this).val();
         const code = {
             itemCode: $(this).val(),
         }
         console.log($(this).val())
+        console.log('aaasss')
+        console.log(itemResponse)
         $.ajax({
             url: "http://localhost:8080/api/v1/orders/item",
             method: "POST",
@@ -67,22 +103,31 @@ function setItemDetails() {
                 } else {
                     if (response.data !== "Item Not Found!") {
                         $('#itemFoundStatus').addClass('d-none');
-                        $('#tblOrderSize tbody').empty()
                         // response.data.sizeList.forEach(function (item, index) {
-                        for (const item of response.data.sizeList) {
-                            const row = `<tr>
-                                <td>${item.sizeId}</td>
-                                <th scope="row">
-                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""/>
-                                </div>
-                                </th>
-                                <td>${item.size}</td>
-                                <td>${item.color}</td>
-                                <td>${item.qty}</td>
-                            </tr>`;
-                            $('#tblOrderSize').append(row);
+                        for (const responseElement of response.data.sizeList) {
+                            // Check if itemResponse is empty
+                            if (itemResponse.length === 0) {
+                                itemResponse.push(responseElement); // If empty, just add responseElement
+                            } else {
+                                let exists = false;
+                                // Check if responseElement already exists in itemResponse
+                                for (const item of itemResponse) {
+                                    if (item.sizeId === responseElement.sizeId) {
+                                        exists = true;
+                                        break; // If it exists, no need to check further
+                                    }
+                                }
+                                // If responseElement doesn't exist in itemResponse, add it
+                                if (!exists) {
+                                    itemResponse.push(responseElement);
+                                }
+                                console.log("itemResponse");
+                                console.log(itemResponse);
+                            }
                         }
+                        
+                        loadDataSizeTable();
+                        // console.log(itemResponse);
                         $('#viewItem').attr('src', 'data:image/jpeg;base64,' + response.data.itemPicture);
                         console.log(response.data);
                         itemUnitPrice = response.data.salePrice;
@@ -99,22 +144,16 @@ function setItemDetails() {
             error: function (resp) {
                 // console.log(resp);
             }
+            
         });
-
     })
 }
 
 function addToCart() {
 
-    let itemSizeId;
-    let itemColor;
-    let itemSize;
-    let itemSizeQty;
-    let checkBoxChecked = false;
-    
     $('#addToCart').click(function () {
         if ($('#OrderItemId').val() !== '') {
-            $('#tblOrderSize tbody tr').each(function() {
+            $('#tblOrderSize tbody tr').each(function () {
                 let checkBox = $(this).find('input[type="checkbox"]').is(':checked');
 
                 if (checkBox) {
@@ -123,16 +162,31 @@ function addToCart() {
                     itemSize = $(this).find('td:eq(1)').text(); // Adjust index as per your table structure
                     itemColor = $(this).find('td:eq(2)').text(); // Adjust index as per your table structure
                     itemSizeQty = $(this).find('td:eq(3)').text(); // Adjust index as per your table structure
-                    
+
                     console.log('Item Size ID:', itemSizeId);
                     console.log('Item Color:', itemColor);
                     console.log('Item Size:', itemSize);
                     console.log('Item Size Quantity:', itemSizeQty);
-                    if ($(this).find('td:eq(3)').text() > 0){
-                        $(this).find('td:eq(3)').text(itemSizeQty - parseInt($('#itemQty').val()));
+                    // if ($(this).find('td:eq(3)').text() > 0) {
+                    //     $(this).find('td:eq(3)').text(itemSizeQty - parseInt($('#itemQty').val()));
+                    // }
+                    console.log(itemResponse);
+
+                    if ($(this).find('td:eq(3)').text() > 0) {
+                        for (const item of itemResponse) {
+                            if (item.sizeId === parseInt(itemSizeId)) {
+
+
+                                item.qty -= parseInt($('#itemQty').val()); // Update the quantity directly on the matched item
+                                loadDataSizeTable();
+
+                                console.log("AAAAA");
+                                console.log(itemResponse);
+                                break; // Exiting the loop since we found the item we were looking for
+                            }
+                        }
 
                     }
-                    
                 }
             });
 
@@ -146,14 +200,17 @@ function addToCart() {
                 return;
             }
             if (parseInt(itemSizeQty) >= parseInt($('#itemQty').val())) {
-                
+
                 let newItemQty = parseInt($('#itemQty').val());
-                
+
                 let itemExists = false;
                 for (let i = 0; i < itemCart.length; i++) {
                     if (itemCart[i].saleDetailPK.itemCode === $('#OrderItemId').val() && itemCart[i].color === itemColor && itemCart[i].size === itemSize) {
                         // Update quantity if the item with the same color exists
-                        let totalQuantity = itemCart[i].itmQTY + newItemQty;
+                        console.log("totalQuantity: " + totalQuantity);
+
+                        totalQuantity = itemCart[i].itmQTY + newItemQty;
+
                         if (totalQuantity > itemQty) {
                             Swal.fire({
                                 icon: "error",
@@ -161,25 +218,25 @@ function addToCart() {
                                 text: "The quantity you selected exceeds the available stock. Please adjust your order.",
                                 footer: '<a href="#"></a>'
                             });
-                            
+
                             return;
                         }
-                        
+
                         // Update quantity if the item with the same color exists
                         itemCart[i].itmQTY = totalQuantity;
                         itemExists = true;
                         break; // Exit the loop since we found the item
                     }
                 }
-                
+
                 if (!itemExists) {
-                    
+
                     const cartDetails = {
-                        saleDetailPK:{
+                        saleDetailPK: {
                             orderNo: newId,
                             itemCode: $('#OrderItemId').val()
                         },
-                        paymentMethod:null,
+                        paymentMethod: null,
                         customerId: {
                             customerId: $('#orderCustomerId').val()
                         },
@@ -190,37 +247,19 @@ function addToCart() {
                         //         sizeId: itemSizeId
                         //     }]
                         // },
-                        sizeDTO:{
+                        sizeDTO: {
                             id: itemSizeId
                         },
                         unitPrice: itemUnitPrice,
                         color: itemColor,
-                        size: itemSize
+                        size: itemSize,
+                        sizeId: itemSizeId
                     };
 
                     itemCart.push(cartDetails);
                 }
 
-                $('#tblCart tbody').empty();
-                for (const cart of itemCart) {
-                    const row = `<tr>
-                    <th scope="row">
-                         <div class="form-check">
-                             <input class="form-check-input" type="checkbox" value=""/>
-                        </div>
-                     </th>
-                     
-                    <td>${cart.saleDetailPK.orderNo}</td>
-                    <td>${cart.saleDetailPK.itemCode}</td>
-                     <td>${cart.itmQTY}</td>
-                     <td>${cart.color}</td>
-                     <td>${cart.size}</td>
-                     <td>${cart.unitPrice * cart.itmQTY}</td>
-                  </tr>`;
-                    
-                    $('#tblCart').append(row);
-                }
-
+                tblCartDataLoad();
 
             } else {
                 Swal.fire({
@@ -240,11 +279,11 @@ function addToCart() {
         }
 
         $('#itemQty').val('');
-        $('#tblOrderSize tbody tr').each(function() {
+        $('#tblOrderSize tbody tr').each(function () {
             $(this).find('input[type="checkbox"]').prop('checked', false);
             checkBoxChecked = false;
         })
-        
+
 
         let total = 0;
         itemCart.forEach(item => {
@@ -254,6 +293,29 @@ function addToCart() {
         $('#totalPrice').text(total);
         console.log(itemCart);
     })
+}
+
+function tblCartDataLoad() {
+    $('#tblCart tbody').empty();
+    for (const cart of itemCart) {
+        const row = `<tr>
+                    <th scope="row">
+                         <div class="form-check">
+                             <input class="form-check-input" type="checkbox" value=""/>
+                        </div>
+                     </th>
+                     
+                    <td>${cart.sizeId}</td>
+                    <td>${cart.saleDetailPK.orderNo}</td>
+                    <td>${cart.saleDetailPK.itemCode}</td>
+                     <td>${cart.itmQTY}</td>
+                     <td>${cart.color}</td>
+                     <td>${cart.size}</td>
+                     <td>${cart.unitPrice * cart.itmQTY}</td>
+                  </tr>`;
+
+        $('#tblCart').append(row);
+    }
 }
 
 function purchaseOrder() {
@@ -267,22 +329,22 @@ function purchaseOrder() {
                 $('#balancePrice').text(balance);
             });
 
-        } else if ($(this).val() === 'Card Payment'){
+        } else if ($(this).val() === 'Card Payment') {
             $('#balancePrice').text('00.00');
         }
     })
 
-  
+
     $('#purchaseOrder').click(function () {
         for (let i = 0; i < itemCart.length; i++) {
             itemCart[i].paymentMethod = $('#paymentMethod').val();
-            if (itemCart[i].customerId.customerId === ''){
+            if (itemCart[i].customerId.customerId === '') {
                 itemCart[i].customerId.customerId = 'Nan';
                 console.log(itemCart[i].customerId);
             }
         }
 
-        
+
         console.log(itemCart);
         $.ajax({
             url: "http://localhost:8080/api/v1/orders",
@@ -315,7 +377,7 @@ function purchaseOrder() {
                 });
             }
         })
-        
+
     })
 }
 
@@ -336,7 +398,6 @@ function generateNewOrderId() {
         });
 }
 
-
 function clickOrderItemDetailsTblRow() {
 
     $('#tblOrderSize').on('click', 'tr', function (event) {
@@ -349,9 +410,84 @@ function clickOrderItemDetailsTblRow() {
             orderSizeCheckbox.prop('checked', !orderSizeCheckbox.prop('checked'));
         }
         $('#tblOrderSize input[type="checkbox"]').not(orderSizeCheckbox).prop('checked', false);
+
     });
 
     $('#tblOrderSize').on('change', 'input[type="checkbox"]', function () {
         $('#tblOrderSize input[type="checkbox"]').not($(this)).prop('checked', false);
     });
+}
+
+function clickCartDetailsTblRow() {
+
+    $('#tblCart').on('click', 'tr', function (event) {
+        console.log("Nannnaaa");
+
+        var cartCheckbox = $(this).find('input[type="checkbox"]');
+        var isCheckboxClick = $(event.target).is('input[type="checkbox"]');
+
+        if (!isCheckboxClick) {
+            cartCheckbox.prop('checked', !cartCheckbox.prop('checked'));
+
+        }
+        $('#tblCart input[type="checkbox"]').not(cartCheckbox).prop('checked', false);
+
+    });
+
+    $('#tblCart').on('change', 'input[type="checkbox"]', function () {
+        // deleteCart($(this).find('input[type="checkbox"]'));
+        $('#tblCart input[type="checkbox"]').not($(this)).prop('checked', false);
+    });
+}
+
+
+function deleteCart() {
+
+    $('#removeCart').click(function () {
+        let id;
+        let qty;
+        let sizeId;
+        $('#tblCart tbody tr').each(function () {
+            let checkBox = $(this).find('input[type="checkbox"]').is(':checked');
+            // var row = checkBox.closest('tr');
+
+            if (checkBox) {
+
+                id = $(this).find('td:eq(2)').text();
+                qty = $(this).find('td:eq(3)').text();
+                sizeId = $(this).find('td:eq(0)').text();
+
+                console.log(id);
+                console.log("totalQuantity: " + totalQuantity);
+                console.log("itemQty: " + itemQty);
+                console.log("qty: " + qty);
+                $(this).remove();
+            }
+
+        });
+        let index = itemCart.findIndex(function (cartItem) {
+            return cartItem.saleDetailPK.itemCode === id;
+        });
+
+        for (const item of itemResponse) {
+            if (item.sizeId === parseInt(sizeId)) {
+                item.qty += parseInt(qty);
+                loadDataSizeTable();
+                break;
+            }
+        }
+        // Remove the item from the array if found
+        if (index !== -1) {
+            console.log("fuck");
+            itemCart.splice(index, 1);
+            // totalQuantity = 0;
+        }
+        console.log(itemResponse);
+
+        console.log("------")
+        console.log(itemResponse);
+
+        // Optionally remove the row from the table
+
+    })
 }
