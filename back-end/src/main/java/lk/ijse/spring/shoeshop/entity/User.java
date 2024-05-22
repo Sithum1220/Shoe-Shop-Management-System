@@ -4,13 +4,19 @@ import jakarta.persistence.*;
 import lk.ijse.spring.shoeshop.embedded.Role;
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.HashSet;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class User {
+public class User implements UserDetails {
 
 
     @Id
@@ -26,6 +32,40 @@ public class User {
     @ManyToOne
     private Employee employee;
     private boolean activeStatus;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        HashSet<GrantedAuthority> authorities = new HashSet<>();
+        authorities.add(new SimpleGrantedAuthority(
+                "Role_"+role.name()));
+        return authorities;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
 
 //    @Override
 //    public Collection<? extends GrantedAuthority> getAuthorities() {

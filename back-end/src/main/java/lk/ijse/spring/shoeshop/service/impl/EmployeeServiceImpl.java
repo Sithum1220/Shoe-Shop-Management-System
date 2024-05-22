@@ -48,10 +48,10 @@ public class EmployeeServiceImpl implements EmployeeService {
                         employeeRepository.save(employee);
                         System.out.println(employeeDTo.getPassword());
 
-                        if (employeeDTo.getPassword() != null) {
-                            User user = new User(employeeDTo.getEmail(), employeeDTo.getPassword(), employeeDTo.getRole(), employee, employeeDTo.isActiveStatus());
-                            userRepository.save(user);
-                        }
+//                        if (employeeDTo.getPassword() != null) {
+//                            User user = new User(employeeDTo.getEmail(), employeeDTo.getPassword(), employeeDTo.getRole(), employee, employeeDTo.isActiveStatus());
+//                            userRepository.save(user);
+//                        }
 
                     } else {
                         throw new EntityExistsException("Emergency Contact Number already exists!");
@@ -85,9 +85,13 @@ public class EmployeeServiceImpl implements EmployeeService {
             byEmployeeId.setActiveStatus(false);
             employeeRepository.save(byEmployeeId);
             if (userRepository.existsById(byEmployeeId.getEmail())) {
-                User byEmail = userRepository.findByEmail(byEmployeeId.getEmail());
-                byEmail.setActiveStatus(false);
-                userRepository.save(byEmail);
+                Optional<User> byEmail = userRepository.findByEmail(byEmployeeId.getEmail());
+                if (byEmail.isPresent()) {
+                    User user = byEmail.get();
+                    user.setActiveStatus(false);
+                    userRepository.save(user);
+                }
+
             }
         } else {
             throw new EntityExistsException("Employee Not Found!");

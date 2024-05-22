@@ -75,7 +75,7 @@
 
 .form-container {
     position: fixed;
-    max-width: 320px;
+    max-width: 400px;
     width: 100%;
     top: 50%;
     left: 50%;
@@ -111,7 +111,7 @@
     position: relative;
     margin-top: 30px;
     width: 100%;
-    height: 40px;
+    height: 70px;
 }
 
 .input_box input {
@@ -195,4 +195,9 @@
 .home.show::before{
     opacity: 1;
     pointer-events: auto;
+}
+
+.inputBody{
+    max-height: 30rem;
+    overflow-y: auto;
 }

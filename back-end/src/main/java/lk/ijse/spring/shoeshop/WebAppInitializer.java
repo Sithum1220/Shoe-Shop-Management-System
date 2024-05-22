@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 public class WebAppInitializer {
@@ -18,4 +20,5 @@ public class WebAppInitializer {
     public ModelMapper modelMapper(){
         return new ModelMapper();
     }
+
 }

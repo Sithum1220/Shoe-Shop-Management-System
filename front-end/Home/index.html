@@ -22,9 +22,14 @@
             <a class="navbar-brand ms-4 fs-3 shoes" href="#">
                 Shoes.
             </a>
-            <a class="navbar-brand me-5 login" id="loginBtn" href="#">
-                Login
-            </a>
+            <div>
+                <a class="navbar-brand me-4 login" id="loginBtn" href="#">
+                    Sign in
+                </a>
+                <a class="navbar-brand me-5 login" data-bs-toggle="modal" data-bs-target="#employeeForm" id="SignUpBtn" href="#">
+                    Sign up
+                </a>
+            </div>
         </div>
     </nav>
 </header>
@@ -67,10 +72,148 @@
                 </form>
             </div>
         </div>
+
+
+        <div class="modal fade " id="employeeForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog ">
+                <div class="modal-content ">
+                    <div class="modal-header bg-white">
+                        <img id="employeeFormIcon" src="../../assest/images/Frame07.png" width="60" alt="">
+                        <h2 id="employeeFormTitle" class="d-inline-block ms-3 fs-5">Sign up</h2>
+                        <button type="button" class="btn-close" id="employeePopupClose" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body bg-white inputBody">
+
+                        <form class="row g-3">
+                            <div class="col-md-4">
+                                <label for="employeeCode" class="form-label lbl">Code</label>
+                                <input type="text" class="form-control txt" id="employeeCode" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="employeeGender" class="form-label lbl">Select Gender</label>
+                                <select class="select form-select  opacity-75 txt"
+                                        aria-label="Default select example"
+                                        id="employeeGender">
+                                    <option disabled value="null" selected></option>
+                                    <option value="MALE">Male</option>
+                                    <option value="FEMALE">Female</option>
+                                </select>
+                                <!--                                <input type="text" class="form-control dis" id="supplierCode" required>-->
+                            </div>
+                            <div class="col-md-4">
+                                <label for="employeeName" class="form-label lbl">Name</label>
+                                <input type="text" class="form-control txt" id="employeeName" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="employeeStatus" class="form-label lbl">Status</label>
+                                <input type="text" class="form-control txt" id="employeeStatus" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="employeeDesignation" class="form-label lbl">Designation</label>
+                                <input type="text" class="form-control txt" id="employeeDesignation" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="employeeDOB" class="form-label lbl">Date Of Birth</label>
+                                <input type="date" id="employeeDOB" class="form-control txt" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="employeeDOJ" class="form-label lbl">Date Of Join</label>
+                                <input type="date" id="employeeDOJ" class="form-control txt" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="employeeBranch" class="form-label lbl">Branch</label>
+                                <input type="text" class="form-control txt" id="employeeBranch">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="employeeBuilding" class="form-label lbl">Building No.</label>
+                                <input type="text" class="form-control txt" id="employeeBuilding">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="employeeLane" class="form-label lbl">Lane</label>
+                                <input type="text" class="form-control txt" id="employeeLane">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="employeeCity" class="form-label lbl">City</label>
+                                <input type="text" class="form-control txt" id="employeeCity">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="employeeState" class="form-label lbl">State</label>
+                                <input type="text" class="form-control txt" id="employeeState">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="employeePostalCode" class="form-label lbl">Postal Code</label>
+                                <input type="text" class="form-control txt" id="employeePostalCode">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="employeeContactNumber" class="form-label lbl">Contact Number</label>
+                                <input type="tel" class="form-control txt" id="employeeContactNumber">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="employeeEmail" class="form-label lbl">Email</label>
+                                <input type="email" class="form-control txt" id="employeeEmail">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="employeeGuardian" class="form-label lbl">Name of Guardian</label>
+                                <input type="text" class="form-control txt" id="employeeGuardian">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="employeeGuardianContact" class="form-label lbl">Emergency Contact</label>
+                                <input type="tel" class="form-control txt" id="employeeGuardianContact">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="employeeRole" class="form-label lbl">Select Role</label>
+                                <select class="form-select opacity-75 txt" aria-label="Default select example"
+                                        id="employeeRole">
+                                    <option value="null" disabled selected></option>
+                                    <option value="ADMIN">Admin</option>
+                                    <option value="USER">User</option>
+                                </select>
+                            </div>
+                            <div class="col-md-12 d-none employeePageUserCredentials">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="employeeGuardianContact" class="form-label lbl">New Password</label>
+                                        <input type="password" class="form-control" id="EmployeePageUserPasswword">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="employeeGuardianContact" class="form-label lbl">Confirm
+                                            Password</label>
+                                        <input type="password" class="form-control" id="EmployeePageUserPasswword2">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="imgUploader" class="file-label lbl">Select a image...</label>
+                                <input class="form-control imgUploader txt" type="file" id="imgUploader" multiple/>
+                            </div>
+                            <div class=" d-flex justify-content-center">
+                                <img id="imgViewer" alt="" width="150" src="#"/>
+                            </div>
+                        </form>
+
+
+                    </div>
+                    <div class="modal-footer bg-white">
+                        <button type="button" class="btn btn-secondary" id="employeePopupCancelBtn"
+                                data-bs-dismiss="modal">Close
+                        </button>
+                        <button type="button" id="saveBtn" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </section>
 </main>
 <script src="assest/js/code.jquery.com_jquery-3.7.1.min.js"></script>
+<script src="../controller/LoginController.js"></script>
 <script src="assest/js/scrypt.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="../assest/boostrap/js/bootstrap.js"></script>
 </body>
 </html>
