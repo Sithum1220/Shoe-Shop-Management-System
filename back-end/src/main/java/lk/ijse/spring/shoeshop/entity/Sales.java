@@ -35,6 +35,7 @@ public class Sales {
     private Integer totalPoints;
 
     private String cashier;
+    private String customerName;
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customerId;

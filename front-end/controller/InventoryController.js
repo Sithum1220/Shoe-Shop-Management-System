@@ -104,9 +104,14 @@ function saveItem() {
             };
             
             console.log(postData);
+            performAuthenticatedRequest();
+            const accessToken = localStorage.getItem('accessToken');
             $.ajax({
                 url: "http://localhost:8080/api/v1/inventory",
                 method: "POST",
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                },
                 data: JSON.stringify(postData),
                 contentType: "application/json",
                 success: function (resp) {
@@ -149,9 +154,14 @@ function checkItem() {
         const code = {
             itemCode: $(this).val()
         }
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/inventory/status",
             method: "POST",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             data: JSON.stringify(code),
             contentType: "application/json",
             success: function (resp) {
@@ -241,9 +251,14 @@ function checkSupplier() {
                 supplierCode: $(this).val()
             }
         }
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/inventory/supplier",
             method: "POST",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             data: JSON.stringify(code),
             contentType: "application/json",
             success: function (resp) {
@@ -333,9 +348,14 @@ function setItemImage(itemCheckbox) {
     if (itemCheckbox.is(':checked')) {
         itemId = row.find('td:eq(0)').text();
         console.log(row.find('td:eq(0)').text());
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/inventory/" + itemId,
             type: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             dataType: "json",
             success: function (response) {
                 $('#itemImg').attr('src', 'data:image/jpeg;base64,' + response.itemPicture);
@@ -397,9 +417,14 @@ function updateItem() {
             };
 
             console.log(postData);
+            performAuthenticatedRequest();
+            const accessToken = localStorage.getItem('accessToken');
             $.ajax({
                 url: "http://localhost:8080/api/v1/inventory",
                 method: "PATCH",
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                },
                 data: JSON.stringify(postData),
                 contentType: "application/json",
                 success: function (resp) {
@@ -438,9 +463,14 @@ function updateItem() {
 }
 
 function getAllItems() {
+    performAuthenticatedRequest();
+    const accessToken = localStorage.getItem('accessToken');
     $.ajax({
         url: "http://localhost:8080/api/v1/inventory",
         method: "GET",
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        },
         success: function (resp) {
             console.log("Success: ", resp);
             $('#tblInventory tbody').empty()

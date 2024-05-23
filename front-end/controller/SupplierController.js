@@ -7,7 +7,13 @@ function supplierControlFunction() {
 }
 
 function generateNewSupplierId() {
-    fetch("http://localhost:8080/api/v1/supplier/id")
+    performAuthenticatedRequest();
+    const accessToken = localStorage.getItem('accessToken');
+    fetch("http://localhost:8080/api/v1/supplier/id",{
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        },
+    })
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -42,11 +48,15 @@ function saveSupplier() {
                 mobileNo: $('#supplierContactNumber01').val(),
                 landNo: $('#supplierContactNumber02').val(),
             }
-
+            performAuthenticatedRequest();
+            const accessToken = localStorage.getItem('accessToken');
             $.ajax({
                 url: "http://localhost:8080/api/v1/supplier",
                 method: "POST",
                 data: JSON.stringify(postData),
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                },
                 contentType: "application/json",
                 success: function (resp) {
                     if (resp.state == 200) {
@@ -78,9 +88,14 @@ function saveSupplier() {
 }
 
 function getAllSuppliers() {
+    performAuthenticatedRequest();
+    const accessToken = localStorage.getItem('accessToken');
     $.ajax({
         url: "http://localhost:8080/api/v1/supplier",
         method: "GET",
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        },
         success: function (resp) {
             console.log("Success: ", resp);
             $('#tblSupplier tbody').empty()
@@ -126,10 +141,14 @@ function updateSupplier() {
                 mobileNo: $('#supplierContactNumber01').val(),
                 landNo: $('#supplierContactNumber02').val(),
             };
-
+            performAuthenticatedRequest();
+            const accessToken = localStorage.getItem('accessToken');
             $.ajax({
                 url: "http://localhost:8080/api/v1/supplier",
                 method: "PATCH",
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                },
                 data: JSON.stringify(postData),
                 contentType: "application/json",
                 success: function (resp) {
@@ -199,9 +218,14 @@ function getSupplierDataByClickTblRow(supplierCheckbox) {
     var row = supplierCheckbox.closest('tr');
     if (supplierCheckbox.is(':checked')) {
         var id = row.find('td:eq(0)').text();
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/supplier/" + id,
             type: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             dataType: "json",
             success: function (response) {
                 console.log(response);
@@ -233,9 +257,14 @@ function setSupplierDataToTextField(response) {
 
 function deleteSupplier(id) {
     $('#supplierDeleteBtn').click(function () {
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/supplier/" + id,
             type: "DELETE",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             success: function (response) {
                 getAllSuppliers();
                 Swal.fire({
@@ -262,9 +291,14 @@ function searchSupplier() {
     $('#searchSuppliers').keyup(function (event) {
 
         var idOrName = $(this).val();
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/supplier?idOrName=" + idOrName,
             type: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             dataType: "json",
             success: function (response) {
                 $('#tblSupplier tbody').empty()
@@ -295,30 +329,5 @@ function searchSupplier() {
             }
         });
     })
-}
-
-
-function searchCustomer(id) {
-    console.log(id);
-    return new Promise(function (resolve, reject) {
-        performAuthenticatedRequest();
-        const accessToken = localStorage.getItem('accessToken');
-        console.log(accessToken);
-        $.ajax({
-            url: "http://localhost:8080/helloshoes/api/v1/customer/search/" + id,
-            method: "GET",
-            headers: {
-                'Authorization': 'Bearer ' + accessToken
-            },
-            dataType: "json",
-            success: function (res) {
-                console.log(res);
-                resolve(res);
-            },
-            error: function (ob, textStatus, error) {
-                resolve(error);
-            }
-        });
-    });
 }
 

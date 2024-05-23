@@ -70,7 +70,7 @@ body {
 .sideBar {
     border-radius: 15px;
     width: 220px;
-    height: 80%;
+    height: 40rem;
     position: fixed;
     top: 6rem;
     transition: all 0.3s ease;

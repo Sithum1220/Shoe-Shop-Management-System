@@ -24,6 +24,7 @@ let itemSizeQty;
 let totalQuantity;
 let checkBoxChecked = false;
 var OrderItemId;
+
 function setCustomerDetails() {
     console.log("Controller: PurchaseOrderController");
     $('#orderCustomerId').keyup(function () {
@@ -32,9 +33,14 @@ function setCustomerDetails() {
         const code = {
             customerId: $(this).val()
         }
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/orders/customer",
             method: "POST",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             data: JSON.stringify(code),
             contentType: "application/json",
             success: function (response) {
@@ -92,9 +98,14 @@ function setItemDetails() {
         console.log($(this).val())
         console.log('aaasss')
         console.log(itemResponse)
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/orders/item",
             method: "POST",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             data: JSON.stringify(code),
             contentType: "application/json",
             success: function (response) {
@@ -382,7 +393,13 @@ function purchaseOrder() {
 }
 
 function generateNewOrderId() {
-    fetch("http://localhost:8080/api/v1/orders/id")
+    performAuthenticatedRequest();
+    const accessToken = localStorage.getItem('accessToken');
+    fetch("http://localhost:8080/api/v1/orders/id",{
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        },
+    })
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');

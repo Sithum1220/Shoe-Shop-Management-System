@@ -34,7 +34,7 @@ function saveEmployee() {
                     proPic: base64String,
                     joinDate: $('#employeeDOJ').val(),
                     employeeDob: $('#employeeDOB').val(),
-                    role: $('#employeeRole').val().toUpperCase(),
+                    role: "OTHER",
                     address: {
                         buildNo: $('#employeeBuilding').val(),
                         city: $('#employeeCity').val(),
