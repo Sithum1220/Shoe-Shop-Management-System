@@ -134,4 +134,9 @@ public class EmployeeServiceImpl implements EmployeeService {
                 }.getType());
     }
 
+    @Override
+    public EmployeeDTO getEmployeeByEmail(String email) {
+      return  modelMapper.map(employeeRepository.findByEmail(email),EmployeeDTO.class);
+    }
+
 }

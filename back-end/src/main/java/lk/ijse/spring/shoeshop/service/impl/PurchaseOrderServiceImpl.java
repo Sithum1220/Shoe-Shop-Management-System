@@ -1,17 +1,16 @@
 package lk.ijse.spring.shoeshop.service.impl;
 
-import lk.ijse.spring.shoeshop.dto.SalesCustomDTO;
+import lk.ijse.spring.shoeshop.dto.*;
 import lk.ijse.spring.shoeshop.embedded.LoyaltyLevel;
-import lk.ijse.spring.shoeshop.embedded.SaleDetailPK;
 import lk.ijse.spring.shoeshop.entity.*;
 import lk.ijse.spring.shoeshop.repository.*;
 import lk.ijse.spring.shoeshop.service.PurchaseOrderService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,16 +18,20 @@ import java.util.List;
 public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
     private final ModelMapper modelMapper;
-    PurchaseOrderRepository purchaseOrderRepository;
-    PurchaseOrderDetailsRepository purchaseOrderDetailsRepository;
-    InventoryRepository inventoryRepository;
-    SizeRepository sizeRepository;
-    CustomerRepository customerRepository;
+    private final PurchaseOrderRepository purchaseOrderRepository;
+    private final PurchaseOrderDetailsRepository purchaseOrderDetailsRepository;
+    private final InventoryRepository inventoryRepository;
+    private final SizeRepository sizeRepository;
+    private final CustomerRepository customerRepository;
 
-    public PurchaseOrderServiceImpl(PurchaseOrderRepository repository, PurchaseOrderDetailsRepository
-            purchaseOrderDetailsRepository, InventoryRepository inventoryRepository, SizeRepository
-                                            sizeRepository, ModelMapper modelMapper, CustomerRepository customerRepository) {
-        this.purchaseOrderRepository = repository;
+    public PurchaseOrderServiceImpl(
+            PurchaseOrderRepository purchaseOrderRepository,
+            PurchaseOrderDetailsRepository purchaseOrderDetailsRepository,
+            InventoryRepository inventoryRepository,
+            SizeRepository sizeRepository,
+            ModelMapper modelMapper,
+            CustomerRepository customerRepository) {
+        this.purchaseOrderRepository = purchaseOrderRepository;
         this.purchaseOrderDetailsRepository = purchaseOrderDetailsRepository;
         this.inventoryRepository = inventoryRepository;
         this.sizeRepository = sizeRepository;
@@ -42,95 +45,93 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     }
 
     @Override
-    public void purchaseOrder(List<SalesCustomDTO> salesCustomDTOList) {
+    public void purchaseOrder(SaleDTO saleDTO) {
+        saleDTO.setPurchaseDate(LocalDate.now());
 
-        System.out.println("customer id: " + salesCustomDTOList.get(0).getCustomerId().getCustomerId());
-        // sale table
-        Sales sales = new Sales();
+        System.out.println(saleDTO.getCustomerId().getCustomerId());
 
-        sales.setOrderNo(salesCustomDTOList.get(0).getSaleDetailPK().getOrderNo());
-        sales.setPurchaseDate(LocalDate.now());
-
-        double totalPrice = 0;
-        for (SalesCustomDTO salesCustomDTO : salesCustomDTOList) {
-            totalPrice += salesCustomDTO.getItmQTY() * salesCustomDTO.getUnitPrice();
-        }
-        sales.setTotal(totalPrice);
-        sales.setPaymentMethod(salesCustomDTOList.get(0).getPaymentMethod());
-
-        Customer byCustomerId = customerRepository.findByCustomerId(salesCustomDTOList.get(0).getCustomerId().getCustomerId());
-        if (totalPrice >= 800) {
-            sales.setTotalPoints(200);
-            int totalPoint = byCustomerId.getTotalPoints() + sales.getTotalPoints();
-            byCustomerId.setTotalPoints(totalPoint);
-        }
-        sales.setCustomerName(byCustomerId.getCustomerName());
-
-        byCustomerId.setRecentPurchase(LocalDate.now());
-        if (byCustomerId.getTotalPoints() >= 200) {
-            byCustomerId.setLevel(LoyaltyLevel.GOLD);
-        } else if (byCustomerId.getTotalPoints() >= 100) {
-            byCustomerId.setLevel(LoyaltyLevel.SILVER);
-        } else if (byCustomerId.getTotalPoints() >= 50) {
-            byCustomerId.setLevel(LoyaltyLevel.BRONZE);
-        } else {
-            byCustomerId.setLevel(LoyaltyLevel.NEW);
-        }
-
-        sales.setCashier("Sithum");
-
-        sales.setCustomerId(modelMapper.map(salesCustomDTOList.get(0).getCustomerId(), Customer.class));
-
-        System.out.println(sales);
-
-
-        purchaseOrderRepository.save(sales);
-
-        //saleDetails table
-        System.out.println("saleDetails table");
-
-        List<SaleDetails> saleDetailsList = new ArrayList<>();
-        SaleDetails saleDetail = new SaleDetails();
-        Inventory inventory = new Inventory();
-
-        for (SalesCustomDTO salesCustomDTO : salesCustomDTOList) {
-            saleDetail.setOrderDetailPK(modelMapper.map(salesCustomDTO.getSaleDetailPK(), SaleDetailPK.class));
-            saleDetail.setItmQTY(salesCustomDTO.getItmQTY());
-            System.out.println("Sale: " + sales.getOrderNo());
-            saleDetail.setOrderNo(sales);
-            inventory.setItemCode(salesCustomDTO.getSaleDetailPK().getItemCode());
-            System.out.println("inventory item code: " + inventory.getItemCode());
-            saleDetail.setInventory(inventory);
-            saleDetail.setItmTotal(salesCustomDTO.getItmQTY() * salesCustomDTO.getUnitPrice());
-            saleDetailsList.add(saleDetail);
-        }
-
-        for (SaleDetails saleDetails : saleDetailsList) {
-            System.out.println(saleDetails);
-        }
-
-
-        purchaseOrderDetailsRepository.saveAll(saleDetailsList);
-        // item Update
-        System.out.println("item Update");
-
-        for (SalesCustomDTO salesCustomDTO : salesCustomDTOList) {
-            Inventory inventoryData = inventoryRepository.findByItemCode(salesCustomDTO.getSaleDetailPK().getItemCode());
-            System.out.println("SizeId: " + salesCustomDTO.getSizeDTO());
-            Size bySizeId = sizeRepository.findBySizeId(salesCustomDTO.getSizeDTO().getId());
-            bySizeId.setQty(bySizeId.getQty() - salesCustomDTO.getItmQTY());
-            System.out.println(bySizeId.getQty());
-            inventoryData.setQty(inventoryData.getQty() - salesCustomDTO.getItmQTY());
-
-            double percentage = ((double) inventoryData.getQty() / inventoryData.getOriginalQty()) * 100;
-            if (percentage > 50) {
-                inventoryData.setStatus("Available");
-            } else if (percentage <= 50 && percentage > 0) {
-                inventoryData.setStatus("Low");
-            } else if (inventoryData.getQty() == 0) {
-                inventoryData.setStatus("Not Available");
+        if (saleDTO.getCustomerId().getCustomerId() != null) {
+            Customer customer = customerRepository.findByCustomerId(saleDTO.getCustomerId().getCustomerId());
+            // Update customer loyalty points and level
+            if (saleDTO.getTotal() >= 800) {
+                saleDTO.setTotalPoints(1);
+                customer.setTotalPoints(customer.getTotalPoints() + saleDTO.getTotalPoints());
             }
+            customer.setRecentPurchase(LocalDate.now());
+            updateCustomerLoyaltyLevel(customer);
+        } else {
+            CustomerDTO customerDTO = new CustomerDTO();
+            customerDTO.setCustomerId("Nan");
+            saleDTO.setCustomerId(customerDTO);
         }
 
+
+        // Save the sale order
+        System.out.println("Save the sale order");
+        System.out.println("Sales DTO: " + saleDTO);
+
+        List<SaleDetailsDTO> saleDetailsDTOS = saleDTO.getSaleDetails();
+        saleDTO.setSaleDetails(null);
+        Sales salesEntity = modelMapper.map(saleDTO, Sales.class);
+        System.out.println("Sales Entity: " + salesEntity);
+        purchaseOrderRepository.save(salesEntity);
+
+        // Process sale details
+        for (SaleDetailsDTO saleDetailsDTO : saleDetailsDTOS) {
+            SaleDetails saleDetails = new SaleDetails(
+                    modelMapper.map(saleDetailsDTO.getSizeDTO(), Size.class),
+                    saleDetailsDTO.getSize(),
+                    saleDetailsDTO.getColor(),
+                    saleDetailsDTO.getItmTotal(),
+                    modelMapper.map(saleDetailsDTO.getInventoryDTO(), Inventory.class),
+                    salesEntity, // Associate the sale details with the saved sales entity
+                    saleDetailsDTO.getItmQTY()
+            );
+
+            System.out.println("Fuck");
+            // Save the sale details
+            purchaseOrderDetailsRepository.save(saleDetails);
+
+            // Update inventory and size quantities
+            updateInventoryAndSizeQuantities(saleDetailsDTO);
+        }
+    }
+
+    @Override
+    public List<SaleDTO> getAllOrders() {
+        return modelMapper.map(purchaseOrderRepository.findAll(), new TypeToken<List<SaleDTO>>() {}.getType());
+    }
+
+
+    private void updateCustomerLoyaltyLevel(Customer customer) {
+        if (customer.getTotalPoints() >= 200) {
+            customer.setLevel(LoyaltyLevel.GOLD);
+        } else if (customer.getTotalPoints() >= 100) {
+            customer.setLevel(LoyaltyLevel.SILVER);
+        } else if (customer.getTotalPoints() >= 50) {
+            customer.setLevel(LoyaltyLevel.BRONZE);
+        } else {
+            customer.setLevel(LoyaltyLevel.NEW);
+        }
+    }
+
+    private void updateInventoryAndSizeQuantities(SaleDetailsDTO saleDetailsDTO) {
+        Inventory inventory = inventoryRepository.findByItemCode(saleDetailsDTO.getInventoryDTO().getItemCode());
+        Size size = sizeRepository.findBySizeId(saleDetailsDTO.getSizeDTO().getId());
+
+        int newInventoryQty = inventory.getQty() - saleDetailsDTO.getItmQTY();
+        inventory.setQty(newInventoryQty);
+
+        double percentage = ((double) newInventoryQty / inventory.getOriginalQty()) * 100;
+        if (percentage > 50) {
+            inventory.setStatus("Available");
+        } else if (percentage <= 50 && percentage > 0) {
+            inventory.setStatus("Low");
+        } else if (newInventoryQty == 0) {
+            inventory.setStatus("Not Available");
+        }
+
+        size.setQty(size.getQty() - saleDetailsDTO.getItmQTY());
     }
 }
+

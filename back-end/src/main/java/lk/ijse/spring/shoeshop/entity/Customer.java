@@ -1,5 +1,6 @@
 package lk.ijse.spring.shoeshop.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lk.ijse.spring.shoeshop.embedded.Address;
 import lk.ijse.spring.shoeshop.embedded.Gender;
@@ -49,6 +50,7 @@ public class Customer {
     private LocalDate recentPurchase;
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "customerId")
+    @JsonIgnore
     private List<Sales> sales = new ArrayList<>();
 }
 
