@@ -5,7 +5,9 @@ const customerBtn = $('#customerBtn');
 const customerOrderBtn = $('#customerOrderBtn');
 const inventoryBtn = $('#inventoryBtn');
 const userBtn = $('#userBtn'),
-    dashboard = $('#dashboard');
+    dashboard = $('#dashboard'),
+    logout = $('#logout'),
+    returnBtn = $('#returnBtn');
 
 dashboardBtn.click(function () {
     // $('#dashboard').css("display", "block");
@@ -19,6 +21,7 @@ dashboardBtn.click(function () {
     customerBtn.removeClass('active')
     userBtn.removeClass('active')
     inventoryBtn.removeClass('active')
+    returnBtn.removeClass('active')
     customerOrderBtn.removeClass('active')
     
     dashboard.css('display', 'block');
@@ -42,6 +45,7 @@ employeeBtn.click(function () {
     userBtn.removeClass('active')
     inventoryBtn.removeClass('active')
     customerBtn.removeClass('active')
+    returnBtn.removeClass('active')
     customerOrderBtn.removeClass('active')
     
     dashboard.css('display', 'none');
@@ -80,6 +84,7 @@ supplierBtn.click(function () {
     userBtn.removeClass('active')
     inventoryBtn.removeClass('active')
     customerBtn.removeClass('active')
+    returnBtn.removeClass('active')
     customerOrderBtn.removeClass('active')
     
     dashboard.css('display', 'none');
@@ -118,6 +123,7 @@ customerBtn.click(function () {
     userBtn.removeClass('active')
     inventoryBtn.removeClass('active')
     customerBtn.addClass('active')
+    returnBtn.removeClass('active')
     customerOrderBtn.removeClass('active')
     
     dashboard.css('display', 'none');
@@ -156,6 +162,7 @@ inventoryBtn.click(function () {
     userBtn.removeClass('active')
     inventoryBtn.addClass('active')
     customerBtn.removeClass('active')
+    returnBtn.removeClass('active')
     customerOrderBtn.removeClass('active')
     
     $('#employeSection').remove();
@@ -192,6 +199,7 @@ userBtn.click(function () {
     employeeBtn.removeClass('active')
     supplierBtn.removeClass('active')
     inventoryBtn.removeClass('active')
+    returnBtn.removeClass('active')
     customerBtn.removeClass('active')
     customerOrderBtn.removeClass('active')
     userBtn.addClass('active')
@@ -225,6 +233,7 @@ customerOrderBtn.click(function () {
     inventoryBtn.removeClass('active')
     customerBtn.removeClass('active')
     customerOrderBtn.addClass('active')
+    returnBtn.removeClass('active')
     userBtn.removeClass('active')
     dashboard.css('display', 'none');
     
@@ -254,6 +263,39 @@ customerOrderBtn.click(function () {
         });
 })
 
+returnBtn.click(function () {
+    dashboardBtn.removeClass('active')
+    employeeBtn.removeClass('active')
+    supplierBtn.removeClass('active')
+    inventoryBtn.removeClass('active')
+    customerBtn.removeClass('active')
+    customerOrderBtn.removeClass('active')
+    returnBtn.addClass('active')
+    userBtn.removeClass('active')
+    dashboard.css('display', 'none');
+
+    $('#employeSection').remove();
+    $('#inventorySection').remove();
+    $('#supplierSection').remove();
+
+    fetch('http://localhost:63342/Shoe-Shop-Management-System/front-end/Pages/admin/return.html')
+        .then(response => response.text())
+        .then(data => {
+            console.log("HTML file loaded successfully:", data);
+
+            var tempDiv = document.createElement('div');
+            tempDiv.innerHTML = data;
+
+            var extractedContent = tempDiv.querySelector('#returnMainSection').innerHTML;
+
+            $("#pages").html(extractedContent);
+
+        })
+        .catch(error => {
+            console.error("Error loading HTML file:", error);
+        });
+})
+
 function disableTxtField() {
     $('.txt').attr('readonly', "");
 
@@ -262,13 +304,18 @@ function disableTxtField() {
 function enableTxtField() {
     $('.txt').removeAttr('readonly');
 }
-function datePicker() {
-        $("#employeeDOJ").datepicker({
-            dateFormat: 'yy-mm-dd',
-            maxDate: new Date()
-        });
-        $("#employeeDOB").datepicker({
-            dateFormat: 'yy-mm-dd',
-            maxDate: new Date()
-        });
-}
+// function datePicker() {
+//         $("#employeeDOJ").datepicker({
+//             dateFormat: 'yy-mm-dd',
+//             maxDate: new Date()
+//         });
+//         $("#employeeDOB").datepicker({
+//             dateFormat: 'yy-mm-dd',
+//             maxDate: new Date()
+//         });
+// }
+
+logout.click(function () {
+    console.log('logout clicked');
+    window.location.href = '../../Home/index.html'
+})

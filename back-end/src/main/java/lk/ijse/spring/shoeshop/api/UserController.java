@@ -1,5 +1,6 @@
 package lk.ijse.spring.shoeshop.api;
 
+import jakarta.servlet.http.HttpServletResponse;
 import lk.ijse.spring.shoeshop.auth.request.SignInRequest;
 import lk.ijse.spring.shoeshop.auth.request.SignUpRequest;
 import lk.ijse.spring.shoeshop.auth.response.JwtAuthResponse;
@@ -33,7 +34,7 @@ public class UserController {
 
 
     @ResponseStatus(HttpStatus.CREATED)
-    @GetMapping(path = "active/{activeStatus}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "active/{activeStatus}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getUsersByActiveStatus(@PathVariable("activeStatus") boolean activeStatus) {
         System.out.println("getUsersByActiveStatus");
         return new ResponseUtil("200", "Successfully Fetched Employees", userService.findAllByActiveStatus(activeStatus));
@@ -56,8 +57,8 @@ public class UserController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil searchUsers(@ModelAttribute("idOrName") String idOrName,@ModelAttribute("activeStatus") boolean activeStatus) {
-        return new ResponseUtil("200", "Successfully Fetched Employees", userService.searchUsersById(idOrName,activeStatus));
+    public ResponseUtil searchUsers(@ModelAttribute("idOrName") String idOrName, @ModelAttribute("activeStatus") boolean activeStatus) {
+        return new ResponseUtil("200", "Successfully Fetched Employees", userService.searchUsersById(idOrName, activeStatus));
 
     }
 
@@ -70,23 +71,22 @@ public class UserController {
 
     @PostMapping("/signin")
     public ResponseEntity<JwtAuthResponse> signIn(
-            @RequestBody SignInRequest signInRequest){
+            @RequestBody SignInRequest signInRequest) {
+
         return ResponseEntity.ok(
                 authenticationService.signIn(signInRequest));
     }
 
     @PostMapping("/signup")
     public ResponseEntity<JwtAuthResponse> signUp(
-            @RequestBody SignUpRequest signUpRequest){
+            @RequestBody SignUpRequest signUpRequest) {
+        System.out.println("signUp");
         return ResponseEntity.ok(
                 authenticationService.signUp(signUpRequest));
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping
-    public ResponseUtil saveEmployee(@RequestBody EmployeeDTO employee) {
-        employeeService.saveEmployee(employee);
-        return new ResponseUtil("200", "Successfully Saved!", null);
-    }
+    @GetMapping("/search/{email}")
+    public void getRoles(@PathVariable("email") String email) {
 
+    }
 }

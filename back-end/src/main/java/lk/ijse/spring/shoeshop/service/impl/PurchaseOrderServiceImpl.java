@@ -64,10 +64,10 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
             int totalPoint = byCustomerId.getTotalPoints() + sales.getTotalPoints();
             byCustomerId.setTotalPoints(totalPoint);
         }
+        sales.setCustomerName(byCustomerId.getCustomerName());
 
         byCustomerId.setRecentPurchase(LocalDate.now());
-
-        if (byCustomerId.getTotalPoints() >= 200){
+        if (byCustomerId.getTotalPoints() >= 200) {
             byCustomerId.setLevel(LoyaltyLevel.GOLD);
         } else if (byCustomerId.getTotalPoints() >= 100) {
             byCustomerId.setLevel(LoyaltyLevel.SILVER);
@@ -82,6 +82,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
         sales.setCustomerId(modelMapper.map(salesCustomDTOList.get(0).getCustomerId(), Customer.class));
 
         System.out.println(sales);
+
 
         purchaseOrderRepository.save(sales);
 
@@ -121,8 +122,8 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
             System.out.println(bySizeId.getQty());
             inventoryData.setQty(inventoryData.getQty() - salesCustomDTO.getItmQTY());
 
-            double percentage = ((double) inventoryData.getQty() / inventoryData.getOriginalQty() ) *100;
-            if (percentage > 50){
+            double percentage = ((double) inventoryData.getQty() / inventoryData.getOriginalQty()) * 100;
+            if (percentage > 50) {
                 inventoryData.setStatus("Available");
             } else if (percentage <= 50 && percentage > 0) {
                 inventoryData.setStatus("Low");

@@ -1,15 +1,21 @@
 function userController() {
-    console.log("hiiiiiii");
     getAllUserData();
     userActiveStatusCheckBox();
     clickUserTblRow();
     searchUsers();
 }
+
 function getAllUsersAjaxReq(status,value) {
     console.log("status");
+    performAuthenticatedRequest();
+    const accessToken = localStorage.getItem('accessToken');
     $.ajax({
         url: "http://localhost:8080/api/v1/users/"+status+"/"+value,
         method: "GET",
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        },
+        dataType: "json",
         success: function (resp) {
             console.log("Success: ", resp);
             $('#tblUser tbody').empty()
@@ -81,9 +87,14 @@ function getUserDataByClickTblRow(userCheckbox) {
     var row = userCheckbox.closest('tr');
     if (userCheckbox.is(':checked')) {
         var id = row.find('td:eq(2)').text();
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/users/" + id,
             type: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             dataType: "json",
             success: function (response) {
                 console.log(response);
@@ -99,9 +110,14 @@ function getUserDataByClickTblRow(userCheckbox) {
 
 function deleteUser(id) {
     $('#userDeleteBtn').click(function () {
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/users/" + id,
             type: "DELETE",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             success: function (response) {
                 getAllUserData();
                 Swal.fire({
@@ -129,9 +145,14 @@ function searchUsers() {
         var idOrName = $(this).val();
 
         if ($('#userActiveCheckbox').prop('checked')) {
+            performAuthenticatedRequest();
+            const accessToken = localStorage.getItem('accessToken');
             $.ajax({
                 url: "http://localhost:8080/api/v1/users?idOrName=" + idOrName+"&activeStatus=" + true,
                 type: "GET",
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                },
                 dataType: "json",
                 success: function (response) {
                     $('#tblUser tbody').empty()

@@ -38,17 +38,7 @@ function employeeFunction() {
             $('#tblEmployee input[type="checkbox"]').not($(this)).prop('checked', false);
         })
         $('#employeeImg').attr('src', '#')
-       
-        employeeRole.change(function () {
-            console.log($(this).val());
-            $('#EmployeePageUserPasswword').val("")
-            $('#EmployeePageUserPasswword2').val("")
-            if ($(this).val() === 'ADMIN' || $(this).val() === 'USER') {
-                employeePageUserCredentials.removeClass('d-none');
-            } else {
-                employeePageUserCredentials.addClass('d-none');
-            }
-        })
+        employeeRole.prop('disabled', true);
     })
     updateEmployee.click(function () {
         employeeFormTitle.text('Update Employee')
@@ -62,6 +52,7 @@ function employeeFunction() {
         $("#imgUploader").prop('disabled', false);
         $("#employeeRole").prop('disabled', true);
         employeePageUserCredentials.addClass('d-none');
+        employeeRole.prop('disabled', true);
         enableTxtField()
         $('#employeeCode').attr('readonly', "");
 

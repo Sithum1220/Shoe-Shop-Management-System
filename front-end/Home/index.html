@@ -56,13 +56,18 @@
                 <form action="#">
                     <h2>Login</h2>
                     <!--------------admin---------------->
+                    <div class="d-flex justify-content-center d-none" id="wrongPW">
+                        <div class="checkPW">
+                            <h2 class="text-danger">Invalid username or password</h2>
+                        </div>
+                    </div>
                     <div class="input_box adminInputBox">
-                        <input type="email" placeholder="Enter Your Email" >
+                        <input type="email" id="log-in-Username" placeholder="Enter Your Email" >
                         <i class="uil uil-envelope-alt email"></i>
                     </div>
 
                     <div class="input_box adminInputBox">
-                        <input type="password" placeholder="Enter Your Password" >
+                        <input type="password" id="log-in-Password" placeholder="Enter Your Password" >
                         <i class="uil uil-lock password"></i>
                         <i class="uil uil-eye-slash pw_hide"></i>
                     </div>
@@ -177,12 +182,12 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <label for="employeeGuardianContact" class="form-label lbl">New Password</label>
-                                        <input type="password" class="form-control" id="EmployeePageUserPasswword">
+                                        <input type="password" class="form-control txt" id="EmployeePageUserPasswword">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="employeeGuardianContact" class="form-label lbl">Confirm
                                             Password</label>
-                                        <input type="password" class="form-control" id="EmployeePageUserPasswword2">
+                                        <input type="password" class="form-control txt" id="EmployeePageUserPasswword2">
                                     </div>
                                 </div>
                             </div>
