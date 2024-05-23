@@ -18,16 +18,8 @@ function saveEmployee() {
             if ($('#imgUploader').val() === ''){
                 base64String = null;
             }
-            if ($('#EmployeePageUserPasswword').val() === $('#EmployeePageUserPasswword2').val()){
-                console.log("Saving Employee");
-                var role;
+
                 var gender;
-                var userPassword;
-                if ('OTHER' !== $('#employeeRole').val()) {
-                    userPassword = $('#EmployeePageUserPasswword').val()
-                }else {
-                    userPassword = null;
-                }
                 if ('Select Gender' !== $('#employeeGender').val()) {
                     gender = $('#employeeGender').val().toUpperCase();
                 }
@@ -55,13 +47,16 @@ function saveEmployee() {
                     contactNo: $('#employeeContactNumber').val(),
                     emergencyContact: $('#employeeGuardianContact').val(),
                     activeStatus:true,
-                    password: userPassword
                 };
                 console.log(base64String);
-
+            performAuthenticatedRequest();
+            const accessToken = localStorage.getItem('accessToken');
                 $.ajax({
                     url: "http://localhost:8080/api/v1/employees",
                     method: "POST",
+                    headers: {
+                        'Authorization': 'Bearer ' + accessToken
+                    },
                     data: JSON.stringify(postData),
                     contentType: "application/json",
                     success: function (resp) {
@@ -87,14 +82,7 @@ function saveEmployee() {
                         });
                     }
                 })
-            }else {
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "Password do not match",
-                    footer: '<a href="#"></a>'
-                });
-            }
+
         }
 
     })
@@ -125,9 +113,14 @@ function imageUploader() {
 
 function getAllEmployeeAjaxReq(status,value) {
     console.log(status);
+    performAuthenticatedRequest();
+    const accessToken = localStorage.getItem('accessToken');
     $.ajax({
         url: "http://localhost:8080/api/v1/employees/"+status+"/"+value,
         method: "GET",
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        },
         success: function (resp) {
             console.log("Success: ", resp);
             $('#tblEmployee tbody').empty()
@@ -207,9 +200,14 @@ function setImage(employeeCheckbox) {
     var row = employeeCheckbox.closest('tr');
     if (employeeCheckbox.is(':checked')) {
          id = row.find('td:eq(0)').text();
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/employees/" + id,
             type: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             dataType: "json",
             success: function (response) {
                 $('#employeeImg').attr('src', 'data:image/jpeg;base64,' + response.proPic);
@@ -262,10 +260,14 @@ function updateEmployee(employeeCheckbox) {
                 emergencyContact: $('#employeeGuardianContact').val(),
             };
             console.log(base64String);
-
+            performAuthenticatedRequest();
+            const accessToken = localStorage.getItem('accessToken');
             $.ajax({
                 url: "http://localhost:8080/api/v1/employees",
                 method: "PATCH",
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                },
                 data: JSON.stringify(postData),
                 contentType: "application/json",
                 success: function (resp) {
@@ -343,7 +345,14 @@ function setDataToTextField(response) {
 }
 
 function generateNewEmployeeId() {
-    fetch("http://localhost:8080/api/v1/employees/id")
+    performAuthenticatedRequest();
+    const accessToken = localStorage.getItem('accessToken');
+    fetch("http://localhost:8080/api/v1/employees/id",
+        {
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
+        })
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -361,9 +370,14 @@ function generateNewEmployeeId() {
 
 function deleteEmployee() {
     $('#deleteEmployeeBtn').click(function () {
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/employees/" + id,
             type: "DELETE",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             success: function (response) {
                 getAllEmployeeData();
                 Swal.fire({
@@ -391,9 +405,14 @@ function searchEmployee() {
         var idOrName = $(this).val();
 
         if ($('#employeeActiveCheckBox').prop('checked')) {
+            performAuthenticatedRequest();
+            const accessToken = localStorage.getItem('accessToken');
             $.ajax({
                 url: "http://localhost:8080/api/v1/employees?idOrName=" + idOrName+"&activeStatus=" + true,
                 type: "GET",
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                },
                 dataType: "json",
                 success: function (response) {
                     $('#tblEmployee tbody').empty()
@@ -461,6 +480,36 @@ function searchEmployee() {
         }
         
     })
+}
+
+function isTokenExpired(token) {
+    const jwtPayload = JSON.parse(atob(token.split('.')[1]));
+    const expiryTime = jwtPayload.exp * 1000;
+    return Date.now() >= expiryTime;
+}
+
+function performAuthenticatedRequest() {
+    const accessToken = localStorage.getItem('accessToken');
+    if (!accessToken || isTokenExpired(accessToken)) {
+        $.ajax({
+            url: "http://localhost:8080/api/v1/users/signin",
+            method: "POST",
+            data: JSON.stringify({
+                email: localStorage.getItem('email'),
+                password: localStorage.getItem('password'),
+            }),
+            contentType: "application/json",
+            success: function (res, textStatus, jsXH) {
+                localStorage.setItem('accessToken', res.token);
+                console.log("sign in Successfully " + res.token);
+            },
+            error: function (ob, textStatus, error) {
+                console.log("token renew sign in error " + accessToken);
+            }
+        });
+    } else {
+
+    }
 }
 
 // var respLength;

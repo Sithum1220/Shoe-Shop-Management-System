@@ -15,16 +15,17 @@ const formOpenBtn = $('#loginBtn'),
 
 formOpenBtn.click(function () {
     home.addClass('show')
-    adminBtn.css("background", "#1F5F9F").css("color", "#fff");
-    adminInputBox.css("display", "block");
-    cashierInputBox.css("display", "none");
+    $("#log-in-Password").val('')
+    $('#wrongPW').addClass('d-none')
 })
 form_close.click(function () {
     home.removeClass('show');
-    adminBtn.css("background", "white").css("color", "#000");
-    cashierBtn.css("background", "white").css("color", "#000");
-    adminInputBox.css("display", "block");
-    cashierInputBox.css("display", "none");
+    $("#log-in-Username").val('')
+})
+
+
+$('#SignUpBtn').click(function () {
+    generateNewId();
 })
 // cashierBtn.click(function () {
 //     adminBtn.css("background", "white").css("color", "#000");

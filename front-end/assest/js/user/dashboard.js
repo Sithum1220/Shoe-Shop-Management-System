@@ -4,7 +4,8 @@ const orderBtn = $('#orderBtn');
 const inventoryBtn = $('#inventoryBtn');
 const profileBtn = $('#profileBtn'),
     dashboard = $('#dashboard'),
-    employeeBtn = $('#employeeBtn');
+    employeeBtn = $('#employeeBtn'),
+    logout = $('#logout');
 
 dashboardBtn.click(function () {
     // $('#dashboard').css("display", "block");
@@ -198,3 +199,8 @@ function disableTxtField() {
 function enableTxtField() {
     $('.txt').removeAttr('readonly');
 }
+
+logout.click(function () {
+    console.log('logout clicked');
+    window.location.href = '../../Home/index.html'
+})

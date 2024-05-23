@@ -5,7 +5,8 @@ const customerBtn = $('#customerBtn');
 const customerOrderBtn = $('#customerOrderBtn');
 const inventoryBtn = $('#inventoryBtn');
 const userBtn = $('#userBtn'),
-    dashboard = $('#dashboard');
+    dashboard = $('#dashboard'),
+    logout = $('#logout');
 
 dashboardBtn.click(function () {
     // $('#dashboard').css("display", "block");
@@ -262,13 +263,18 @@ function disableTxtField() {
 function enableTxtField() {
     $('.txt').removeAttr('readonly');
 }
-function datePicker() {
-        $("#employeeDOJ").datepicker({
-            dateFormat: 'yy-mm-dd',
-            maxDate: new Date()
-        });
-        $("#employeeDOB").datepicker({
-            dateFormat: 'yy-mm-dd',
-            maxDate: new Date()
-        });
-}
+// function datePicker() {
+//         $("#employeeDOJ").datepicker({
+//             dateFormat: 'yy-mm-dd',
+//             maxDate: new Date()
+//         });
+//         $("#employeeDOB").datepicker({
+//             dateFormat: 'yy-mm-dd',
+//             maxDate: new Date()
+//         });
+// }
+
+logout.click(function () {
+    console.log('logout clicked');
+    window.location.href = '../../Home/index.html'
+})

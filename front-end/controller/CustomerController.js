@@ -6,7 +6,13 @@ function customerControlFunction() {
 }
 
 function generateNewCustomerId() {
-    fetch("http://localhost:8080/api/v1/customer/id")
+    performAuthenticatedRequest();
+    const accessToken = localStorage.getItem('accessToken');
+    fetch("http://localhost:8080/api/v1/customer/id",{
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        },
+    })
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -45,9 +51,14 @@ function saveCustomer() {
                 recentPurchase: null,
             }
 
+            performAuthenticatedRequest();
+            const accessToken = localStorage.getItem('accessToken');
             $.ajax({
                 url: "http://localhost:8080/api/v1/customer",
                 method: "POST",
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                },
                 data: JSON.stringify(postData),
                 contentType: "application/json",
                 success: function (resp) {
@@ -80,9 +91,14 @@ function saveCustomer() {
 }
 
 function getAllCustomer(){
+    performAuthenticatedRequest();
+    const accessToken = localStorage.getItem('accessToken');
     $.ajax({
         url: "http://localhost:8080/api/v1/customer",
         method: "GET",
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        },
         success: function (resp) {
             console.log("Success: ", resp);
             $('#tblCustomer tbody').empty()
@@ -139,9 +155,14 @@ function getCustomerDataByClickTblRow(customerCheckbox) {
     var row = customerCheckbox.closest('tr');
     if (customerCheckbox.is(':checked')) {
         var id = row.find('td:eq(0)').text();
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/customer/" + id,
             type: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             dataType: "json",
             success: function (response) {
                 console.log(response);
@@ -198,10 +219,14 @@ function customerUpdate(response) {
                 contactNo: $('#customerContactNo').val(),
                 email: $('#customerEmail').val(),
             };
-
+            performAuthenticatedRequest();
+            const accessToken = localStorage.getItem('accessToken');
             $.ajax({
                 url: "http://localhost:8080/api/v1/customer",
                 method: "PATCH",
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                },
                 data: JSON.stringify(postData),
                 contentType: "application/json",
                 success: function (resp) {
@@ -246,9 +271,14 @@ function customerUpdate(response) {
 
 function deleteCustomer(id) {
     $('#customerDeleteBtn').click(function () {
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/customer/" + id,
             type: "DELETE",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             success: function (response) {
                 getAllCustomer();
                 Swal.fire({
@@ -275,9 +305,14 @@ function searchCustomer() {
     $('#searchCustomer').keyup(function (event) {
 
         var idOrName = $(this).val();
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/customer?idOrName=" + idOrName,
             type: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             dataType: "json",
             success: function (response) {
                 $('#tblCustomer tbody').empty()

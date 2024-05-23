@@ -201,3 +201,14 @@
     max-height: 30rem;
     overflow-y: auto;
 }
+.checkPW{
+    border: red solid 1px;
+    text-align: center;
+    margin-top: 20px;
+    width: 80%;
+}
+.checkPW h2{
+    margin-top: 5px;
+    font-size: 16px;
+    font-weight: 500;
+}
