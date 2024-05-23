@@ -289,7 +289,8 @@ returnBtn.click(function () {
             var extractedContent = tempDiv.querySelector('#returnMainSection').innerHTML;
 
             $("#pages").html(extractedContent);
-
+            returnFunction();
+            returnController();
         })
         .catch(error => {
             console.error("Error loading HTML file:", error);

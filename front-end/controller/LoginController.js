@@ -119,21 +119,16 @@ function signIn() {
             localStorage.setItem('password', value.password);
             localStorage.setItem('accessToken', res.token);
             console.log("User SignIn Successfully " + res.token);
-            performAuthenticatedRequest();
-            const accessToken = localStorage.getItem('accessToken');
-
             $.ajax({
                 url: "http://localhost:8080/api/v1/users/" + value.email,
                 method: "GET",
-                headers: {
-                    'Authorization': 'Bearer ' + accessToken
-                },
                 dataType: "json",
                 success: function (res, textStatus, xhr) {
                     localStorage.setItem('role', res.role);
                     localStorage.setItem('cashier', value.email);
                     if (res.role === "ADMIN") {
-                        window.location.href = '../Pages/admin/dashboard.html'
+                        console.log("Admin");
+                        window.location.href = '../../Pages/admin/dashboard.html'
                         Swal.fire({
                             position: "top-end",
                             icon: "success",
@@ -143,7 +138,8 @@ function signIn() {
                         });
                         $('#wrongPW').addClass('d-none')
                     } else if (res.role === "USER") {
-                        window.location.href = '../Pages/user/dashboard.html'
+                        console.log("User");
+                        window.location.href = '../../Pages/user/dashboard.html'
                         Swal.fire({
                             position: "top-end",
                             icon: "success",
@@ -226,3 +222,4 @@ $('#employeePopupCancelBtn,#employeePopupClose').click(function () {
     $('#employeeGender').val($('#employeeGender option:first').val());
     $('#employeeRole').val($('#employeeRole option:first').val());
 });
+

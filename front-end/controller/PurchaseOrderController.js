@@ -1,12 +1,12 @@
 function purchaseOrderController() {
     setCustomerDetails();
     setItemDetails();
-    generateNewOrderId();
     clickOrderItemDetailsTblRow();
     addToCart();
     purchaseOrder();
     clickCartDetailsTblRow();
     deleteCart();
+    generateNewOrderId();
 }
 
 customerFoundStatus = $('#customerFoundStatus');
@@ -16,11 +16,12 @@ let itemUnitPrice
 let itemQty;
 let itemResponse = [];
 
-
+let date = new Date().getFullYear() + "-" + new Date().getMonth() + "-" + new Date().getDate();
 let itemSizeId;
 let itemColor;
 let itemSize;
 let itemSizeQty;
+let customerName;
 let totalQuantity;
 let checkBoxChecked = false;
 var OrderItemId;
@@ -50,6 +51,7 @@ function setCustomerDetails() {
                     if (response.data !== "Customer Not Found!") {
                         $('#customerLevel').val(response.data.level);
                         $('#customerName').val(response.data.customerName);
+                        // customerName = response.data.customerName;
                         $('#customerFoundStatus').addClass('d-none');
                     } else {
                         console.log("response");
@@ -73,7 +75,7 @@ function loadDataSizeTable() {
     for (const item of itemResponse) {
         if (OrderItemId === item.inventory) {
             const row = `<tr>
-                                <td>${item.sizeId}</td>
+                                <td class="text-white">${item.sizeId}</td>
                                 <th scope="row">
                                  <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value=""/>
@@ -136,7 +138,7 @@ function setItemDetails() {
                                 console.log(itemResponse);
                             }
                         }
-                        
+
                         loadDataSizeTable();
                         // console.log(itemResponse);
                         $('#viewItem').attr('src', 'data:image/jpeg;base64,' + response.data.itemPicture);
@@ -155,7 +157,7 @@ function setItemDetails() {
             error: function (resp) {
                 // console.log(resp);
             }
-            
+
         });
     })
 }
@@ -216,7 +218,7 @@ function addToCart() {
 
                 let itemExists = false;
                 for (let i = 0; i < itemCart.length; i++) {
-                    if (itemCart[i].saleDetailPK.itemCode === $('#OrderItemId').val() && itemCart[i].color === itemColor && itemCart[i].size === itemSize) {
+                    if (itemCart[i].inventoryDTO.itemCode === $('#OrderItemId').val() && itemCart[i].color === itemColor && itemCart[i].size === itemSize) {
                         // Update quantity if the item with the same color exists
                         console.log("totalQuantity: " + totalQuantity);
 
@@ -243,30 +245,30 @@ function addToCart() {
                 if (!itemExists) {
 
                     const cartDetails = {
-                        saleDetailPK: {
-                            orderNo: newId,
-                            itemCode: $('#OrderItemId').val()
-                        },
-                        paymentMethod: null,
-                        customerId: {
-                            customerId: $('#orderCustomerId').val()
-                        },
+
                         itmQTY: newItemQty,
-                        // inventory: {
-                        //     itemCode: $('#OrderItemId').val(),
-                        //     sizeList: [{
-                        //         sizeId: itemSizeId
-                        //     }]
-                        // },
+
+                        inventoryDTO: {
+                            itemCode: $('#OrderItemId').val(),
+                        },
+
+                        orderNo: {
+                            orderNo: newId
+                        },
+                        itmTotal: itemUnitPrice * parseInt($('#itemQty').val()),
+
                         sizeDTO: {
                             id: itemSizeId
                         },
+
                         unitPrice: itemUnitPrice,
                         color: itemColor,
                         size: itemSize,
                         sizeId: itemSizeId
                     };
 
+                    console.log(cartDetails);
+                    console.log(date);
                     itemCart.push(cartDetails);
                 }
 
@@ -316,9 +318,9 @@ function tblCartDataLoad() {
                         </div>
                      </th>
                      
-                    <td>${cart.sizeId}</td>
-                    <td>${cart.saleDetailPK.orderNo}</td>
-                    <td>${cart.saleDetailPK.itemCode}</td>
+                    <td class="text-white">${cart.sizeId}</td>
+                    <td>${cart.orderNo.orderNo}</td>
+                    <td>${cart.inventoryDTO.itemCode}</td>
                      <td>${cart.itmQTY}</td>
                      <td>${cart.color}</td>
                      <td>${cart.size}</td>
@@ -345,22 +347,60 @@ function purchaseOrder() {
         }
     })
 
+    let cashierName;
+    performAuthenticatedRequest();
+    const accessToken = localStorage.getItem('accessToken');
+    $.ajax({
+        url: "http://localhost:8080/api/v1/employees/byEmail/" + localStorage.getItem("email"),
+        type: "GET",
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        },
+        dataType: "json",
+        success: function (response) {
+            console.log(response);
+            cashierName = response.data.employeeName;
+            console.log(cashierName)
+        },
+        error: function (xhr, status, error) {
+            console.error('Failed to fetch image:', error);
+        }
+    });
+
 
     $('#purchaseOrder').click(function () {
-        for (let i = 0; i < itemCart.length; i++) {
-            itemCart[i].paymentMethod = $('#paymentMethod').val();
-            if (itemCart[i].customerId.customerId === '') {
-                itemCart[i].customerId.customerId = 'Nan';
-                console.log(itemCart[i].customerId);
-            }
+        let total = 0;
+        itemCart.forEach(item => {
+            total += item.itmQTY * item.unitPrice; // Calculate total price for each item
+        });
+
+        let customerId;
+        if ($('#orderCustomerId').val() === '') {
+            customerId = null;
+        }
+        console.log(total);
+        const data = {
+            orderNo: newId,
+            // purchaseDate: date,
+            total: total,
+            paymentMethod: $('#paymentMethod').val(),
+            cashier: cashierName,
+            customerName: $('#customerName').val(),
+            customerId: {
+                customerId: customerId
+            },
+            saleDetails: itemCart
         }
 
+        console.log(data);
 
-        console.log(itemCart);
         $.ajax({
             url: "http://localhost:8080/api/v1/orders",
             method: "POST",
-            data: JSON.stringify(itemCart),
+            data: JSON.stringify(data),
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             contentType: "application/json",
             success: function (resp) {
                 if (resp.state == 200) {
@@ -376,6 +416,8 @@ function purchaseOrder() {
                     $('#totalPrice').text('00.00')
                     $('#balancePrice').text('00.00')
                     console.log("resp");
+
+                    // generateNewOrderId();
                 }
             },
             error: function (resp) {
@@ -395,7 +437,7 @@ function purchaseOrder() {
 function generateNewOrderId() {
     performAuthenticatedRequest();
     const accessToken = localStorage.getItem('accessToken');
-    fetch("http://localhost:8080/api/v1/orders/id",{
+    fetch("http://localhost:8080/api/v1/orders/id", {
         headers: {
             'Authorization': 'Bearer ' + accessToken
         },

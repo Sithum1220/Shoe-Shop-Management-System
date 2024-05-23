@@ -63,6 +63,12 @@ public class EmployeeController {
         return optionalImageEntity.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping("byEmail/{id}")
+    public ResponseUtil getEmployeeByEmail(@PathVariable("id") String id) {
+            return new ResponseUtil("200", "Successfully Fetched!", employeeService.getEmployeeByEmail(id));
+    }
     @ResponseStatus(HttpStatus.CREATED)
     @DeleteMapping(path = "/{id}")
     public ResponseUtil deleteEmployee(@PathVariable("id") String id) {

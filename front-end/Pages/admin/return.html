@@ -47,10 +47,10 @@
             </div>
             <div class="col-2 btnCol d-flex justify-content-center mt-4">
                 <section class="d-flex flex-column gap-5">
-                    <button class="shadow-lg" id="moreDetails" data-bs-toggle="modal" data-bs-target="#ReturnForm"><i class="fal fa-plus-circle"></i>
+                    <button class="shadow-lg" id="moreDetailsBtn" data-bs-toggle="modal" data-bs-target="#MoreDetails"><i class="fal fa-plus-circle"></i>
                         <h1>More Details</h1>
                     </button>
-                    <button class="shadow-lg" id="updateSupplier" data-bs-toggle="modal" data-bs-target="#ReturnForm"><i class="fal fa-edit"></i>
+                    <button class="shadow-lg" id="returnFormBtn" data-bs-toggle="modal" data-bs-target="#ReturnForm"><i class="fal fa-edit"></i>
                         <h1>Return orders</h1>
                     </button>
                 </section>
@@ -82,19 +82,19 @@
                                 </select>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-4 itemId d-none">
                                 <label for="itemId" class="form-label lbl">Item Code</label>
                                 <input type="text" class="form-control txt" id="itemId">
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 itemColor d-none">
                                 <label for="itemColor" class="form-label lbl">Item Color</label>
                                 <input type="text" class="form-control txt" id="itemColor">
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 itemSize d-none">
                                 <label for="itemSize" class="form-label lbl">Item Size</label>
                                 <input type="text" class="form-control txt" id="itemSize">
                             </div>
-                            <div class="col-md-12 text-center mt-4">
+                            <div class="col-md-12 text-center mt-4 d-none">
                                 <h2 class="text-danger fw-medium fs-4">Sorry! Can't Return This Order.</h2>
                             </div>
                         </form>
@@ -104,11 +104,50 @@
                         <button type="button" class="btn btn-secondary" id="supplierPopupCancelBtn"
                                 data-bs-dismiss="modal">Close
                         </button>
-                        <button type="button" id="supplierPopupAddBtn" class="btn btn-primary">Save changes</button>
+                        <button type="button" id="supplierPopupAddBtn" class="btn btn-primary">Return</button>
                     </div>
                 </div>
             </div>
         </div>
+
+
+        <div class="modal fade " id="MoreDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog ">
+                <div class="modal-content ">
+                    <div class="modal-header bg-white">
+                        <img id="detailsFormIcon" src="../../assest/images/Frame07.png" width="60" alt="">
+                        <h2 id="detailsFormTitle" class="d-inline-block ms-3 fs-5">More Details</h2>
+                        <button type="button" class="btn-close" id="detailsPopupClose" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body bg-white inputBody">
+                        <form class="row g-3">
+                            <table id="tblOrdersDetails" class="table mytable">
+                                <thead class="table-header">
+                                <tr>
+                                    <th scope="col">
+                                    </th>
+                                    <th scope="col">Item Id</th>
+                                    <th scope="col">Color</th>
+                                    <th scope="col">Size</th>
+                                    <th scope="col">Qty</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                    <div class="modal-footer bg-white">
+                        <button type="button" class="btn btn-secondary" id="detailsPopupCancelBtn"
+                                data-bs-dismiss="modal">Close
+                        </button>
+                        <button type="button" id="detailsPopupAddBtn" class="btn btn-primary">Return</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
         <div class="container d-flex justify-content-center">
             <div id="my-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">

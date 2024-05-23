@@ -17,4 +17,6 @@ public interface EmployeeService {
 
     List<EmployeeDTO> findAllByActiveStatus(boolean activeStatus);
 
+    EmployeeDTO getEmployeeByEmail(String email);
+
 }

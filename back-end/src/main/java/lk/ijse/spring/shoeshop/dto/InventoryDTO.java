@@ -14,10 +14,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "itemCode")
 public class InventoryDTO {
+
     private String itemCode;
     private String itemDesc;
     private String itemPicture;
