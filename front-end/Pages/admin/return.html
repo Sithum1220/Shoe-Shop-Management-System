@@ -27,8 +27,9 @@
                             </th>
                             <th scope="col">Order Id</th>
                             <th scope="col">Purchase Date</th>
-                            <th scope="col">Total Price</th>
                             <th scope="col">Cashier Name</th>
+                            <th scope="col">Total Price</th>
+                            <th scope="col">Status</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -36,14 +37,6 @@
                     </table>
 
                 </div>
-                <!--                <div class="pagination-container">-->
-                <!--                    <button class="prev-btn"> Previous-->
-                <!--                        &lt;!&ndash;                        <img src="../Pages/assets/images/arrow-point-to-left.png" width="25" alt="">&ndash;&gt;-->
-                <!--                    </button>-->
-                <!--                    <button class="next-btn"> Next-->
-                <!--                        &lt;!&ndash;                        <img src="../Pages/assets/images/arrow-point-to-right.png" width="25" alt="">&ndash;&gt;-->
-                <!--                    </button>-->
-                <!--                </div>-->
 
             </div>
             <div class="col-2 btnCol d-flex justify-content-center mt-4">
@@ -95,14 +88,14 @@
                                 <label for="itemSize" class="form-label lbl">Item Size</label>
                                 <input type="text" class="form-control txt" id="itemSize">
                             </div>
-                            <div class="col-md-12 text-center mt-4 d-none">
+                            <div class="col-md-12 text-center mt-4 d-none" id="returnStatus">
                                 <h2 class="text-danger fw-medium fs-4">Sorry! Can't Return This Order.</h2>
                             </div>
                         </form>
 
                     </div>
                     <div class="modal-footer bg-white">
-                        <button type="button" class="btn btn-secondary" id="supplierPopupCancelBtn"
+                        <button type="button" class="btn btn-secondary" id="returnPopupCancelBtn"
                                 data-bs-dismiss="modal">Close
                         </button>
                         <button type="button" id="supplierPopupAddBtn" class="btn btn-primary">Return</button>
@@ -125,12 +118,12 @@
                             <table id="tblOrdersDetails" class="table mytable">
                                 <thead class="table-header">
                                 <tr>
-                                    <th scope="col">
-                                    </th>
                                     <th scope="col">Item Id</th>
                                     <th scope="col">Color</th>
                                     <th scope="col">Size</th>
                                     <th scope="col">Qty</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Status</th>
                                 </tr>
                                 </thead>
                                 <tbody>

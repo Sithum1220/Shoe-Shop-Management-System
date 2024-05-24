@@ -21,6 +21,8 @@ public class SaleDTO {
 
     private Double total;
 
+    private String status;
+
     private String paymentMethod;
 
     private Integer totalPoints;

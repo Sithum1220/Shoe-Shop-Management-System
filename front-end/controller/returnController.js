@@ -1,8 +1,10 @@
 function returnController(){
 getAllOrders();
 clickOrderTblRow();
+checkCanBeReturnedOrder();
+clearOrderIdInput();
 }
-
+let OrderNo ;
 function getAllOrders(){
     performAuthenticatedRequest();
     const accessToken = localStorage.getItem('accessToken');
@@ -25,8 +27,9 @@ function getAllOrders(){
                                 </th>
                                 <td>${orders.orderNo}</td>
                                 <td>${orders.purchaseDate}</td>
+                                <td>${orders.cashier}</td>  
                                 <td>${orders.total}</td>
-                                <td>${orders.cashier}</td>                             
+                                <td>${orders.status}</td>                             
                             </tr>`;
                 $('#tblOrders').append(row);
             }
@@ -37,12 +40,6 @@ function getAllOrders(){
     })
 }
 
-function getOrderAllDetails() {
-$('#moreDetailsBtn').click(function () {
-
-})
-    
-}
 function clickOrderTblRow() {
 
     $('#tblOrders').on('click', 'tr', function (event) {
@@ -70,10 +67,10 @@ function getOrderDataByClickTblRow(orderCheckbox) {
     var row = orderCheckbox.closest('tr');
     if (orderCheckbox.is(':checked')) {
         var id = row.find('td:eq(0)').text();
+        OrderNo = id
         const orderId = {
             orderNo: id
         }
-        console.log(orderId);
         performAuthenticatedRequest();
         const accessToken = localStorage.getItem('accessToken');
         $.ajax({
@@ -88,11 +85,12 @@ function getOrderDataByClickTblRow(orderCheckbox) {
                 $('#tblOrdersDetails tbody').empty()
                 for (const ordersDetails of response.data) {
                     const row = `<tr>
-                                <td></td>
                                 <td>${ordersDetails.inventory.itemCode}</td>
                                 <td>${ordersDetails.color}</td>
                                 <td>${ordersDetails.size}</td>
                                 <td>${ordersDetails.itmQTY}</td>                             
+                                <td>${ordersDetails.itmTotal}</td>                             
+                                <td>${ordersDetails.status}</td>                             
                             </tr>`;
                     $('#tblOrdersDetails').append(row);
                 }
@@ -102,4 +100,55 @@ function getOrderDataByClickTblRow(orderCheckbox) {
             }
         });
     }
+}
+
+function checkCanBeReturnedOrder() {
+    $('#returnFormBtn').click(function () {
+        $('#orderId').val(OrderNo);
+        let id = $('#orderId').val()
+        if ($('#orderId').val() !== '') {
+            console.log("fuck")
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
+            $.ajax({
+                url: "http://localhost:8080/api/v1/orders/" + id,
+                type: "GET",
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                },
+                dataType: "json",
+                success: function (response) {
+                    if (response.data){
+                        $('#returnStatus').addClass('d-none');
+                        $('#orderType').prop('disabled', false);
+                        returnFullOrders(id)
+                        console.log(response.data)
+                        console.log("true Hode");
+                    }else{
+                        $('#returnStatus').removeClass('d-none');
+                        $('#orderType').prop('disabled', true);
+                        console.log(response.data)
+                        console.log("false Hode");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error('Failed to fetch:', error);
+                }
+            });
+        }
+    })
+}
+
+function clearOrderIdInput() {
+    $('#returnPopupCancelBtn, #returnPopupClose').click(function () {
+        $('#tblOrders input[type="checkbox"]').not($(this)).prop('checked', false);
+        $('#orderId').val('')
+        OrderNo = null;
+        $('#returnStatus').addClass('d-none');
+        $('#orderType').prop('disabled', false);
+    })
+}
+
+function returnFullOrders(id) {
+
 }

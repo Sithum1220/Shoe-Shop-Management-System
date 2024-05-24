@@ -47,7 +47,7 @@ public class SaleDetails {
     @JoinColumn(name = "sizeId")
     private Size size;
 
-    public SaleDetails(Size size, String sizes, String color, Double itmTotal, Inventory inventory, Sales orderNo, int itmQTY) {
+    public SaleDetails(Size size, String sizes, String color, Double itmTotal, Inventory inventory, Sales orderNo, int itmQTY,String status) {
         this.size = size;
         this.sizes = sizes;
         this.color = color;
@@ -55,5 +55,6 @@ public class SaleDetails {
         this.inventory = inventory;
         this.orderNo = orderNo;
         this.itmQTY = itmQTY;
+        this.status = status;
     }
 }

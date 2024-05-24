@@ -33,6 +33,8 @@ public class Sales {
 
     private Integer totalPoints;
 
+    private String status;
+
     private String cashier;
     private String customerName;
 

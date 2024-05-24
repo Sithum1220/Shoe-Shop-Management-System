@@ -1,7 +1,7 @@
 package lk.ijse.spring.shoeshop.service.impl;
 
 import lk.ijse.spring.shoeshop.dto.*;
-import lk.ijse.spring.shoeshop.embedded.LoyaltyLevel;
+import lk.ijse.spring.shoeshop.enumeration.LoyaltyLevel;
 import lk.ijse.spring.shoeshop.entity.*;
 import lk.ijse.spring.shoeshop.repository.*;
 import lk.ijse.spring.shoeshop.service.PurchaseOrderService;
@@ -67,8 +67,6 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
 
         // Save the sale order
-        System.out.println("Save the sale order");
-        System.out.println("Sales DTO: " + saleDTO);
 
         List<SaleDetailsDTO> saleDetailsDTOS = saleDTO.getSaleDetails();
         saleDTO.setSaleDetails(null);
@@ -86,7 +84,8 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
                     saleDetailsDTO.getItmTotal(),
                     modelMapper.map(saleDetailsDTO.getInventory(), Inventory.class),
                     salesEntity, // Associate the sale details with the saved sales entity
-                    saleDetailsDTO.getItmQTY()
+                    saleDetailsDTO.getItmQTY(),
+                    saleDetailsDTO.getStatus()
             );
 
             // Save the sale details
@@ -107,6 +106,26 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
         System.out.println("Sales DTO: " + saleDTO);
         return modelMapper.map(purchaseOrderDetailsRepository.findAllByOrderNo(modelMapper.map(saleDTO,Sales.class)),
                 new TypeToken<List<SaleDetailsDTO>>(){}.getType());
+    }
+
+    @Override
+    public boolean canBeReturned(String orderNo) {
+        Sales sales = purchaseOrderRepository.findById(orderNo).orElse(null);
+        if (sales == null) {
+            // Handle case where order with given orderNo does not exist
+            return false;
+        }
+
+        LocalDate purchaseDate = sales.getPurchaseDate();
+
+        // Calculate the date three days from the purchase date
+        LocalDate threeDaysFromPurchase = purchaseDate.plusDays(3);
+
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+
+        // Check if the current date is within three days from the purchase date
+        return !currentDate.isAfter(threeDaysFromPurchase);
     }
 
 

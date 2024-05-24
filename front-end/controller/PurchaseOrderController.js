@@ -260,7 +260,7 @@ function addToCart() {
                         sizeDTO: {
                             id: itemSizeId
                         },
-
+                        status:"ACTIVE",
                         unitPrice: itemUnitPrice,
                         color: itemColor,
                         size: itemSize,
@@ -389,7 +389,8 @@ function purchaseOrder() {
             customerId: {
                 customerId: customerId
             },
-            saleDetails: itemCart
+            saleDetails: itemCart,
+            status:"ACTIVE"
         }
 
         console.log(data);

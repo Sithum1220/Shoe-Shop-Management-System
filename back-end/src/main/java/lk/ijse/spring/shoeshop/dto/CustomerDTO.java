@@ -1,9 +1,8 @@
 package lk.ijse.spring.shoeshop.dto;
 
-import jakarta.persistence.*;
 import lk.ijse.spring.shoeshop.embedded.Address;
-import lk.ijse.spring.shoeshop.embedded.Gender;
-import lk.ijse.spring.shoeshop.embedded.LoyaltyLevel;
+import lk.ijse.spring.shoeshop.enumeration.Gender;
+import lk.ijse.spring.shoeshop.enumeration.LoyaltyLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

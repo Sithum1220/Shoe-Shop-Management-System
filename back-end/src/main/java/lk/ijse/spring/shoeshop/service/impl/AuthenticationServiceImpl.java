@@ -4,7 +4,7 @@ import lk.ijse.spring.shoeshop.auth.request.SignInRequest;
 import lk.ijse.spring.shoeshop.auth.request.SignUpRequest;
 import lk.ijse.spring.shoeshop.auth.response.JwtAuthResponse;
 import lk.ijse.spring.shoeshop.dto.UserDTO;
-import lk.ijse.spring.shoeshop.embedded.Role;
+import lk.ijse.spring.shoeshop.enumeration.Role;
 import lk.ijse.spring.shoeshop.entity.Employee;
 import lk.ijse.spring.shoeshop.entity.User;
 import lk.ijse.spring.shoeshop.repository.EmployeeRepository;
@@ -20,8 +20,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.UUID;
 
 @Service
 @Transactional

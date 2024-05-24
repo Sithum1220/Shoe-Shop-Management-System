@@ -1,7 +1,6 @@
 package lk.ijse.spring.shoeshop.dto;
 
-import jakarta.persistence.Column;
-import lk.ijse.spring.shoeshop.embedded.Category;
+import lk.ijse.spring.shoeshop.enumeration.Category;
 import lk.ijse.spring.shoeshop.embedded.InAddress;
 import lombok.AllArgsConstructor;
 import lombok.Data;

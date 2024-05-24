@@ -62,4 +62,11 @@ public class PurchaseOrderController {
                 purchaseOrderService.getAllOrderDetails(saleDTO));
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping("/{orderId}")
+    public ResponseUtil orderCanBeReturned(@PathVariable String orderId){
+        return new ResponseUtil("200","Successfully Fetch Can Be Returned",
+                purchaseOrderService.canBeReturned(orderId));
+    }
+
 }

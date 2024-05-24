@@ -3,11 +3,10 @@ package lk.ijse.spring.shoeshop.entity;
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lk.ijse.spring.shoeshop.embedded.Address;
-import lk.ijse.spring.shoeshop.embedded.Gender;
-import lk.ijse.spring.shoeshop.embedded.LoyaltyLevel;
+import lk.ijse.spring.shoeshop.enumeration.Gender;
+import lk.ijse.spring.shoeshop.enumeration.LoyaltyLevel;
 import lombok.*;
 
-import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;

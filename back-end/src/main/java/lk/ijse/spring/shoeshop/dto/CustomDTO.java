@@ -1,6 +1,6 @@
 package lk.ijse.spring.shoeshop.dto;
 
-import lk.ijse.spring.shoeshop.embedded.Role;
+import lk.ijse.spring.shoeshop.enumeration.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
