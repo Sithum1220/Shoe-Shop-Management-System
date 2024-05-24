@@ -72,6 +72,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
         List<SaleDetailsDTO> saleDetailsDTOS = saleDTO.getSaleDetails();
         saleDTO.setSaleDetails(null);
+
         Sales salesEntity = modelMapper.map(saleDTO, Sales.class);
         System.out.println("Sales Entity: " + salesEntity);
         purchaseOrderRepository.save(salesEntity);
@@ -83,12 +84,11 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
                     saleDetailsDTO.getSize(),
                     saleDetailsDTO.getColor(),
                     saleDetailsDTO.getItmTotal(),
-                    modelMapper.map(saleDetailsDTO.getInventoryDTO(), Inventory.class),
+                    modelMapper.map(saleDetailsDTO.getInventory(), Inventory.class),
                     salesEntity, // Associate the sale details with the saved sales entity
                     saleDetailsDTO.getItmQTY()
             );
 
-            System.out.println("Fuck");
             // Save the sale details
             purchaseOrderDetailsRepository.save(saleDetails);
 
@@ -99,7 +99,14 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
     @Override
     public List<SaleDTO> getAllOrders() {
-        return modelMapper.map(purchaseOrderRepository.findAll(), new TypeToken<List<SaleDTO>>() {}.getType());
+        return modelMapper.map(purchaseOrderRepository.findAll(), new TypeToken<List<SaleDTO>>(){}.getType());
+    }
+
+    @Override
+    public List<SaleDetailsDTO> getAllOrderDetails(SaleDTO saleDTO) {
+        System.out.println("Sales DTO: " + saleDTO);
+        return modelMapper.map(purchaseOrderDetailsRepository.findAllByOrderNo(modelMapper.map(saleDTO,Sales.class)),
+                new TypeToken<List<SaleDetailsDTO>>(){}.getType());
     }
 
 
@@ -116,7 +123,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     }
 
     private void updateInventoryAndSizeQuantities(SaleDetailsDTO saleDetailsDTO) {
-        Inventory inventory = inventoryRepository.findByItemCode(saleDetailsDTO.getInventoryDTO().getItemCode());
+        Inventory inventory = inventoryRepository.findByItemCode(saleDetailsDTO.getInventory().getItemCode());
         Size size = sizeRepository.findBySizeId(saleDetailsDTO.getSizeDTO().getId());
 
         int newInventoryQty = inventory.getQty() - saleDetailsDTO.getItmQTY();

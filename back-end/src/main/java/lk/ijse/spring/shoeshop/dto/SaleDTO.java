@@ -1,5 +1,6 @@
 package lk.ijse.spring.shoeshop.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lk.ijse.spring.shoeshop.entity.Customer;
 import lombok.*;
 

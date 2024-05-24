@@ -1,7 +1,6 @@
 package lk.ijse.spring.shoeshop.entity;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -41,6 +40,6 @@ public class Sales {
     @JoinColumn(name = "customer_id")
     private Customer customerId;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "orderNo")
-    private List<SaleDetails> saleDetails = new ArrayList<>();
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "orderNo")
+//    private List<SaleDetails> saleDetails = new ArrayList<>();
 }

@@ -28,6 +28,7 @@
                             <th scope="col">Order Id</th>
                             <th scope="col">Purchase Date</th>
                             <th scope="col">Total Price</th>
+                            <th scope="col">Cashier Name</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -70,7 +71,7 @@
                         <form class="row g-3">
                             <div class="col-md-6">
                                 <label for="orderId" class="form-label lbl">Order Id</label>
-                                <input type="text" class="form-control txt" id="orderId" required>
+                                <input type="text" class="form-control txt" readonly id="orderId" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="orderType" class="form-label lbl">Select Order</label>
@@ -141,7 +142,6 @@
                         <button type="button" class="btn btn-secondary" id="detailsPopupCancelBtn"
                                 data-bs-dismiss="modal">Close
                         </button>
-                        <button type="button" id="detailsPopupAddBtn" class="btn btn-primary">Return</button>
                     </div>
                 </div>
             </div>

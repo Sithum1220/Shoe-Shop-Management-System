@@ -128,7 +128,7 @@ function signIn() {
                     localStorage.setItem('cashier', value.email);
                     if (res.role === "ADMIN") {
                         console.log("Admin");
-                        window.location.href = '../../Pages/admin/dashboard.html'
+                        window.location.href = '../Pages/admin/dashboard.html'
                         Swal.fire({
                             position: "top-end",
                             icon: "success",
@@ -139,7 +139,7 @@ function signIn() {
                         $('#wrongPW').addClass('d-none')
                     } else if (res.role === "USER") {
                         console.log("User");
-                        window.location.href = '../../Pages/user/dashboard.html'
+                        window.location.href = '../Pages/user/dashboard.html'
                         Swal.fire({
                             position: "top-end",
                             icon: "success",

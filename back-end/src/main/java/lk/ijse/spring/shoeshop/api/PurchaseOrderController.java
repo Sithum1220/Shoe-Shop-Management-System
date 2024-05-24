@@ -26,16 +26,19 @@ public class PurchaseOrderController {
 
     @PostMapping( "/customer")
     public ResponseUtil getCustomerDetails(@RequestBody CustomerDTO customerDTO){
-        return new ResponseUtil("200","Successfully Fetch Customers",customerService.getCustomerDetailsForOrder(customerDTO));
+        return new ResponseUtil("200","Successfully Fetch Customers",
+                customerService.getCustomerDetailsForOrder(customerDTO));
     }
     @PostMapping( "/item")
     public ResponseUtil getItemDetails(@RequestBody InventoryDTO inventoryDTO){
-        return new ResponseUtil("200","Successfully Fetch Customers",inventoryService.getItemDetailsForOrder(inventoryDTO));
+        return new ResponseUtil("200","Successfully Fetch Customers",
+                inventoryService.getItemDetailsForOrder(inventoryDTO));
     }
     @ResponseStatus(HttpStatus.CREATED)
     @GetMapping("/id")
     public ResponseUtil getNewId() {
-        return new ResponseUtil("200", "Successfully Generated New Id", GenerateNewId.nextId(purchaseOrderService.lastId(), "OR00"));
+        return new ResponseUtil("200", "Successfully Generated New Id",
+                GenerateNewId.nextId(purchaseOrderService.lastId(), "OR00"));
     }
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -48,7 +51,15 @@ public class PurchaseOrderController {
     @ResponseStatus(HttpStatus.CREATED)
     @GetMapping
     public ResponseUtil getAllOrders(){
-        return new ResponseUtil("200","Successfully Purchased",purchaseOrderService.getAllOrders());
+        return new ResponseUtil("200","Successfully Fetch Order",
+                purchaseOrderService.getAllOrders());
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/orderDetails")
+    public ResponseUtil getAllOrderDetails(@RequestBody SaleDTO saleDTO){
+        return new ResponseUtil("200","Successfully Fetch Order Details",
+                purchaseOrderService.getAllOrderDetails(saleDTO));
     }
 
 }

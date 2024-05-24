@@ -940,7 +940,7 @@
     </schema>
     <schema id="299" parent="1" name="hello_shoe_shop">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2024-05-23.17:49:50</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-05-24.05:45:27</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <user id="300" parent="1" name="mysql.infoschema">
@@ -1313,7 +1313,7 @@
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="387" parent="308" name="sale_details_id">
-      <AutoIncrement>3</AutoIncrement>
+      <AutoIncrement>1</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1436,7 +1436,7 @@
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="415" parent="310" name="size_id">
-      <AutoIncrement>3</AutoIncrement>
+      <AutoIncrement>1</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>

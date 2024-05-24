@@ -1,6 +1,6 @@
 package lk.ijse.spring.shoeshop.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lk.ijse.spring.shoeshop.embedded.Address;
 import lk.ijse.spring.shoeshop.embedded.Gender;
@@ -19,6 +19,9 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "customerId")
 public class Customer {
 
     @Id
@@ -50,7 +53,6 @@ public class Customer {
     private LocalDate recentPurchase;
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "customerId")
-    @JsonIgnore
     private List<Sales> sales = new ArrayList<>();
 }
 

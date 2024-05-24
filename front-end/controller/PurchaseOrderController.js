@@ -218,7 +218,7 @@ function addToCart() {
 
                 let itemExists = false;
                 for (let i = 0; i < itemCart.length; i++) {
-                    if (itemCart[i].inventoryDTO.itemCode === $('#OrderItemId').val() && itemCart[i].color === itemColor && itemCart[i].size === itemSize) {
+                    if (itemCart[i].inventory.itemCode === $('#OrderItemId').val() && itemCart[i].color === itemColor && itemCart[i].size === itemSize) {
                         // Update quantity if the item with the same color exists
                         console.log("totalQuantity: " + totalQuantity);
 
@@ -248,7 +248,7 @@ function addToCart() {
 
                         itmQTY: newItemQty,
 
-                        inventoryDTO: {
+                        inventory: {
                             itemCode: $('#OrderItemId').val(),
                         },
 
@@ -320,7 +320,7 @@ function tblCartDataLoad() {
                      
                     <td class="text-white">${cart.sizeId}</td>
                     <td>${cart.orderNo.orderNo}</td>
-                    <td>${cart.inventoryDTO.itemCode}</td>
+                    <td>${cart.inventory.itemCode}</td>
                      <td>${cart.itmQTY}</td>
                      <td>${cart.color}</td>
                      <td>${cart.size}</td>

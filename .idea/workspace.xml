@@ -5,38 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="032d1856-7f95-44cb-a7e8-c221ea7611af" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/SaleDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/SaleDetailsDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/assest/js/admin/return.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/controller/returnController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/21932946-ac1a-4678-bfa8-82770c9422c9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/21932946-ac1a-4678-bfa8-82770c9422c9.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/EmployeeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/PurchaseOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/PurchaseOrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/config/JwtConfigurationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/config/JwtConfigurationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/InventoryDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/InventoryDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/SaleDetailPKDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/SalesCustomDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/embedded/SaleDetailPK.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/SaleDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/SaleDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/SaleDetailsDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/SaleDetailsDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Customer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Inventory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/SaleDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/SaleDetails.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Sales.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Sales.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Size.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Size.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/repository/EmployeeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/repository/EmployeeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/EmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/repository/PurchaseOrderDetailsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/repository/PurchaseOrderDetailsRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/PurchaseOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/PurchaseOrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/EmployeeServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/JwtServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/JwtServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/PurchaseOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/PurchaseOrderServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/dashboard.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/return.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/return.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/customers/customerOrder.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/customers/customerOrder.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/assest/js/admin/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/js/admin/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/controller/InventoryController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/InventoryController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/controller/LoginController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/LoginController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/controller/PurchaseOrderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/PurchaseOrderController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/controller/returnController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/returnController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -304,7 +293,7 @@
       <workItem from="1716301883037" duration="18493000" />
       <workItem from="1716346632745" duration="26277000" />
       <workItem from="1716384006382" duration="11447000" />
-      <workItem from="1716431559017" duration="51678000" />
+      <workItem from="1716431559017" duration="72287000" />
     </task>
     <servers />
   </component>
