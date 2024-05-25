@@ -2,6 +2,7 @@ package lk.ijse.spring.shoeshop.entity;
 
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
+import lk.ijse.spring.shoeshop.enumeration.Order_Status;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -33,7 +34,8 @@ public class Sales {
 
     private Integer totalPoints;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Order_Status status;
 
     private String cashier;
     private String customerName;

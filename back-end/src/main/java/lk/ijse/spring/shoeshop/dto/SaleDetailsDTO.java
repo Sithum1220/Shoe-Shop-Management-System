@@ -1,5 +1,6 @@
 package lk.ijse.spring.shoeshop.dto;
 
+import lk.ijse.spring.shoeshop.enumeration.Order_Status;
 import lombok.*;
 
 @Getter
@@ -17,7 +18,7 @@ public class SaleDetailsDTO {
 
     private InventoryDTO inventory;
 
-    private String status;
+    private Order_Status status;
 
     private Double itmTotal;
 

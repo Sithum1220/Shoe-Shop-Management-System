@@ -51,7 +51,7 @@ public class Customer {
     private String email;
     private LocalDate recentPurchase;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "customerId")
-    private List<Sales> sales = new ArrayList<>();
+//    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "customerId")
+//    private List<Sales> sales = new ArrayList<>();
 }
 

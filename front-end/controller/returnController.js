@@ -150,5 +150,86 @@ function clearOrderIdInput() {
 }
 
 function returnFullOrders(id) {
+    
+    $('#returnPopupAddBtn').click(function () {
+        
+    const orderType = $('#orderType').val();
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
+        if (orderType === 'Full Order') {
+            $.ajax({
+                url: "http://localhost:8080/api/v1/orders/" + id,
+                type: "POST",
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                },
+                contentType: "application/json",
+                success: function (response) {
+                    getAllOrders();
+                    console.log(response.data);
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Supplier has been Deleted",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                },
+                error: function (resp) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: resp.responseJSON.message,
+                        footer: '<a href="#"></a>'
+                    });
+                }
+            });
+        } else if (orderType === 'One Item'){
+            const itemId = $('#itemId').val();
+            const itemColor = $('#itemColor').val();
+            const itemSize = $('#itemSize').val();
+            const itemQty = $('#itemQty').val();
+
+            const data = {
+                inventory:{
+                    itemCode: itemId,
+                },
+                size: itemSize,
+                color:itemColor,
+                orderNo:{
+                    orderNo: id,
+                },
+                itmQTY: itemQty
+            }
+            $.ajax({
+                url: "http://localhost:8080/api/v1/orders/oneItem",
+                type: "POST",
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                },
+                data: JSON.stringify(data),
+                contentType: "application/json",
+                success: function (response) {
+                    getAllOrders();
+                    console.log(response.data);
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Supplier has been Deleted",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                },
+                error: function (resp) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: resp.responseJSON.message,
+                        footer: '<a href="#"></a>'
+                    });
+                }
+            });
+        }
+    })
 
 }

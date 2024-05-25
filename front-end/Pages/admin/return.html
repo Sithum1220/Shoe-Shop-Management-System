@@ -54,7 +54,7 @@
 
         <div class="modal fade " id="ReturnForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog ">
-                <div class="modal-content ">
+                <div class="modal-content">
                     <div class="modal-header bg-white">
                         <img id="returnFormIcon" src="../../assest/images/Frame07.png" width="60" alt="">
                         <h2 id="ReturnFormTitle" class="d-inline-block ms-3 fs-5">Return Orders</h2>
@@ -76,17 +76,21 @@
                                 </select>
                             </div>
 
-                            <div class="col-md-4 itemId d-none">
+                            <div class="col-md-3 itemId d-none">
                                 <label for="itemId" class="form-label lbl">Item Code</label>
                                 <input type="text" class="form-control txt" id="itemId">
                             </div>
-                            <div class="col-md-4 itemColor d-none">
+                            <div class="col-md-3 itemColor d-none">
                                 <label for="itemColor" class="form-label lbl">Item Color</label>
                                 <input type="text" class="form-control txt" id="itemColor">
                             </div>
-                            <div class="col-md-4 itemSize d-none">
+                            <div class="col-md-3 itemSize d-none">
                                 <label for="itemSize" class="form-label lbl">Item Size</label>
                                 <input type="text" class="form-control txt" id="itemSize">
+                            </div>
+                            <div class="col-md-3 itemQty d-none">
+                                <label for="itemSize" class="form-label lbl">Item Qty</label>
+                                <input type="text" class="form-control txt" id="itemQty">
                             </div>
                             <div class="col-md-12 text-center mt-4 d-none" id="returnStatus">
                                 <h2 class="text-danger fw-medium fs-4">Sorry! Can't Return This Order.</h2>
@@ -98,7 +102,7 @@
                         <button type="button" class="btn btn-secondary" id="returnPopupCancelBtn"
                                 data-bs-dismiss="modal">Close
                         </button>
-                        <button type="button" id="supplierPopupAddBtn" class="btn btn-primary">Return</button>
+                        <button type="button" id="returnPopupAddBtn" class="btn btn-primary">Return</button>
                     </div>
                 </div>
             </div>

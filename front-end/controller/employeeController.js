@@ -8,7 +8,6 @@ function employeeControlFunction() {
     activeStatusCheckBox();
     deleteEmployee()
 }
-
 var base64String;
 var id;
 function saveEmployee() {

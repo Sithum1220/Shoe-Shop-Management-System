@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
+import lk.ijse.spring.shoeshop.enumeration.Order_Status;
 import lombok.*;
 
 @Setter
@@ -41,13 +42,14 @@ public class SaleDetails {
 
     private String color;
     private String sizes;
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Order_Status status;
 
     @ManyToOne
     @JoinColumn(name = "sizeId")
     private Size size;
 
-    public SaleDetails(Size size, String sizes, String color, Double itmTotal, Inventory inventory, Sales orderNo, int itmQTY,String status) {
+    public SaleDetails(Size size, String sizes, String color, Double itmTotal, Inventory inventory, Sales orderNo, int itmQTY,Order_Status status) {
         this.size = size;
         this.sizes = sizes;
         this.color = color;
