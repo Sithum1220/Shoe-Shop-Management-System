@@ -1,16 +1,22 @@
 package lk.ijse.spring.shoeshop.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lk.ijse.spring.shoeshop.enumeration.Order_Status;
+import lombok.*;
 
-@Data
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class SaleDetails {
 
 //    @EmbeddedId
@@ -23,6 +29,7 @@ public class SaleDetails {
 
     @Column(name = "itm_qty")
     private int itmQTY;
+    private int returnedQty;
 
     @ManyToOne
     @JoinColumn(name = "order_no")
@@ -36,12 +43,14 @@ public class SaleDetails {
 
     private String color;
     private String sizes;
+    @Enumerated(EnumType.STRING)
+    private Order_Status status;
 
     @ManyToOne
     @JoinColumn(name = "sizeId")
     private Size size;
 
-    public SaleDetails(Size size, String sizes, String color, Double itmTotal, Inventory inventory, Sales orderNo, int itmQTY) {
+    public SaleDetails(Size size, String sizes, String color, Double itmTotal, Inventory inventory, Sales orderNo, int itmQTY,Order_Status status) {
         this.size = size;
         this.sizes = sizes;
         this.color = color;
@@ -49,5 +58,6 @@ public class SaleDetails {
         this.inventory = inventory;
         this.orderNo = orderNo;
         this.itmQTY = itmQTY;
+        this.status = status;
     }
 }

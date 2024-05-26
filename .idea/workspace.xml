@@ -5,38 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="032d1856-7f95-44cb-a7e8-c221ea7611af" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/SaleDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/SaleDetailsDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/assest/js/admin/return.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/controller/returnController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/controller/DashboardController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/21932946-ac1a-4678-bfa8-82770c9422c9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/21932946-ac1a-4678-bfa8-82770c9422c9.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/EmployeeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/PurchaseOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/PurchaseOrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/config/JwtConfigurationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/config/JwtConfigurationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/InventoryDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/InventoryDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/SaleDetailPKDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/SalesCustomDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/embedded/SaleDetailPK.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/SaleDetailsDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/SaleDetailsDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/SaleDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/SaleDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Sales.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Sales.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Size.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/Size.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/repository/EmployeeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/repository/EmployeeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/EmployeeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/PurchaseOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/PurchaseOrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/EmployeeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/JwtServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/JwtServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/PurchaseOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/PurchaseOrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/Home/assest/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Home/assest/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/Home/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Home/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/return.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/return.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/customers/customerOrder.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/customers/customerOrder.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/assest/js/admin/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/js/admin/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/employee.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/employee.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/assest/css/all.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/css/all.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/assest/css/pages.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/css/pages.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/controller/LoginController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/LoginController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/controller/PurchaseOrderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/PurchaseOrderController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/controller/employeeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/employeeController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/controller/returnController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/returnController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,11 +30,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="JUnit5 Test Class" />
         <option value="Interface" />
         <option value="HTML File" />
         <option value="Class" />
+        <option value="Enum" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -77,49 +61,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.main.executor": "Run",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "JUnit.EmployeeRepositoryTest.searchEmployee.executor": "Run",
-    "JUnit.EmployeeServiceImplTest.countEmployee.executor": "Run",
-    "JUnit.EmployeeServiceImplTest.getAllEmployees.executor": "Run",
-    "JUnit.EmployeeServiceImplTest.saveEmployee.executor": "Run",
-    "JUnit.EmployeeServiceImplTest.searchEmployeesById.executor": "Run",
-    "JUnit.SupplierRepositoryTest.existsByMobileNo.executor": "Run",
-    "JUnit.UserServiceImplTest.findAllByActiveStatus.executor": "Run",
-    "JUnit.UserServiceImplTest.searchUsersById.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.WebAppInitializer.executor": "Run",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "work-branch",
-    "jdk.selected.JAVA_MODULE": "17",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/sithumimesh/Desktop/AAD Project/Shoe-Shop-Management-System/back-end/src/main/java/lk/ijse/spring/shoeshop",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "editor.preferences.folding",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.main.executor&quot;: &quot;Run&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JUnit.EmployeeRepositoryTest.searchEmployee.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EmployeeServiceImplTest.countEmployee.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EmployeeServiceImplTest.getAllEmployees.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EmployeeServiceImplTest.saveEmployee.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EmployeeServiceImplTest.searchEmployeesById.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SupplierRepositoryTest.existsByMobileNo.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceImplTest.findAllByActiveStatus.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceImplTest.searchUsersById.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.WebAppInitializer.executor&quot;: &quot;Run&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;work-branch&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/sithumimesh/Desktop/AAD Project/Shoe-Shop-Management-System/back-end/src/main/java/lk/ijse/spring/shoeshop&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.folding&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop" />
@@ -304,7 +288,12 @@
       <workItem from="1716301883037" duration="18493000" />
       <workItem from="1716346632745" duration="26277000" />
       <workItem from="1716384006382" duration="11447000" />
-      <workItem from="1716431559017" duration="51678000" />
+      <workItem from="1716431559017" duration="81559000" />
+      <workItem from="1716606966372" duration="1000" />
+      <workItem from="1716608598400" duration="10422000" />
+      <workItem from="1716643807562" duration="17026000" />
+      <workItem from="1716718185051" duration="10307000" />
+      <workItem from="1716738557640" duration="10317000" />
     </task>
     <servers />
   </component>

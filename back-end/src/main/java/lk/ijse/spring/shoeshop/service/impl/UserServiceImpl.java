@@ -1,9 +1,8 @@
 package lk.ijse.spring.shoeshop.service.impl;
 
 import lk.ijse.spring.shoeshop.dto.CustomDTO;
-import lk.ijse.spring.shoeshop.dto.SupplierDTO;
 import lk.ijse.spring.shoeshop.dto.UserDTO;
-import lk.ijse.spring.shoeshop.embedded.Role;
+import lk.ijse.spring.shoeshop.enumeration.Role;
 import lk.ijse.spring.shoeshop.entity.Employee;
 import lk.ijse.spring.shoeshop.entity.User;
 import lk.ijse.spring.shoeshop.repository.EmployeeRepository;

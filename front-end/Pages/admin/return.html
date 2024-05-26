@@ -27,7 +27,9 @@
                             </th>
                             <th scope="col">Order Id</th>
                             <th scope="col">Purchase Date</th>
+                            <th scope="col">Cashier Name</th>
                             <th scope="col">Total Price</th>
+                            <th scope="col">Status</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -35,14 +37,6 @@
                     </table>
 
                 </div>
-                <!--                <div class="pagination-container">-->
-                <!--                    <button class="prev-btn"> Previous-->
-                <!--                        &lt;!&ndash;                        <img src="../Pages/assets/images/arrow-point-to-left.png" width="25" alt="">&ndash;&gt;-->
-                <!--                    </button>-->
-                <!--                    <button class="next-btn"> Next-->
-                <!--                        &lt;!&ndash;                        <img src="../Pages/assets/images/arrow-point-to-right.png" width="25" alt="">&ndash;&gt;-->
-                <!--                    </button>-->
-                <!--                </div>-->
 
             </div>
             <div class="col-2 btnCol d-flex justify-content-center mt-4">
@@ -60,7 +54,7 @@
 
         <div class="modal fade " id="ReturnForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog ">
-                <div class="modal-content ">
+                <div class="modal-content">
                     <div class="modal-header bg-white">
                         <img id="returnFormIcon" src="../../assest/images/Frame07.png" width="60" alt="">
                         <h2 id="ReturnFormTitle" class="d-inline-block ms-3 fs-5">Return Orders</h2>
@@ -70,7 +64,7 @@
                         <form class="row g-3">
                             <div class="col-md-6">
                                 <label for="orderId" class="form-label lbl">Order Id</label>
-                                <input type="text" class="form-control txt" id="orderId" required>
+                                <input type="text" class="form-control txt" readonly id="orderId" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="orderType" class="form-label lbl">Select Order</label>
@@ -82,29 +76,33 @@
                                 </select>
                             </div>
 
-                            <div class="col-md-4 itemId d-none">
+                            <div class="col-md-3 itemId d-none">
                                 <label for="itemId" class="form-label lbl">Item Code</label>
                                 <input type="text" class="form-control txt" id="itemId">
                             </div>
-                            <div class="col-md-4 itemColor d-none">
+                            <div class="col-md-3 itemColor d-none">
                                 <label for="itemColor" class="form-label lbl">Item Color</label>
                                 <input type="text" class="form-control txt" id="itemColor">
                             </div>
-                            <div class="col-md-4 itemSize d-none">
+                            <div class="col-md-3 itemSize d-none">
                                 <label for="itemSize" class="form-label lbl">Item Size</label>
                                 <input type="text" class="form-control txt" id="itemSize">
                             </div>
-                            <div class="col-md-12 text-center mt-4 d-none">
+                            <div class="col-md-3 itemQty d-none">
+                                <label for="itemSize" class="form-label lbl">Item Qty</label>
+                                <input type="text" class="form-control txt" id="itemQty">
+                            </div>
+                            <div class="col-md-12 text-center mt-4 d-none" id="returnStatus">
                                 <h2 class="text-danger fw-medium fs-4">Sorry! Can't Return This Order.</h2>
                             </div>
                         </form>
 
                     </div>
                     <div class="modal-footer bg-white">
-                        <button type="button" class="btn btn-secondary" id="supplierPopupCancelBtn"
+                        <button type="button" class="btn btn-secondary" id="returnPopupCancelBtn"
                                 data-bs-dismiss="modal">Close
                         </button>
-                        <button type="button" id="supplierPopupAddBtn" class="btn btn-primary">Return</button>
+                        <button type="button" id="returnPopupAddBtn" class="btn btn-primary">Return</button>
                     </div>
                 </div>
             </div>
@@ -124,12 +122,12 @@
                             <table id="tblOrdersDetails" class="table mytable">
                                 <thead class="table-header">
                                 <tr>
-                                    <th scope="col">
-                                    </th>
                                     <th scope="col">Item Id</th>
                                     <th scope="col">Color</th>
                                     <th scope="col">Size</th>
                                     <th scope="col">Qty</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Status</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -141,7 +139,6 @@
                         <button type="button" class="btn btn-secondary" id="detailsPopupCancelBtn"
                                 data-bs-dismiss="modal">Close
                         </button>
-                        <button type="button" id="detailsPopupAddBtn" class="btn btn-primary">Return</button>
                     </div>
                 </div>
             </div>

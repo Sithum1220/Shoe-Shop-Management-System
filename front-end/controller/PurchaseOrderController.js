@@ -9,13 +9,11 @@ function purchaseOrderController() {
     generateNewOrderId();
 }
 
-customerFoundStatus = $('#customerFoundStatus');
 let newId;
-const itemCart = [];
+let itemCart = [];
 let itemUnitPrice
 let itemQty;
 let itemResponse = [];
-
 let date = new Date().getFullYear() + "-" + new Date().getMonth() + "-" + new Date().getDate();
 let itemSizeId;
 let itemColor;
@@ -90,7 +88,6 @@ function loadDataSizeTable() {
     }
 }
 
-
 function setItemDetails() {
     $('#OrderItemId').keyup(function () {
         OrderItemId = $(this).val();
@@ -116,21 +113,17 @@ function setItemDetails() {
                 } else {
                     if (response.data !== "Item Not Found!") {
                         $('#itemFoundStatus').addClass('d-none');
-                        // response.data.sizeList.forEach(function (item, index) {
                         for (const responseElement of response.data.sizeList) {
-                            // Check if itemResponse is empty
                             if (itemResponse.length === 0) {
-                                itemResponse.push(responseElement); // If empty, just add responseElement
+                                itemResponse.push(responseElement);
                             } else {
                                 let exists = false;
-                                // Check if responseElement already exists in itemResponse
                                 for (const item of itemResponse) {
                                     if (item.sizeId === responseElement.sizeId) {
                                         exists = true;
-                                        break; // If it exists, no need to check further
+                                        break;
                                     }
                                 }
-                                // If responseElement doesn't exist in itemResponse, add it
                                 if (!exists) {
                                     itemResponse.push(responseElement);
                                 }
@@ -145,7 +138,6 @@ function setItemDetails() {
                         console.log(response.data);
                         itemUnitPrice = response.data.salePrice;
                         itemQty = response.data.qty;
-                        // });
                     } else {
                         console.log("response");
                         $('#tblOrderSize tbody').empty()
@@ -168,13 +160,12 @@ function addToCart() {
         if ($('#OrderItemId').val() !== '') {
             $('#tblOrderSize tbody tr').each(function () {
                 let checkBox = $(this).find('input[type="checkbox"]').is(':checked');
-
                 if (checkBox) {
                     checkBoxChecked = true;
-                    itemSizeId = $(this).find('td:eq(0)').text(); // Assuming first data column is at index 1
-                    itemSize = $(this).find('td:eq(1)').text(); // Adjust index as per your table structure
-                    itemColor = $(this).find('td:eq(2)').text(); // Adjust index as per your table structure
-                    itemSizeQty = $(this).find('td:eq(3)').text(); // Adjust index as per your table structure
+                    itemSizeId = $(this).find('td:eq(0)').text();
+                    itemSize = $(this).find('td:eq(1)').text();
+                    itemColor = $(this).find('td:eq(2)').text();
+                    itemSizeQty = $(this).find('td:eq(3)').text();
 
                     console.log('Item Size ID:', itemSizeId);
                     console.log('Item Color:', itemColor);
@@ -190,12 +181,12 @@ function addToCart() {
                             if (item.sizeId === parseInt(itemSizeId)) {
 
 
-                                item.qty -= parseInt($('#itemQty').val()); // Update the quantity directly on the matched item
+                                item.qty -= parseInt($('#itemQty').val());
                                 loadDataSizeTable();
 
                                 console.log("AAAAA");
                                 console.log(itemResponse);
-                                break; // Exiting the loop since we found the item we were looking for
+                                break;
                             }
                         }
 
@@ -218,7 +209,7 @@ function addToCart() {
 
                 let itemExists = false;
                 for (let i = 0; i < itemCart.length; i++) {
-                    if (itemCart[i].inventoryDTO.itemCode === $('#OrderItemId').val() && itemCart[i].color === itemColor && itemCart[i].size === itemSize) {
+                    if (itemCart[i].inventory.itemCode === $('#OrderItemId').val() && itemCart[i].color === itemColor && itemCart[i].size === itemSize) {
                         // Update quantity if the item with the same color exists
                         console.log("totalQuantity: " + totalQuantity);
 
@@ -237,6 +228,7 @@ function addToCart() {
 
                         // Update quantity if the item with the same color exists
                         itemCart[i].itmQTY = totalQuantity;
+                        itemCart[i].itmTotal = itemCart[i].unitPrice * itemCart[i].itmQTY;
                         itemExists = true;
                         break; // Exit the loop since we found the item
                     }
@@ -248,7 +240,7 @@ function addToCart() {
 
                         itmQTY: newItemQty,
 
-                        inventoryDTO: {
+                        inventory: {
                             itemCode: $('#OrderItemId').val(),
                         },
 
@@ -260,7 +252,7 @@ function addToCart() {
                         sizeDTO: {
                             id: itemSizeId
                         },
-
+                        Order_Status: "ACTIVE",
                         unitPrice: itemUnitPrice,
                         color: itemColor,
                         size: itemSize,
@@ -305,6 +297,7 @@ function addToCart() {
 
         $('#totalPrice').text(total);
         console.log(itemCart);
+
     })
 }
 
@@ -320,7 +313,7 @@ function tblCartDataLoad() {
                      
                     <td class="text-white">${cart.sizeId}</td>
                     <td>${cart.orderNo.orderNo}</td>
-                    <td>${cart.inventoryDTO.itemCode}</td>
+                    <td>${cart.inventory.itemCode}</td>
                      <td>${cart.itmQTY}</td>
                      <td>${cart.color}</td>
                      <td>${cart.size}</td>
@@ -333,19 +326,31 @@ function tblCartDataLoad() {
 
 function purchaseOrder() {
     $('#paymentMethod').change(function () {
+        // Reset balance price on payment method change
+        $('#balancePrice').text('00.00');
+
         if ($(this).val() === 'Cash Payment') {
+            // Unbind any previous keyup event to avoid multiple bindings
+            $('#amount').off('keyup');
 
+            // Attach new keyup event handler for cash payment
             $('#amount').keyup(function () {
-                const amount = $(this).val();
-                let balance = amount - $('#totalPrice').text()
+                let amount = parseFloat($(this).val());
+                let totalPrice = parseFloat($('#totalPrice').text());
 
-                $('#balancePrice').text(balance);
+                if (!isNaN(amount) && amount > 0) {
+                    let balance = amount - totalPrice;
+                    $('#balancePrice').text(balance.toFixed(2));
+                } else {
+                    $('#balancePrice').text('00.00');
+                }
             });
 
         } else if ($(this).val() === 'Card Payment') {
-            $('#balancePrice').text('00.00');
+            // Unbind keyup event since it's not needed for card payment
+            $('#amount').off('keyup');
         }
-    })
+    });
 
     let cashierName;
     performAuthenticatedRequest();
@@ -389,7 +394,8 @@ function purchaseOrder() {
             customerId: {
                 customerId: customerId
             },
-            saleDetails: itemCart
+            saleDetails: itemCart,
+            Order_Status: "ACTIVE"
         }
 
         console.log(data);
@@ -418,6 +424,8 @@ function purchaseOrder() {
                     console.log("resp");
 
                     // generateNewOrderId();
+                    generateNewOrderId();
+                    itemCart = [];
                 }
             },
             error: function (resp) {
@@ -498,7 +506,6 @@ function clickCartDetailsTblRow() {
         $('#tblCart input[type="checkbox"]').not($(this)).prop('checked', false);
     });
 }
-
 
 function deleteCart() {
 

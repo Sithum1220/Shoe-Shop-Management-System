@@ -1,7 +1,6 @@
 package lk.ijse.spring.shoeshop.entity;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
@@ -37,9 +36,7 @@ public class Inventory {
     private Double profitMargin;
     private String status;
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "inventory")
-    @JsonIgnore
     private List<SaleDetails> saleDetails = new ArrayList<>();
-
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "inventory")
     private List<Size> sizeList = new ArrayList<>();
 }

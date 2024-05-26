@@ -3,6 +3,7 @@ package lk.ijse.spring.shoeshop.api;
 import lk.ijse.spring.shoeshop.dto.CustomerDTO;
 import lk.ijse.spring.shoeshop.dto.InventoryDTO;
 import lk.ijse.spring.shoeshop.dto.SaleDTO;
+import lk.ijse.spring.shoeshop.dto.SaleDetailsDTO;
 import lk.ijse.spring.shoeshop.service.CustomerService;
 import lk.ijse.spring.shoeshop.service.InventoryService;
 import lk.ijse.spring.shoeshop.service.PurchaseOrderService;
@@ -26,16 +27,19 @@ public class PurchaseOrderController {
 
     @PostMapping( "/customer")
     public ResponseUtil getCustomerDetails(@RequestBody CustomerDTO customerDTO){
-        return new ResponseUtil("200","Successfully Fetch Customers",customerService.getCustomerDetailsForOrder(customerDTO));
+        return new ResponseUtil("200","Successfully Fetch Customers",
+                customerService.getCustomerDetailsForOrder(customerDTO));
     }
     @PostMapping( "/item")
     public ResponseUtil getItemDetails(@RequestBody InventoryDTO inventoryDTO){
-        return new ResponseUtil("200","Successfully Fetch Customers",inventoryService.getItemDetailsForOrder(inventoryDTO));
+        return new ResponseUtil("200","Successfully Fetch Customers",
+                inventoryService.getItemDetailsForOrder(inventoryDTO));
     }
     @ResponseStatus(HttpStatus.CREATED)
     @GetMapping("/id")
     public ResponseUtil getNewId() {
-        return new ResponseUtil("200", "Successfully Generated New Id", GenerateNewId.nextId(purchaseOrderService.lastId(), "OR00"));
+        return new ResponseUtil("200", "Successfully Generated New Id",
+                GenerateNewId.nextId(purchaseOrderService.lastId(), "OR00"));
     }
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -48,7 +52,37 @@ public class PurchaseOrderController {
     @ResponseStatus(HttpStatus.CREATED)
     @GetMapping
     public ResponseUtil getAllOrders(){
-        return new ResponseUtil("200","Successfully Purchased",purchaseOrderService.getAllOrders());
+        return new ResponseUtil("200","Successfully Fetch Order",
+                purchaseOrderService.getAllOrders());
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/orderDetails")
+    public ResponseUtil getAllOrderDetails(@RequestBody SaleDTO saleDTO){
+        return new ResponseUtil("200","Successfully Fetch Order Details",
+                purchaseOrderService.getAllOrderDetails(saleDTO));
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping("/{orderId}")
+    public ResponseUtil orderCanBeReturned(@PathVariable String orderId){
+        return new ResponseUtil("200","Successfully Fetch Can Be Returned",
+                purchaseOrderService.canBeReturned(orderId));
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/{orderId}")
+    public ResponseUtil returnFullOrder(@PathVariable String orderId){
+        System.out.println(orderId);
+        purchaseOrderService.returnFullOrder(orderId);
+        return new ResponseUtil("200","Successfully Return Full Order",null);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/oneItem")
+    public ResponseUtil returnOneItemOrder(@RequestBody SaleDetailsDTO saleDetailsDTO){
+        purchaseOrderService.returnOneItem(saleDetailsDTO);
+        return new ResponseUtil("200","Successfully Return One Item Order",null);
     }
 
 }

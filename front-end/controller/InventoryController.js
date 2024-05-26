@@ -163,6 +163,7 @@ function checkItem() {
                 'Authorization': 'Bearer ' + accessToken
             },
             data: JSON.stringify(code),
+            dataType: "json",
             contentType: "application/json",
             success: function (resp) {
                 if (resp.state == 200) {
@@ -509,7 +510,7 @@ function setDataToInput(resp) {
     $('#itemStatus').text(resp.status);
     itemBase64String = resp.itemPicture;
     $('.inputBox').not(':first').remove();
-
+    $('#itemStatus').css('color', 'green');
     inputData = resp.sizeList;
     resp.sizeList.forEach(function (item, index) {
         if (index > 0) {

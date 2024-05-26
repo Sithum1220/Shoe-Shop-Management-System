@@ -71,6 +71,7 @@ employeeBtn.click(function () {
         .catch(error => {
             console.error("Error loading HTML file:", error);
         });
+
 })
 supplierBtn.click(function () {
     // $('#employee').css("display", "none");

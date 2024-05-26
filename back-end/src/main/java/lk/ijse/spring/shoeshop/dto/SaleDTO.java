@@ -1,6 +1,8 @@
 package lk.ijse.spring.shoeshop.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lk.ijse.spring.shoeshop.entity.Customer;
+import lk.ijse.spring.shoeshop.enumeration.Order_Status;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -19,6 +21,8 @@ public class SaleDTO {
     private LocalDate purchaseDate;
 
     private Double total;
+
+    private Order_Status status;
 
     private String paymentMethod;
 

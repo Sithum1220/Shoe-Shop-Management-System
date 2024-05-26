@@ -1,7 +1,7 @@
 package lk.ijse.spring.shoeshop.entity;
 
 import jakarta.persistence.*;
-import lk.ijse.spring.shoeshop.embedded.Role;
+import lk.ijse.spring.shoeshop.enumeration.Role;
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.springframework.security.core.GrantedAuthority;

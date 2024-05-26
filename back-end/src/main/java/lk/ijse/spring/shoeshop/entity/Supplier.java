@@ -1,7 +1,7 @@
 package lk.ijse.spring.shoeshop.entity;
 
 import jakarta.persistence.*;
-import lk.ijse.spring.shoeshop.embedded.Category;
+import lk.ijse.spring.shoeshop.enumeration.Category;
 import lk.ijse.spring.shoeshop.embedded.InAddress;
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;

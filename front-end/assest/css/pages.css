@@ -377,3 +377,34 @@ input[type="date"]::before {
     max-height: 8rem;
     overflow-y: auto;
 }
+
+.highlight{
+    color: red !important;
+    cursor: pointer;
+}
+
+.highlight1{
+    color: #2cff00 !important;
+    cursor: pointer;
+}
+
+.upload-div {
+    width: 200px;
+    height: 200px;
+    background-color: #f0f0f0;
+    border: 2px dashed #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+.upload-div img {
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
