@@ -181,13 +181,15 @@
                                     <option value="OTHER">Other</option>
                                 </select>
                             </div>
-                            <div class="col-md-12">
-                                <label for="imgUploader" class="file-label lbl">Select a image...</label>
-                                <input class="form-control imgUploader txt" type="file" id="imgUploader" multiple/>
+                            <div class="col-md-12 d-flex justify-content-center">
+                                <div class="upload-div" id="uploadDiv">
+                                    Click to upload Image
+                                </div>
+                                <input class="form-control imgUploader txt" type="file" id="imgUploader" multiple style="display:none;"/>
                             </div>
-                            <div class=" d-flex justify-content-center">
-                                <img id="imgViewer" alt="" width="150" src="#"/>
-                            </div>
+<!--                            <div class=" d-flex justify-content-center">-->
+<!--                                <img id="imgViewer" alt="" width="150" src="#"/>-->
+<!--                            </div>-->
                         </form>
 
 
@@ -245,8 +247,5 @@
         </div>
     </section>
 </section>
-
-<script src="../../assest/js/admin/employee.js"></script>
-<script src="../../controller/employeeController.js"></script>
 </body>
 </html>

@@ -49,7 +49,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     @Override
     public void purchaseOrder(SaleDTO saleDTO) {
         saleDTO.setPurchaseDate(LocalDate.now());
-
+        saleDTO.setStatus(Order_Status.ACTIVE);
         System.out.println(saleDTO.getCustomerId().getCustomerId());
 
         if (saleDTO.getCustomerId().getCustomerId() != null) {
@@ -87,7 +87,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
                     modelMapper.map(saleDetailsDTO.getInventory(), Inventory.class),
                     salesEntity, // Associate the sale details with the saved sales entity
                     saleDetailsDTO.getItmQTY(),
-                    saleDetailsDTO.getStatus()
+                    Order_Status.ACTIVE
             );
 
             // Save the sale details
@@ -116,19 +116,15 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     public boolean canBeReturned(String orderNo) {
         Sales sales = purchaseOrderRepository.findById(orderNo).orElse(null);
         if (sales == null) {
-            // Handle case where order with given orderNo does not exist
             return false;
         }
 
         LocalDate purchaseDate = sales.getPurchaseDate();
 
-        // Calculate the date three days from the purchase date
         LocalDate threeDaysFromPurchase = purchaseDate.plusDays(3);
 
-        // Get the current date
         LocalDate currentDate = LocalDate.now();
 
-        // Check if the current date is within three days from the purchase date
         return !currentDate.isAfter(threeDaysFromPurchase);
     }
 
@@ -148,6 +144,8 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
                 for (SaleDetails saleDetails : allByOrderNo) {
                     int qty = saleDetails.getItmQTY();
+                    saleDetails.setReturnedQty(saleDetails.getItmQTY());
+                    saleDetails.setItmQTY(0);
                     Size bySizeId = sizeRepository.findBySizeId(saleDetails.getSize().getSizeId());
                     bySizeId.setQty(bySizeId.getQty() + qty);
                     Inventory byItemCode = inventoryRepository.findByItemCode(saleDetails.getInventory().getItemCode());
@@ -176,29 +174,36 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
             if (details.getStatus() != Order_Status.RETURNED) {
                 if (details.getStatus() != Order_Status.CONFIRMED) {
+                    if (details.getItmQTY() >= saleDetailsDTO.getItmQTY()) {
 
-                    details.setItmQTY(details.getItmQTY() - saleDetailsDTO.getItmQTY());
+                        int qty = details.getItmQTY();
 
-                    Size bySizeId = sizeRepository.findBySizeId(details.getSize().getSizeId());
-                    bySizeId.setQty(bySizeId.getQty() + saleDetailsDTO.getItmQTY());
+                        details.setItmQTY(details.getItmQTY() - saleDetailsDTO.getItmQTY());
+                        details.setReturnedQty(details.getReturnedQty() + saleDetailsDTO.getItmQTY());
 
-                    Inventory byItemCode = inventoryRepository.findByItemCode(details.getInventory().getItemCode());
-                    byItemCode.setQty(byItemCode.getQty() + saleDetailsDTO.getItmQTY());
-                    details.setStatus(Order_Status.RETURNED);
+                        Size bySizeId = sizeRepository.findBySizeId(details.getSize().getSizeId());
+                        bySizeId.setQty(bySizeId.getQty() + saleDetailsDTO.getItmQTY());
 
-                    List<SaleDetails> allByOrderNo = purchaseOrderDetailsRepository.findAllByOrderNo(modelMapper.map(saleDetailsDTO.getOrderNo(), Sales.class));
+                        Inventory byItemCode = inventoryRepository.findByItemCode(details.getInventory().getItemCode());
+                        byItemCode.setQty(byItemCode.getQty() + saleDetailsDTO.getItmQTY());
 
-                    int count = 0;
-                    for (SaleDetails saleDetails : allByOrderNo) {
-                        if (saleDetails.getStatus() == Order_Status.RETURNED) {
-                            count++;
+                        List<SaleDetails> allByOrderNo = purchaseOrderDetailsRepository.findAllByOrderNo(modelMapper.map(saleDetailsDTO.getOrderNo(), Sales.class));
+                        if (qty == saleDetailsDTO.getItmQTY()) {
+                            details.setStatus(Order_Status.RETURNED);
+                            int count = 0;
+                            for (SaleDetails saleDetails : allByOrderNo) {
+                                if (saleDetails.getStatus() == Order_Status.RETURNED) {
+                                    count++;
+                                }
+                            }
+                            if (count == allByOrderNo.size()) {
+                                Sales byOrderNo = purchaseOrderRepository.findByOrderNo(saleDetailsDTO.getOrderNo().getOrderNo());
+                                byOrderNo.setStatus(Order_Status.RETURNED);
+                            }
                         }
+                    }else {
+                        throw new EntityExistsException("Sorry! The Qty you entered is too high. Please try again.");
                     }
-                    if(count == allByOrderNo.size()){
-                        Sales byOrderNo = purchaseOrderRepository.findByOrderNo(saleDetailsDTO.getOrderNo().getOrderNo());
-                        byOrderNo.setStatus(Order_Status.RETURNED);
-                    }
-
                 } else {
                     throw new EntityExistsException("Sorry! This order Cannot be returned");
                 }

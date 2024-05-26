@@ -195,26 +195,35 @@ function performAuthenticatedRequest() {
 }
 
 function userImageUploader() {
-    const userImgUploader = $('#imgUploader');
-    const imgViewer = $('#imgViewer');
+    const imgUploader = $('#imgUploader');
+    const uploadDiv = $('#uploadDiv');
 
-    userImgUploader.change(function () {
+    uploadDiv.click(function () {
+        imgUploader.click();
+    });
 
-        var file = this.files[0];
+    imgUploader.change(function () {
+        const file = this.files[0];
 
         if (file) {
-            var reader = new FileReader();
+            const reader = new FileReader();
 
             reader.onload = function (e) {
-                imgViewer.attr('src', e.target.result);
-                base64String = reader.result.split(',')[1];
+                uploadDiv.empty();  // Clear any existing content
+                const img = $('<img>').attr('src', e.target.result);
+                uploadDiv.append(img);  // Add the image to the div
+
+                // Save the base64 string
+                base64String = e.target.result.split(',')[1];
+                console.log(base64String);  // You can remove this line if you don't need to log it
             };
 
             reader.readAsDataURL(file);
         } else {
-            imgViewer.attr('src', '#');
+            uploadDiv.empty();  // Clear the div if no file is selected
+            uploadDiv.text('Click to upload files');  // Reset placeholder text
         }
-    })
+    });
 }
 
 $('#employeePopupCancelBtn,#employeePopupClose').click(function () {

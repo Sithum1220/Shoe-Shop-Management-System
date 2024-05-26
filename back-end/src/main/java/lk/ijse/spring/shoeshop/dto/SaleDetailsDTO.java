@@ -14,6 +14,8 @@ public class SaleDetailsDTO {
 
     private int itmQTY;
 
+    private int returnedQty;
+
     private SaleDTO orderNo;
 
     private InventoryDTO inventory;

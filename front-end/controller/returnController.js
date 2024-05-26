@@ -1,11 +1,13 @@
-function returnController(){
-getAllOrders();
-clickOrderTblRow();
-checkCanBeReturnedOrder();
-clearOrderIdInput();
+function returnController() {
+    getAllOrders();
+    clickOrderTblRow();
+    checkCanBeReturnedOrder();
+    clearOrderIdInput();
 }
-let OrderNo ;
-function getAllOrders(){
+
+let OrderNo;
+
+function getAllOrders() {
     performAuthenticatedRequest();
     const accessToken = localStorage.getItem('accessToken');
     $.ajax({
@@ -19,7 +21,7 @@ function getAllOrders(){
             console.log("Success: ", resp);
             $('#tblOrders tbody').empty()
             for (const orders of resp.data) {
-                const row = `<tr>
+                let row = `<tr>
                                 <th scope="row">
                                  <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value=""/>
@@ -28,9 +30,17 @@ function getAllOrders(){
                                 <td>${orders.orderNo}</td>
                                 <td>${orders.purchaseDate}</td>
                                 <td>${orders.cashier}</td>  
-                                <td>${orders.total}</td>
-                                <td>${orders.status}</td>                             
-                            </tr>`;
+                                <td>${orders.total}</td>`;
+                            
+                if (orders.status === 'RETURNED') {
+                    row += `<td class="highlight">${orders.status}</td>`
+                }else if (orders.status === 'CONFIRMED') {
+                    row += `<td className="highlight1">${orders.status}</td>`
+                }else {
+                    row += `<td>${orders.status}</td>`
+                }
+
+                row += `</tr>`;
                 $('#tblOrders').append(row);
             }
         },
@@ -82,18 +92,30 @@ function getOrderDataByClickTblRow(orderCheckbox) {
             },
             contentType: "application/json",
             success: function (response) {
-                $('#tblOrdersDetails tbody').empty()
+                $('#tblOrdersDetails tbody').empty();
                 for (const ordersDetails of response.data) {
-                    const row = `<tr>
-                                <td>${ordersDetails.inventory.itemCode}</td>
-                                <td>${ordersDetails.color}</td>
-                                <td>${ordersDetails.size}</td>
-                                <td>${ordersDetails.itmQTY}</td>                             
-                                <td>${ordersDetails.itmTotal}</td>                             
-                                <td>${ordersDetails.status}</td>                             
-                            </tr>`;
+                    console.log("returnedQty: " + ordersDetails.returnedQty);
+
+                    let row = `<tr>
+            <td>${ordersDetails.inventory.itemCode}</td>
+            <td>${ordersDetails.color}</td>
+            <td>${ordersDetails.size}</td>
+            <td>${ordersDetails.itmQTY}</td>
+            <td>${ordersDetails.itmTotal}</td>`;
+
+                    if (ordersDetails.returnedQty !== 0) {
+                        row += `<td class="highlight" data-toggle="tooltip" data-placement="top" title="${ordersDetails.returnedQty + " Qty has been returned."}">${ordersDetails.status}</td>`;
+                    } else {
+                        row += `<td>${ordersDetails.status}</td>`;
+                    }
+
+                    row += `</tr>`;
+
                     $('#tblOrdersDetails').append(row);
                 }
+
+                // Initialize tooltips after appending rows
+                $('[data-toggle="tooltip"]').tooltip();
             },
             error: function (xhr, status, error) {
                 console.error('Error :', error);
@@ -108,8 +130,8 @@ function checkCanBeReturnedOrder() {
         let id = $('#orderId').val()
         if ($('#orderId').val() !== '') {
             console.log("fuck")
-        performAuthenticatedRequest();
-        const accessToken = localStorage.getItem('accessToken');
+            performAuthenticatedRequest();
+            const accessToken = localStorage.getItem('accessToken');
             $.ajax({
                 url: "http://localhost:8080/api/v1/orders/" + id,
                 type: "GET",
@@ -118,13 +140,13 @@ function checkCanBeReturnedOrder() {
                 },
                 dataType: "json",
                 success: function (response) {
-                    if (response.data){
+                    if (response.data) {
                         $('#returnStatus').addClass('d-none');
                         $('#orderType').prop('disabled', false);
                         returnFullOrders(id)
                         console.log(response.data)
                         console.log("true Hode");
-                    }else{
+                    } else {
                         $('#returnStatus').removeClass('d-none');
                         $('#orderType').prop('disabled', true);
                         console.log(response.data)
@@ -150,10 +172,10 @@ function clearOrderIdInput() {
 }
 
 function returnFullOrders(id) {
-    
+
     $('#returnPopupAddBtn').click(function () {
-        
-    const orderType = $('#orderType').val();
+
+        const orderType = $('#orderType').val();
         performAuthenticatedRequest();
         const accessToken = localStorage.getItem('accessToken');
         if (orderType === 'Full Order') {
@@ -184,19 +206,19 @@ function returnFullOrders(id) {
                     });
                 }
             });
-        } else if (orderType === 'One Item'){
+        } else if (orderType === 'One Item') {
             const itemId = $('#itemId').val();
             const itemColor = $('#itemColor').val();
             const itemSize = $('#itemSize').val();
             const itemQty = $('#itemQty').val();
 
             const data = {
-                inventory:{
+                inventory: {
                     itemCode: itemId,
                 },
                 size: itemSize,
-                color:itemColor,
-                orderNo:{
+                color: itemColor,
+                orderNo: {
                     orderNo: id,
                 },
                 itmQTY: itemQty

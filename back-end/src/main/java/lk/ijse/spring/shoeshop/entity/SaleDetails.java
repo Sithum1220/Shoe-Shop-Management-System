@@ -29,6 +29,7 @@ public class SaleDetails {
 
     @Column(name = "itm_qty")
     private int itmQTY;
+    private int returnedQty;
 
     @ManyToOne
     @JoinColumn(name = "order_no")

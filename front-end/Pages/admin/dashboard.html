@@ -24,11 +24,11 @@
                 <h2 class="shoes ms-5" href="#">Shoes.</h2>
                 <div class="profile">
                     <div class="info">
-                        <p class="m-0">Hey, <b>Sithum</b></p>
-                        <small class="text-muted">Admin</small>
+                        <p class="m-0">Hey, <b id="name"></b></p>
+                        <small class="text-muted" id="greeting"></small>
                     </div>
                     <div class="profile-photo me-2">
-                        <img src="../../assest/images/profile-1.jpg">
+
                     </div>
                 </div>
             </div>
@@ -116,18 +116,25 @@
                 <div class="shadow-lg col ">
                     <div class="sales">
                         <div class="status">
-                            <div class="info">
-                                <h3>Total Sales</h3>
-                                <h1>$65,024</h1>
-                            </div>
-                            <div class="progresss">
-                                <svg>
-                                    <circle cx="38" cy="38" r="36"></circle>
-                                </svg>
-                                <div class="percentage">
-                                    <p>+81%</p>
+                            <div class="saleDetailBox">
+                                <div class="container">
+                                    <div class="input-group date">
+                                        <input type="text" class="form-control datepicker" placeholder="Select Date">
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3>Total Sales</h3>
+                                    <h1>$65,024</h1>
                                 </div>
                             </div>
+<!--                            <div class="progresss">-->
+<!--                                <svg>-->
+<!--                                    <circle cx="38" cy="38" r="36"></circle>-->
+<!--                                </svg>-->
+<!--                                <div class="percentage">-->
+<!--                                    <p>+81%</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -281,10 +288,15 @@
     <section id="pages" class="mainSection"></section>
 </main>
 
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="../../assest/js/code.jquery.com_jquery-3.7.1.min.js"></script>
 <script src="../../controller/employeeController.js"></script>
 <script src="../../assest/boostrap/js/bootstrap.bundle.js"></script>
 <script src="../../assest/js/admin/dashboard.js"></script>
+<script src="../../controller/DashboardController.js"></script>
 <script src="../../assest/js/admin/employee.js"></script>
 <script src="../../assest/js/admin/supplier.js"></script>
 <script src="../../assest/js/admin/return.js"></script>
@@ -301,6 +313,8 @@
 <script src="../../controller/employeeController.js"></script>
 <script src="../../controller/returnController.js"></script>
 <!--<script src="../../controller/LoginController.js"></script>-->
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
