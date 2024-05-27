@@ -52,6 +52,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
         saleDTO.setStatus(Order_Status.ACTIVE);
         System.out.println(saleDTO.getCustomerId().getCustomerId());
 
+        System.out.println(saleDTO.getCustomerId().getCustomerId());
         if (saleDTO.getCustomerId().getCustomerId() != null) {
             Customer customer = customerRepository.findByCustomerId(saleDTO.getCustomerId().getCustomerId());
             // Update customer loyalty points and level
@@ -66,7 +67,6 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
             customerDTO.setCustomerId("Nan");
             saleDTO.setCustomerId(customerDTO);
         }
-
 
         // Save the sale order
 
@@ -134,6 +134,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
         sales.setOrderNo(orderNo);
         System.out.println(orderNo);
         Sales byOrderNo = purchaseOrderRepository.findByOrderNo(orderNo);
+
         if (byOrderNo.getStatus() != Order_Status.RETURNED) {
             if (byOrderNo.getStatus() != Order_Status.CONFIRMED) {
                 System.out.println(byOrderNo);
@@ -213,6 +214,30 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
         } else {
             throw new EntityExistsException("Sorry! No such order found");
         }
+    }
+
+    @Override
+    public int totalSalesOfASelectedDate(LocalDate date) {
+        return purchaseOrderRepository.countByPurchaseDate(date);
+    }
+
+    @Override
+    public double totalProfitOfASelectedDate(LocalDate date) {
+        List<Sales> allByPurchaseDate = purchaseOrderRepository.findAllByPurchaseDate(date);
+        double totalProfit = 0;
+        for (Sales sale : allByPurchaseDate) {
+            List<SaleDetails> allByOrderNo = purchaseOrderDetailsRepository.findAllByOrderNo(sale);
+                for (SaleDetails saleDetails : allByOrderNo) {
+                    Inventory byItemCode = inventoryRepository.findByItemCode(saleDetails.getInventory().getItemCode());
+                    double byPrice = byItemCode.getBuyPrice();
+                    double sellPrice = byItemCode.getSalePrice();
+
+                    double cost = saleDetails.getItmQTY() * byPrice;
+                    double totalSellPrice = saleDetails.getItmQTY() * sellPrice;
+                    totalProfit += totalSellPrice - cost;
+                }
+        }
+        return totalProfit;
     }
 
 

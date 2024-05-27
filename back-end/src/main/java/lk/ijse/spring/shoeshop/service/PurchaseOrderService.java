@@ -3,6 +3,7 @@ package lk.ijse.spring.shoeshop.service;
 import lk.ijse.spring.shoeshop.dto.SaleDTO;
 import lk.ijse.spring.shoeshop.dto.SaleDetailsDTO;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface PurchaseOrderService {
@@ -19,4 +20,8 @@ public interface PurchaseOrderService {
      void returnFullOrder(String orderNo);
 
      void returnOneItem(SaleDetailsDTO saleDetailsDTO);
+
+     int totalSalesOfASelectedDate(LocalDate date);
+
+     double totalProfitOfASelectedDate(LocalDate localDate);
 }

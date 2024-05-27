@@ -382,6 +382,8 @@ function purchaseOrder() {
         let customerId;
         if ($('#orderCustomerId').val() === '') {
             customerId = null;
+        }else {
+            customerId = $('#orderCustomerId').val();
         }
         console.log(total);
         const data = {

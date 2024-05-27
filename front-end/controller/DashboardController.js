@@ -1,12 +1,22 @@
 
 setProfileImageAndName();
 updateGreeting();
+totalSalesOfASelectedDate();
+totalProfitOfASelectedDate();
 
 $(document).ready(function(){
     $('.datepicker').datepicker({
-        format: 'mm/dd/yyyy',
+        format: 'yyyy-mm-dd',
         autoclose: true
     });
+
+    let today = new Date();
+    let year = today.getFullYear();
+    let month = today.getMonth() + 1 < 10 ? `0${today.getMonth()+1}` : `${today.getMonth()+1}`;
+    let day = today.getDate() < 10 ? `0${today.getDate()}` : `${today.getDate()}`;
+    let finalTodayDate = month+'/'+day+'/'+year;
+    $('#totalSaleDate').val(finalTodayDate).change();
+    $('#totalProfitDate').val(finalTodayDate).change();
 });
 
 function setProfileImageAndName() {
@@ -50,3 +60,103 @@ function updateGreeting() {
 }
 
 setInterval(updateGreeting, 3600000);
+
+
+
+function totalSalesOfASelectedDate() {
+    $('#totalSaleDate').change(function () {
+
+        const accessToken = localStorage.getItem('accessToken');
+        let date = $(this).val();
+
+        const parts = date.split('/');
+        if (parts.length !== 3) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: 'Invalid Date',
+                footer: '<a href="#"></a>'
+            });
+
+            return;
+        }
+
+        var mm = parts[0];
+        var dd = parts[1];
+        var yyyy = parts[2];
+
+        let finalDate = `${yyyy}-${mm.padStart(2, '0')}-${dd.padStart(2, '0')}`;
+
+        $.ajax({
+            url: "http://localhost:8080/api/v1/dashboard/totalSale/" + finalDate,
+            type: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
+            dataType: "json",
+            success: function (response) {
+                let totalSales = response.data;
+                // Format total sales: add leading zero if less than 10
+                let formattedTotalSales = totalSales < 10 ? `0${totalSales}` : `${totalSales}`;
+                $('#totalSale').text(formattedTotalSales);
+            },
+            error: function (xhr, status, error) {
+                console.error('Failed to fetch image:', error);
+            }
+        });
+    })
+
+}
+
+function totalProfitOfASelectedDate() {
+    $('#totalProfitDate').change(function () {
+        const accessToken = localStorage.getItem('accessToken');
+        let date = $(this).val();
+
+        const parts = date.split('/');
+        if (parts.length !== 3) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: 'Invalid Date',
+                footer: '<a href="#"></a>'
+            });
+
+            return;
+        }
+
+        var mm = parts[0];
+        var dd = parts[1];
+        var yyyy = parts[2];
+
+        let finalDate = `${yyyy}-${mm.padStart(2, '0')}-${dd.padStart(2, '0')}`;
+
+        $.ajax({
+            url: "http://localhost:8080/api/v1/dashboard/totalProfit/" + finalDate,
+            type: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
+            dataType: "json",
+            success: function (response) {
+                let totalSales = response.data;
+                // Format total sales: add leading zero if less than 10
+                let formattedTotalSales = totalSales < 10 ? `0${totalSales}` : `${totalSales}`;
+                $('#totalProfit').text(formattedTotalSales);
+            },
+            error: function (xhr, status, error) {
+                console.error('Failed to fetch image:', error);
+            }
+        });
+    })
+
+}
+
+
+// function formatDate(date) {
+//     var mm = date.getMonth() + 1; // January is 0!
+//     var dd = date.getDate();
+//     var yyyy = date.getFullYear();
+//
+//     return `${yyyy}-${String(mm).padStart(2, '0')}-${String(dd).padStart(2, '0')}`;
+// }

@@ -179,11 +179,11 @@ main .analyse > div:hover {
     box-shadow: none;
 }
 
-main .analyse > div .status {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+/*main .analyse > div .status {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: space-between;*/
+/*}*/
 
 main .analyse h3 {
     margin-left: 0.6rem;
