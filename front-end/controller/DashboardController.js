@@ -4,22 +4,29 @@ updateGreeting();
 totalSalesOfASelectedDate();
 totalProfitOfASelectedDate();
 mostSaleItemOfASelectedDate();
+fetchLastThreeOrders();
+totalItemsSoldOnDate();
 
-$(document).ready(function(){
-    $('.datepicker').datepicker({
-        format: 'yyyy-mm-dd',
-        autoclose: true
+documentReady();
+function documentReady() {
+    $(document).ready(function(){
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true
+        });
+
+        let today = new Date();
+        let year = today.getFullYear();
+        let month = today.getMonth() + 1 < 10 ? `0${today.getMonth()+1}` : `${today.getMonth()+1}`;
+        let day = today.getDate() < 10 ? `0${today.getDate()}` : `${today.getDate()}`;
+        let finalTodayDate = month+'/'+day+'/'+year;
+        $('#totalSaleDate').val(finalTodayDate).change();
+        $('#totalProfitDate').val(finalTodayDate).change();
+        $('#mostSaleItemStatusDate').val(finalTodayDate).change();
+        $('#totalItemsSoldDate').val(finalTodayDate).change();
     });
+}
 
-    let today = new Date();
-    let year = today.getFullYear();
-    let month = today.getMonth() + 1 < 10 ? `0${today.getMonth()+1}` : `${today.getMonth()+1}`;
-    let day = today.getDate() < 10 ? `0${today.getDate()}` : `${today.getDate()}`;
-    let finalTodayDate = month+'/'+day+'/'+year;
-    $('#totalSaleDate').val(finalTodayDate).change();
-    $('#totalProfitDate').val(finalTodayDate).change();
-    $('#mostSaleItemStatusDate').val(finalTodayDate).change();
-});
 
 function setProfileImageAndName() {
     performAuthenticatedRequest();
@@ -268,10 +275,78 @@ function getMostSaleItemDetails(itemId) {
     }
 }
 
-// function formatDate(date) {
-//     var mm = date.getMonth() + 1; // January is 0!
-//     var dd = date.getDate();
-//     var yyyy = date.getFullYear();
-//
-//     return `${yyyy}-${String(mm).padStart(2, '0')}-${String(dd).padStart(2, '0')}`;
-// }
+function fetchLastThreeOrders() {
+    const accessToken = localStorage.getItem('accessToken');
+
+    $.ajax({
+        url: 'http://localhost:8080/api/v1/dashboard/recent',
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        },
+        dataType: "json",
+        success: function(response) {
+            // Clear existing rows
+            $('#orders-body').empty();
+            // Append new rows
+            response.data.forEach(function(order) {
+                let row = `<tr>
+                                <td>${order.orderNo}</td>
+                                <td>${order.purchaseDate}</td>
+                                <td>${order.cashier}</td>
+                                <td>${order.total}</td>
+                                <td>${order.status}</td>
+                            </tr>`;
+                $('#orders-body').append(row);
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error('Error fetching orders:', error);
+            $('#orders-body').html(`<tr><td colspan="5">Error fetching orders. Please try again later.</td></tr>`);
+        }
+    });
+}
+
+function totalItemsSoldOnDate() {
+    $('#totalItemsSoldDate').change(function () {
+
+        const accessToken = localStorage.getItem('accessToken');
+        let date = $(this).val();
+
+        const parts = date.split('/');
+        if (parts.length !== 3) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: 'Invalid Date',
+                footer: '<a href="#"></a>'
+            });
+
+            return;
+        }
+
+        var mm = parts[0];
+        var dd = parts[1];
+        var yyyy = parts[2];
+
+        let finalDate = `${yyyy}-${mm.padStart(2, '0')}-${dd.padStart(2, '0')}`;
+
+        $.ajax({
+            url: "http://localhost:8080/api/v1/dashboard/totalItemsSold/" + finalDate,
+            type: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
+            dataType: "json",
+            success: function (response) {
+                let totalItem = response.data;
+                // Format total sales: add leading zero if less than 10
+                let finalTotalItem = totalItem < 10 ? `0${totalItem}` : `${totalItem}`;
+                $('#totalItemsSold').text(finalTotalItem);
+            },
+            error: function (xhr, status, error) {
+                console.error('Failed to fetch image:', error);
+            }
+        });
+    })
+}

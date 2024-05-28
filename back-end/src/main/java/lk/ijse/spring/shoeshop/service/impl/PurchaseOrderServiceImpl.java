@@ -9,6 +9,8 @@ import lk.ijse.spring.shoeshop.repository.*;
 import lk.ijse.spring.shoeshop.service.PurchaseOrderService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -276,6 +278,24 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
         return result;
     }
 
+    @Override
+    public List<Sales> getLastThreeOrders() {
+        Pageable pageable = PageRequest.of(0, 3);
+        return purchaseOrderRepository.findLastThreeOrders(pageable);
+    }
+
+    @Override
+    public int totalItemsSoldOnDate(LocalDate date) {
+        List<Sales> salesList = purchaseOrderRepository.findAllByPurchaseDate(date);
+        int totalItemsSold = 0;
+        for (Sales sale : salesList) {
+            List<SaleDetails> saleDetailsList = purchaseOrderDetailsRepository.findAllByOrderNo(sale);
+            for (SaleDetails saleDetails : saleDetailsList) {
+                totalItemsSold += saleDetails.getItmQTY();
+            }
+        }
+        return totalItemsSold;
+    }
 
     private void updateCustomerLoyaltyLevel(Customer customer) {
         if (customer.getTotalPoints() >= 200) {

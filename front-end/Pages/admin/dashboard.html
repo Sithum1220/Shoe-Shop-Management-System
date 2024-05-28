@@ -170,6 +170,31 @@
                     </div>
                 </div>
                 <div class="shadow-lg col">
+                    <div class="searches">
+                        <div class="status">
+                            <div class="saleDetailBox">
+                                <div class="container">
+                                    <div class="input-group date">
+                                        <input type="text" id="totalItemsSoldDate" class="form-control datepicker" placeholder="Select Date">
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center flex-column">
+                                    <h3 class="fs-3 text-muted">Sold Item</h3>
+                                    <h1 id="totalItemsSold" class="text-muted"></h1>
+                                </div>
+                            </div>
+                            <!--                            <div class="progresss">-->
+                            <!--                                <svg>-->
+                            <!--                                    <circle cx="38" cy="38" r="36"></circle>-->
+                            <!--                                </svg>-->
+                            <!--                                <div class="percentage">-->
+                            <!--                                    <p>+21%</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow-lg col-md-4 lastDiv">
                     <!--                    <img src="../Admin Dashboard/assets/images/Frame03.png" alt="">-->
                     <!--                    <h2>100 <p>Employee Attendance</p></h2>-->
                     <div class="visits">
@@ -196,31 +221,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="shadow-lg col lastDiv">
-                    <div class="searches">
-                        <div class="status">
-                            <div class="saleDetailBox">
-                                <div class="container">
-                                    <div class="input-group date">
-                                        <input type="text" class="form-control datepicker" placeholder="Select Date">
-                                    </div>
-                                </div>
-                                <div>
-                                    <h3>Searches</h3>
-                                    <h1>14,147</h1>
-                                </div>
-                            </div>
-                            <!--                            <div class="progresss">-->
-                            <!--                                <svg>-->
-                            <!--                                    <circle cx="38" cy="38" r="36"></circle>-->
-                            <!--                                </svg>-->
-                            <!--                                <div class="percentage">-->
-                            <!--                                    <p>+21%</p>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-                        </div>
-                    </div>
-                </div>
+
             </div>
 
         </div>
@@ -273,34 +274,14 @@
                             <thead>
                             <tr>
                                 <th scope="col">Order Id</th>
-                                <th scope="col">Customer Id</th>
-                                <th scope="col">Customer Name</th>
-                                <th scope="col">Date</th>
+                                <th scope="col">Purchase Date</th>
+                                <th scope="col">Cashier Name</th>
                                 <th scope="col">Total Price</th>
+                                <th scope="col">Status</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <td>O001</td>
-                                <td>C001</td>
-                                <td>Sithum Perera</td>
-                                <td>2024.01.20</td>
-                                <td>2500</td>
-                            </tr>
-                            <tr>
-                                <td>O002</td>
-                                <td>C002</td>
-                                <td>Imesh Perera</td>
-                                <td>2024.02.10</td>
-                                <td>3500</td>
-                            </tr>
-                            <tr>
-                                <td>O003</td>
-                                <td>C003</td>
-                                <td>Sithum Imesh</td>
-                                <td>2024.03.18</td>
-                                <td>5500</td>
-                            </tr>
+                            <tbody id="orders-body">
+
                             </tbody>
                         </table>
                     </div>

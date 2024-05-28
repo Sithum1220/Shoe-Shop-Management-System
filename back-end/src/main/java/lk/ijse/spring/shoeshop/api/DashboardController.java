@@ -1,6 +1,7 @@
 package lk.ijse.spring.shoeshop.api;
 
 import lk.ijse.spring.shoeshop.dto.InventoryDTO;
+import lk.ijse.spring.shoeshop.entity.Sales;
 import lk.ijse.spring.shoeshop.service.PurchaseOrderService;
 import lk.ijse.spring.shoeshop.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,17 @@ public class DashboardController {
     @GetMapping("/mostSaleItem/{mostSaleDate}")
     public ResponseUtil mostSaleItem(@PathVariable("mostSaleDate") LocalDate date) {
         return new ResponseUtil("200", "Successfully Saved!", purchaseOrderService.mostSoldItemAndColor(date));
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping("/recent")
+    public ResponseUtil getLastThreeOrders() {
+        return new ResponseUtil("200", "Successfully Saved!", purchaseOrderService.getLastThreeOrders());
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping("/totalItemsSold/{itemSoldDate}")
+    public ResponseUtil totalItemsSold(@PathVariable("itemSoldDate") LocalDate date) {
+        return new ResponseUtil("200", "Successfully Retrieved!", purchaseOrderService.totalItemsSoldOnDate(date));
     }
 }
