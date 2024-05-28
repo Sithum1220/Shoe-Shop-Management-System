@@ -77,7 +77,6 @@ function saveItem() {
                         qty: quantity,
                         itemCode:$('#itemCode').val()
                     };
-
                     inputData.push(itemData);
                 });
             }
@@ -86,7 +85,7 @@ function saveItem() {
         console.log(inputData);
     $('#inventoryPopupBtn').click(function () {
         if ($(this).text().trim() === 'Save') {
-            if ($('#itemImgUploader').val() === ''){
+            if ($('#itemImgViewer').src === '#'){
                 itemBase64String = null;
             }
             const postData = {
@@ -174,7 +173,7 @@ function checkItem() {
                         $('#itemStatus').text(resp.data.status);
                         if (resp.data.status !== "No Item Found") {
 
-                            console.log(resp);
+                            console.log("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ");
                             $('#itemImgViewer').attr('src', 'data:image/jpeg;base64,' + resp.data.itemPicture);
                             $('#itemBuyPrice').val(resp.data.buyPrice);
                             $('#itemSellPrice').val(resp.data.salePrice);
@@ -182,6 +181,7 @@ function checkItem() {
                             $('#itemCategory').val(resp.data.category);
                             $('#supplierCode').val(resp.data.supplier.supplierCode);
                             $('#supplierName').text(resp.data.supplierName);
+                            // $('#itemImgUploader').val(resp.data.itemPicture);
                             itemBase64String = resp.data.itemPicture;
                             
                             $('.inputBox').not(':first').remove();
@@ -209,7 +209,7 @@ function checkItem() {
                                 });
                             });
                             inputBoxLength =$('.inputBox').length;
-                            console.log("inputBox length: "+$('.inputBox').length);
+                            console.log("inputBox length: "+ $('.inputBox').length);
                             $('#itemStatus').css('color', 'green');
                             $('.dis').prop('disabled', true);
 

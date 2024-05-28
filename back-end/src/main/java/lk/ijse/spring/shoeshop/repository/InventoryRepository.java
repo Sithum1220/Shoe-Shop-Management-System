@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface InventoryRepository extends JpaRepository<Inventory, String> {
     Inventory findByItemCode(String itemCode);
+
     @Query("SELECT i.status FROM Inventory i WHERE i.itemCode = :id")
     String findStatusById(String id);
 

@@ -31,6 +31,7 @@ public class User implements UserDetails {
 
     @ManyToOne
     private Employee employee;
+
     private boolean activeStatus;
 
     @Override

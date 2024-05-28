@@ -13,7 +13,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -52,6 +54,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
         saleDTO.setStatus(Order_Status.ACTIVE);
         System.out.println(saleDTO.getCustomerId().getCustomerId());
 
+        System.out.println(saleDTO.getCustomerId().getCustomerId());
         if (saleDTO.getCustomerId().getCustomerId() != null) {
             Customer customer = customerRepository.findByCustomerId(saleDTO.getCustomerId().getCustomerId());
             // Update customer loyalty points and level
@@ -66,7 +69,6 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
             customerDTO.setCustomerId("Nan");
             saleDTO.setCustomerId(customerDTO);
         }
-
 
         // Save the sale order
 
@@ -134,6 +136,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
         sales.setOrderNo(orderNo);
         System.out.println(orderNo);
         Sales byOrderNo = purchaseOrderRepository.findByOrderNo(orderNo);
+
         if (byOrderNo.getStatus() != Order_Status.RETURNED) {
             if (byOrderNo.getStatus() != Order_Status.CONFIRMED) {
                 System.out.println(byOrderNo);
@@ -213,6 +216,64 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
         } else {
             throw new EntityExistsException("Sorry! No such order found");
         }
+    }
+
+    @Override
+    public int totalSalesOfASelectedDate(LocalDate date) {
+        return purchaseOrderRepository.countByPurchaseDate(date);
+    }
+
+    @Override
+    public double totalProfitOfASelectedDate(LocalDate date) {
+        List<Sales> allByPurchaseDate = purchaseOrderRepository.findAllByPurchaseDate(date);
+        double totalProfit = 0;
+        for (Sales sale : allByPurchaseDate) {
+            List<SaleDetails> allByOrderNo = purchaseOrderDetailsRepository.findAllByOrderNo(sale);
+                for (SaleDetails saleDetails : allByOrderNo) {
+                    Inventory byItemCode = inventoryRepository.findByItemCode(saleDetails.getInventory().getItemCode());
+                    double byPrice = byItemCode.getBuyPrice();
+                    double sellPrice = byItemCode.getSalePrice();
+
+                    double cost = saleDetails.getItmQTY() * byPrice;
+                    double totalSellPrice = saleDetails.getItmQTY() * sellPrice;
+                    totalProfit += totalSellPrice - cost;
+                }
+        }
+        return totalProfit;
+    }
+
+    @Override
+    public Map<String, Object> mostSoldItemAndColor(LocalDate date) {
+        List<Sales> salesList = purchaseOrderRepository.findAllByPurchaseDate(date);
+        Map<String, Integer> itemSalesCount = new HashMap<>();
+
+        for (Sales sale : salesList) {
+            List<SaleDetails> saleDetailsList = purchaseOrderDetailsRepository.findAllByOrderNo(sale);
+            for (SaleDetails saleDetails : saleDetailsList) {
+                String itemCode = saleDetails.getInventory().getItemCode();
+                int currentCount = itemSalesCount.getOrDefault(itemCode, 0);
+                itemSalesCount.put(itemCode, currentCount + saleDetails.getItmQTY());
+            }
+        }
+
+        // Find the item with the highest sales count
+        String mostSoldItem = null;
+        int highestSalesCount = 0;
+
+        for (Map.Entry<String, Integer> entry : itemSalesCount.entrySet()) {
+            if (entry.getValue() > highestSalesCount) {
+                mostSoldItem = entry.getKey();
+                highestSalesCount = entry.getValue();
+            }
+        }
+
+        Map<String, Object> result = new HashMap<>();
+        if (mostSoldItem != null) {
+            result.put("itemCode", mostSoldItem);
+            result.put("salesCount", highestSalesCount);
+        }
+
+        return result;
     }
 
 

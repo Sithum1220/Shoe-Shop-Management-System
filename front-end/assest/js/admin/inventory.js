@@ -104,7 +104,8 @@ function inventoryFunction() {
         $('#itemStatus, #supplierName').text("")
         $('#itemImg').attr('src', '#');
         $('#itemImgViewer').attr('src', '#');
-        
+        $('#inputContainer .inputBox:not(:first)').remove();
+        $('#itemColor, #itemSize, #itemQty').val('');
     });
   
 }

@@ -76,8 +76,12 @@ function signUp() {
                         });
                     },
                     error: function (resp) {
-                        console.log('error')
-                        console.log(resp)
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: resp.responseJSON.message,
+                            footer: '<a href="#"></a>'
+                        });
                     }
                 })
 
