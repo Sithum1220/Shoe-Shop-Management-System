@@ -60,6 +60,35 @@
         body.dark-mode .table tbody tr:hover {
             background-color: var(--table-row-hover-bg-dark);
         }
+
+        select {
+            -webkit-appearance: none;  /* for Chrome, Safari, and Opera */
+            -moz-appearance: none;     /* for Firefox */
+            appearance: none;          /* for others */
+            background: none;          /* remove default background */
+            border: none;              /* remove border */
+            width: 30px;               /* adjust width as needed */
+            padding: 0;
+            font-size: 16px;
+        }
+
+        /* Hide the text in the select */
+        select option {
+            display: none;
+        }
+
+        /* Custom arrow using a pseudo-element */
+        select::after {
+            content: '▼';  /* Unicode character for a down arrow */
+            font-size: 16px;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;  /* prevent the pseudo-element from interfering with clicks */
+        }
+
+
     </style>
 </head>
 <body>
@@ -96,6 +125,20 @@
         </tr>
         </tbody>
     </table>
+
+    <!-- Example split danger button -->
+    <div class="btn-group">
+        <span type="button" class="dropdown-toggle dropdown-toggle-split fs-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        </span>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+    </div>
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -121,9 +164,15 @@
 
         // Apply initial theme
         applyTheme(currentTheme);
+
+        $('#custom-select').on('change', function() {
+            alert('Selected value: ' + $(this).val());
+        });
     });
 </script>
 <!-- Bootstrap Bundle with Popper -->
 <script src="../../assest/boostrap/js/bootstrap.bundle.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

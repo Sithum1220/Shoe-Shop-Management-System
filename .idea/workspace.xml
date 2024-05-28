@@ -5,22 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="032d1856-7f95-44cb-a7e8-c221ea7611af" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/DashboardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-end/src/test/java/lk/ijse/spring/shoeshop/service/impl/PurchaseOrderServiceImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/repository/InventoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/repository/InventoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/repository/PurchaseOrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/repository/PurchaseOrderRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/DashboardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/PurchaseOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/PurchaseOrderService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/PurchaseOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/PurchaseOrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/test/java/lk/ijse/spring/shoeshop/service/impl/PurchaseOrderServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/test/java/lk/ijse/spring/shoeshop/service/impl/PurchaseOrderServiceImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/assest/css/all.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/css/all.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/assest/js/admin/inventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/js/admin/inventory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/temp.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/temp.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/controller/DashboardController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/DashboardController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/controller/InventoryController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/InventoryController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/controller/LoginController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/LoginController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/controller/PurchaseOrderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/PurchaseOrderController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +64,7 @@
     "JUnit.EmployeeServiceImplTest.getAllEmployees.executor": "Run",
     "JUnit.EmployeeServiceImplTest.saveEmployee.executor": "Run",
     "JUnit.EmployeeServiceImplTest.searchEmployeesById.executor": "Run",
+    "JUnit.PurchaseOrderServiceImplTest.mostSoldItemAndColor.executor": "Run",
     "JUnit.PurchaseOrderServiceImplTest.totalProfitOfASelectedDate.executor": "Run",
     "JUnit.SupplierRepositoryTest.existsByMobileNo.executor": "Run",
     "JUnit.UserServiceImplTest.findAllByActiveStatus.executor": "Run",
@@ -129,8 +123,8 @@
       <recent name="lk.ijse.spring.shoeshop.auth" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PurchaseOrderServiceImplTest.totalProfitOfASelectedDate">
-    <configuration name="EmployeeServiceImplTest.searchEmployeesById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Spring Boot.WebAppInitializer">
+    <configuration name="PurchaseOrderServiceImplTest.mostSoldItemAndColor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="back-end" />
       <extension name="coverage">
         <pattern>
@@ -139,8 +133,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="lk.ijse.spring.shoeshop.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="lk.ijse.spring.shoeshop.service.impl.EmployeeServiceImplTest" />
-      <option name="METHOD_NAME" value="searchEmployeesById" />
+      <option name="MAIN_CLASS_NAME" value="lk.ijse.spring.shoeshop.service.impl.PurchaseOrderServiceImplTest" />
+      <option name="METHOD_NAME" value="mostSoldItemAndColor" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -234,11 +228,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PurchaseOrderServiceImplTest.mostSoldItemAndColor" />
         <item itemvalue="JUnit.PurchaseOrderServiceImplTest.totalProfitOfASelectedDate" />
         <item itemvalue="JUnit.UserServiceImplTest.searchUsersById" />
         <item itemvalue="JUnit.UserServiceImplTest.findAllByActiveStatus" />
         <item itemvalue="JUnit.SupplierRepositoryTest.existsByMobileNo" />
-        <item itemvalue="JUnit.EmployeeServiceImplTest.searchEmployeesById" />
       </list>
     </recent_temporary>
   </component>
@@ -296,7 +290,8 @@
       <workItem from="1716718185051" duration="10307000" />
       <workItem from="1716738557640" duration="10654000" />
       <workItem from="1716749637503" duration="2000" />
-      <workItem from="1716786893008" duration="34142000" />
+      <workItem from="1716786893008" duration="35006000" />
+      <workItem from="1716866150054" duration="7388000" />
     </task>
     <servers />
   </component>

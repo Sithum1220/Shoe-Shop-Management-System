@@ -51,4 +51,11 @@ class PurchaseOrderServiceImplTest {
         LocalDate date = LocalDate.now();
         System.out.println(purchaseOrderService.totalProfitOfASelectedDate(date));
     }
+
+    @Test
+    void mostSoldItemAndColor() {
+        LocalDate date = LocalDate.parse("2024-05-27");
+
+        System.out.println(purchaseOrderService.mostSoldItemAndColor(date));
+    }
 }

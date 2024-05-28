@@ -27,4 +27,10 @@ public class DashboardController {
     public ResponseUtil totalProfit(@PathVariable("profitDate") LocalDate date) {
         return new ResponseUtil("200", "Successfully Saved!", purchaseOrderService.totalProfitOfASelectedDate(date));
     }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping("/mostSaleItem/{mostSaleDate}")
+    public ResponseUtil mostSaleItem(@PathVariable("mostSaleDate") LocalDate date) {
+        return new ResponseUtil("200", "Successfully Saved!", purchaseOrderService.mostSoldItemAndColor(date));
+    }
 }

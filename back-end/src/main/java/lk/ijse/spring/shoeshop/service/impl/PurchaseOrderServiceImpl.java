@@ -13,7 +13,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -238,6 +240,40 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
                 }
         }
         return totalProfit;
+    }
+
+    @Override
+    public Map<String, Object> mostSoldItemAndColor(LocalDate date) {
+        List<Sales> salesList = purchaseOrderRepository.findAllByPurchaseDate(date);
+        Map<String, Integer> itemSalesCount = new HashMap<>();
+
+        for (Sales sale : salesList) {
+            List<SaleDetails> saleDetailsList = purchaseOrderDetailsRepository.findAllByOrderNo(sale);
+            for (SaleDetails saleDetails : saleDetailsList) {
+                String itemCode = saleDetails.getInventory().getItemCode();
+                int currentCount = itemSalesCount.getOrDefault(itemCode, 0);
+                itemSalesCount.put(itemCode, currentCount + saleDetails.getItmQTY());
+            }
+        }
+
+        // Find the item with the highest sales count
+        String mostSoldItem = null;
+        int highestSalesCount = 0;
+
+        for (Map.Entry<String, Integer> entry : itemSalesCount.entrySet()) {
+            if (entry.getValue() > highestSalesCount) {
+                mostSoldItem = entry.getKey();
+                highestSalesCount = entry.getValue();
+            }
+        }
+
+        Map<String, Object> result = new HashMap<>();
+        if (mostSoldItem != null) {
+            result.put("itemCode", mostSoldItem);
+            result.put("salesCount", highestSalesCount);
+        }
+
+        return result;
     }
 
 

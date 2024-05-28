@@ -5,6 +5,8 @@ import lk.ijse.spring.shoeshop.dto.SaleDetailsDTO;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public interface PurchaseOrderService {
 
@@ -24,4 +26,6 @@ public interface PurchaseOrderService {
      int totalSalesOfASelectedDate(LocalDate date);
 
      double totalProfitOfASelectedDate(LocalDate localDate);
+
+     Map<String, Object> mostSoldItemAndColor(LocalDate date);
 }
