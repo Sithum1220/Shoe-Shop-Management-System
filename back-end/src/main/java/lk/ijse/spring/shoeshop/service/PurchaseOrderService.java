@@ -2,6 +2,7 @@ package lk.ijse.spring.shoeshop.service;
 
 import lk.ijse.spring.shoeshop.dto.SaleDTO;
 import lk.ijse.spring.shoeshop.dto.SaleDetailsDTO;
+import lk.ijse.spring.shoeshop.entity.Sales;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -28,4 +29,8 @@ public interface PurchaseOrderService {
      double totalProfitOfASelectedDate(LocalDate localDate);
 
      Map<String, Object> mostSoldItemAndColor(LocalDate date);
+
+      List<Sales> getLastThreeOrders();
+
+     int totalItemsSoldOnDate(LocalDate date);
 }

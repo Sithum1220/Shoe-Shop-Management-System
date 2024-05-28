@@ -209,23 +209,6 @@ main .analyse svg circle {
     transform: translate(5px, 5px);
 }
 
-main .analyse .sales svg circle {
-    stroke: var(--color-success);
-    stroke-dashoffset: -30;
-    stroke-dasharray: 200;
-}
-
-main .analyse .visits svg circle {
-    stroke: var(--color-danger);
-    stroke-dashoffset: -30;
-    stroke-dasharray: 200;
-}
-
-main .analyse .searches svg circle {
-    stroke: var(--color-primary);
-    stroke-dashoffset: -30;
-    stroke-dasharray: 200;
-}
 
 main .analyse .progresss .percentage {
     position: absolute;
@@ -274,8 +257,9 @@ main .analyse .progresss .percentage {
 
 .qty .qtyStatus {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    /*align-items: flex-start;*/
+    justify-content: space-around;
+
 }
 
 .qty h3 {
@@ -286,42 +270,43 @@ main .analyse .progresss .percentage {
 
 .qty .qtyProgresses {
     position: relative;
-
+    display: flex;
+    justify-content: end;
     width: 200px;
     height: 200px;
     border-radius: 50%;
     /*background-color: #0a58ca;*/
 }
 
-.qty svg {
-    width: 12rem;
-    height: 12rem;
-    /*background-color: black;*/
-}
+/*.qty svg {*/
+/*    width: 12rem;*/
+/*    height: 12rem;*/
+/*    !*background-color: black;*!*/
+/*}*/
 
-.qty svg circle {
-    fill: none;
-    stroke-width: 10;
-    stroke-linecap: round;
-    transform: translate(25px, 25px);
-}
+/*.qty svg circle {*/
+/*    fill: none;*/
+/*    stroke-width: 10;*/
+/*    stroke-linecap: round;*/
+/*    transform: translate(25px, 25px);*/
+/*}*/
 
-.qty svg circle {
-    stroke: var(--color-success);
-    stroke-dashoffset: -70;
-    stroke-dasharray: 350;
-}
+/*.qty svg circle {*/
+/*    stroke: var(--color-success);*/
+/*    stroke-dashoffset: -70;*/
+/*    stroke-dasharray: 350;*/
+/*}*/
 
-.qtyProgresses .qtyPercentage {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-}
+/*.qtyProgresses .qtyPercentage {*/
+/*    position: absolute;*/
+/*    top: 10px;*/
+/*    left: 10px;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    height: 100%;*/
+/*    width: 100%;*/
+/*}*/
 
 .qty h1 {
     font-size: 75px;
@@ -348,4 +333,30 @@ main .analyse .progresss .percentage {
     gap: 1.5rem;
     align-items: center;
 
+}
+
+.progress-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    /*background: conic-gradient(#28a745 calc(75 * 1%), #e9ecef 0);*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.progress-circle::before {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.progress-value {
+    position: relative;
+    font-size: 24px;
+    color: #28a745;
 }

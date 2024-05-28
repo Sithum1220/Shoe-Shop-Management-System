@@ -427,6 +427,12 @@ function purchaseOrder() {
 
                     // generateNewOrderId();
                     generateNewOrderId();
+                    fetchLastThreeOrders();
+                    totalSalesOfASelectedDate();
+                    totalProfitOfASelectedDate();
+                    mostSaleItemOfASelectedDate();
+                    totalItemsSoldOnDate();
+                    documentReady();
                     itemCart = [];
                 }
             },

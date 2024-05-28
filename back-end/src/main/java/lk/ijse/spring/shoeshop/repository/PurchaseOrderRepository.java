@@ -1,6 +1,7 @@
 package lk.ijse.spring.shoeshop.repository;
 
 import lk.ijse.spring.shoeshop.entity.Sales;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -16,4 +17,7 @@ public interface PurchaseOrderRepository extends JpaRepository<Sales,String> {
     int countByPurchaseDate(LocalDate date);
 
     List<Sales> findAllByPurchaseDate(LocalDate localDate);
+
+    @Query(value = "SELECT * FROM Sales  ORDER BY LENGTH(order_no) DESC", nativeQuery = true)
+    List<Sales> findLastThreeOrders(Pageable pageable);
 }
