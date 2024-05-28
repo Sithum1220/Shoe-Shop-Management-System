@@ -185,48 +185,87 @@ function mostSaleItemOfASelectedDate() {
             success: function (response) {
                 let soldQty = response.data.salesCount;
                 // Format total sales: add leading zero if less than 10
-                let finalSoldQty = soldQty < 10 ? `0${soldQty}` : `${soldQty}`;
-                $('#soldQty').text(finalSoldQty);
-                $('#mostSaleItemCode').text(response.data.itemCode);
-               getMostSaleItemDetails(response.data.itemCode)
+                if (response.data.itemCode !== undefined) {
+                    let finalSoldQty = soldQty < 10 ? `0${soldQty}` : `${soldQty}`;
+                    $('#soldQty').text(finalSoldQty);
+                    $('#mostSaleItemCode').text(response.data.itemCode);
+                }else {
+                    $('#soldQty').text('00');
+                    $('#mostSaleItemCode').text('No Orders');
+                }
+                getMostSaleItemDetails(response.data.itemCode)
+                
             },
             error: function (xhr, status, error) {
                 console.error('Failed to fetch image:', error);
             }
         });
     })
-
 }
 
 function getMostSaleItemDetails(itemId) {
-    const accessToken = localStorage.getItem('accessToken');
-    $.ajax({
-        url: "http://localhost:8080/api/v1/inventory/" + itemId,
-        type: "GET",
-        headers: {
-            'Authorization': 'Bearer ' + accessToken
-        },
-        dataType: "json",
-        success: function (response) {
-            console.log(response);
-            $('#mostSaleItemPic').attr('src', 'data:image/jpeg;base64,' + response.itemPicture);
-            $('#mostSaleItemName').text();
-            if (response.status === "Available"){
-                $('#mostSaleItemStatus').css('color', 'green');
-            }else if (response.status === "LOW"){
-                $('#mostSaleItemStatus').css('color', '#F5B412');
-            }else {
-                $('#mostSaleItemStatus').css('color', 'red');
+    if (itemId !== undefined) {
+        const accessToken = localStorage.getItem('accessToken');
+        $.ajax({
+            url: "http://localhost:8080/api/v1/inventory/" + itemId,
+            type: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+                $('#mostSaleItemPic').attr('src', 'data:image/jpeg;base64,' + response.itemPicture);
+                $('#mostSaleItemNameDiv').removeClass('d-none');
+                if (response.status === "Available") {
+                    $('#mostSaleItemStatus').css('color', 'green');
+                } else if (response.status === "LOW") {
+                    $('#mostSaleItemStatus').css('color', '#F5B412');
+                } else {
+                    $('#mostSaleItemStatus').css('color', 'red');
+                }
+                $('#mostSaleItemStatus').text(response.status);
+                $('#mostSaleItemName').text(response.itemDesc);
+                $('#qtyOnHand').text(response.qty < 10 ? `0${response.qty}` : `${response.qty}`);
+
+                $('.progress-circle').each(function () {
+                    let value = $(this).data('value');
+                    let percentage = (response.qty / response.originalQty) * 100;
+
+                    let cssValue;
+                    if (percentage > 50) {
+                        cssValue = 'conic-gradient(#28a745 ' + (percentage * 3.6) + 'deg, #e9ecef 0deg)';
+                        $(this).find('.progress-value').css('color', '#28a745');
+                    } else if (percentage <= 50 && percentage > 20) {
+                        cssValue = 'conic-gradient(#F5B412 ' + (percentage * 3.6) + 'deg, #e9ecef 0deg)';
+                        $(this).find('.progress-value').css('color', '#F5B412');
+                    } else if (percentage <= 20) {
+                        cssValue = 'conic-gradient(red ' + (percentage * 3.6) + 'deg, #e9ecef 0deg)';
+                        $(this).find('.progress-value').css('color', 'red');
+                    }
+                    $(this).css('background', cssValue);
+                    $(this).find('.progress-value').text(percentage + '%');
+                });
+
+            },
+            error: function (xhr, status, error) {
+                console.error('Failed to fetch image:', error);
             }
-            $('#mostSaleItemStatus').text(response.status );
-            $('#qtyOnHand').text(response.qty < 10 ? `0${response.qty}` : `${response.qty}`);
-            // setDataToTextField(response)
-            // deleteEmployee(id)
-        },
-        error: function (xhr, status, error) {
-            console.error('Failed to fetch image:', error);
-        }
-    });
+        });
+    }else {
+        $('#mostSaleItemPic').attr('src', '#');
+        $('#mostSaleItemNameDiv').addClass('d-none');
+        $('#mostSaleItemStatus').css('color', 'red');
+        $('#mostSaleItemStatus').text('No Orders');
+        $('#qtyOnHand').text('00');
+
+        $('.progress-circle').each(function () {
+            let cssValue = 'conic-gradient(red ' + (0 * 3.6) + 'deg, #e9ecef 0deg)';
+                $(this).find('.progress-value').css('color', 'black');
+            $(this).css('background', cssValue);
+            $(this).find('.progress-value').text(0 + '%');
+        });
+    }
 }
 
 // function formatDate(date) {

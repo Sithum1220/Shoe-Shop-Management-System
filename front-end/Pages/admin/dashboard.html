@@ -234,7 +234,7 @@
                     <div class="text-center ">
                         <div class="d-inline-block itemDiv me-5 mt-3">
                             <h6 class="text-center fs-6">Item Code</h6>
-                            <h1 class="text-center " id="mostSaleItemCode">I001</h1>
+                            <h1 class="text-center " id="mostSaleItemCode"></h1>
                         </div>
                         <div class="d-inline-block itemDiv me-5 mt-3">
                             <h6 class="text-center fs-6">Sold Qty</h6>
@@ -251,18 +251,15 @@
                                 <h1 class="ms-2" id="qtyOnHand"></h1>
                             </div>
                             <div class="qtyProgresses">
-                                <svg>
-                                    <circle cx="78" cy="78" r="76"></circle>
-                                </svg>
-                                <div class="qtyPercentage">
-                                    <p class="fs-2">+81%</p>
+                                <div class="progress-circle" >
+                                    <span class="progress-value"></span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="d-inline-block itemDiv mt-3 d-flex justify-content-center flex-column">
+                        <div class="d-inline-block itemDiv mt-3 d-flex justify-content-center flex-column d-none" id="mostSaleItemNameDiv">
                             <h1 class="text-center fs-4 fw-medium">Item Name</h1>
-                            <h1 class="text-center text-success" id="mostSaleItemName">Formal Shoe</h1>
+                            <h1 class="text-center text-success" id="mostSaleItemName"></h1>
                         </div>
                     </div>
                 </div>
