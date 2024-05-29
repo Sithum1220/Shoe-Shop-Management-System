@@ -40,9 +40,22 @@ function setProfileImageAndName() {
         dataType: "json",
         success: function (response) {
             $('#name').text(response.data.employeeName)
+            $('#profileName').text(response.data.employeeName)
+            $('#welcomeName').text(response.data.employeeName+',')
+            
+            let joinDate = response.data.joinDate;
+
+            const date = new Date(joinDate);
+            const options = { year: 'numeric', month: 'long' };
+            const finalDate = date.toLocaleDateString('en-US', options);
+            let parts = finalDate.split(' ');
+            let month = parts[0];
+            let year = parts[1];
+            $('#joinDate').text(month+', '+year);
             const uploadDiv = $('.profile-photo');
             uploadDiv.empty();
             const img = $('<img>').attr('src', 'data:image/jpeg;base64,' + response.data.proPic)
+             $('#profilePicViewer').attr('src', 'data:image/jpeg;base64,' + response.data.proPic)
             uploadDiv.append(img);
         },
         error: function (xhr, status, error) {

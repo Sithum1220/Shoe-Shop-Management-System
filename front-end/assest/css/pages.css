@@ -408,3 +408,11 @@ input[type="date"]::before {
     left: 0;
     object-fit: cover;
 }
+
+.profileName {
+    font-size: 70px;
+}
+
+.paraGraph{
+    font-size: 10px;
+}
