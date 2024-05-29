@@ -1,0 +1,102 @@
+.input-container {
+    position: relative;
+    margin: 20px 0;
+}
+
+.form-step {
+    display: none;
+}
+
+.form-step.active {
+    display: flex;
+    animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(100%);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+.input-container select,
+.input-container input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.input-container label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    background: white;
+    padding: 0 5px;
+    color: #aaa;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.input-container input:focus + label,
+.input-container input:not(:placeholder-shown) + label {
+    top: -1px;
+    left: 15px;
+    color: #007BFF;
+    font-size: 12px;
+}
+
+.upload-div {
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    /*border: 2px dashed ;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-div img {
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+
+.popup {
+    border-radius: 30px
+}
+.body-overlay {
+    position: relative;
+    display: block;
+}
+.greetTxt {
+    position: absolute;
+    top: 50%;
+    /*left: 50%;*/
+    /*transform: translate(-50%, -50%);*/
+    z-index: 3;
+    color: black; /* Adjust text color as needed */
+}

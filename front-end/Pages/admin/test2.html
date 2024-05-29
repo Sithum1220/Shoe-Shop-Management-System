@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../assest/boostrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <style>
+        .input-container {
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: flex;
+            animation: slideIn 0.5s forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateX(100%);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+        .input-container select,
+        .input-container input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .input-container label {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            background: white;
+            padding: 0 5px;
+            color: #aaa;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .input-container input:focus + label,
+        .input-container input:not(:placeholder-shown) + label {
+            top: -1px;
+            left: 15px;
+            color: #007BFF;
+            font-size: 12px;
+        }
+
+        .upload-div {
+            width: 200px;
+            height: 200px;
+            background-color: white;
+            /*border: 2px dashed ;*/
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upload-div img {
+            max-width: 100%;
+            max-height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+        }
+
+        .popup {
+            border-radius: 30px
+        }
+
+        .body-overlay {
+            position: relative;
+            display: block;
+        }
+        .greetTxt {
+            position: absolute;
+            top: 50%;
+            /*left: 50%;*/
+            /*transform: translate(-50%, -50%);*/
+            z-index: 3;
+            color: black; /* Adjust text color as needed */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#employeeForm">
+    Launch static backdrop modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade " id="employeeForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl  modal-dialog-centered">
+        <div class="modal-content popup">
+            <!--            <div class="modal-header">-->
+            <!--                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>-->
+            <!--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+            <!--            </div>-->
+            <div class="modal-body">
+                <div class="row">
+
+                    <div class="col p-4 d-flex align-items-center justify-content-center">
+                        <div>
+                            <h1 class="">Create an Account</h1>
+                            <h3 class="fs-5 text-center" id="title">Enter Your Details</h3>
+                        </div>
+                    </div>
+                    <div class="col overflow-hidden">
+                        <button type="button" class="btn-close position-absolute end-0 me-4 z-2" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                        <div class="row p-4 form-step active pt-5 pb-5">
+                            <div class="col-md-4 input-container">
+                                <input type="text" class="" placeholder=" " id="employeeName" required>
+                                <label for="employeeName">Name</label>
+                            </div>
+                            <div class="col-md-4 input-container">
+                                <input type="text" class="" placeholder=" " id="employeeStatus" required>
+                                <label for="employeeStatus">Status</label>
+                            </div>
+                            <div class="col-md-4 input-container">
+                                <input type="text" class="datepicker" placeholder=" " id="employeeDOB" required>
+                                <label for="employeeDOB">Date Of Birth</label>
+                            </div>
+
+                            <div class="col-md-12 input-container">
+                                <select class="select form-select  opacity-75 txt"
+                                        aria-label="Default select example"
+                                        id="employeeGender">
+                                    <option disabled value="null" selected>Gender</option>
+                                    <option value="MALE">Male</option>
+                                    <option value="FEMALE">Female</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row p-4 form-step pt-5 pb-5">
+                            <div class="col-md-4 input-container">
+                                <input type="text" class="" placeholder=" " id="employeeBuilding" required>
+                                <label for="employeeBuilding">Building No.</label>
+                            </div>
+                            <div class="col-md-4 input-container">
+                                <input type="text" class="" placeholder=" " id="employeeLane" required>
+                                <label for="employeeLane">Lane</label>
+                            </div>
+                            <div class="col-md-4 input-container">
+                                <input type="text" class="" placeholder=" " id="employeeState" required>
+                                <label for="employeeState">State</label>
+                            </div>
+
+                            <div class="col-md-6 input-container">
+                                <input type="text" class="" placeholder=" " id="employeePostalCode" required>
+                                <label for="employeePostalCode">Postal Code</label>
+                            </div>
+                            <div class="col-md-6 input-container">
+                                <input type="text" class="" placeholder=" " id="employeeCity" required>
+                                <label for="employeeCity">City</label>
+                            </div>
+                        </div>
+
+
+                        <div class="row p-4 form-step pt-5 pb-5">
+                            <div class="col-md-12 input-container">
+                                <input type="text" class="" placeholder=" " id="employeeEmail" required>
+                                <label for="employeeEmail">Email Address</label>
+                            </div>
+                            <div class="col-md-12 input-container">
+                                <input type="text" class="" placeholder=" " id="employeeContactNumber" required>
+                                <label for="employeeContactNumber">Contact Number</label>
+                            </div>
+                        </div>
+
+
+                        <div class="row p-4 form-step pt-5 pb-5">
+                            <div class="col-md-12 input-container">
+                                <input type="text" class="" placeholder=" " id="employeeGuardian" required>
+                                <label for="employeeGuardian">Name of Guardian</label>
+                            </div>
+                            <div class="col-md-12 input-container">
+                                <input type="text" class="" placeholder=" " id="employeeGuardianContact" required>
+                                <label for="employeeGuardianContact">Guardian Contact</label>
+                            </div>
+                        </div>
+
+
+                        <div class="row p-4 form-step pt-5 pb-5">
+                            <div class="col-md-4 input-container">
+                                <input type="text" class="" placeholder=" " id="employeeDesignation" required>
+                                <label for="employeeDesignation">Designation</label>
+                            </div>
+                            <div class="col-md-4 input-container">
+                                <input type="text" class="" placeholder=" " id="employeeBranch" required>
+                                <label for="employeeBranch">Branch</label>
+                            </div>
+                            <div class="col-md-4 input-container">
+                                <input type="text" class="datepicker" placeholder=" " id="employeeDOJ" required>
+                                <label for="employeeDOJ">Date Of Join</label>
+                            </div>
+
+                            <div class="col-md-12 input-container">
+                                <select class="select form-select opacity-75 txt"
+                                        aria-label="Default select example"
+                                        id="employeeRole">
+                                    <option disabled value="null" selected>Role</option>
+                                    <option value="ADMIN">Admin</option>
+                                    <option value="USER">User</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="row p-4 form-step pt-5 pb-5">
+                            <div class="col-md-12 input-container">
+                                <input type="text" class="" placeholder=" " id="EmployeePageUserPasswword" required>
+                                <label for="EmployeePageUserPasswword">New Password</label>
+                            </div>
+                            <div class="col-md-12 input-container">
+                                <input type="text" class="" placeholder=" " id="EmployeePageUserPasswword2" required>
+                                <label for="EmployeePageUserPasswword2">Confirm Password</label>
+                            </div>
+                        </div>
+
+
+                        <div class="row p-4 form-step justify-content-center pt-5 pb-5">
+                            <div class="upload-div" id="uploadDiv">
+                                upload Image
+                            </div>
+                            <input class="form-control imgUploader txt" type="file" id="imgUploader" multiple
+                                   style="display:none;"/>
+                        </div>
+
+                        <div class="row p-4 form-step justify-content-center greetingPage d-none pt-5 pb-5">
+                            <video autoplay class="body-overlay" loop muted>
+                                <source src="../Home/assest/images/greeting.mp4" class="w-50" type="video/mp4">
+                            </video>
+                            <h1 class="animate__animated animate__backInDown text-center greetTxt">You Are All Set!</h1>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="backAndClose" class="btn btn-secondary prev-step" data-bs-dismiss="modal">Close</button>
+                <button type="button" id="signupBtn" class="btn btn-primary next-step">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="../../assest/js/code.jquery.com_jquery-3.7.1.min.js"></script>
+<script src="../../assest/boostrap/js/bootstrap.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    $(document).ready(function () {
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true
+        });
+
+        var currentStep = 0;
+        var steps = $('.form-step');
+
+        $('.next-step').click(function () {
+            $('#backAndClose').removeAttr("data-bs-dismiss", 'modal');
+            if (currentStep < steps.length - 1) {
+                $(steps[currentStep]).removeClass('active').addClass('slide-out');
+                currentStep++;
+                if ($('.greetingPage').hasClass('d-none')){
+
+                    if (currentStep === 7){
+                        currentStep = 6;
+                    }
+                }
+
+
+                if (currentStep === 0) {
+                    $('#title').text("Enter Your Details")
+                    $('#signupBtn').text("Next")
+                    $('#backAndClose').text("Close")
+
+                } else if (currentStep === 1) {
+                    $('#title').text("Enter Your Address")
+                    $('#signupBtn').text("Next")
+                    $('#backAndClose').text("Back")
+
+                } else if (currentStep === 2) {
+                    $('#title').text("Enter Your Contact")
+                    $('#signupBtn').text("Next")
+                    $('#backAndClose').text("Back")
+
+                } else if (currentStep === 3) {
+                    $('#title').text("Enter Your Guardian Contact")
+                    $('#signupBtn').text("Next")
+                    $('#backAndClose').text("Back")
+
+                } else if (currentStep === 4) {
+                    $('#title').text("Enter Your Company Details")
+                    $('#signupBtn').text("Next")
+                    $('#backAndClose').text("Back")
+
+                } else if (currentStep === 5) {
+                    $('#title').text("Create New Password")
+                    $('#signupBtn').text("Next")
+                    $('#backAndClose').text("Back")
+
+                } else if (currentStep === 6) {
+                    $('#title').text("Set Your Profile")
+                    $('#signupBtn').text("Sign Up")
+                    $('#backAndClose').text("Back")
+                }
+                $(steps[currentStep]).addClass('active slide-in');
+            }
+        });
+
+        $('.prev-step').click(function () {
+            // if ($('#backAndClose').text() === 'Back') {
+
+            if (currentStep > 0) {
+                $(steps[currentStep]).removeClass('active').addClass('slide-in');
+                currentStep--;
+                if (currentStep === 0) {
+                    $('#title').text("Enter Your Details")
+                    $('#signupBtn').text("Next")
+                    $('#backAndClose').text("Close")
+                    $('#backAndClose').attr("data-bs-dismiss", 'modal');
+                } else if (currentStep === 1) {
+                    $('#title').text("Enter Your Address")
+                    $('#signupBtn').text("Next")
+                    $('#backAndClose').text("Back")
+
+                } else if (currentStep === 2) {
+                    $('#title').text("Enter Your Contact")
+                    $('#signupBtn').text("Next")
+                    $('#backAndClose').text("Back")
+
+                } else if (currentStep === 3) {
+                    $('#title').text("Enter Your Guardian Contact")
+                    $('#signupBtn').text("Next")
+                    $('#backAndClose').text("Back")
+
+                } else if (currentStep === 4) {
+                    $('#title').text("Enter Your Company Details")
+                    $('#signupBtn').text("Next")
+                    $('#backAndClose').text("Back")
+
+                } else if (currentStep === 5) {
+                    $('#title').text("Create New Password")
+                    $('#signupBtn').text("Next")
+                    $('#backAndClose').text("Back")
+
+                } else if (currentStep === 6) {
+                    $('#title').text("Set Your Profile")
+                    $('#signupBtn').text("Sign Up")
+                    $('#backAndClose').text("Back")
+                }
+                $(steps[currentStep]).addClass('active slide-out');
+            }
+            // }else {
+            //     $('#backAndClose').attr("data-bs-dismiss",'modal');
+            //     $('#backAndClose').click();
+            // }
+        });
+
+
+    })
+</script>
+</body>
+</html>

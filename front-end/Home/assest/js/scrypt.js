@@ -14,19 +14,15 @@ const formOpenBtn = $('#loginBtn'),
 
 
 formOpenBtn.click(function () {
-    home.addClass('show')
     $("#log-in-Password").val('')
     $('#wrongPW').addClass('d-none')
 })
 form_close.click(function () {
-    home.removeClass('show');
     $("#log-in-Username").val('')
 })
 
 
-$('#SignUpBtn').click(function () {
-    generateNewId();
-})
+
 // cashierBtn.click(function () {
 //     adminBtn.css("background", "white").css("color", "#000");
 //     cashierBtn.css("background", "#1F5F9F").css("color", "#fff");
@@ -39,6 +35,13 @@ $('#SignUpBtn').click(function () {
 //     adminInputBox.css("display", "block");
 //     cashierInputBox.css("display", "none");
 // })
+$('#SignUpButton').click(function () {
+    generateNewId();
+    currentStep = 0;
+    $(".greetingPage").addClass("d-none");
+    $('#signupBtn').prop("disabled", false);
+
+})
 
 employeeRole.change(function () {
     console.log($(this).val());
@@ -50,6 +53,4 @@ employeeRole.change(function () {
         employeePageUserCredentials.addClass('d-none');
     }
 })
-
-$('#employeeCode').attr('readonly','')
 

@@ -65,14 +65,14 @@ public class PurchaseOrderController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @GetMapping("/{orderId}")
-    public ResponseUtil orderCanBeReturned(@PathVariable String orderId){
+    public ResponseUtil orderCanBeReturned(@PathVariable("orderId") String orderId){
         return new ResponseUtil("200","Successfully Fetch Can Be Returned",
                 purchaseOrderService.canBeReturned(orderId));
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/{orderId}")
-    public ResponseUtil returnFullOrder(@PathVariable String orderId){
+    @PostMapping("/{returnOrderId}")
+    public ResponseUtil returnFullOrder(@PathVariable("returnOrderId") String orderId){
         System.out.println(orderId);
         purchaseOrderService.returnFullOrder(orderId);
         return new ResponseUtil("200","Successfully Return Full Order",null);

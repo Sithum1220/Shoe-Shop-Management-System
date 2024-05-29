@@ -204,7 +204,7 @@
 .checkPW{
     border: red solid 1px;
     text-align: center;
-    margin-top: 20px;
+    margin-bottom: 20px;
     width: 80%;
 }
 .checkPW h2{

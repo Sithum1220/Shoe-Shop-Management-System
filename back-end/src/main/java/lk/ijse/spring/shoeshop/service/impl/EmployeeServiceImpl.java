@@ -37,7 +37,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void saveEmployee(EmployeeDTO employeeDTo) {
-        if (!employeeRepository.existsByEmployeeId(employeeDTo.getEmployeeId())) {
+        if (!employeeRepository.existsByEmail(employeeDTo.getEmail())) {
             if (!employeeRepository.existsByEmail(employeeDTo.getEmail())) {
                 if (!employeeRepository.existsByContactNo(employeeDTo.getContactNo())) {
                     if (!employeeRepository.existsByEmergencyContact(employeeDTo.getEmergencyContact())) {
