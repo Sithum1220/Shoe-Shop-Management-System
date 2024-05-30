@@ -5,28 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="032d1856-7f95-44cb-a7e8-c221ea7611af" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/front-end/Home/assest/images/blank-profile-picture-973460_1280.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/Pages/user/return.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/controller/validation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/PasswordResetController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/api/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/PasswordResetServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/impl/PasswordResetServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Home/assest/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Home/assest/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Home/assest/js/scrypt.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Home/assest/js/scrypt.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Home/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Home/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/employee.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/employee.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/supplier.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/supplier.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/user/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/user/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/user/employee.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/user/employee.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/assest/css/pages.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/css/pages.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/assest/js/user/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assest/js/user/dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/controller/DashboardController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/DashboardController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/controller/InventoryController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/InventoryController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/controller/LoginController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/LoginController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/Pages/customers/customerOrder.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/customers/customerOrder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/controller/PurchaseOrderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/PurchaseOrderController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/controller/SupplierController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/SupplierController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/controller/employeeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/employeeController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -312,7 +294,7 @@
       <workItem from="1716866150054" duration="11765000" />
       <workItem from="1716882915350" duration="21012000" />
       <workItem from="1716960215134" duration="51923000" />
-      <workItem from="1717042882802" duration="30946000" />
+      <workItem from="1717042882802" duration="43066000" />
     </task>
     <servers />
   </component>

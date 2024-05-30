@@ -157,6 +157,12 @@ function setItemDetails() {
 function addToCart() {
 
     $('#addToCart').click(function () {
+
+        const form = $('#itemDetailsForm');
+        if (!validateForm(form)) {
+            return;
+        }
+        
         if ($('#OrderItemId').val() !== '') {
             $('#tblOrderSize tbody tr').each(function () {
                 let checkBox = $(this).find('input[type="checkbox"]').is(':checked');
@@ -374,6 +380,21 @@ function purchaseOrder() {
 
 
     $('#purchaseOrder').click(function () {
+
+        const form = $('#itemDetailsForm');
+        if (!validateForm(form)) {
+            const form2 = $('#paymentForm');
+            if (!validateForm(form2)) {
+                return;
+            }
+            return;
+        }
+
+        const form2 = $('#paymentForm');
+        if (!validateForm(form2)) {
+            return;
+        }
+        
         let total = 0;
         itemCart.forEach(item => {
             total += item.itmQTY * item.unitPrice; // Calculate total price for each item

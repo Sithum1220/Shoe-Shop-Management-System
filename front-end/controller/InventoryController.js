@@ -6,6 +6,22 @@ function inventoryController() {
     itemClickTblRow();
     getAllItems();
     updateItem();
+
+    $('#inventoryInputForm input').on('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent form submission
+            const element = $(this);
+            const isValid = validateForm(element);
+            if (isValid) {
+                const nextInput = element.closest('div').next('div').find('input');
+                if (nextInput.length) {
+                    nextInput.focus();
+                } else {
+                    element.closest('form').find('button[type=submit]').focus();
+                }
+            }
+        }
+    });
 }
 
 var itemBase64String;
@@ -15,7 +31,11 @@ var inputBoxLength;
 
 function saveItem() {
         $('#saveSizes').click(function () {
+            const form = $('#inputContainer');
             
+            if (!validateForm(form)) {
+                return;
+            }
             if (inputData.length > 0) {
                 console.log("Saving Sizes length: "+$('.inputBox').length);
 
@@ -80,11 +100,17 @@ function saveItem() {
                     inputData.push(itemData);
                 });
             }
+            
+            $('#sizeClose').click();
 
         });
         console.log(inputData);
     $('#inventoryPopupBtn').click(function () {
         if ($(this).text().trim() === 'Save') {
+            const form = $('#inventoryInputForm');
+            if (!validateForm(form)) {
+                return;
+            }
             if ($('#itemImgViewer').src === '#'){
                 itemBase64String = null;
             }
@@ -373,6 +399,11 @@ function updateItem() {
 
     if (inputData.length > 0) {
         $('.inputBox').each(function (index) {
+            const form = $('#inputContainer');
+
+            if (!validateForm(form)) {
+                return;
+            }
             var color = $(this).find('input[id="itemColor"]').val();
             var size = $(this).find('input[id="itemSize"]').val();
             var quantity = $(this).find('input[id="itemQty"]').val();
@@ -398,6 +429,10 @@ function updateItem() {
 
     $('#inventoryPopupBtn').click(function () {
         if ($(this).text().trim() === 'Update') {
+            const form = $('#inventoryInputForm');
+            if (!validateForm(form)) {
+                return;
+            }
             const postData = {
                 itemCode: $('#itemCode').val(),
                 itemDesc: $('#itemDesc').val(),
