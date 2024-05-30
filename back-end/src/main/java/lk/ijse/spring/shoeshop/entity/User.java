@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -33,6 +34,10 @@ public class User implements UserDetails {
     private Employee employee;
 
     private boolean activeStatus;
+
+    private String resetToken;
+
+    private LocalDateTime tokenExpiration;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

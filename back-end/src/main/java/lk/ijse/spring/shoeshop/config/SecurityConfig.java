@@ -34,6 +34,7 @@ public class SecurityConfig{
                 .sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // if there is no need to create sessions, you can use SessionCreationPolicy.STATELESS
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtConfigurationFilter, UsernamePasswordAuthenticationFilter.class);
+
         return http.build();
     }
 
