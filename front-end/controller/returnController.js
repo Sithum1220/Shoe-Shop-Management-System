@@ -3,6 +3,7 @@ function returnController() {
     clickOrderTblRow();
     checkCanBeReturnedOrder();
     clearOrderIdInput();
+   
 }
 
 let OrderNo;

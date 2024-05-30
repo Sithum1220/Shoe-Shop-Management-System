@@ -240,7 +240,7 @@
                     </div>
                     <div class="modal-body bg-white inputBody">
 
-                        <form class="row g-3">
+                        <form class="row g-3" id="customerInputForm">
                             <div class="col-md-4">
                                 <label for="customerCode" class="form-label lbl">Customer Code</label>
                                 <input type="text" class="form-control txt" id="customerCode" required>
@@ -248,14 +248,14 @@
 
                             <div class="col-md-4">
                                 <label for="customerName" class="form-label lbl">Customer Name</label>
-                                <input type="text" class="form-control txt" id="customerName" required>
+                                <input type="text" class="form-control txt" id="customerName" data-validate="required letters" required>
                             </div>
 
                             <div class="col-md-4">
                                 <label for="customerGender" class="form-label lbl">Select Gender</label>
                                 <select class="select form-select  opacity-75 txt"
                                         aria-label="Default select example"
-                                        id="customerGender">
+                                        id="customerGender" data-validate="required">
                                     <option disabled value="null" selected></option>
                                     <option value="MALE">Male</option>
                                     <option value="FEMALE">Female</option>
@@ -264,12 +264,12 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="customerDOB" class="form-label lbl">Date Of Birth</label>
-                                <input type="date" id="customerDOB" class="form-control txt" required>
+                                <input type="date" id="customerDOB" class="form-control txt" data-validate="required" required>
                             </div>
 
                             <div class="col-md-4">
                                 <label for="customerDOJ" class="form-label lbl">Date Of Join</label>
-                                <input type="date" id="customerDOJ" class="form-control txt" required>
+                                <input type="date" id="customerDOJ" class="form-control txt" data-validate="required" required>
                             </div>
 
                             <div class="col-md-4">
@@ -282,23 +282,23 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="customerCity" class="form-label lbl">City</label>
-                                <input type="text" class="form-control txt" id="customerCity">
+                                <input type="text" class="form-control txt" id="customerCity" data-validate="required letters">
                             </div>
                             <div class="col-md-4">
                                 <label for="customerState" class="form-label lbl">State</label>
-                                <input type="text" class="form-control txt" id="customerState">
+                                <input type="text" class="form-control txt" id="customerState" data-validate="required letters">
                             </div>
                             <div class="col-md-4">
                                 <label for="customerPostalCode" class="form-label lbl">Postal Code</label>
-                                <input type="text" class="form-control txt" id="customerPostalCode">
+                                <input type="text" class="form-control txt" id="customerPostalCode" data-validate="required numeric">
                             </div>
                             <div class="col-md-4">
                                 <label for="customerContactNo" class="form-label lbl">Contact Number</label>
-                                <input type="tel" class="form-control txt" id="customerContactNo">
+                                <input type="tel" class="form-control txt" id="customerContactNo" data-validate="required mobile-number">
                             </div>
                             <div class="col-md-4">
                                 <label for="customerEmail" class="form-label lbl">Email</label>
-                                <input type="email" class="form-control txt" id="customerEmail">
+                                <input type="email" class="form-control txt" id="customerEmail" data-validate="email">
                             </div>
                             <div class="row mb-3 hideTxt">
                             <div class="col-md-4">

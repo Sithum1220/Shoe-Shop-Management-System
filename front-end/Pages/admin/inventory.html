@@ -175,7 +175,7 @@
                         <button type="button" class="btn-close" id="inventoryPopupClose" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body bg-white">
-                        <form class="row g-3">
+                        <form class="row g-3" id="inventoryInputForm">
                             <div class="col-md-4">
                                 <label for="itemCode" class="form-label lbl">Item Code</label>
                                 <input type="text" class="form-control txt" id="itemCode" required>
@@ -190,15 +190,15 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="itemCategory" class="form-label lbl">Category</label>
-                                <input type="text" class="form-control dis txt" id="itemCategory" required>
+                                <input type="text" class="form-control dis txt" id="itemCategory" data-validate="required letters" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="itemBuyPrice" class="form-label lbl">Unit price -Buy</label>
-                                <input type="text" class="form-control dis txt" id="itemBuyPrice" required>
+                                <input type="text" class="form-control dis txt" id="itemBuyPrice" data-validate="required price" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="itemSellPrice" class="form-label lbl">Unit price -Sale</label>
-                                <input type="text" class="form-control dis txt" id="itemSellPrice" required>
+                                <input type="text" class="form-control dis txt" id="itemSellPrice" data-validate="required price" required>
                             </div>
 <!--                            <div class="col-md-4">-->
 <!--                                <label for="itemQty" class="form-label lbl">Item Quantity</label>-->
@@ -206,7 +206,7 @@
 <!--                            </div>-->
                             <div class="col-md-4">
                                 <label for="itemDesc" class="form-label lbl">Description</label>
-                                <input type="text" class="form-control dis txt" id="itemDesc" required>
+                                <input type="text" class="form-control dis txt" id="itemDesc" data-validate="required letters" required>
                             </div>
                             <div class="col-md-8">
                                 <label for="itemImgUploader" class="form-label lbl">Select a image...</label>
@@ -247,15 +247,15 @@
                             <div class="row g-3 m-0 inputBox">
                                     <div class="col-md-4 ">
                                         <label for="itemColor" class="form-label lbl">Item Color</label>
-                                        <input type="text" class="form-control dis txt" id="itemColor" required>
+                                        <input type="text" class="form-control dis txt" id="itemColor" data-validate="required letters" required>
                                     </div>
                                     <div class="col-md-4 ">
                                         <label for="itemSize" class="form-label lbl">size</label>
-                                        <input type="text" class="form-control dis txt" id="itemSize" required>
+                                        <input type="text" class="form-control dis txt" id="itemSize" data-validate="required numeric" required>
                                     </div>
                                     <div class="col-md-4 ">
                                         <label for="itemQty" class="form-label lbl">Item Quantity</label>
-                                        <input type="text" class="form-control txt" id="itemQty" required>
+                                        <input type="text" class="form-control txt" id="itemQty" data-validate="required numeric" required>
                                     </div>
                             </div>
                         </form>
@@ -267,8 +267,8 @@
 
                     </div>
                     <div class="modal-footer bg-white">
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#itemForm">Close</button>
-                        <button type="button" id="saveSizes" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#itemForm">Done</button>
+                        <button type="button" class="btn btn-secondary" id="sizeClose" data-bs-toggle="modal" data-bs-target="#itemForm">Close</button>
+                        <button type="button" id="saveSizes" class="btn btn-primary">Done</button>
                     </div>
                 </div>
             </div>

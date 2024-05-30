@@ -3,6 +3,21 @@ function customerControlFunction() {
     getAllCustomer();
     clickCustomerTblRow();
     searchCustomer();
+    $('#customerInputForm input').on('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent form submission
+            const element = $(this);
+            const isValid = validateForm(element);
+            if (isValid) {
+                const nextInput = element.closest('div').next('div').find('input');
+                if (nextInput.length) {
+                    nextInput.focus();
+                } else {
+                    element.closest('form').find('button[type=submit]').focus();
+                }
+            }
+        }
+    });
 }
 
 function generateNewCustomerId() {
@@ -31,6 +46,10 @@ function generateNewCustomerId() {
 function saveCustomer() {
     $('#customerPopupAddBtn').click(function () {
         if ($(this).text().trim() === 'Save') {
+            const form = $('#customerInputForm');
+            if (!validateForm(form)) {
+                return;
+            }
             const postData = {
                 customerId: $('#customerCode').val(),
                 customerName: $('#customerName').val(),
@@ -200,6 +219,10 @@ function customerUpdate(response) {
     console.log("updateCustomer");
     $('#customerPopupAddBtn').click(function () {
         if ($(this).text().trim() === 'Update') {
+            const form = $('#customerInputForm');
+            if (!validateForm(form)) {
+                return;
+            }
             const postData = {
                 customerId: $('#customerCode').val(),
                 customerName: $('#customerName').val(),

@@ -5,6 +5,21 @@ function supplierControlFunction() {
     updateSupplier();
     searchSupplier();
 
+    $('#supplierInputForm input').on('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent form submission
+            const element = $(this);
+            const isValid = validateForm(element);
+            if (isValid) {
+                const nextInput = element.closest('div').next('div').find('input');
+                if (nextInput.length) {
+                    nextInput.focus();
+                } else {
+                    element.closest('form').find('button[type=submit]').focus();
+                }
+            }
+        }
+    });
 }
 
 function generateNewSupplierId() {

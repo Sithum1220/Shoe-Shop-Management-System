@@ -1,15 +1,20 @@
 function addError(element, message) {
     element.next('.error').remove();
+    element.css('border', '1px solid green');
     element.after('<span class="error">' + message + '</span>');
     element.css('border', '1px solid red');
 }
 
-
+function removeError(element) {
+    element.next('.error').remove();
+    element.css('border', '');
+}
 function validateRequired(element) {
     if (!element.val()) {
         addError(element, 'This field is required');
         return false;
     }
+    removeError(element)
     return true;
 }
 
@@ -23,6 +28,21 @@ function validateMobileNumber(element) {
 
         return false;
     }
+    removeError(element);
+    return true;
+}
+
+function validatePrice(element) {
+    if (!element.val().match(/\$?\s?\d{1,3}(?:,\d{3})*(?:\.\d{2})?/)) {
+        if (element.val() !== ''){
+            addError(element, 'Invalid Price');
+        }else {
+            addError(element, 'This field is required');
+        }
+
+        return false;
+    }
+    removeError(element)
     return true;
 }
 
@@ -36,6 +56,7 @@ function validateLandNumber(element) {
 
         return false;
     }
+    removeError(element)
     return true;
 }
 
@@ -48,6 +69,7 @@ function validateLettersAndSpaces(element) {
         }
         return false;
     }
+    removeError(element)
     return true;
 }
 
@@ -61,6 +83,7 @@ function validateNumeric(element) {
 
         return false;
     }
+    removeError(element)
     return true;
 }
 
@@ -70,6 +93,7 @@ function validateLength(element, minLength, maxLength) {
         addError(element, `This field must be between ${minLength} and ${maxLength} characters`);
         return false;
     }
+    removeError(element)
     return true;
 }
 
@@ -83,6 +107,7 @@ function validateEmail(element) {
 
         return false;
     }
+    removeError(element)
     return true;
 }
 
@@ -108,6 +133,9 @@ function validateForm(form) {
                     break;
                 case 'land-number':
                     if (!validateLandNumber(element)) isValid = false;
+                    break;
+                case 'price':
+                    if (!validatePrice(element)) isValid = false;
                     break;
                 case 'letters':
                     if (!validateLettersAndSpaces(element)) isValid = false;
