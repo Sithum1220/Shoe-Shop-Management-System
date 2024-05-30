@@ -210,20 +210,20 @@
                         <button type="button" class="btn-close" id="supplierPopupClose" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body bg-white inputBody">
-                        <form class="row g-3">
+                        <form class="row g-3" id="supplierInputForm">
                             <div class="col-md-4">
                                 <label for="supplierCode" class="form-label lbl">Supplier Code</label>
-                                <input type="text" class="form-control txt" id="supplierCode" required>
+                                <input type="text" class="form-control txt" id="supplierCode">
                             </div>
                             <div class="col-md-4">
-                                <label for="supplierName" class="form-label lbl">Supplier Name</label>
-                                <input type="text" class="form-control txt" id="supplierName" required>
+                                <label for="supplierName" class="form-label lbl" >Supplier Name</label>
+                                <input type="text" class="form-control txt" id="supplierName" data-validate="required letters">
                             </div>
                             <div class="col-md-4">
                                 <label for="supplierCategory" class="form-label lbl">Select Category</label>
                                 <select class="select form-select opacity-75 txt"
                                         aria-label="Default select example"
-                                        id="supplierCategory">
+                                        id="supplierCategory" data-validate="required">
                                     <option disabled  value="null" selected></option>
                                     <option value="INTERNATIONAL">International</option>
                                     <option value="LOCAL">Local</option>
@@ -237,37 +237,37 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="supplierLane" class="form-label lbl">Lane</label>
-                                <input type="text" class="form-control txt" id="supplierLane">
+                                <input type="text" class="form-control txt" id="supplierLane" >
                             </div>
                             <div class="col-md-4">
                                 <label for="supplierCity" class="form-label lbl">City</label>
-                                <input type="text" class="form-control txt" id="supplierCity">
+                                <input type="text" class="form-control txt" id="supplierCity" data-validate="required letters">
                             </div>
 
                             <div class="col-md-4">
                                 <label for="supplierState" class="form-label lbl">State</label>
-                                <input type="text" class="form-control txt" id="supplierState">
+                                <input type="text" class="form-control txt" id="supplierState" data-validate="required letters" >
                             </div>
 
                             <div class="col-md-4">
                                 <label for="supplierPostalCode" class="form-label lbl">Postal Code</label>
-                                <input type="text" class="form-control txt" id="supplierPostalCode">
+                                <input type="text" class="form-control txt" id="supplierPostalCode" data-validate="required numeric">
                             </div>
                             <div class="col-md-4">
                                 <label for="supplierCountry" class="form-label lbl">Country</label>
-                                <input type="text" class="form-control txt" id="supplierCountry">
+                                <input type="text" class="form-control txt" id="supplierCountry" data-validate="required letters">
                             </div>
                             <div class="col-md-4">
                                 <label for="supplierContactNumber01" class="form-label lbl">Mobile Number</label>
-                                <input type="tel" class="form-control txt" id="supplierContactNumber01">
+                                <input type="tel" class="form-control txt" id="supplierContactNumber01" data-validate="required mobile-number" >
                             </div>
                             <div class="col-md-4">
                                 <label for="supplierContactNumber02" class="form-label lbl">Land Number</label>
-                                <input type="tel" class="form-control txt" id="supplierContactNumber02">
+                                <input type="tel" class="form-control txt" id="supplierContactNumber02" data-validate="required land-number">
                             </div>
                             <div class="col-md-4">
                                 <label for="supplierEmail" class="form-label lbl">Email</label>
-                                <input type="email" class="form-control txt" id="supplierEmail">
+                                <input type="email" class="form-control txt" id="supplierEmail" data-validate="email" >
                             </div>
                         </form>
 

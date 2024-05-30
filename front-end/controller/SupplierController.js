@@ -4,12 +4,13 @@ function supplierControlFunction() {
     clickSupplierTblRow();
     updateSupplier();
     searchSupplier();
+
 }
 
 function generateNewSupplierId() {
     performAuthenticatedRequest();
     const accessToken = localStorage.getItem('accessToken');
-    fetch("http://localhost:8080/api/v1/supplier/id",{
+    fetch("http://localhost:8080/api/v1/supplier/id", {
         headers: {
             'Authorization': 'Bearer ' + accessToken
         },
@@ -32,6 +33,13 @@ function generateNewSupplierId() {
 function saveSupplier() {
     $('#supplierPopupAddBtn').click(function () {
         if ($(this).text().trim() === 'Save') {
+
+            const form = $('#supplierInputForm');
+            if (!validateForm(form)) {
+                return;
+            }
+
+
             const postData = {
                 supplierCode: $('#supplierCode').val(),
                 supplierName: $('#supplierName').val(),
@@ -68,7 +76,8 @@ function saveSupplier() {
                             showConfirmButton: false,
                             timer: 1500
                         });
-                        getAllSuppliers();                        // $('#supplierFormContainer').modal('hide');
+                        getAllSuppliers();
+                        $('#supplierPopupClose').click();
                         console.log("resp");
                     }
                 },
@@ -125,6 +134,10 @@ function getAllSuppliers() {
 function updateSupplier() {
     $('#supplierPopupAddBtn').click(function () {
         if ($(this).text().trim() === 'Update') {
+            const form = $('#supplierInputForm');
+            if (!validateForm(form)) {
+                return;
+            }
             const postData = {
                 supplierCode: $('#supplierCode').val(),
                 supplierName: $('#supplierName').val(),
@@ -161,6 +174,7 @@ function updateSupplier() {
                             showConfirmButton: false,
                             timer: 1500
                         });
+                        $('#supplierPopupClose').click();
                         $('#tblSupplier tr').each(function () {
                             var isChecked = $(this).find('input[type="checkbox"]').prop('checked');
 
@@ -331,3 +345,15 @@ function searchSupplier() {
     })
 }
 
+
+// function setButtonState(value) {
+//     if (value > 0) {
+//         $("#btnAddSupplier").attr('disabled', true);
+//         $("#btnUpdateSupplier").attr('disabled', true);
+//         $("#btnDeleteSupplier").attr('disabled', true);
+//     } else {
+//         $("#btnAddSupplier").attr('disabled', false);
+//         $("#btnUpdateSupplier").attr('disabled', false);
+//         $("#btnDeleteSupplier").attr('disabled',false);
+//     }
+// }

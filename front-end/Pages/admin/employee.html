@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-9 tableCol shadow-lg">
+            <div class="col-10 tableCol shadow-lg">
                 <div class="table-container">
                     <table class="table table-responsive mytable" id="tblEmployee">
                         <thead class="table-header">
@@ -58,7 +58,7 @@
                 <!--                </div>-->
 
             </div>
-            <div class="col-3 btnCol d-flex justify-content-center mt-4">
+            <div class="col-2 btnCol d-flex justify-content-center mt-4">
                 <section class="d-flex flex-column gap-5 mb-5">
                     <img id="employeeImg" src="#" class="" alt="">
                     <button class="shadow-lg" id="addEmployee" data-bs-toggle="modal" data-bs-target="#employeeForm"><i
@@ -91,7 +91,7 @@
                     </div>
                     <div class="modal-body bg-white inputBody">
 
-                        <form class="row g-3">
+                        <form class="row g-3" id="employeeInputForm">
                             <div class="col-md-4">
                                 <label for="employeeCode" class="form-label lbl">Employee Code</label>
                                 <input type="text" class="form-control txt" id="employeeCode" required>
@@ -100,7 +100,7 @@
                                 <label for="employeeGender" class="form-label lbl">Select Gender</label>
                                 <select class="select form-select  opacity-75 txt"
                                         aria-label="Default select example"
-                                        id="employeeGender">
+                                        id="employeeGender" data-validate="required">
                                     <option disabled value="null" selected></option>
                                     <option value="MALE">Male</option>
                                     <option value="FEMALE">Female</option>
@@ -109,27 +109,27 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="employeeName" class="form-label lbl">Employee Name</label>
-                                <input type="text" class="form-control txt" id="employeeName" required>
+                                <input type="text" class="form-control txt" id="employeeName" data-validate="required letters" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="employeeStatus" class="form-label lbl">Employee Status</label>
-                                <input type="text" class="form-control txt" id="employeeStatus" required>
+                                <input type="text" class="form-control txt" id="employeeStatus" data-validate="required letters" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="employeeDesignation" class="form-label lbl">Employee Designation</label>
-                                <input type="text" class="form-control txt" id="employeeDesignation" required>
+                                <input type="text" class="form-control txt" id="employeeDesignation" data-validate="required letters" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="employeeDOB" class="form-label lbl">Date Of Birth</label>
-                                <input type="date" id="employeeDOB" class="form-control txt" required>
+                                <input type="date" id="employeeDOB" class="form-control txt" data-validate="required" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="employeeDOJ" class="form-label lbl">Date Of Join</label>
-                                <input type="date" id="employeeDOJ" class="form-control txt" required>
+                                <input type="date" id="employeeDOJ" class="form-control txt" data-validate="required" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="employeeBranch" class="form-label lbl">Branch</label>
-                                <input type="text" class="form-control txt" id="employeeBranch">
+                                <input type="text" class="form-control txt" id="employeeBranch" data-validate="required letters">
                             </div>
                             <div class="col-md-4">
                                 <label for="employeeBuilding" class="form-label lbl">Building No.</label>
@@ -141,40 +141,40 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="employeeCity" class="form-label lbl">City</label>
-                                <input type="text" class="form-control txt" id="employeeCity">
+                                <input type="text" class="form-control txt" id="employeeCity" data-validate="required letters">
                             </div>
 
                             <div class="col-md-4">
                                 <label for="employeeState" class="form-label lbl">State</label>
-                                <input type="text" class="form-control txt" id="employeeState">
+                                <input type="text" class="form-control txt" id="employeeState" data-validate="required letters">
                             </div>
 
                             <div class="col-md-4">
                                 <label for="employeePostalCode" class="form-label lbl">Postal Code</label>
-                                <input type="text" class="form-control txt" id="employeePostalCode">
+                                <input type="text" class="form-control txt" id="employeePostalCode" data-validate="required numeric">
                             </div>
                             <div class="col-md-4">
                                 <label for="employeeContactNumber" class="form-label lbl">Contact Number</label>
-                                <input type="tel" class="form-control txt" id="employeeContactNumber">
+                                <input type="tel" class="form-control txt" id="employeeContactNumber" data-validate="required mobile-number">
                             </div>
                             <div class="col-md-4">
                                 <label for="employeeEmail" class="form-label lbl">Email</label>
-                                <input type="email" class="form-control txt" id="employeeEmail">
+                                <input type="email" class="form-control txt" id="employeeEmail" data-validate="email">
                             </div>
                             <div class="col-md-4">
                                 <label for="employeeGuardian" class="form-label lbl">Name of Guardian</label>
-                                <input type="text" class="form-control txt" id="employeeGuardian">
+                                <input type="text" class="form-control txt" id="employeeGuardian" data-validate="required letters">
                             </div>
 
                             <div class="col-md-4">
                                 <label for="employeeGuardianContact" class="form-label lbl">Emergency Contact</label>
-                                <input type="tel" class="form-control txt" id="employeeGuardianContact">
+                                <input type="tel" class="form-control txt" id="employeeGuardianContact" data-validate="required mobile-number">
                             </div>
 
                             <div class="col-md-4">
                                 <label for="employeeRole" class="form-label lbl">Select Role</label>
                                 <select class="form-select opacity-75 txt" aria-label="Default select example"
-                                        id="employeeRole">
+                                        id="employeeRole" data-validate="required">
                                     <option value="null" disabled selected></option>
                                     <option value="ADMIN">Admin</option>
                                     <option value="USER">User</option>

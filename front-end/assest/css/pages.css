@@ -408,3 +408,57 @@ input[type="date"]::before {
     left: 0;
     object-fit: cover;
 }
+
+.profileName {
+    font-size: 70px;
+}
+
+.paraGraph{
+    font-size: 10px;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+.form-step {
+    display: none;
+}
+
+.form-step.active {
+    display: block;
+    animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+.checkPW{
+    border: red solid 1px;
+    text-align: center;
+    margin-bottom: 20px;
+    width: 80%;
+}
+.checkPW h2{
+    margin-top: 5px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.error {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+}

@@ -9,6 +9,7 @@ import lk.ijse.spring.shoeshop.dto.SupplierDTO;
 import lk.ijse.spring.shoeshop.dto.UserDTO;
 import lk.ijse.spring.shoeshop.service.AuthenticationService;
 import lk.ijse.spring.shoeshop.service.EmployeeService;
+import lk.ijse.spring.shoeshop.service.PasswordResetService;
 import lk.ijse.spring.shoeshop.service.UserService;
 import lk.ijse.spring.shoeshop.util.GenerateNewId;
 import lk.ijse.spring.shoeshop.util.ResponseUtil;
@@ -30,8 +31,29 @@ public class UserController {
     private UserService userService;
     @Autowired
     private EmployeeService employeeService;
-    private final AuthenticationService authenticationService;
 
+    private final AuthenticationService authenticationService;
+    @Autowired
+    private PasswordResetService passwordResetService;
+
+
+    @PostMapping("/request-password-reset/{email}")
+    public ResponseEntity<String> requestPasswordReset(@PathVariable("email") String email) {
+        passwordResetService.sendResetEmail(email);
+        return ResponseEntity.ok("Password reset email sent");
+    }
+
+    @PostMapping("/reset-password")
+    public ResponseEntity<String> resetPassword(@RequestParam String token) {
+        passwordResetService.resetPassword(token);
+        return ResponseEntity.ok("Password successfully reset");
+    }
+
+    @PostMapping("/save-password")
+    public ResponseEntity<String> saveNewPassword(@RequestParam String token, @RequestParam String newPassword) {
+        passwordResetService.saveNewPassword(token, newPassword);
+        return ResponseEntity.ok("Password successfully reset");
+    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @GetMapping(path = "active/{activeStatus}", produces = MediaType.APPLICATION_JSON_VALUE)

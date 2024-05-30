@@ -127,6 +127,7 @@ function saveItem() {
                     }
                 },
                 error: function (resp) {
+                    console.log("kkjj")
                     console.log(resp)
                     Swal.fire({
                         icon: "error",
@@ -136,13 +137,7 @@ function saveItem() {
                     });
                 }
             })
-        } else {
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Password do not match",
-                footer: '<a href="#"></a>'
-            });
+        
         }
 
     })
@@ -451,13 +446,6 @@ function updateItem() {
                     });
                 }
             })
-        } else {
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Password do not match",
-                footer: '<a href="#"></a>'
-            });
         }
 
     })

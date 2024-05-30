@@ -1,4 +1,3 @@
-
 setProfileImageAndName();
 updateGreeting();
 totalSalesOfASelectedDate();
@@ -7,9 +6,11 @@ mostSaleItemOfASelectedDate();
 fetchLastThreeOrders();
 totalItemsSoldOnDate();
 
+
 documentReady();
+
 function documentReady() {
-    $(document).ready(function(){
+    $(document).ready(function () {
         $('.datepicker').datepicker({
             format: 'yyyy-mm-dd',
             autoclose: true
@@ -17,13 +18,14 @@ function documentReady() {
 
         let today = new Date();
         let year = today.getFullYear();
-        let month = today.getMonth() + 1 < 10 ? `0${today.getMonth()+1}` : `${today.getMonth()+1}`;
+        let month = today.getMonth() + 1 < 10 ? `0${today.getMonth() + 1}` : `${today.getMonth() + 1}`;
         let day = today.getDate() < 10 ? `0${today.getDate()}` : `${today.getDate()}`;
-        let finalTodayDate = month+'/'+day+'/'+year;
+        let finalTodayDate = month + '/' + day + '/' + year;
         $('#totalSaleDate').val(finalTodayDate).change();
         $('#totalProfitDate').val(finalTodayDate).change();
         $('#mostSaleItemStatusDate').val(finalTodayDate).change();
         $('#totalItemsSoldDate').val(finalTodayDate).change();
+        resetPw();
     });
 }
 
@@ -40,9 +42,23 @@ function setProfileImageAndName() {
         dataType: "json",
         success: function (response) {
             $('#name').text(response.data.employeeName)
+            $('#profileName').text(response.data.employeeName)
+            $('#welcomeName').text(response.data.employeeName + ',')
+
+            let joinDate = response.data.joinDate;
+
+            const date = new Date(joinDate);
+            const options = {year: 'numeric', month: 'long'};
+            const finalDate = date.toLocaleDateString('en-US', options);
+            let parts = finalDate.split(' ');
+            let month = parts[0];
+            let year = parts[1];
+            $('#joinDate').text(month + ', ' + year);
             const uploadDiv = $('.profile-photo');
             uploadDiv.empty();
             const img = $('<img>').attr('src', 'data:image/jpeg;base64,' + response.data.proPic)
+            $('#profilePicViewer').attr('src', 'data:image/jpeg;base64,' + response.data.proPic)
+            $('#resetPicViewer').attr('src', 'data:image/jpeg;base64,' + response.data.proPic)
             uploadDiv.append(img);
         },
         error: function (xhr, status, error) {
@@ -196,12 +212,12 @@ function mostSaleItemOfASelectedDate() {
                     let finalSoldQty = soldQty < 10 ? `0${soldQty}` : `${soldQty}`;
                     $('#soldQty').text(finalSoldQty);
                     $('#mostSaleItemCode').text(response.data.itemCode);
-                }else {
+                } else {
                     $('#soldQty').text('00');
                     $('#mostSaleItemCode').text('No Orders');
                 }
                 getMostSaleItemDetails(response.data.itemCode)
-                
+
             },
             error: function (xhr, status, error) {
                 console.error('Failed to fetch image:', error);
@@ -259,7 +275,7 @@ function getMostSaleItemDetails(itemId) {
                 console.error('Failed to fetch image:', error);
             }
         });
-    }else {
+    } else {
         $('#mostSaleItemPic').attr('src', '#');
         $('#mostSaleItemNameDiv').addClass('d-none');
         $('#mostSaleItemStatus').css('color', 'red');
@@ -268,7 +284,7 @@ function getMostSaleItemDetails(itemId) {
 
         $('.progress-circle').each(function () {
             let cssValue = 'conic-gradient(red ' + (0 * 3.6) + 'deg, #e9ecef 0deg)';
-                $(this).find('.progress-value').css('color', 'black');
+            $(this).find('.progress-value').css('color', 'black');
             $(this).css('background', cssValue);
             $(this).find('.progress-value').text(0 + '%');
         });
@@ -285,11 +301,11 @@ function fetchLastThreeOrders() {
             'Authorization': 'Bearer ' + accessToken
         },
         dataType: "json",
-        success: function(response) {
+        success: function (response) {
             // Clear existing rows
             $('#orders-body').empty();
             // Append new rows
-            response.data.forEach(function(order) {
+            response.data.forEach(function (order) {
                 let row = `<tr>
                                 <td>${order.orderNo}</td>
                                 <td>${order.purchaseDate}</td>
@@ -300,7 +316,7 @@ function fetchLastThreeOrders() {
                 $('#orders-body').append(row);
             });
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.error('Error fetching orders:', error);
             $('#orders-body').html(`<tr><td colspan="5">Error fetching orders. Please try again later.</td></tr>`);
         }
@@ -349,4 +365,132 @@ function totalItemsSoldOnDate() {
             }
         });
     })
+}
+
+function resetPw() {
+    var resetPageCurrentStep = 0;
+    var resetPWSteps = $('.formStep');
+
+    $('.nextStep').click(function () {
+
+        let checkBtn = true;
+        if ($('#changePW').text() === 'Close') {
+            console.log("AA")
+            $('#wrongPW').addClass('d-none');
+            resetPageCurrentStep = 0;
+            $(resetPWSteps[resetPageCurrentStep]).addClass('active');
+            $('#closeBtn').click();
+            checkBtn = false;
+            $('#changePW').text("Get Verification")
+            $('#errorMsg').css('color', 'red');
+            $('.checkPW').css('border', 'red solid 1px');
+            $('#email').val('');
+            $('#code').val('');
+            $('#newPassword').val('');
+            $('#confirmPassword').val('');
+
+        }
+
+        if (checkBtn) {
+            console.log(resetPageCurrentStep);
+            if (resetPageCurrentStep === 0) {
+                $('#msg').text("Provide the email address associated with your account to recover your password.")
+                $('#changePW').text("Get Verification")
+
+                var email = $('#email').val();
+                if (email === localStorage.getItem('email')) {
+
+                    $(resetPWSteps[resetPageCurrentStep]).removeClass('active').addClass('slide-out');
+                    $(resetPWSteps[resetPageCurrentStep + 1]).addClass('active slide-in');
+                    $('#wrongPW').addClass('d-none');
+                    $.ajax({
+                        url: 'http://localhost:8080/api/v1/users/request-password-reset/' + email,
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify(email),
+                        success: function (response) {
+                            $('#wrongPW').addClass('d-none');
+                            console.log(response);
+                            resetPageCurrentStep = 1;
+
+                        },
+                        error: function (xhr, status, error) {
+                            $('#errorMsg').text(xhr.responseJSON.message);
+                            $('#wrongPW').removeClass('d-none');
+                            $('#errorMsg').css('color', 'red');
+                            $('.checkPW').css('border', 'red solid 1px');
+                        }
+                    });
+                } else {
+                    $('#errorMsg').text("Wrong Email Address");
+                    $('#wrongPW').removeClass('d-none');
+                    $('#errorMsg').css('color', 'red');
+                    $('.checkPW').css('border', 'red solid 1px');
+                }
+            } else if (resetPageCurrentStep === 1) {
+                $('#msg').text("we have sent a password reset code by email. Enter it below to reset your password")
+                $('#changePW').text("Change Password")
+
+                let token = $('#code').val();
+
+                $.ajax({
+                    url: 'http://localhost:8080/api/v1/users/reset-password?token=' + token,
+                    type: 'POST',
+                    contentType: 'application/json',
+                    success: function (response) {
+                        resetPageCurrentStep = 2;
+                        console.log("lllll")
+                        $('#wrongPW').addClass('d-none');
+                        $(resetPWSteps[resetPageCurrentStep - 1]).removeClass('active').addClass('slide-out');
+                        $(resetPWSteps[resetPageCurrentStep]).addClass('active slide-in');
+
+                    },
+                    error: function (xhr, status, error) {
+                        $('#errorMsg').text(xhr.responseJSON.message);
+                        $('#wrongPW').removeClass('d-none');
+                        $('#errorMsg').css('color', 'red');
+                        $('.checkPW').css('border', 'red solid 1px');
+                    }
+                });
+            } else if (resetPageCurrentStep === 2) {
+                $('#msg').text("Reset Your Password")
+                $('#signupBtn').text("Change Password")
+
+                console.log("AWA")
+                var newPassword = $('#newPassword').val();
+                var confirmPassword = $('#confirmPassword').val();
+
+                if (newPassword === confirmPassword) {
+                    var token = $('#code').val();
+
+                    $.ajax({
+                        url: 'http://localhost:8080/api/v1/users/save-password?token=' + token+'&newPassword=' + newPassword,
+                        type: 'POST',
+                        contentType: 'application/json',
+                        success: function (response) {
+                            console.log(response);
+                            $('#errorMsg').text(response);
+                            $('#errorMsg').css('color', 'green');
+                            $('.checkPW').css('border', 'green solid 1px');
+                            $('#wrongPW').removeClass('d-none');
+                            $('#changePW').text("Close");
+                            $(resetPWSteps[resetPageCurrentStep]).removeClass('active').addClass('slide-out');
+                        },
+                        error: function (xhr, status, error) {
+                            $('#errorMsg').text(xhr.responseJSON.message);
+                            $('#wrongPW').removeClass('d-none');
+                            $('#errorMsg').css('color', 'red');
+                            $('.checkPW').css('border', 'red solid 1px');
+                        }
+                    });
+
+                } else {
+                    $('#errorMsg').text("Passwords does not match!");
+                    $('#wrongPW').removeClass('d-none');
+                    $('#errorMsg').css('color', 'red');
+                    $('.checkPW').css('border', 'red solid 1px');
+                }
+            }
+        }
+    });
 }
