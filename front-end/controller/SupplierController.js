@@ -49,12 +49,12 @@ function saveSupplier() {
     $('#supplierPopupAddBtn').click(function () {
         if ($(this).text().trim() === 'Save') {
 
-            const form = $('#supplierInputForm');
+            const form = $('#paymentForm');
             if (!validateForm(form)) {
                 return;
             }
-
-
+            
+            
             const postData = {
                 supplierCode: $('#supplierCode').val(),
                 supplierName: $('#supplierName').val(),
