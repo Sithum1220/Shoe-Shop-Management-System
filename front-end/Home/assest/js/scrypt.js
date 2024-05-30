@@ -1,5 +1,4 @@
-const formOpenBtn = $('#loginBtn'),
-    home = $('.home'),
+const signinBtn = $('#signinBtn'),
     form_container = $('.form-container'),
     form_close = $('.from_close'),
     loginBtn = $('#loginNow'),
@@ -13,7 +12,7 @@ const formOpenBtn = $('#loginBtn'),
 
 
 
-formOpenBtn.click(function () {
+signinBtn.click(function () {
     $("#log-in-Password").val('')
     $('#wrongPW').addClass('d-none')
 })

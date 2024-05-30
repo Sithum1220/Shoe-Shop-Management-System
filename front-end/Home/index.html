@@ -28,7 +28,7 @@
     <title>Shoe-Shop-Management-System</title>
 
 </head>
-<body class="w-100 h-100">
+<body>
 <header>
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
@@ -36,7 +36,7 @@
                 Shoes.
             </a>
             <div>
-                <a class="navbar-brand me-4 login" data-bs-toggle="modal" data-bs-target="#loginForm" id="loginBtn" href="#">
+                <a class="navbar-brand me-4 login" data-bs-toggle="modal" data-bs-target="#loginForm" id="signinBtn" href="#">
                     Sign in
                 </a>
                 <a class="navbar-brand me-5 login" data-bs-toggle="modal" data-bs-target="#employeeForm" id="SignUpButton" href="#">
@@ -399,12 +399,12 @@
                                     <div class="col-12">
                                         <div class="mb-4">
 <!--                                            <button type="button" class="btn-close position-absolute end-0 me-4 z-2" data-bs-dismiss="modal" aria-label="Close"></button>-->
-                                            <button type="button" class="btn-close position-absolute end-0 me-4 z-2"  data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <button type="button" class="btn-close position-absolute end-0 me-4 z-2" id="signInClose"  data-bs-dismiss="modal" aria-label="Close"></button>
 
                                             <h3>Sign in</h3>
-                                            <p>Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#employeeForm" data-bs-dismiss="modal" >Sign up</a></p>
+                                            <p>Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#employeeForm" id="signUp" >Sign up</a></p>
                                         </div>
-                                        <div class="d-flex justify-content-center d-none" id="wrongPW">
+                                        <div class="d-flex justify-content-center d-none wrongPW" >
                                             <div class="checkPW">
                                                 <h2 class="text-danger">Invalid username or password</h2>
                                             </div>
@@ -443,7 +443,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-end mt-4">
-                                            <a href="#!">Forgot password</a>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#resetPassword" id="forgotPw">Forgot password</a>
                                         </div>
                                     </div>
                                 </div>
@@ -451,6 +451,78 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="resetPassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="btn-close position-absolute end-0 mt-3 me-3 z-3" data-bs-dismiss="modal" id="closeBtn" aria-label="Close"></button>
+                    <div class="modal-body bg-white">
+                        <div class="card-body p-md-2 p-xl-3">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="mb-2">
+                                        <div class="text-center mb-2">
+                                            <div class="d-flex justify-content-center">
+                                                <img id="resetPicViewer" src="../Home/assest/images/blank-profile-picture-973460_1280.png"
+                                                     alt="Generic placeholder image" class="img-fluid"
+                                                     style="width: 250px; border-radius: 50%;">
+                                            </div>
+                                        </div>
+                                        <h2 class="h4 text-center">Change Password</h2>
+                                        <h3  id="msg" class="fs-6 fw-normal text-secondary text-center m-0">Provide the email address associated with your account to recover your password.</h3>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-center d-none" id="wrongPW">
+                                    <div class="checkPW">
+                                        <h2 class="fw-medium" id="errorMsg"></h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <form action="#">
+                                <div class="row gy-3 overflow-hidden ">
+                                    <div class="col-12  formStep active">
+                                        <div class="mb-3 input-container">
+                                            <b for="email" class="form-label fw-normal">Email</b>
+                                            <input type="email" class=" "  id="email" placeholder="name@example.com">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12  formStep">
+                                        <div class="mb-3 input-container">
+                                            <b for="code" class="form-label fw-normal">Verification Code</b>
+                                            <input type="text" class=" "  id="code" placeholder="" >
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 formStep">
+                                        <div class="mb-3 input-container">
+                                            <b for="newPassword" class="form-label fw-normal">New Password</b>
+                                            <input type="password" class=" "  id="newPassword" placeholder="" >
+                                        </div>
+
+                                        <div class="mb-3 input-container">
+                                            <b for="code" class="form-label fw-normal">Confirm Password</b>
+                                            <input type="password" class=" "  id="confirmPassword" placeholder="" >
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="d-grid">
+                                            <button class="btn bsb-btn-xl btn-primary nextStep" id="changePW" type="submit">Get Verification</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                    <!--            <div class="modal-footer">-->
+                    <!--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+                    <!--                <button type="button" class="btn btn-primary">Save changes</button>-->
+                    <!--            </div>-->
                 </div>
             </div>
         </div>

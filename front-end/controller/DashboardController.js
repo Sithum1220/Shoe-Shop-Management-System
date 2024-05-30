@@ -25,7 +25,6 @@ function documentReady() {
         $('#totalProfitDate').val(finalTodayDate).change();
         $('#mostSaleItemStatusDate').val(finalTodayDate).change();
         $('#totalItemsSoldDate').val(finalTodayDate).change();
-
         resetPw();
     });
 }
@@ -59,6 +58,7 @@ function setProfileImageAndName() {
             uploadDiv.empty();
             const img = $('<img>').attr('src', 'data:image/jpeg;base64,' + response.data.proPic)
             $('#profilePicViewer').attr('src', 'data:image/jpeg;base64,' + response.data.proPic)
+            $('#resetPicViewer').attr('src', 'data:image/jpeg;base64,' + response.data.proPic)
             uploadDiv.append(img);
         },
         error: function (xhr, status, error) {
@@ -464,10 +464,9 @@ function resetPw() {
                     var token = $('#code').val();
 
                     $.ajax({
-                        url: 'http://localhost:8080/api/v1/users/save-password?token=' + token,
+                        url: 'http://localhost:8080/api/v1/users/save-password?token=' + token+'&newPassword=' + newPassword,
                         type: 'POST',
                         contentType: 'application/json',
-                        data: JSON.stringify(newPassword),
                         success: function (response) {
                             console.log(response);
                             $('#errorMsg').text(response);
@@ -478,7 +477,10 @@ function resetPw() {
                             $(resetPWSteps[resetPageCurrentStep]).removeClass('active').addClass('slide-out');
                         },
                         error: function (xhr, status, error) {
-                            $('#reset-password-message').text('Error: ' + xhr.responseText);
+                            $('#errorMsg').text(xhr.responseJSON.message);
+                            $('#wrongPW').removeClass('d-none');
+                            $('#errorMsg').css('color', 'red');
+                            $('.checkPW').css('border', 'red solid 1px');
                         }
                     });
 

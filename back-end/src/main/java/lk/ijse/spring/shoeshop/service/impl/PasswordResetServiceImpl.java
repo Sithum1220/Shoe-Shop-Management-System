@@ -64,9 +64,13 @@ public class PasswordResetServiceImpl implements PasswordResetService {
         User user = userRepository.findByResetToken(token)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid verification code provided, please try again."));
 
-        user.setPassword(passwordEncoder.encode(newPassword));
-        user.setResetToken(null);
-        user.setTokenExpiration(null);
-        userRepository.save(user);
+        if (user.isActiveStatus()) {
+            user.setPassword(passwordEncoder.encode(newPassword));
+            user.setResetToken(null);
+            user.setTokenExpiration(null);
+            userRepository.save(user);
+        }else {
+            throw new IllegalArgumentException("Sorry! Can't reset your password.");
+        }
     }
 }

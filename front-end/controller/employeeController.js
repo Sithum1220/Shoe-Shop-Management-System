@@ -8,79 +8,86 @@ function employeeControlFunction() {
     activeStatusCheckBox();
     deleteEmployee()
 }
+
 var base64String;
 var id;
+
 function saveEmployee() {
     $('#employeePopupAddBtn').click(function () {
-        
+
         if ($(this).text().trim() === 'Save') {
-            if ($('#imgUploader').val() === ''){
+            if ($('#imgUploader').val() === '') {
                 base64String = null;
             }
 
-                var gender;
-                if ('Select Gender' !== $('#employeeGender').val()) {
-                    gender = $('#employeeGender').val().toUpperCase();
-                }
+            const form = $('#employeeInputForm');
+            if (!validateForm(form)) {
+                return;
+            }
 
-                const postData = {
-                    employeeId: $('#employeeCode').val(),
-                    gender: gender,
-                    employeeName: $('#employeeName').val(),
-                    employeeStatus: $('#employeeStatus').val(),
-                    branch: $('#employeeBranch').val(),
-                    designation: $('#employeeDesignation').val(),
-                    proPic: base64String,
-                    joinDate: $('#employeeDOJ').val(),
-                    employeeDob: $('#employeeDOB').val(),
-                    role: "OTHER",
-                    address: {
-                        buildNo: $('#employeeBuilding').val(),
-                        city: $('#employeeCity').val(),
-                        lane: $('#employeeLane').val(),
-                        state: $('#employeeState').val(),
-                        postalCode: $('#employeePostalCode').val()
-                    },
-                    email: $('#employeeEmail').val(),
-                    guardianName: $('#employeeGuardian').val(),
-                    contactNo: $('#employeeContactNumber').val(),
-                    emergencyContact: $('#employeeGuardianContact').val(),
-                    activeStatus:true,
-                };
-                console.log(base64String);
+            var gender;
+            if ('Select Gender' !== $('#employeeGender').val()) {
+                gender = $('#employeeGender').val().toUpperCase();
+            }
+
+            const postData = {
+                employeeId: $('#employeeCode').val(),
+                gender: gender,
+                employeeName: $('#employeeName').val(),
+                employeeStatus: $('#employeeStatus').val(),
+                branch: $('#employeeBranch').val(),
+                designation: $('#employeeDesignation').val(),
+                proPic: base64String,
+                joinDate: $('#employeeDOJ').val(),
+                employeeDob: $('#employeeDOB').val(),
+                role: "OTHER",
+                address: {
+                    buildNo: $('#employeeBuilding').val(),
+                    city: $('#employeeCity').val(),
+                    lane: $('#employeeLane').val(),
+                    state: $('#employeeState').val(),
+                    postalCode: $('#employeePostalCode').val()
+                },
+                email: $('#employeeEmail').val(),
+                guardianName: $('#employeeGuardian').val(),
+                contactNo: $('#employeeContactNumber').val(),
+                emergencyContact: $('#employeeGuardianContact').val(),
+                activeStatus: true,
+            };
+            console.log(base64String);
             performAuthenticatedRequest();
             const accessToken = localStorage.getItem('accessToken');
-                $.ajax({
-                    url: "http://localhost:8080/api/v1/employees",
-                    method: "POST",
-                    headers: {
-                        'Authorization': 'Bearer ' + accessToken
-                    },
-                    data: JSON.stringify(postData),
-                    contentType: "application/json",
-                    success: function (resp) {
-                        if (resp.state == 200) {
-                            console.log(resp);
-                            Swal.fire({
-                                position: "top-end",
-                                icon: "success",
-                                title: "Employee has been saved",
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                            getAllEmployeeData();
-                        }
-                    },
-                    error: function (resp) {
-                        console.log(resp)
+            $.ajax({
+                url: "http://localhost:8080/api/v1/employees",
+                method: "POST",
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                },
+                data: JSON.stringify(postData),
+                contentType: "application/json",
+                success: function (resp) {
+                    if (resp.state == 200) {
+                        console.log(resp);
                         Swal.fire({
-                            icon: "error",
-                            title: "Oops...",
-                            text: resp.responseJSON.message,
-                            footer: '<a href="#"></a>'
+                            position: "top-end",
+                            icon: "success",
+                            title: "Employee has been saved",
+                            showConfirmButton: false,
+                            timer: 1500
                         });
+                        getAllEmployeeData();
                     }
-                })
+                },
+                error: function (resp) {
+                    console.log(resp)
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: resp.responseJSON.message,
+                        footer: '<a href="#"></a>'
+                    });
+                }
+            })
 
         }
 
@@ -119,12 +126,12 @@ function imageUploader() {
     });
 }
 
-function getAllEmployeeAjaxReq(status,value) {
+function getAllEmployeeAjaxReq(status, value) {
     console.log(status);
     performAuthenticatedRequest();
     const accessToken = localStorage.getItem('accessToken');
     $.ajax({
-        url: "http://localhost:8080/api/v1/employees/"+status+"/"+value,
+        url: "http://localhost:8080/api/v1/employees/" + status + "/" + value,
         method: "GET",
         headers: {
             'Authorization': 'Bearer ' + accessToken
@@ -158,13 +165,13 @@ function getAllEmployeeAjaxReq(status,value) {
 }
 
 function getAllEmployeeData() {
-    
-    if ( $('#employeeActiveCheckBox').prop('checked') ) {
-        getAllEmployeeAjaxReq("active",true);
-        $('#addEmployee,#updateEmployee,#deleteEmployee').attr('disabled',false);
-    }else {
-        getAllEmployeeAjaxReq("active",false);
-        $('#addEmployee,#updateEmployee,#deleteEmployee').attr('disabled',true);
+
+    if ($('#employeeActiveCheckBox').prop('checked')) {
+        getAllEmployeeAjaxReq("active", true);
+        $('#addEmployee,#updateEmployee,#deleteEmployee').attr('disabled', false);
+    } else {
+        getAllEmployeeAjaxReq("active", false);
+        $('#addEmployee,#updateEmployee,#deleteEmployee').attr('disabled', true);
     }
 }
 
@@ -207,7 +214,7 @@ function clickTblRow() {
 function setImage(employeeCheckbox) {
     var row = employeeCheckbox.closest('tr');
     if (employeeCheckbox.is(':checked')) {
-         id = row.find('td:eq(0)').text();
+        id = row.find('td:eq(0)').text();
         performAuthenticatedRequest();
         const accessToken = localStorage.getItem('accessToken');
         $.ajax({
@@ -420,7 +427,7 @@ function searchEmployee() {
             performAuthenticatedRequest();
             const accessToken = localStorage.getItem('accessToken');
             $.ajax({
-                url: "http://localhost:8080/api/v1/employees?idOrName=" + idOrName+"&activeStatus=" + true,
+                url: "http://localhost:8080/api/v1/employees?idOrName=" + idOrName + "&activeStatus=" + true,
                 type: "GET",
                 headers: {
                     'Authorization': 'Bearer ' + accessToken
@@ -455,9 +462,9 @@ function searchEmployee() {
                     });
                 }
             });
-        }else {
+        } else {
             $.ajax({
-                url: "http://localhost:8080/api/v1/employees?idOrName=" + idOrName+"&activeStatus=" + false,
+                url: "http://localhost:8080/api/v1/employees?idOrName=" + idOrName + "&activeStatus=" + false,
                 type: "GET",
                 dataType: "json",
                 success: function (response) {
@@ -490,7 +497,7 @@ function searchEmployee() {
                 }
             });
         }
-        
+
     })
 }
 

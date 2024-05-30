@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Return</title>
+</head>
+<body>
+<section id="returnMainSection">
+    <section id="supplierSection">
+        <div class="tblDiv row" id="">
+            <h1>Return Orders</h1>
+            <div class="search p-0 row">
+                <div class="col-10 p-0 d-flex align-items-center justify-content-end">
+                    <div class="d-flex align-items-center">
+                        <img class="ms-2 mb-1 opacity-75" src="../../assest/images/search-normal.png" width="25"
+                             height="25" alt="">
+                        <input class="shadow-lg text-center ps" id="searchSuppliers" type="text" placeholder="Search by Id or Name">
+                    </div>
+                </div>
+            </div>
+            <div class="col-10 tableCol shadow-lg ">
+                <div class="table-container">
+                    <table id="tblOrders" class="table mytable">
+                        <thead class="table-header">
+                        <tr>
+                            <th scope="col">
+                            </th>
+                            <th scope="col">Order Id</th>
+                            <th scope="col">Purchase Date</th>
+                            <th scope="col">Cashier Name</th>
+                            <th scope="col">Total Price</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+            <div class="col-2 btnCol d-flex justify-content-center mt-4">
+                <section class="d-flex flex-column gap-5">
+                    <button class="shadow-lg" id="moreDetailsBtn" data-bs-toggle="modal" data-bs-target="#MoreDetails"><i class="fal fa-plus-circle"></i>
+                        <h1>More Details</h1>
+                    </button>
+                </section>
+
+            </div>
+        </div>
+
+        <div class="modal fade " id="ReturnForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog ">
+                <div class="modal-content">
+                    <div class="modal-header bg-white">
+                        <img id="returnFormIcon" src="../../assest/images/Frame07.png" width="60" alt="">
+                        <h2 id="ReturnFormTitle" class="d-inline-block ms-3 fs-5">Return Orders</h2>
+                        <button type="button" class="btn-close" id="returnPopupClose" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body bg-white inputBody">
+                        <form class="row g-3">
+                            <div class="col-md-6">
+                                <label for="orderId" class="form-label lbl">Order Id</label>
+                                <input type="text" class="form-control txt" readonly id="orderId" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="orderType" class="form-label lbl">Select Order</label>
+                                <select class="select form-select opacity-75 txt"
+                                        aria-label="Default select example"
+                                        id="orderType">
+                                    <option value="Full Order">Full Order</option>
+                                    <option value="One Item">One Item</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-3 itemId d-none">
+                                <label for="itemId" class="form-label lbl">Item Code</label>
+                                <input type="text" class="form-control txt" id="itemId">
+                            </div>
+                            <div class="col-md-3 itemColor d-none">
+                                <label for="itemColor" class="form-label lbl">Item Color</label>
+                                <input type="text" class="form-control txt" id="itemColor">
+                            </div>
+                            <div class="col-md-3 itemSize d-none">
+                                <label for="itemSize" class="form-label lbl">Item Size</label>
+                                <input type="text" class="form-control txt" id="itemSize">
+                            </div>
+                            <div class="col-md-3 itemQty d-none">
+                                <label for="itemSize" class="form-label lbl">Item Qty</label>
+                                <input type="text" class="form-control txt" id="itemQty">
+                            </div>
+                            <div class="col-md-12 text-center mt-4 d-none" id="returnStatus">
+                                <h2 class="text-danger fw-medium fs-4">Sorry! Can't Return This Order.</h2>
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="modal-footer bg-white">
+                        <button type="button" class="btn btn-secondary" id="returnPopupCancelBtn"
+                                data-bs-dismiss="modal">Close
+                        </button>
+                        <button type="button" id="returnPopupAddBtn" class="btn btn-primary">Return</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade " id="MoreDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog ">
+                <div class="modal-content ">
+                    <div class="modal-header bg-white">
+                        <img id="detailsFormIcon" src="../../assest/images/Frame07.png" width="60" alt="">
+                        <h2 id="detailsFormTitle" class="d-inline-block ms-3 fs-5">More Details</h2>
+                        <button type="button" class="btn-close" id="detailsPopupClose" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body bg-white inputBody">
+                        <form class="row g-3">
+                            <table id="tblOrdersDetails" class="table mytable">
+                                <thead class="table-header">
+                                <tr>
+                                    <th scope="col">Item Id</th>
+                                    <th scope="col">Color</th>
+                                    <th scope="col">Size</th>
+                                    <th scope="col">Qty</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                    <div class="modal-footer bg-white">
+                        <button type="button" class="btn btn-secondary" id="detailsPopupCancelBtn"
+                                data-bs-dismiss="modal">Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="container d-flex justify-content-center">
+            <div id="my-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content border-0">
+                        <div class="modal-body p-0">
+                            <div class="card border-0 p-sm-3 p-2 justify-content-center">
+                                <div class="card-header pb-0 bg-white border-0 ">
+                                    <div class="row">
+                                        <div class="col ml-auto d-flex justify-content-end me-2">
+                                            <button type="button" class="close deleteBtn bg-white" data-dismiss="modal" aria-label="Close">
+                                                <span class="closeIcon" aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <p class="font-weight-bold mb-2 fw-bold"> Are you sure you wanna delete this ?</p>
+                                    <p class="deleteMutedTxt"> This change will reflect in your portal after an hour.</p>
+                                </div>
+                                <div class="card-body px-sm-4 mb-2 pt-1 pb-0">
+                                    <div class="row justify-content-end no-gutters">
+                                        <div class="col-auto">
+                                            <button type="button" class="btn btn-light text-muted deleteBtn" data-dismiss="modal">
+                                                Cancel
+                                            </button>
+                                        </div>
+                                        <div class="col-auto">
+                                            <button type="button" id="supplierDeleteBtn" class="btn btn-danger px-4 deleteBtn" data-dismiss="modal">
+                                                Delete
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-------------------------------Add/Update/Details/Delete Employee Form End------------------------------------------->
+    </section>
+</section>
+
+</body>
+</html>

@@ -22,11 +22,11 @@
                 <h2 class="shoes ms-5" href="#">Shoes.</h2>
                 <div class="profile">
                     <div class="info">
-                        <p class="m-0">Hey, <b>Sithum</b></p>
-                        <small class="text-muted">User</small>
+                        <p class="m-0">Hey, <b id="name"></b></p>
+                        <small class="text-muted" id="greeting"></small>
                     </div>
-                    <div class="profile-photo me-2">
-                        <img src="../../assest/images/profile-1.jpg">
+                    <div class="profile-photo me-2" data-bs-toggle="modal" data-bs-target="#profileForm">
+
                     </div>
                 </div>
             </div>
@@ -55,13 +55,6 @@
         <h3 class="fs-6">Employee</h3>
     </a>
 
-    <a href="#" id="orderBtn">
-                   <span class="material-symbols-outlined">
-                       orders
-                   </span>
-        <h3 class="fs-6">Orders</h3>
-    </a>
-
     <a href="#" id="inventoryBtn">
                    <span class="material-symbols-outlined">
                         inventory_2
@@ -69,11 +62,18 @@
         <h3 class="fs-6">Inventory</h3>
     </a>
 
-    <a href="#" id="profileBtn">
-                    <span class="material-icons-sharp">
-                        person_outline
+    <a href="#" id="orderBtn">
+                   <span class="material-symbols-outlined">
+                       orders
+                   </span>
+        <h3 class="fs-6">Orders</h3>
+    </a>
+
+    <a href="#" id="returnBtn">
+                   <span class="material-symbols-outlined">
+                        assignment_return
                     </span>
-        <h3 class="fs-6">Profile</h3>
+        <h3 class="fs-6">Return</h3>
     </a>
 
     <a href="#" id="logout">
@@ -84,24 +84,32 @@
     </a>
 </section>
 <main>
-    <section id="dashboard" class="mainSection ">
+    <section id="dashboard" class="mainSection">
         <div class="data">
             <div class="row analyse">
                 <div class="shadow-lg col ">
                     <div class="sales">
                         <div class="status">
-                            <div class="info">
-                                <h3>Total Sales</h3>
-                                <h1>$65,024</h1>
-                            </div>
-                            <div class="progresss">
-                                <svg>
-                                    <circle cx="38" cy="38" r="36"></circle>
-                                </svg>
-                                <div class="percentage">
-                                    <p>+81%</p>
+                            <div class="saleDetailBox d-flex justify-content-center">
+                                <div class="container">
+                                    <div class="input-group date">
+                                        <input type="text" class="form-control datepicker" id="totalSaleDate"
+                                               placeholder="Select Date">
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center flex-column">
+                                    <h3 class="fs-3 text-muted">Total Sales</h3>
+                                    <h1 id="totalSale" class="text-muted"></h1>
                                 </div>
                             </div>
+                            <!--                            <div class="progresss">-->
+                            <!--                                <svg>-->
+                            <!--                                    <circle cx="38" cy="38" r="36"></circle>-->
+                            <!--                                </svg>-->
+                            <!--                                <div class="percentage">-->
+                            <!--                                    <p>+81%</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -110,59 +118,83 @@
                     <!--                    <h2>100 <p>Employee Attendance</p></h2>-->
                     <div class="sales">
                         <div class="status">
-                            <div class="info">
-                                <h3>Total Sales</h3>
-                                <h1>$65,024</h1>
-                            </div>
-                            <div class="progresss">
-                                <svg>
-                                    <circle cx="38" cy="38" r="36"></circle>
-                                </svg>
-                                <div class="percentage">
-                                    <p>+81%</p>
+                            <div class="saleDetailBox">
+                                <div class="container">
+                                    <div class="input-group date">
+                                        <input type="text" id="totalProfitDate" class="form-control datepicker"
+                                               placeholder="Select Date">
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center flex-column">
+                                    <h3 class="fs-3 text-muted">Total Profit</h3>
+                                    <h1 class="text-muted fs-4">Rs <b id="totalProfit"
+                                                                      class="text-muted fs-1 fw-normal"></b></h1>
                                 </div>
                             </div>
+                            <!--                            <div class="progresss">-->
+                            <!--                                <svg>-->
+                            <!--                                    <circle cx="38" cy="38" r="36"></circle>-->
+                            <!--                                </svg>-->
+                            <!--                                <div class="percentage">-->
+                            <!--                                    <p>+81%</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
                         </div>
                     </div>
                 </div>
                 <div class="shadow-lg col">
+                    <div class="searches">
+                        <div class="status">
+                            <div class="saleDetailBox">
+                                <div class="container">
+                                    <div class="input-group date">
+                                        <input type="text" id="totalItemsSoldDate" class="form-control datepicker" placeholder="Select Date">
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center flex-column">
+                                    <h3 class="fs-3 text-muted">Sold Item</h3>
+                                    <h1 id="totalItemsSold" class="text-muted"></h1>
+                                </div>
+                            </div>
+                            <!--                            <div class="progresss">-->
+                            <!--                                <svg>-->
+                            <!--                                    <circle cx="38" cy="38" r="36"></circle>-->
+                            <!--                                </svg>-->
+                            <!--                                <div class="percentage">-->
+                            <!--                                    <p>+21%</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow-lg col-md-4 lastDiv">
                     <!--                    <img src="../Admin Dashboard/assets/images/Frame03.png" alt="">-->
                     <!--                    <h2>100 <p>Employee Attendance</p></h2>-->
                     <div class="visits">
                         <div class="status">
-                            <div class="info">
-                                <h3>Site Visit</h3>
-                                <h1>24,981</h1>
-                            </div>
-                            <div class="progresss">
-                                <svg>
-                                    <circle cx="38" cy="38" r="36"></circle>
-                                </svg>
-                                <div class="percentage">
-                                    <p>-48%</p>
+                            <div class="saleDetailBox">
+                                <div class="container">
+                                    <div class="input-group date">
+                                        <input type="text" id="mostSaleItemStatusDate" class="form-control datepicker" placeholder="Select Date">
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center flex-column">
+                                    <h3 class="fs-4 text-muted">Most Sale Item Status</h3>
+                                    <h1 id="mostSaleItemStatus" class=" fs-1 fw-normal"></h1>
                                 </div>
                             </div>
+                            <!--                            <div class="progresss">-->
+                            <!--                                <svg>-->
+                            <!--                                    <circle cx="38" cy="38" r="36"></circle>-->
+                            <!--                                </svg>-->
+                            <!--                                <div class="percentage">-->
+                            <!--                                    <p>-48%</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
                         </div>
                     </div>
                 </div>
-                <div class="shadow-lg col lastDiv">
-                    <div class="searches">
-                        <div class="status">
-                            <div class="info">
-                                <h3>Searches</h3>
-                                <h1>14,147</h1>
-                            </div>
-                            <div class="progresss">
-                                <svg>
-                                    <circle cx="38" cy="38" r="36"></circle>
-                                </svg>
-                                <div class="percentage">
-                                    <p>+21%</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
 
         </div>
@@ -171,20 +203,16 @@
                 <h1>Most Sale Item</h1>
                 <div class="col shadow-lg ">
                     <div class="text-center">
-                        <img class="me-5" src="../../assest/images/shoe01.png" width="260" alt="">
+                        <img class="me-5" id="mostSaleItemPic" src="#" width="260" alt="">
                     </div>
                     <div class="text-center ">
                         <div class="d-inline-block itemDiv me-5 mt-3">
-                            <h6 class="text-center fs-6">Item Id</h6>
-                            <h1 class="text-center ">I001</h1>
+                            <h6 class="text-center fs-6">Item Code</h6>
+                            <h1 class="text-center " id="mostSaleItemCode"></h1>
                         </div>
                         <div class="d-inline-block itemDiv me-5 mt-3">
                             <h6 class="text-center fs-6">Sold Qty</h6>
-                            <h1 class="text-center ">67</h1>
-                        </div>
-                        <div class="d-inline-block itemDiv mt-3">
-                            <h6 class="text-center">Shoe Size</h6>
-                            <h1 class="text-center ">08</h1>
+                            <h1 class="text-center " id="soldQty"></h1>
                         </div>
                     </div>
 
@@ -194,16 +222,18 @@
                         <div class="qtyStatus">
                             <div class="qtyInfo">
                                 <h3>Quantity On Hand</h3>
-                                <h1 class="ms-2">254</h1>
+                                <h1 class="ms-2" id="qtyOnHand"></h1>
                             </div>
                             <div class="qtyProgresses">
-                                <svg>
-                                    <circle cx="78" cy="78" r="76"></circle>
-                                </svg>
-                                <div class="qtyPercentage">
-                                    <p class="fs-2">+81%</p>
+                                <div class="progress-circle" >
+                                    <span class="progress-value"></span>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="d-inline-block itemDiv mt-3 d-flex justify-content-center flex-column d-none" id="mostSaleItemNameDiv">
+                            <h1 class="text-center fs-4 fw-medium">Item Name</h1>
+                            <h1 class="text-center text-success" id="mostSaleItemName"></h1>
                         </div>
                     </div>
                 </div>
@@ -217,34 +247,14 @@
                             <thead>
                             <tr>
                                 <th scope="col">Order Id</th>
-                                <th scope="col">Customer Id</th>
-                                <th scope="col">Customer Name</th>
-                                <th scope="col">Date</th>
+                                <th scope="col">Purchase Date</th>
+                                <th scope="col">Cashier Name</th>
                                 <th scope="col">Total Price</th>
+                                <th scope="col">Status</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <td>O001</td>
-                                <td>C001</td>
-                                <td>Sithum Perera</td>
-                                <td>2024.01.20</td>
-                                <td>2500</td>
-                            </tr>
-                            <tr>
-                                <td>O002</td>
-                                <td>C002</td>
-                                <td>Imesh Perera</td>
-                                <td>2024.02.10</td>
-                                <td>3500</td>
-                            </tr>
-                            <tr>
-                                <td>O003</td>
-                                <td>C003</td>
-                                <td>Sithum Imesh</td>
-                                <td>2024.03.18</td>
-                                <td>5500</td>
-                            </tr>
+                            <tbody id="orders-body">
+
                             </tbody>
                         </table>
                     </div>
@@ -252,12 +262,122 @@
             </div>
         </div>
     </section>
+    <div class="modal fade" id="profileForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg rounded modal-dialog-centered">
+            <div class="modal-content  p-0">
+                <div class="card-body rounded-4 p-4 bg-white">
+                    <div class="d-flex">
+                        <div class="d-flex align-items-center">
+                            <img id="profilePicViewer" src="#"
+                                 alt="Generic placeholder image" class="img-fluid"
+                                 style="width: 600px; border-radius: 50%;">
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h1 class="mb-1 pt-3 profileName fw-medium" id="profileName"></h1>
+                            <h2 class="fs-4 text-muted">Joined <b id="joinDate"></b></h2>
+                            <div class="d-flex justify-content-start rounded-3 p-2 mb-2 bg-body-tertiary">
+                                <div>
+                                    <p class="small text-muted mb-1">Welcome <b id="welcomeName" class="fw-normal"></b></p>
+                                    <p class="mb-0 paraGraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias
+                                        at cupiditate debitis dolores eligendi facere, facilis fugiat iste laborum, odit
+                                        optio qui quis sed, veritatis? Deserunt error maiores possimus?</p>
+                                </div>
+                            </div>
+
+                            <div class="d-flex pt-1">
+                                <button type="button" data-mdb-button-init data-mdb-ripple-init
+                                        class="btn btn-outline-primary me-1 w-50 " data-bs-dismiss="modal">Cancel
+                                </button>
+                                <button type="button" data-mdb-button-init data-mdb-ripple-init
+                                        class="btn btn-primary w-50" data-bs-toggle="modal" data-bs-target="#resetPassword" data-bs-dismiss="modal">Change Password
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="resetPassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" class="btn-close position-absolute end-0 mt-3 me-3 z-3" data-bs-dismiss="modal" id="closeBtn" aria-label="Close"></button>
+                <div class="modal-body bg-white">
+                    <div class="card-body p-md-2 p-xl-3">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mb-2">
+                                    <div class="text-center mb-2">
+                                        <div class="d-flex justify-content-center">
+                                            <img id="resetPicViewer" src="#"
+                                                 alt="Generic placeholder image" class="img-fluid"
+                                                 style="width: 250px; border-radius: 50%;">
+                                        </div>
+                                    </div>
+                                    <h2 class="h4 text-center">Change Password</h2>
+                                    <h3  id="msg" class="fs-6 fw-normal text-secondary text-center m-0">Provide the email address associated with your account to recover your password.</h3>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center d-none" id="wrongPW">
+                                <div class="checkPW">
+                                    <h2 class="fw-medium" id="errorMsg"></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <form action="#">
+                            <div class="row gy-3 overflow-hidden ">
+                                <div class="col-12 form-step formStep active">
+                                    <div class="mb-3 input-container">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class=" "  id="email" placeholder="name@example.com">
+                                    </div>
+                                </div>
+
+                                <div class="col-12 form-step formStep">
+                                    <div class="mb-3 input-container">
+                                        <label for="code" class="form-label">Verification Code</label>
+                                        <input type="text" class=" "  id="code" placeholder="" >
+                                    </div>
+                                </div>
+
+                                <div class="col-12 form-step formStep">
+                                    <div class="mb-3 input-container">
+                                        <label for="newPassword" class="form-label">New Password</label>
+                                        <input type="password" class=" "  id="newPassword" placeholder="" >
+                                    </div>
+
+                                    <div class="mb-3 input-container">
+                                        <label for="code" class="form-label">Confirm Password</label>
+                                        <input type="password" class=" "  id="confirmPassword" placeholder="" >
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="d-grid">
+                                        <button class="btn bsb-btn-xl btn-primary nextStep" id="changePW" type="submit">Get Verification</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <!--            <div class="modal-footer">-->
+                <!--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+                <!--                <button type="button" class="btn btn-primary">Save changes</button>-->
+                <!--            </div>-->
+            </div>
+        </div>
+    </div>
     <section id="pages" class="mainSection">
     </section>
 
 
 </main>
-
+<script src="../../assest/js/admin/return.js"></script>
+<script src="../../controller/returnController.js"></script>
 <script src="../../assest/js/code.jquery.com_jquery-3.7.1.min.js"></script>
 <script src="../../assest/boostrap/js/bootstrap.bundle.js"></script>
 <script src="../../assest/js/user/dashboard.js"></script>
@@ -267,7 +387,7 @@
 <script src="../../controller/employeeController.js"></script>
 <script src="../../controller/InventoryController.js"></script>
 <script src="../../assest/js/admin/employee.js"></script>
-
+<script src="../../controller/DashboardController.js"></script>
 <script src="../../assest/js/admin/inventory.js"></script>
 <script src="../../controller/PurchaseOrderController.js"></script>
 <script src="../../controller/CustomerController.js"></script>

@@ -1,6 +1,7 @@
 signUp();
 signIn();
 userImageUploader();
+resetPw();
 
 let base64String;
 let newId;
@@ -11,6 +12,12 @@ var currentStep = 0;
 var steps = $('.form-step');
 let emRole;
 
+$('#forgotPw').click(function () {
+$('#signInClose').click();
+})
+$('#signUp').click(function () {
+$('#signInClose').click();
+})
 
 $('#employeeRole').change(function () {
     emRole = $('#employeeRole').val();
@@ -173,28 +180,38 @@ function signIn() {
                     success: function (res, textStatus, xhr) {
                         localStorage.setItem('role', res.role);
                         localStorage.setItem('cashier', value.email);
-                        if (res.role === "ADMIN") {
-                            console.log("Admin");
-                            window.location.href = '../Pages/admin/dashboard.html'
+                        if (res.activeStatus === true) {
+                            if (res.role === "ADMIN") {
+                                console.log("Admin");
+                                window.location.href = '../Pages/admin/dashboard.html'
+                                Swal.fire({
+                                    position: "top-end",
+                                    icon: "success",
+                                    title: "Successfully Login!",
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                                $('.wrongPW').addClass('d-none')
+                            } else if (res.role === "USER") {
+                                console.log("User");
+                                window.location.href = '../Pages/user/dashboard.html'
+                                Swal.fire({
+                                    position: "top-end",
+                                    icon: "success",
+                                    title: "Successfully Login!",
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                                $('.wrongPW').addClass('d-none')
+                            }
+
+                        }else {
                             Swal.fire({
-                                position: "top-end",
-                                icon: "success",
-                                title: "Successfully Login!",
-                                showConfirmButton: false,
-                                timer: 1500
+                                icon: "error",
+                                title: "Oops...",
+                                text: "Sorry! Your User Account Disabled, Please Contact Manager",
+                                footer: '<a href="#"></a>'
                             });
-                            $('#wrongPW').addClass('d-none')
-                        } else if (res.role === "USER") {
-                            console.log("User");
-                            window.location.href = '../Pages/user/dashboard.html'
-                            Swal.fire({
-                                position: "top-end",
-                                icon: "success",
-                                title: "Successfully Login!",
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                            $('#wrongPW').addClass('d-none')
                         }
                     },
                     error: function (ob, textStatus, error) {
@@ -204,7 +221,7 @@ function signIn() {
 
             },
             error: function (ob, textStatus, error) {
-                $('#wrongPW').removeClass('d-none')
+                $('.wrongPW').removeClass('d-none')
             }
         });
     })
@@ -397,5 +414,124 @@ function slider() {
     }
 }
 
+function resetPw() {
+    var resetPageCurrentStep = 0;
+    var resetPWSteps = $('.formStep');
 
+    $('.nextStep').click(function () {
+
+        let checkBtn = true;
+        if ($('#changePW').text() === 'Close') {
+            console.log("AA")
+            $('#wrongPW').addClass('d-none');
+            resetPageCurrentStep = 0;
+            $(resetPWSteps[resetPageCurrentStep]).addClass('active');
+            $('#closeBtn').click();
+            checkBtn = false;
+            $('#changePW').text("Get Verification")
+            $('#errorMsg').css('color', 'red');
+            $('.checkPW').css('border', 'red solid 1px');
+            $('#email').val('');
+            $('#code').val('');
+            $('#newPassword').val('');
+            $('#confirmPassword').val('');
+
+        }
+
+        if (checkBtn) {
+            if (resetPageCurrentStep === 0) {
+                $('#msg').text("Provide the email address associated with your account to recover your password.")
+                $('#changePW').text("Get Verification")
+
+                var email = $('#email').val();
+
+                    $.ajax({
+                        url: 'http://localhost:8080/api/v1/users/request-password-reset/' + email,
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify(email),
+                        success: function (response) {
+                            console.log(resetPageCurrentStep);
+                            $('#wrongPW').addClass('d-none');
+                            console.log(response);
+                            resetPageCurrentStep = 1;
+                            $(resetPWSteps[resetPageCurrentStep - 1]).removeClass('active').addClass('slide-out');
+                            $(resetPWSteps[resetPageCurrentStep]).addClass('active slide-in');
+                            $('#wrongPW').addClass('d-none');
+                        },
+                        error: function (xhr, status, error) {
+                            $('#errorMsg').text(xhr.responseJSON.message);
+                            $('#wrongPW').removeClass('d-none');
+                            $('#errorMsg').css('color', 'red');
+                            $('.checkPW').css('border', 'red solid 1px');
+                        }
+                    });
+            } else if (resetPageCurrentStep === 1) {
+                $('#msg').text("we have sent a password reset code by email. Enter it below to reset your password")
+                $('#changePW').text("Change Password")
+
+                let token = $('#code').val();
+
+                $.ajax({
+                    url: 'http://localhost:8080/api/v1/users/reset-password?token=' + token,
+                    type: 'POST',
+                    contentType: 'application/json',
+                    success: function (response) {
+                        resetPageCurrentStep = 2;
+                        console.log("lllll")
+                        $('#wrongPW').addClass('d-none');
+                        $(resetPWSteps[resetPageCurrentStep - 1]).removeClass('active').addClass('slide-out');
+                        $(resetPWSteps[resetPageCurrentStep]).addClass('active slide-in');
+
+                    },
+                    error: function (xhr, status, error) {
+                        $('#errorMsg').text(xhr.responseJSON.message);
+                        $('#wrongPW').removeClass('d-none');
+                        $('#errorMsg').css('color', 'red');
+                        $('.checkPW').css('border', 'red solid 1px');
+                    }
+                });
+            } else if (resetPageCurrentStep === 2) {
+                $('#msg').text("Reset Your Password")
+                $('#signupBtn').text("Change Password")
+
+                console.log("AWA")
+                var newPassword = $('#newPassword').val();
+                var confirmPassword = $('#confirmPassword').val();
+
+                if (newPassword === confirmPassword) {
+
+                    var token = $('#code').val();
+
+                    $.ajax({
+                        url: 'http://localhost:8080/api/v1/users/save-password?token=' + token+'&newPassword=' + newPassword,
+                        type: 'POST',
+                        contentType: 'application/json',
+                        success: function (response) {
+                            console.log(response);
+                            $('#errorMsg').text(response);
+                            $('#errorMsg').css('color', 'green');
+                            $('.checkPW').css('border', 'green solid 1px');
+                            $('#wrongPW').removeClass('d-none');
+                            $('#changePW').text("Close");
+                            $(resetPWSteps[resetPageCurrentStep]).removeClass('active').addClass('slide-out');
+                        },
+                        error: function (xhr, status, error) {
+                            $('#errorMsg').text(xhr.responseJSON.message);
+                            $('#wrongPW').removeClass('d-none');
+                            $('#errorMsg').css('color', 'red');
+                            $('.checkPW').css('border', 'red solid 1px');
+                        }
+                    });
+
+                } else {
+                    $('#errorMsg').text("Passwords does not match!");
+                    $('#wrongPW').removeClass('d-none');
+                    $('#errorMsg').css('color', 'red');
+                    $('.checkPW').css('border', 'red solid 1px');
+                }
+            }
+        }
+    });
+}
 

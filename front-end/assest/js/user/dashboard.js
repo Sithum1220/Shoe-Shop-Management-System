@@ -4,8 +4,10 @@ const orderBtn = $('#orderBtn');
 const inventoryBtn = $('#inventoryBtn');
 const profileBtn = $('#profileBtn'),
     dashboard = $('#dashboard'),
+ customerOrderBtn = $('#customerOrderBtn'),
     employeeBtn = $('#employeeBtn'),
-    logout = $('#logout');
+    logout = $('#logout'),
+    returnBtn = $('#returnBtn');
 
 dashboardBtn.click(function () {
     // $('#dashboard').css("display", "block");
@@ -20,6 +22,7 @@ dashboardBtn.click(function () {
     profileBtn.removeClass('active')
     employeeBtn.removeClass('active')
     dashboard.css('display', 'block');
+    returnBtn.removeClass('active')
     $('#customerSection').remove();
     $('#inventorySection').remove();
     $('#customerOrderSection').remove();
@@ -41,6 +44,7 @@ customerBtn.click(function () {
     orderBtn.removeClass('active')
     inventoryBtn.removeClass('active')
     profileBtn.removeClass('active')
+    returnBtn.removeClass('active')
     employeeBtn.removeClass('active')
     dashboard.css('display', 'none');
     // $('#supplierSection').remove();
@@ -72,6 +76,7 @@ employeeBtn.click(function () {
     orderBtn.removeClass('active')
     employeeBtn.addClass('active')
     inventoryBtn.removeClass('active')
+    returnBtn.removeClass('active')
     profileBtn.removeClass('active')
     dashboard.css('display', 'none');
 
@@ -103,6 +108,8 @@ orderBtn.click(function () {
     customerBtn.removeClass('active')
     orderBtn.addClass('active')
     inventoryBtn.removeClass('active')
+    returnBtn.removeClass('active')
+
     employeeBtn.removeClass('active')
     profileBtn.removeClass('active')
     dashboard.css('display', 'none');
@@ -144,6 +151,8 @@ inventoryBtn.click(function () {
     dashboardBtn.removeClass('active')
     customerBtn.removeClass('active')
     orderBtn.removeClass('active')
+    returnBtn.removeClass('active')
+
     profileBtn.removeClass('active')
     employeeBtn.removeClass('active')
     inventoryBtn.addClass('active')
@@ -169,26 +178,36 @@ inventoryBtn.click(function () {
         });
 })
 
-profileBtn.click(function () {
-    // $('#employee').css("display", "none");
-    // $('#dashboard').css("display", "none");
-    // $('#supplier').css("display", "none");
-    // $('#inventory').css("display", "none");
-    // $('#users').css("display", "block");
+
+returnBtn.click(function () {
     dashboardBtn.removeClass('active')
-    customerBtn.removeClass('active')
-    orderBtn.removeClass('active')
     employeeBtn.removeClass('active')
     inventoryBtn.removeClass('active')
-    profileBtn.addClass('active')
-    // $('#employeSection').remove();
-    // $('#inventorySection').remove();
-    // $('#supplierSection').remove();
-    // dashboard.css('display', 'none');
-    // $('#pages').load('user.html #userSection', function () {
-    //     pagination();
-    //     userFunction();
-    // });
+    customerBtn.removeClass('active')
+    customerOrderBtn.removeClass('active')
+    returnBtn.addClass('active')
+    dashboard.css('display', 'none');
+
+    $('#employeSection').remove();
+    $('#inventorySection').remove();
+
+    fetch('return.html')
+        .then(response => response.text())
+        .then(data => {
+            console.log("HTML file loaded successfully:", data);
+
+            var tempDiv = document.createElement('div');
+            tempDiv.innerHTML = data;
+
+            var extractedContent = tempDiv.querySelector('#returnMainSection').innerHTML;
+
+            $("#pages").html(extractedContent);
+            returnFunction();
+            returnController();
+        })
+        .catch(error => {
+            console.error("Error loading HTML file:", error);
+        });
 })
 
 function disableTxtField() {

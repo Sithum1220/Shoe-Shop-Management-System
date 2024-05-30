@@ -50,7 +50,7 @@ public class UserController {
     }
 
     @PostMapping("/save-password")
-    public ResponseEntity<String> saveNewPassword(@RequestParam String token, @RequestBody String newPassword) {
+    public ResponseEntity<String> saveNewPassword(@RequestParam String token, @RequestParam String newPassword) {
         passwordResetService.saveNewPassword(token, newPassword);
         return ResponseEntity.ok("Password successfully reset");
     }
