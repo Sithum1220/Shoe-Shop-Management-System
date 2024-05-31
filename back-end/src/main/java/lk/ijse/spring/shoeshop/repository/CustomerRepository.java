@@ -5,6 +5,8 @@ import lk.ijse.spring.shoeshop.entity.Supplier;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public interface CustomerRepository extends JpaRepository<Customer, String> {
@@ -16,4 +18,6 @@ public interface CustomerRepository extends JpaRepository<Customer, String> {
     List<Customer> findByCustomerIdStartingWithOrCustomerNameStartingWith(String customerIdStart, String customerNameStart);
 
     Customer findByCustomerId(String customerId);
+
+    List<Customer> findAllByCustomerDob(Date customerDob);
 }

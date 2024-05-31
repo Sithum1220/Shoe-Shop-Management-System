@@ -394,6 +394,11 @@ function resetPw() {
         if (checkBtn) {
             console.log(resetPageCurrentStep);
             if (resetPageCurrentStep === 0) {
+                let emailForm = $('#emailForm');
+                if (!validateForm(emailForm)) {
+                    return;
+                }
+
                 $('#msg').text("Provide the email address associated with your account to recover your password.")
                 $('#changePW').text("Get Verification")
 
@@ -428,6 +433,11 @@ function resetPw() {
                     $('.checkPW').css('border', 'red solid 1px');
                 }
             } else if (resetPageCurrentStep === 1) {
+
+                let codeForm = $('#codeForm');
+                if (!validateForm(codeForm)) {
+                    return;
+                }
                 $('#msg').text("we have sent a password reset code by email. Enter it below to reset your password")
                 $('#changePW').text("Change Password")
 
@@ -453,6 +463,11 @@ function resetPw() {
                     }
                 });
             } else if (resetPageCurrentStep === 2) {
+                let pwForm = $('#pwForm');
+                if (!validateForm(pwForm)) {
+                    return;
+                }
+
                 $('#msg').text("Reset Your Password")
                 $('#signupBtn').text("Change Password")
 

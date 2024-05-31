@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="032d1856-7f95-44cb-a7e8-c221ea7611af" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/customers/customerOrder.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/customers/customerOrder.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/controller/PurchaseOrderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/PurchaseOrderController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/controller/SupplierController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/SupplierController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +20,8 @@
         <option value="HTML File" />
         <option value="CSS File" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JavaScript File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -87,7 +84,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -294,7 +291,9 @@
       <workItem from="1716866150054" duration="11765000" />
       <workItem from="1716882915350" duration="21012000" />
       <workItem from="1716960215134" duration="51923000" />
-      <workItem from="1717042882802" duration="43066000" />
+      <workItem from="1717042882802" duration="44740000" />
+      <workItem from="1717100626246" duration="5000" />
+      <workItem from="1717126061467" duration="7080000" />
     </task>
     <servers />
   </component>

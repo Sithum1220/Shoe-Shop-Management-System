@@ -49,7 +49,7 @@ function saveSupplier() {
     $('#supplierPopupAddBtn').click(function () {
         if ($(this).text().trim() === 'Save') {
 
-            const form = $('#paymentForm');
+            const form = $('#supplierInputForm');
             if (!validateForm(form)) {
                 return;
             }
