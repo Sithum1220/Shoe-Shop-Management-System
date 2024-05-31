@@ -354,26 +354,26 @@
                                 </div>
                             </div>
                         </div>
-                        <form action="#">
+                        <form action="#" id="resetPasswordForm">
                             <div class="row gy-3 overflow-hidden ">
-                                <div class="col-12 form-step formStep active">
+                                <div class="col-12 form-step formStep active" id="emailForm">
                                     <div class="mb-3 input-container">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="email" class=" "  id="email" placeholder="name@example.com">
+                                        <input type="email" class=" "  id="email" placeholder="name@example.com" data-validate="email">
                                     </div>
                                 </div>
 
-                                <div class="col-12 form-step formStep">
+                                <div class="col-12 form-step formStep" id="codeForm">
                                     <div class="mb-3 input-container">
                                         <label for="code" class="form-label">Verification Code</label>
-                                        <input type="text" class=" "  id="code" placeholder="" >
+                                        <input type="text" class=" "  id="code" placeholder="" data-validate="required numeric" >
                                     </div>
                                 </div>
 
-                                <div class="col-12 form-step formStep">
+                                <div class="col-12 form-step formStep" id="pwForm">
                                     <div class="mb-3 input-container">
                                         <label for="newPassword" class="form-label">New Password</label>
-                                        <input type="password" class=" "  id="newPassword" placeholder="" >
+                                        <input type="password" class=" "  id="newPassword" placeholder="" data-validate="required password">
                                     </div>
 
                                     <div class="mb-3 input-container">
