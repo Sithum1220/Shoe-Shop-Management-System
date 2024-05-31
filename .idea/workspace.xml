@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="032d1856-7f95-44cb-a7e8-c221ea7611af" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/service/util/BirthdayReminder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/supplier.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/supplier.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/controller/DashboardController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/DashboardController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/controller/SupplierController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/SupplierController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/controller/validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/validation.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +20,8 @@
         <option value="HTML File" />
         <option value="CSS File" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JavaScript File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -54,52 +47,52 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.main.executor&quot;: &quot;Run&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;JUnit.EmployeeRepositoryTest.searchEmployee.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EmployeeServiceImplTest.countEmployee.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EmployeeServiceImplTest.getAllEmployees.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EmployeeServiceImplTest.saveEmployee.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EmployeeServiceImplTest.searchEmployeesById.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PurchaseOrderServiceImplTest.mostSoldItemAndColor.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PurchaseOrderServiceImplTest.totalProfitOfASelectedDate.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SupplierRepositoryTest.existsByMobileNo.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceImplTest.findAllByActiveStatus.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceImplTest.searchUsersById.executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.WebAppInitializer.executor&quot;: &quot;Run&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;work-branch&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/sithumimesh/Desktop/AAD Project/Shoe-Shop-Management-System/front-end/Pages/user&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.main.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JUnit.EmployeeRepositoryTest.searchEmployee.executor": "Run",
+    "JUnit.EmployeeServiceImplTest.countEmployee.executor": "Run",
+    "JUnit.EmployeeServiceImplTest.getAllEmployees.executor": "Run",
+    "JUnit.EmployeeServiceImplTest.saveEmployee.executor": "Run",
+    "JUnit.EmployeeServiceImplTest.searchEmployeesById.executor": "Run",
+    "JUnit.PurchaseOrderServiceImplTest.mostSoldItemAndColor.executor": "Run",
+    "JUnit.PurchaseOrderServiceImplTest.totalProfitOfASelectedDate.executor": "Run",
+    "JUnit.SupplierRepositoryTest.existsByMobileNo.executor": "Run",
+    "JUnit.UserServiceImplTest.findAllByActiveStatus.executor": "Run",
+    "JUnit.UserServiceImplTest.searchUsersById.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.WebAppInitializer.executor": "Run",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "work-branch",
+    "jdk.selected.JAVA_MODULE": "17",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/sithumimesh/Desktop/AAD Project/Shoe-Shop-Management-System/front-end/Pages/user",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/front-end/Pages/user" />
@@ -300,7 +293,7 @@
       <workItem from="1716960215134" duration="51923000" />
       <workItem from="1717042882802" duration="44740000" />
       <workItem from="1717100626246" duration="5000" />
-      <workItem from="1717126061467" duration="3738000" />
+      <workItem from="1717126061467" duration="7080000" />
     </task>
     <servers />
   </component>
