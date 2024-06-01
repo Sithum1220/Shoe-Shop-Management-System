@@ -27,7 +27,7 @@
                             </div>
                             <div class="col cus d-none">
                                 <label for="orderCustomerId" class="form-label lbl">Customer Id</label>
-                                <input type="text" class="form-control txt" id="orderCustomerId" required>
+                                <input type="text" class="form-control txt" id="orderCustomerId" data-validate="required cusId">
                                 <label for="orderCustomerId" id="customerFoundStatus"
                                        class="form-label lbl d-none text-danger">Customer Not Found!</label>
                             </div>
@@ -48,8 +48,8 @@
                         <div class="row itm mt-2 mb-4">
                             <div class="col">
                                 <label for="OrderItemId" class="form-label lbl">Item Code</label>
-                                <input type="text" class="form-control txt" id="OrderItemId" data-validate="required"
-                                       required>
+                                <input type="text" class="form-control txt" id="OrderItemId"
+                                       data-validate="required Id">
                                 <label for="OrderItemId" id="itemFoundStatus" class="form-label lbl d-none text-danger">Item
                                     Not Found!</label>
                             </div>
@@ -149,19 +149,19 @@
                                     <div class="col-4">
                                         <div class="input_box ">
                                             <input type="text" class="txt" id="last4Digit"
-                                                   placeholder="last four digits of the card">
+                                                   placeholder="last four digits of the card" data-validate="required empty-numbers">
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="input_box ">
-                                            <input type="text" class="txt" id="bankName" placeholder="bank name">
+                                            <input type="text" class="txt" id="bankName" placeholder="bank name" data-validate="required empty-letters">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-center d-none cashDiv">
                                     <div class="col-4">
                                         <div class="input_box ">
-                                            <input type="text" class="txt" id="amount" placeholder="Amount">
+                                            <input type="text" class="txt" id="amount" placeholder="Amount" data-validate="required empty-price">
                                         </div>
                                     </div>
                                 </div>

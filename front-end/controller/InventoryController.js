@@ -149,6 +149,7 @@ function saveItem() {
                             showConfirmButton: false,
                             timer: 1500
                         });
+                        $('#itemPopupCancelBtn').click();
                         getAllItems();
                     }
                 },
@@ -468,6 +469,7 @@ function updateItem() {
                             showConfirmButton: false,
                             timer: 1500
                         });
+                        $('#itemPopupCancelBtn').click();
                         getAllItems();
                     }
                 },

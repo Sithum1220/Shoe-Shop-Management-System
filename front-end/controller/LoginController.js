@@ -13,10 +13,10 @@ var steps = $('.form-step');
 let emRole;
 
 $('#forgotPw').click(function () {
-$('#signInClose').click();
+    $('#signInClose').click();
 })
 $('#signUp').click(function () {
-$('#signInClose').click();
+    $('#signInClose').click();
 })
 
 $('#employeeRole').change(function () {
@@ -112,14 +112,16 @@ function signUp() {
                             //     showConfirmButton: false,
                             //     timer: 1500
                             // });
+                            $(steps[currentStep]).removeClass('active').addClass('slide-out');
+                            currentStep++;
+                            $(steps[currentStep]).addClass('active slide-in');
 
 
                             $(".greetingPage").removeClass("d-none");
                             $('#signupBtn').prop("disabled", true);
                             $('#backAndClose').text("Close")
                             $('#backAndClose').attr("data-bs-dismiss", 'modal');
-                            slider();
-                            currentStep = 0;
+
                         },
                         error: function (resp) {
                             Swal.fire({
@@ -158,6 +160,12 @@ function signUp() {
 function signIn() {
 
     $('#loginNow').click(function () {
+
+        let signInForm = $('#signInForm');
+        if (!validateForm(signInForm)) {
+            return;
+        }
+
         let value = {
             email: $("#log-in-Username").val(),
             password: $("#log-in-Password").val(),
@@ -205,7 +213,7 @@ function signIn() {
                                 $('.wrongPW').addClass('d-none')
                             }
 
-                        }else {
+                        } else {
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops...",
@@ -360,57 +368,101 @@ function signUpForm() {
 
 function slider() {
     if (currentStep < steps.length - 1) {
-        $(steps[currentStep]).removeClass('active').addClass('slide-out');
-        currentStep++;
 
-        if ($('.greetingPage').hasClass('d-none')) {
-            if (currentStep === 7) {
-                currentStep = 6;
-            }
-        }
+        // if ($('.greetingPage').hasClass('d-none')) {
+        //     if (currentStep === 7) {
+        //         currentStep = 6;
+        //     }
+        // }
         if (currentStep === 0) {
-            $('#title').text("Enter Your Details")
-            $('#signupBtn').text("Next")
-            $('#backAndClose').text("Close")
 
-        } else if (currentStep === 1) {
+            let nameFiledForm = $('#nameFiledForm');
+            if (!validateForm(nameFiledForm)) {
+                return;
+            }
+
+            $(steps[currentStep]).removeClass('active').addClass('slide-out');
+            currentStep++;
+            $(steps[currentStep]).addClass('active slide-in');
+
             $('#title').text("Enter Your Address")
             $('#signupBtn').text("Next")
             $('#backAndClose').text("Back")
             $('#backAndClose').removeAttr("data-bs-dismiss", 'modal');
 
-        } else if (currentStep === 2) {
+        } else if (currentStep === 1) {
+
+
+            let addressFiledForm = $('#addressFiledForm');
+            if (!validateForm(addressFiledForm)) {
+                return;
+            }
+            $(steps[currentStep]).removeClass('active').addClass('slide-out');
+            currentStep++;
+            $(steps[currentStep]).addClass('active slide-in');
+
             $('#title').text("Enter Your Contact")
             $('#signupBtn').text("Next")
             $('#backAndClose').text("Back")
             $('#backAndClose').removeAttr("data-bs-dismiss", 'modal');
+        } else if (currentStep === 2) {
+            let contactFiledForm = $('#contactFiledForm');
+            if (!validateForm(contactFiledForm)) {
+                return;
+            }
 
-        } else if (currentStep === 3) {
+            $(steps[currentStep]).removeClass('active').addClass('slide-out');
+            currentStep++;
+            $(steps[currentStep]).addClass('active slide-in');
+
             $('#title').text("Enter Your Guardian Contact")
             $('#signupBtn').text("Next")
             $('#backAndClose').text("Back")
             $('#backAndClose').removeAttr("data-bs-dismiss", 'modal');
+        } else if (currentStep === 3) {
 
-        } else if (currentStep === 4) {
+            let guardianFiledForm = $('#guardianFiledForm');
+            if (!validateForm(guardianFiledForm)) {
+                return;
+            }
+
+            $(steps[currentStep]).removeClass('active').addClass('slide-out');
+            currentStep++;
+            $(steps[currentStep]).addClass('active slide-in');
+
             $('#title').text("Enter Your Company Details")
             $('#signupBtn').text("Next")
             $('#backAndClose').text("Back")
             $('#backAndClose').removeAttr("data-bs-dismiss", 'modal');
 
-        } else if (currentStep === 5) {
+        } else if (currentStep === 4) {
+            let companyFiledForm = $('#companyFiledForm');
+            if (!validateForm(companyFiledForm)) {
+                return;
+            }
+            $(steps[currentStep]).removeClass('active').addClass('slide-out');
+            currentStep++;
+            $(steps[currentStep]).addClass('active slide-in');
+
             $('#title').text("Create New Password")
             $('#signupBtn').text("Next")
             $('#backAndClose').text("Back")
             $('#backAndClose').removeAttr("data-bs-dismiss", 'modal');
+        } else if (currentStep === 5) {
+            let passwordFiledForm = $('#passwordFiledForm');
+            if (!validateForm(passwordFiledForm)) {
+                return;
+            }
+            $(steps[currentStep]).removeClass('active').addClass('slide-out');
+            currentStep++;
+            $(steps[currentStep]).addClass('active slide-in');
 
-        } else if (currentStep === 6) {
             $('#title').text("Set Your Profile")
             $('#signupBtn').text("Sign Up")
             $('#backAndClose').text("Back")
             $('#backAndClose').removeAttr("data-bs-dismiss", 'modal');
 
         }
-        $(steps[currentStep]).addClass('active slide-in');
     }
 }
 
@@ -440,33 +492,45 @@ function resetPw() {
 
         if (checkBtn) {
             if (resetPageCurrentStep === 0) {
+
+                let emailForm = $('#emailForm');
+                if (!validateForm(emailForm)) {
+                    return;
+                }
+
                 $('#msg').text("Provide the email address associated with your account to recover your password.")
                 $('#changePW').text("Get Verification")
 
                 var email = $('#email').val();
 
-                    $.ajax({
-                        url: 'http://localhost:8080/api/v1/users/request-password-reset/' + email,
-                        type: 'POST',
-                        contentType: 'application/json',
-                        data: JSON.stringify(email),
-                        success: function (response) {
-                            console.log(resetPageCurrentStep);
-                            $('#wrongPW').addClass('d-none');
-                            console.log(response);
-                            resetPageCurrentStep = 1;
-                            $(resetPWSteps[resetPageCurrentStep - 1]).removeClass('active').addClass('slide-out');
-                            $(resetPWSteps[resetPageCurrentStep]).addClass('active slide-in');
-                            $('#wrongPW').addClass('d-none');
-                        },
-                        error: function (xhr, status, error) {
-                            $('#errorMsg').text(xhr.responseJSON.message);
-                            $('#wrongPW').removeClass('d-none');
-                            $('#errorMsg').css('color', 'red');
-                            $('.checkPW').css('border', 'red solid 1px');
-                        }
-                    });
+                $.ajax({
+                    url: 'http://localhost:8080/api/v1/users/request-password-reset/' + email,
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(email),
+                    success: function (response) {
+                        console.log(resetPageCurrentStep);
+                        $('#wrongPW').addClass('d-none');
+                        console.log(response);
+                        resetPageCurrentStep = 1;
+                        $(resetPWSteps[resetPageCurrentStep - 1]).removeClass('active').addClass('slide-out');
+                        $(resetPWSteps[resetPageCurrentStep]).addClass('active slide-in');
+                        $('#wrongPW').addClass('d-none');
+                    },
+                    error: function (xhr, status, error) {
+                        $('#errorMsg').text(xhr.responseJSON.message);
+                        $('#wrongPW').removeClass('d-none');
+                        $('#errorMsg').css('color', 'red');
+                        $('.checkPW').css('border', 'red solid 1px');
+                    }
+                });
             } else if (resetPageCurrentStep === 1) {
+
+                let codeForm = $('#codeForm');
+                if (!validateForm(codeForm)) {
+                    return;
+                }
+
                 $('#msg').text("we have sent a password reset code by email. Enter it below to reset your password")
                 $('#changePW').text("Change Password")
 
@@ -492,6 +556,12 @@ function resetPw() {
                     }
                 });
             } else if (resetPageCurrentStep === 2) {
+
+                let pwForm = $('#pwForm');
+                if (!validateForm(pwForm)) {
+                    return;
+                }
+
                 $('#msg').text("Reset Your Password")
                 $('#signupBtn').text("Change Password")
 
@@ -504,7 +574,7 @@ function resetPw() {
                     var token = $('#code').val();
 
                     $.ajax({
-                        url: 'http://localhost:8080/api/v1/users/save-password?token=' + token+'&newPassword=' + newPassword,
+                        url: 'http://localhost:8080/api/v1/users/save-password?token=' + token + '&newPassword=' + newPassword,
                         type: 'POST',
                         contentType: 'application/json',
                         success: function (response) {

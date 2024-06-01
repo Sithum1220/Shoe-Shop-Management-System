@@ -61,7 +61,7 @@
                         <button type="button" class="btn-close" id="returnPopupClose" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body bg-white inputBody">
-                        <form class="row g-3">
+                        <form class="row g-3" id="returnItemInputForm">
                             <div class="col-md-6">
                                 <label for="orderId" class="form-label lbl">Order Id</label>
                                 <input type="text" class="form-control txt" readonly id="orderId" required>
@@ -75,26 +75,27 @@
                                     <option value="One Item">One Item</option>
                                 </select>
                             </div>
-
-                            <div class="col-md-3 itemId d-none">
-                                <label for="itemId" class="form-label lbl">Item Code</label>
-                                <input type="text" class="form-control txt" id="itemId">
-                            </div>
-                            <div class="col-md-3 itemColor d-none">
-                                <label for="itemColor" class="form-label lbl">Item Color</label>
-                                <input type="text" class="form-control txt" id="itemColor">
-                            </div>
-                            <div class="col-md-3 itemSize d-none">
-                                <label for="itemSize" class="form-label lbl">Item Size</label>
-                                <input type="text" class="form-control txt" id="itemSize">
-                            </div>
-                            <div class="col-md-3 itemQty d-none">
-                                <label for="itemSize" class="form-label lbl">Item Qty</label>
-                                <input type="text" class="form-control txt" id="itemQty">
-                            </div>
-                            <div class="col-md-12 text-center mt-4 d-none" id="returnStatus">
-                                <h2 class="text-danger fw-medium fs-4">Sorry! Can't Return This Order.</h2>
-                            </div>
+                            <form >
+                                <div class="col-md-3 itemId d-none" >
+                                    <label for="itemId" class="form-label lbl">Item Code</label>
+                                    <input type="text" class="form-control txt" id="itemId" data-validate="required Id">
+                                </div>
+                                <div class="col-md-3 itemColor d-none">
+                                    <label for="itemColor" class="form-label lbl">Item Color</label>
+                                    <input type="text" class="form-control txt" id="itemColor" data-validate="required letters">
+                                </div>
+                                <div class="col-md-3 itemSize d-none">
+                                    <label for="itemSize" class="form-label lbl">Item Size</label>
+                                    <input type="text" class="form-control txt" id="itemSize" data-validate="required numeric">
+                                </div>
+                                <div class="col-md-3 itemQty d-none">
+                                    <label for="itemSize" class="form-label lbl">Item Qty</label>
+                                    <input type="text" class="form-control txt" id="itemQty" data-validate="required numeric">
+                                </div>
+                                    <div class="col-md-12 text-center mt-4 d-none" id="returnStatus">
+                                    <h2 class="text-danger fw-medium fs-4">Sorry! Can't Return This Order.</h2>
+                                </div>
+                            </form>
                         </form>
 
                     </div>

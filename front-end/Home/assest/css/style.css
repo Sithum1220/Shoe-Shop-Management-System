@@ -132,3 +132,8 @@
         opacity: 1;
     }
 }
+.error {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+}
