@@ -193,7 +193,7 @@ function returnFullOrders(id) {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
-                        title: "Supplier has been Deleted",
+                        title: "Order has been Returned",
                         showConfirmButton: false,
                         timer: 1500
                     });
@@ -208,6 +208,13 @@ function returnFullOrders(id) {
                 }
             });
         } else if (orderType === 'One Item') {
+
+            const form = $('#returnItemInputForm');
+            if (!validateForm(form)) {
+                return;
+            }
+            
+            alert("aaa")
             const itemId = $('#itemId').val();
             const itemColor = $('#itemColor').val();
             const itemSize = $('#itemSize').val();
@@ -238,7 +245,7 @@ function returnFullOrders(id) {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
-                        title: "Supplier has been Deleted",
+                        title: "Item has been Returned",
                         showConfirmButton: false,
                         timer: 1500
                     });

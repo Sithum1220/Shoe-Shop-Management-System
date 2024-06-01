@@ -31,11 +31,101 @@ function validateMobileNumber(element) {
     removeError(element);
     return true;
 }
+function validateAnyMobileNumber(element) {
+    if (!element.val().match(/^\+?(\d{1,3})?[-.\s]?(\(?\d{1,4}\)?)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/)) {
+        if (element.val() !== ''){
+            addError(element, 'Invalid Mobile Number');
+        }else {
+            addError(element, 'This field is required');
+        }
+
+        return false;
+    }
+    removeError(element);
+    return true;
+}
+
+function validateItemId(element) {
+    if (!element.val().match(/^[A-Z]{3}\d{4}[1-9]$/)) {
+        if (element.val() !== ''){
+            addError(element, 'Invalid Id.(e.g. FSM00001)');
+        }else {
+            addError(element, 'This field is required');
+        }
+
+        return false;
+    }
+    removeError(element);
+    return true;
+}
+function validateSupId(element) {
+    if (!element.val().match(/^S\d{2}-\d{2}[1-9]$/)) {
+        if (element.val() !== ''){
+            addError(element, 'Invalid Id.(e.g. S00-001)');
+        }else {
+            addError(element, 'This field is required');
+        }
+
+        return false;
+    }
+    removeError(element);
+    return true;
+}
 
 function validateEmptyAndLetters(element) {
-    if (!element.val().match(/^[a-zA-Z\s]+$/)) {
+    if (!element.val().match(/^[A-Za-z ]+$/)) {
+        if (!element.val()){
+            removeError(element);
+            return true;
+        }else {
             addError(element, 'This field must contain only letters and spaces');
-        return false;
+            return false;
+        }
+        
+    }
+    removeError(element);
+    return true;
+}
+
+function validateEmptyAndDecimalForPrice(element) {
+    if (!element.val().match(/^\d+(\.\d{1,2})?$/)) {
+        if (!element.val()){
+            removeError(element);
+            return true;
+        }else {
+            addError(element, 'Invalid Price.');
+            return false;
+        }
+        
+    }
+    removeError(element);
+    return true;
+}
+function validateEmptyAndNumbers(element) {
+    if (!element.val().match(/^\d{4}$/)) {
+        if (!element.val()){
+            removeError(element);
+            return true;
+        }else {
+            addError(element, 'Invalid Price.');
+            return false;
+        }
+        
+    }
+    removeError(element);
+    return true;
+}
+
+function validateCusId(element) {
+    if (!element.val().match(/^C\d{2}-\d{2}[1-9]$/)) {
+        if (!element.val()){
+            removeError(element);
+            return true;
+        }else {
+            addError(element, 'Invalid Id.(e.g. C00-001)');
+            return false;
+        }
+        
     }
     removeError(element);
     return true;
@@ -61,7 +151,7 @@ function validatePassword(element) {
 }
 
 function validatePrice(element) {
-    if (!element.val().match(/\$?\s?\d{1,3}(?:,\d{3})*(?:\.\d{2})?/)) {
+    if (!element.val().match(/^\d+(\.\d{1,2})?$/)) {
         if (element.val() !== ''){
             addError(element, 'Invalid Price');
         }else {
@@ -87,6 +177,19 @@ function validateLandNumber(element) {
     removeError(element)
     return true;
 }
+function validateAnyLandNumber(element) {
+    if (!element.val().match(/^\+?(\d{1,3})?[-.\s]?(\(?\d{1,4}\)?)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/)) {
+        if (element.val() !== ''){
+            addError(element, 'Invalid Land Number');
+        }else {
+            addError(element, 'This field is required');
+        }
+
+        return false;
+    }
+    removeError(element)
+    return true;
+}
 
 function validateLettersAndSpaces(element) {
     if (!element.val().match(/^[a-zA-Z\s]+$/)) {
@@ -100,6 +203,7 @@ function validateLettersAndSpaces(element) {
     removeError(element)
     return true;
 }
+
 
 function validateNumeric(element) {
     if (!element.val().match(/^[0-9]+$/)) {
@@ -165,8 +269,29 @@ function validateForm(form) {
                 case 'price':
                     if (!validatePrice(element)) isValid = false;
                     break;
+                case 'empty-price':
+                    if (!validateEmptyAndDecimalForPrice(element)) isValid = false;
+                    break;
                 case 'password':
                     if (!validatePassword(element)) isValid = false;
+                    break;
+                case 'Id':
+                    if (!validateItemId(element)) isValid = false;
+                    break;
+                case 'supId':
+                    if (!validateSupId(element)) isValid = false;
+                    break;
+                case 'cusId':
+                    if (!validateCusId(element)) isValid = false;
+                    break;
+                case 'empty-numbers':
+                    if (!validateEmptyAndNumbers(element)) isValid = false;
+                    break;
+                case 'any-land-numbers':
+                    if (!validateAnyLandNumber(element)) isValid = false;
+                    break;
+                case 'any-mobile-numbers':
+                    if (!validateAnyMobileNumber(element)) isValid = false;
                     break;
                 case 'empty-letters':
                     if (!validateEmptyAndLetters(element)) isValid = false;
