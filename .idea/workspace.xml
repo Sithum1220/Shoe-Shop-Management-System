@@ -6,26 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="032d1856-7f95-44cb-a7e8-c221ea7611af" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/CustomerDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/CustomerDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/EmployeeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/EmployeeDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/InventoryDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/InventoryDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/SupplierDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/java/lk/ijse/spring/shoeshop/dto/SupplierDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Home/assest/css/signUpForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Home/assest/css/signUpForm.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Home/assest/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Home/assest/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Home/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Home/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/employee.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/employee.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/inventory.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/inventory.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/return.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/return.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/admin/supplier.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/admin/supplier.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/Pages/customers/customer.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/customers/customer.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/Pages/customers/customerOrder.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/Pages/customers/customerOrder.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/controller/InventoryController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/InventoryController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/controller/LoginController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/LoginController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/controller/PurchaseOrderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/PurchaseOrderController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/controller/returnController.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/returnController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/controller/validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/controller/validation.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +74,7 @@
     &quot;Spring Boot.WebAppInitializer.executor&quot;: &quot;Run&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;database.data.extractors.current.export.id&quot;: &quot;SQL Inserts&quot;,
     &quot;git-widget-placeholder&quot;: &quot;work-branch&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
@@ -318,7 +302,11 @@
       <workItem from="1717136974641" duration="1000" />
       <workItem from="1717137114641" duration="9000" />
       <workItem from="1717163153562" duration="12537000" />
-      <workItem from="1717212899772" duration="21120000" />
+      <workItem from="1717212899772" duration="27829000" />
+      <workItem from="1717307058302" duration="1693000" />
+      <workItem from="1717609680738" duration="25000" />
+      <workItem from="1717616903684" duration="994000" />
+      <workItem from="1717817221013" duration="397000" />
     </task>
     <servers />
   </component>

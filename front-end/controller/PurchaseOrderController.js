@@ -381,19 +381,19 @@ function purchaseOrder() {
 
     $('#purchaseOrder').click(function () {
 
-        const form = $('#itemDetailsForm');
-        if (!validateForm(form)) {
-            const form2 = $('#paymentForm');
-            if (!validateForm(form2)) {
-                return;
-            }
-            return;
-        }
+        // const form = $('#itemDetailsForm');
+        // if (!validateForm(form)) {
+        //     const form2 = $('#paymentForm');
+        //     if (!validateForm(form2)) {
+        //         return;
+        //     }
+        //     return;
+        // }
 
-        const form2 = $('#paymentForm');
-        if (!validateForm(form2)) {
-            return;
-        }
+        // const form2 = $('#paymentForm');
+        // if (!validateForm(form2)) {
+        //     return;
+        // }
         
         let total = 0;
         itemCart.forEach(item => {

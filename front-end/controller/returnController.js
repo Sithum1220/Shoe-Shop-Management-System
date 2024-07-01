@@ -213,8 +213,7 @@ function returnFullOrders(id) {
             if (!validateForm(form)) {
                 return;
             }
-            
-            alert("aaa")
+
             const itemId = $('#itemId').val();
             const itemColor = $('#itemColor').val();
             const itemSize = $('#itemSize').val();
