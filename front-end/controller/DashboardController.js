@@ -254,6 +254,7 @@ function getMostSaleItemDetails(itemId) {
                 $('.progress-circle').each(function () {
                     let value = $(this).data('value');
                     let percentage = (response.qty / response.originalQty) * 100;
+                    percentage = percentage.toFixed(2);
 
                     let cssValue;
                     if (percentage > 50) {

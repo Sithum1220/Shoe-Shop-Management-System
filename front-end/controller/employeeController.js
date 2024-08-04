@@ -169,6 +169,7 @@ function getAllEmployeeAjaxReq(status, value) {
                                 <td>${employee.contactNo}</td>
                                 <td>${employee.joinDate}</td>
                                 <td>${employee.branch}</td>
+                                <td>${employee.role}</td>
                                 
                             </tr>`;
                 $('#tblEmployee').append(row);

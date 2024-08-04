@@ -158,10 +158,10 @@ function addToCart() {
 
     $('#addToCart').click(function () {
 
-        const form = $('#itemDetailsForm');
-        if (!validateForm(form)) {
-            return;
-        }
+        // const form = $('#itemDetailsForm');
+        // if (!validateForm(form)) {
+        //     return;
+        // }
         
         if ($('#OrderItemId').val() !== '') {
             $('#tblOrderSize tbody tr').each(function () {
@@ -332,14 +332,13 @@ function tblCartDataLoad() {
 
 function purchaseOrder() {
     $('#paymentMethod').change(function () {
-        // Reset balance price on payment method change
+
         $('#balancePrice').text('00.00');
 
         if ($(this).val() === 'Cash Payment') {
-            // Unbind any previous keyup event to avoid multiple bindings
+
             $('#amount').off('keyup');
 
-            // Attach new keyup event handler for cash payment
             $('#amount').keyup(function () {
                 let amount = parseFloat($(this).val());
                 let totalPrice = parseFloat($('#totalPrice').text());
@@ -353,7 +352,7 @@ function purchaseOrder() {
             });
 
         } else if ($(this).val() === 'Card Payment') {
-            // Unbind keyup event since it's not needed for card payment
+
             $('#amount').off('keyup');
         }
     });
@@ -381,19 +380,19 @@ function purchaseOrder() {
 
     $('#purchaseOrder').click(function () {
 
-        const form = $('#itemDetailsForm');
-        if (!validateForm(form)) {
-            const form2 = $('#paymentForm');
-            if (!validateForm(form2)) {
-                return;
-            }
-            return;
-        }
-
-        const form2 = $('#paymentForm');
-        if (!validateForm(form2)) {
-            return;
-        }
+        // const form = $('#itemDetailsForm');
+        // if (!validateForm(form)) {
+        //     const form2 = $('#paymentForm');
+        //     if (!validateForm(form2)) {
+        //         return;
+        //     }
+        //     return;
+        // }
+        //
+        // const form2 = $('#paymentForm');
+        // if (!validateForm(form2)) {
+        //     return;
+        // }
         
         let total = 0;
         itemCart.forEach(item => {
